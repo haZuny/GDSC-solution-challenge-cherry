@@ -30,24 +30,15 @@ class _SignInPage extends State<SignInPage> {
               ElevatedButton(
                 onPressed: () {},
                 // 내부 컴포넌트
-                child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // 구글 로고
-                    Image.asset("assets/img/google_logo.png",
+                child: ListTile(
+                    leading: Image.asset("assets/img/google_logo.png",
                         width: getFullScrennSizePercent(
                             context, siginInPage_googleLogoSize_width, true),
                         height: getFullScrennSizePercent(
                             context, siginInPage_googleLogoSize_width, true)),
-                    // 로그인 글자
-                    Text(
+                    title: Text(
                       "Sign in with Google",
-                      style: TextStyle(
-                          color: Color(siginInPage_googleLogoFontColor)),
-                    )
-                  ],
-                )),
+                    )),
                 style: ElevatedButton.styleFrom(
                     // 크기 설정
                     minimumSize: Size(
