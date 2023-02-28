@@ -1,4 +1,4 @@
-import 'package:cherry_app/signInPage.dart';
+import 'package:cherry_app/all_signInPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

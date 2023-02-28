@@ -1,3 +1,4 @@
+import 'package:cherry_app/all_SelectRolePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +24,14 @@ class _SignInPage extends State<SignInPage> {
               /// 간격
               Container(
                 height: getFullScrennSizePercent(
-                    context, signInPage_widgetSpace, false),
+                    context, allPage_spacePerTitleAndComponents, false),
               ),
 
               /// 로그인 버튼
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectRolePage()));
+                },
                 // 내부 컴포넌트
                 child: ListTile(
                     leading: Image.asset("assets/img/google_logo.png",
@@ -56,7 +59,7 @@ class _SignInPage extends State<SignInPage> {
                       borderRadius: BorderRadius.circular(allPage_btnRadius),
                       side: BorderSide(
                           color: Color(themaColor_black),
-                          width: signInPage_loginBtnBorderWidth),
+                          width: allPage_btnBorderWidth),
                     ),
 
                     // 배경 색상 설정
