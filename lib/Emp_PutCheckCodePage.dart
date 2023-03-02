@@ -1,5 +1,8 @@
+import 'package:cherry_app/Emp_WaitingAcceptPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+
+import 'AppBar_Drawer.dart';
 
 class PutCheckCodePage extends StatefulWidget {
   @override
@@ -13,6 +16,7 @@ class _PutCheckCodePage extends State<PutCheckCodePage> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
+          appBar: AppBarNone(),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +92,9 @@ class _PutCheckCodePage extends State<PutCheckCodePage> {
 
                 /// next 버튼
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>WaitingAcceptPage()));
+                    },
                     child: Text(
                       "Next",
                       style: TextStyle(

@@ -2,6 +2,8 @@ import 'package:cherry_app/all_SelectRolePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
+import 'AppBar_Drawer.dart';
+
 class SignInPage extends StatefulWidget {
   @override
   State<SignInPage> createState() => _SignInPage();
@@ -10,6 +12,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPage extends State<SignInPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
+    appBar: AppBarNone(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

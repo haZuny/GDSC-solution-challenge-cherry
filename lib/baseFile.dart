@@ -19,10 +19,17 @@ double allPage_TFRadius = 10;  // 텍스트필드 둥글기
 double allPage_btnBorderWidth = 0.1;  // 버튼 테두리
 // FontSize
 double allPage_titleFontSize = 25;  // 타이틀 폰트 크기
+double allPage_subTitleFontSize = 17;  // 서브 타이틀 폰트 크기
 double allPage_btnFontSize = 18;  // 텍스트 버튼 폰트 크기
 // Shadow
 double allPage_shadowBlurRadius = 10;
 double allPage_shadowOffSet = 5;
+
+/// AppBar, Drawer
+// drawer
+int drawer_spaceTop = 5;
+double drawer_dividerWidth = 0.2;
+double drawer_dividerHeight = 0;
 
 /// SignInPage
 // Size(Percent)
@@ -44,11 +51,27 @@ int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 int putCheckCodePage_spacePerNextBtn = 10; // 넥스트 버튼 사이의 간격
 double putCheckCodePage_checkBtnFontSize = 14;  // 체크 버튼 폰트 크기
 
+/// WaitingAcceptPage
+// Size
+int waitingAcceptPage_spacePerNextBtn = 15; // Re-type 버튼 사이의 간격
+
 /// SelectRolePage
 // Size
-int selectRolePage_widgetSpaceRow = 10; // 버튼 사이의 가로 간격
-int selectRolePage_loginBtnWidth = 30;  // 역할 선택 버튼 가로
+int selectRolePage_widgetSpaceRow = 6; // 버튼 사이의 가로 간격
+int selectRolePage_loginBtnWidth = 37;  // 역할 선택 버튼 가로
 int selectRolePage_loginBtnHeight = 30;  // 역할 선택 버튼 세로 패딩
+
+/// HomePage
+// Size
+int homePage_logoWidth = 80;
+int homePage_spacePerBtn = 6;
+int homePage_spacePerTitle = 3;
+int homePage_smallBtnWidth = 37;
+int homePage_smallBtnHeight = 13;
+int homePage_bigBtnWidth = 80;
+int homePage_bigBtnHeight = 20;
+// Font
+double homePage_emergencyBtnFontSize = 20;
 
 
 

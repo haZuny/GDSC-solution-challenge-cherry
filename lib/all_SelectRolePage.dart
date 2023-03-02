@@ -2,6 +2,8 @@ import 'package:cherry_app/Emp_SignUpPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
+import 'AppBar_Drawer.dart';
+
 class SelectRolePage extends StatefulWidget {
   @override
   State<SelectRolePage> createState() => _SelectRolePage();
@@ -10,6 +12,7 @@ class SelectRolePage extends StatefulWidget {
 class _SelectRolePage extends State<SelectRolePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBarNone(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +74,10 @@ class _SelectRolePage extends State<SelectRolePage> {
                   // Employee
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPageEmp()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPageEmp()));
                     },
                     // 내부 컴포넌트
                     child: Text(

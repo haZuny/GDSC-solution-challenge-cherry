@@ -2,6 +2,8 @@ import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
+import 'AppBar_Drawer.dart';
+
 class SignUpPageEmp extends StatefulWidget {
   @override
   State<SignUpPageEmp> createState() => _SignUpPageEmp();
@@ -14,6 +16,7 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
+          appBar: AppBarNone(),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

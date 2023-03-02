@@ -1,5 +1,7 @@
 import 'package:cherry_app/all_signInPage.dart';
+import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Color(themaColor_black),
+          ),
+        ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
