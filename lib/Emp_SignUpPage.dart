@@ -1,3 +1,4 @@
+import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -31,10 +32,12 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                 /// 이름 TF
                 Container(
                   width: getFullScrennSizePercent(
-                      context, signUpPage_TFWidth, true),
+                      context, allPage_signUpTFWidth, true),
                   child: TextField(
                     decoration: InputDecoration(
+                      // 힌트
                       hintText: "Name",
+                      hintStyle: TextStyle(color: Color(themaColor_whiteBlack)),
                       // 색상(설정 안하면 그림자에 먹힘)
                       filled: true,
                       fillColor: Colors.white,
@@ -57,9 +60,9 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   // 그림자
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
-                        blurRadius: signUpPage_shadowBlurRadius,
+                        blurRadius: allPage_shadowBlurRadius,
                         offset: Offset(
-                            signUpPage_shadowOffSet, signUpPage_shadowOffSet),
+                            allPage_shadowOffSet, allPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -73,10 +76,12 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                 /// 휴대전화 TF
                 Container(
                   width: getFullScrennSizePercent(
-                      context, signUpPage_TFWidth, true),
+                      context, allPage_signUpTFWidth, true),
                   child: TextField(
                     decoration: InputDecoration(
+                      // 힌트
                       hintText: "Phone number",
+                      hintStyle: TextStyle(color: Color(themaColor_whiteBlack)),
                       // 색상(설정 안하면 그림자에 먹힘)
                       filled: true,
                       fillColor: Colors.white,
@@ -99,9 +104,9 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   // 그림자
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
-                        blurRadius: signUpPage_shadowBlurRadius,
+                        blurRadius: allPage_shadowBlurRadius,
                         offset: Offset(
-                            signUpPage_shadowOffSet, signUpPage_shadowOffSet),
+                            allPage_shadowOffSet, allPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -115,10 +120,12 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                 /// 나이 TF
                 Container(
                   width: getFullScrennSizePercent(
-                      context, signUpPage_TFWidth, true),
+                      context, allPage_signUpTFWidth, true),
                   child: TextField(
                     decoration: InputDecoration(
+                      // 힌트
                       hintText: "Age",
+                      hintStyle: TextStyle(color: Color(themaColor_whiteBlack)),
                       // 색상(설정 안하면 그림자에 먹힘)
                       filled: true,
                       fillColor: Colors.white,
@@ -141,9 +148,9 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   // 그림자
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
-                        blurRadius: signUpPage_shadowBlurRadius,
+                        blurRadius: allPage_shadowBlurRadius,
                         offset: Offset(
-                            signUpPage_shadowOffSet, signUpPage_shadowOffSet),
+                            allPage_shadowOffSet, allPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -151,12 +158,14 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                 // 간격
                 Container(
                   height: getFullScrennSizePercent(
-                      context, allPage_spacePerTitleAndComponents, false),
+                      context, signUpPage_spacePerNextBtn, false),
                 ),
 
                 // next 버튼
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PutCheckCodePage()));
+                    },
                     child: Text(
                       "Next",
                       style: TextStyle(
