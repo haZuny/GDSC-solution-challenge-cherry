@@ -32,14 +32,14 @@ class _PutCheckCodePage extends State<PutCheckCodePage> {
                       context, allPage_spacePerTitleAndComponents, false),
                 ),
 
-                /// 이름 TF
+                /// 현장코드 TF
                 Container(
                   width: getFullScrennSizePercent(
                       context, allPage_signUpTFWidth, true),
                   child: TextField(
                     decoration: InputDecoration(
                       // 힌트
-                      hintText: "Name",
+                      hintText: "Code",
                       hintStyle: TextStyle(color: Color(themaColor_whiteBlack)),
                       // 색상(설정 안하면 그림자에 먹힘)
                       filled: true,

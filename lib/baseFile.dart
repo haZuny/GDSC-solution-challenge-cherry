@@ -63,17 +63,23 @@ int selectRolePage_loginBtnHeight = 30;  // 역할 선택 버튼 세로 패딩
 
 /// HomePage
 // Size
-int homePage_logoWidth = 80;
-int homePage_spacePerBtn = 6;
-int homePage_spacePerTitle = 3;
-int homePage_smallBtnWidth = 37;
-int homePage_smallBtnHeight = 13;
-int homePage_bigBtnWidth = 80;
-int homePage_bigBtnHeight = 20;
+int homePage_logoWidth = 80;  // 로고 너비
+int homePage_spacePerBtn = 6; // 버튼 사이 간격(가로)
+int homePage_spacePerTitle = 3; // 타이틀과의 간격
+int homePage_smallBtnWidth = 37;  // 작은 버튼 가로
+int homePage_smallBtnHeight = 13; // 작은 버튼 높이
+int homePage_bigBtnWidth = 80;  // 큰 버튼 가로
+int homePage_bigBtnHeight = 20; // 큰 버튼 높이
 // Font
-double homePage_emergencyBtnFontSize = 20;
+double homePage_emergencyBtnFontSize = 20;  // 긴급 버튼 폰트 크기
 
-
+/// HelmetCheckPage
+// Size
+int helmetCheckPage_imgWidth = 80; // 사진 크기
+int helmetCheckPage_spacePerNextBtn = 15; // 넥스트 버튼과의 간격
+// Shadow
+double helmetCheckPage_shadowBlurRadius = 10; // 그림자 둥글기
+double helmetCheckPage_shadowOffSet = 5;  // 그림자 오프셋
 
 
 double getFullScrennSizePercent(BuildContext context, int percent, bool isWidth){

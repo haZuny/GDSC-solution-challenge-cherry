@@ -63,9 +63,9 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   // 그림자
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
-                        blurRadius: allPage_shadowBlurRadius,
-                        offset: Offset(
-                            allPage_shadowOffSet, allPage_shadowOffSet),
+                        blurRadius: helmetCheckPage_shadowBlurRadius,
+                        offset: Offset(helmetCheckPage_shadowOffSet,
+                            helmetCheckPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -108,8 +108,8 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
                         blurRadius: allPage_shadowBlurRadius,
-                        offset: Offset(
-                            allPage_shadowOffSet, allPage_shadowOffSet),
+                        offset:
+                            Offset(allPage_shadowOffSet, allPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -152,8 +152,8 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
                         blurRadius: allPage_shadowBlurRadius,
-                        offset: Offset(
-                            allPage_shadowOffSet, allPage_shadowOffSet),
+                        offset:
+                            Offset(allPage_shadowOffSet, allPage_shadowOffSet),
                         color: Color(themaColor_whiteBlack))
                   ]),
                 ),
@@ -167,7 +167,10 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                 // next 버튼
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PutCheckCodePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PutCheckCodePage()));
                     },
                     child: Text(
                       "Next",

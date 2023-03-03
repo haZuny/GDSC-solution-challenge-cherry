@@ -1,4 +1,5 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
+import 'package:cherry_app/Emp_HelmetCheckPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,9 @@ class _HomePageEmp extends State<HomePageEmp> {
                     children: [
                       /// 헬멧 체크 버튼
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HelmetCheckPage()));
+                        },
                         // 내부 컴포넌트
                         child: Text(
                           "Helmet wear\ninspection",
