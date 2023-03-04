@@ -50,7 +50,7 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
                                 color: Color(themaColor_whiteBlack))
                           ],
                           borderRadius: BorderRadius.circular(
-                              checkListPage_checkFormRadious)),
+                              allPage_bigBoxRadious)),
                       child: ListView(
                         children: [
                           /// 요소 1

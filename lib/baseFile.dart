@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
+/// var
+// SignUp logic, 회원가입시 어느 페이지 선택했는지 결정
+enum SignUpClass{manager, employee}
+SignUpClass? global_signUpClass;
 
 /// 공통
 // Color
@@ -15,6 +19,7 @@ int allPage_signUpTFWidth = 80;  // 회원가입 텍스트필드 가로
 // Radius
 double allPage_btnRadius = 10;  // 버튼 둥글기
 double allPage_TFRadius = 10;  // 텍스트필드 둥글기
+double allPage_bigBoxRadious = 20;  // 큰 박스 둥글기
 // Width(두께)
 double allPage_btnBorderWidth = 0.1;  // 버튼 테두리
 // FontSize
@@ -94,8 +99,12 @@ double checkListPage_listTilePaddingTopBottom = 1;  // 리스트 타일 패딩(�
 double checkListPage_dialogTextPadding = 20;  // 다이얼로그 텍스트 패딩
 // Font
 double checkListPage_listTextFontSize = 20; // 리스트 텍스트 폰트 크기
-// Radious
-double checkListPage_checkFormRadious = 20;
+
+/// EmergencyPage
+// Size
+int emergencyPage_spacePerTitle = 3;    // 타이틀과의 간격
+int emergencyPage_spacePerMap = 10; // 지도와의 간격
+int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
 
 
 /// 화면 사이즈 대비 퍼센트 반환 함수(가로)

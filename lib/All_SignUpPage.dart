@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
 
-class SignUpPageEmp extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  State<SignUpPageEmp> createState() => _SignUpPageEmp();
+  State<SignUpPage> createState() => _SignUpPage();
 }
 
-class _SignUpPageEmp extends State<SignUpPageEmp> {
+class _SignUpPage extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -176,10 +176,16 @@ class _SignUpPageEmp extends State<SignUpPageEmp> {
                   // next 버튼
                   TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PutCheckCodePage()));
+                        // 근로자 가입으로 이동
+                        if(global_signUpClass == SignUpClass.employee){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PutCheckCodePageEmp()));
+                        }
+                        // 관리자 가입으로 이동
+                        
+
                       },
                       child: Text(
                         "Next",

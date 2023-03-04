@@ -1,4 +1,4 @@
-import 'package:cherry_app/Emp_SignUpPage.dart';
+import 'package:cherry_app/All_SignUpPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,13 @@ class _SelectRolePage extends State<SelectRolePage> {
                   children: [
                     // Manager
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        global_signUpClass = SignUpClass.manager;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpPage()));
+                      },
                       // 내부 컴포넌트
                       child: Text(
                         "Manager",
@@ -76,10 +82,11 @@ class _SelectRolePage extends State<SelectRolePage> {
                     // Employee
                     ElevatedButton(
                       onPressed: () {
+                        global_signUpClass = SignUpClass.employee;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpPageEmp()));
+                                builder: (context) => SignUpPage()));
                       },
                       // 내부 컴포넌트
                       child: Text(

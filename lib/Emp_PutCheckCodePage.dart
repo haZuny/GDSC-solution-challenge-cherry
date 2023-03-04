@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
 
-class PutCheckCodePage extends StatefulWidget {
+class PutCheckCodePageEmp extends StatefulWidget {
   @override
-  State<PutCheckCodePage> createState() => _PutCheckCodePage();
+  State<PutCheckCodePageEmp> createState() => _PutCheckCodePageEmp();
 }
 
-class _PutCheckCodePage extends State<PutCheckCodePage> {
+class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {

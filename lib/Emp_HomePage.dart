@@ -1,5 +1,6 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Emp_CheckListPage.dart';
+import 'package:cherry_app/All_EmergencyPage.dart';
 import 'package:cherry_app/Emp_HelmetCheckPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +153,9 @@ class _HomePageEmp extends State<HomePageEmp> {
 
                   /// 긴급 버튼
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EmergencyPage()));
+                    },
                     // 내부 컴포넌트
                     child: Text(
                       "Emergency",
