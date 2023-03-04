@@ -1,4 +1,5 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
+import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -46,14 +47,16 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                   width: getFullScrennSizePercent(
                       context, allPage_signUpTFWidth, true),
                   alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Check",
-                        style: TextStyle(
-                            fontSize: putCheckCodePage_checkBtnFontSize,
-                            color: Color(allPage_btnSubFontColor)),
-                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Unchecked",
+                      style: TextStyle(
+                          fontSize: putCheckCodePage_checkBtnFontSize,
+                          fontWeight: FontWeight.w500,
+                          color: Color(allPage_btnSubFontColor)),
+                    ),
+                  ),
                 ),
 
                 /// 간격
@@ -65,6 +68,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                 /// next 버튼
                 TextButton(
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckListPageEmp()));
                     },
                     child: Text(
                       "Next",

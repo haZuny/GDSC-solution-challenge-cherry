@@ -81,6 +81,20 @@ int helmetCheckPage_spacePerNextBtn = 15; // 넥스트 버튼과의 간격
 double helmetCheckPage_shadowBlurRadius = 10; // 그림자 둥글기
 double helmetCheckPage_shadowOffSet = 5;  // 그림자 오프셋
 
+/// CheckListPage
+// Size
+int checkListPage_checkFormWidth = 80;  // 체크 영역 너비
+int checkListPage_checkFormHeight = 60;  // 체크 영역 높이
+int checkListPage_spacePerBackBtn = 3;  // 뒤로가기 버튼과의 간격
+// Padding
+double checkListPage_listTilePaddingLeft = 15;  // 리스트 타일 패딩(왼쪽)
+double checkListPage_listTilePaddingTopBottom = 4;  // 리스트 타일 패딩(위아래)
+double checkListPage_dialogTextPadding = 20;  // 다이얼로그 텍스트 패딩
+// Font
+double checkListPage_listTextFontSize = 20; // 리스트 텍스트 폰트 크기
+// Radious
+double checkListPage_checkFormRadious = 20;
+
 
 double getFullScrennSizePercent(BuildContext context, int percent, bool isWidth){
   if (isWidth)
