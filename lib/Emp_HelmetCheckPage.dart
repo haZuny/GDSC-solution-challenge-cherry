@@ -17,66 +17,68 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
         child: Scaffold(
           appBar: AppBarEmp(),
           drawer: DrawerEmp(),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                /// 로고 이미지
-                Container(
-                  width: getFullScrennSizePercent(
-                      context, helmetCheckPage_imgWidth, true),
-                  height: getFullScrennSizePercent(
-                      context, helmetCheckPage_imgWidth, true),
-                  decoration:
-                      BoxDecoration(color: Color(themaColor_white), boxShadow: [
-                    BoxShadow(
-                        blurRadius: allPage_shadowBlurRadius,
-                        offset:
-                            Offset(allPage_shadowOffSet, allPage_shadowOffSet),
-                        color: Color(themaColor_whiteBlack))
-                  ]),
-                  child: Image.asset(
-                    'assets/img/logo.png',
+          body: Container(
+            alignment: Alignment.center,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  /// 로고 이미지
+                  Container(
                     width: getFullScrennSizePercent(
-                        context, helmetCheckPage_imgWidth, true),
-                  ),
-                ),
-
-                /// check 버튼
-                Container(
-                  width: getFullScrennSizePercent(
-                      context, allPage_signUpTFWidth, true),
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Unchecked",
-                      style: TextStyle(
-                          fontSize: putCheckCodePage_checkBtnFontSize,
-                          fontWeight: FontWeight.w500,
-                          color: Color(allPage_btnSubFontColor)),
+                        context, helmetCheckPage_imgWidth),
+                    height: getFullScrennSizePercent(
+                        context, helmetCheckPage_imgWidth),
+                    decoration:
+                        BoxDecoration(color: Color(themaColor_white), boxShadow: [
+                      BoxShadow(
+                          blurRadius: allPage_shadowBlurRadius,
+                          offset:
+                              Offset(allPage_shadowOffSet, allPage_shadowOffSet),
+                          color: Color(themaColor_whiteBlack))
+                    ]),
+                    child: Image.asset(
+                      'assets/img/logo.png',
+                      width: getFullScrennSizePercent(
+                          context, helmetCheckPage_imgWidth),
                     ),
                   ),
-                ),
 
-                /// 간격
-                Container(
-                  height: getFullScrennSizePercent(
-                      context, helmetCheckPage_spacePerNextBtn, false),
-                ),
+                  /// check 버튼
+                  Container(
+                    width: getFullScrennSizePercent(
+                        context, allPage_signUpTFWidth),
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Unchecked",
+                        style: TextStyle(
+                            fontSize: putCheckCodePage_checkBtnFontSize,
+                            fontWeight: FontWeight.w500,
+                            color: Color(allPage_btnSubFontColor)),
+                      ),
+                    ),
+                  ),
 
-                /// next 버튼
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckListPageEmp()));
-                    },
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                          fontSize: allPage_btnFontSize,
-                          color: Color(allPage_btnFontColor)),
-                    ))
-              ],
+                  /// 간격
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, helmetCheckPage_spacePerNextBtn),
+                  ),
+
+                  /// next 버튼
+                  TextButton(
+                      onPressed: () {
+                      },
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                            fontSize: allPage_btnFontSize,
+                            color: Color(allPage_btnFontColor)),
+                      ))
+                ],
+              ),
             ),
           ),
         ),

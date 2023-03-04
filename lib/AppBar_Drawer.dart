@@ -39,7 +39,7 @@ class DrawerEmp extends StatelessWidget {
           children: [
             /// 여백
             Container(
-              height: getFullScrennSizePercent(context, drawer_spaceTop, false),
+              height: getFullScrennSizePercent(context, drawer_spaceTop),
               color: Color(themaColor_black),
             ),
             /// 상단 유저 정보
