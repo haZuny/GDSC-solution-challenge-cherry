@@ -49,283 +49,15 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
                                     allPage_shadowOffSet, allPage_shadowOffSet),
                                 color: Color(themaColor_whiteBlack))
                           ],
-                          borderRadius: BorderRadius.circular(
-                              allPage_bigBoxRadious)),
+                          borderRadius:
+                              BorderRadius.circular(allPage_bigBoxRadious)),
                       child: ListView(
                         children: [
-                          /// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(checkListPage_dialogTextPadding),
-                                      child: Text(
-                                        "작업에 적합한 보호구 지급 지급 지급 지급",
-                                        // textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: checkListPage_listTextFontSize),
-                                      ),
-                                    ),
-                                  ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),/// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(checkListPage_dialogTextPadding),
-                                      child: Text(
-                                        "작업에 적합한 보호구 지급 지급 지급 지급",
-                                        // textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: checkListPage_listTextFontSize),
-                                      ),
-                                    ),
-                                  ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),
-
-                          /// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                        alignment: Alignment.center,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              checkListPage_dialogTextPadding),
-                                          child: Text(
-                                            "작업에 적합한 보호구 지급 지급 지급 지급",
-                                            // textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    checkListPage_listTextFontSize),
-                                          ),
-                                        ),
-                                      ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),
-
-                          /// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                        alignment: Alignment.center,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              checkListPage_dialogTextPadding),
-                                          child: Text(
-                                            "작업에 적합한 보호구 지급 지급 지급 지급",
-                                            // textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    checkListPage_listTextFontSize),
-                                          ),
-                                        ),
-                                      ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),
-
-                          /// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                        alignment: Alignment.center,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              checkListPage_dialogTextPadding),
-                                          child: Text(
-                                            "작업에 적합한 보호구 지급 지급 지급 지급",
-                                            // textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    checkListPage_listTextFontSize),
-                                          ),
-                                        ),
-                                      ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),
-
-                          /// 요소 1
-                          GestureDetector(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: checkListPage_listTilePaddingLeft,
-                                  top: checkListPage_listTilePaddingTopBottom,
-                                  bottom: checkListPage_listTilePaddingTopBottom),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "작업에 적합한 보호구 지급 지급 지급 지급",
-                                      style: TextStyle(
-                                          fontSize:
-                                              checkListPage_listTextFontSize),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Checkbox(value: false, onChanged: (val) {})
-                                ],
-                              ),
-                            ),
-                            // 다이얼로그
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                        alignment: Alignment.center,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              checkListPage_dialogTextPadding),
-                                          child: Text(
-                                            "작업에 적합한 보호구 지급 지급 지급 지급",
-                                            // textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    checkListPage_listTextFontSize),
-                                          ),
-                                        ),
-                                      ));
-                            },
-                          ),
-                          Divider(
-                            color: Color(themaColor_whiteBlack),
-                          ),
+                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
+                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
+                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
+                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
+                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
                         ],
                       )),
 
@@ -352,4 +84,68 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
           ),
         ),
       );
+}
+
+/// 리스트 타일 요소
+class CheckListTileEmp extends StatelessWidget{
+  late String msg;
+
+  CheckListTileEmp(String msg) : this.msg = msg;
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    child: Column(
+      children: [
+        Row(
+          mainAxisAlignment:
+          MainAxisAlignment.spaceBetween,
+          children: [
+            // 간격
+            Container(
+              width: checkListPage_listTilePaddingLeft,
+            ),
+            Expanded(
+              child: Text(
+                msg,
+                style: TextStyle(
+                    fontSize:
+                    checkListPage_listTextFontSize),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Checkbox(value: false, onChanged: (val) {})
+          ],
+        ),
+        Divider(
+          color: Color(themaColor_whiteBlack),
+          height: 0,
+        ),
+        // 간격
+        Container(
+          height:
+          checkListPage_listTilePaddingTopBottom,
+        )
+      ],
+    ),
+    // 다이얼로그
+    onTap: () {
+      showDialog(
+          context: context,
+          builder: (context) => Dialog(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.all(
+                  checkListPage_dialogTextPadding),
+              child: Text(
+                msg,
+                // textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize:
+                    checkListPage_listTextFontSize),
+              ),
+            ),
+          ));
+    },
+  );
+
 }

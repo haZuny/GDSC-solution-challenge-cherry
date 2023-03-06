@@ -94,11 +94,11 @@ int checkListPage_checkFormWidth = 80;  // 체크 영역 너비
 int checkListPage_checkFormHeight = 100;  // 체크 영역 높이
 int checkListPage_spacePerBackBtn = 6;  // 뒤로가기 버튼과의 간격
 // Padding
+double checkListPage_listTilePaddingTopBottom = 5;  // 리스트 타일 패딩(위아래)
 double checkListPage_listTilePaddingLeft = 15;  // 리스트 타일 패딩(왼쪽)
-double checkListPage_listTilePaddingTopBottom = 1;  // 리스트 타일 패딩(위아래)
 double checkListPage_dialogTextPadding = 20;  // 다이얼로그 텍스트 패딩
 // Font
-double checkListPage_listTextFontSize = 20; // 리스트 텍스트 폰트 크기
+double checkListPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
 
 /// EmergencyPage
 // Size
