@@ -57,9 +57,16 @@ int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 int putCheckCodePage_spacePerNextBtn = 25; // 넥스트 버튼 사이의 간격
 double putCheckCodePage_checkBtnFontSize = 14;  // 체크 버튼 폰트 크기
 
-// / PutCheckCodePage
+/// PutSiteInfoPage
 // Size
-double putSiteInfoPage_bottomsheetHeight = 0.7; // 바텀 시트 크기(세로)
+int putSiteInfoPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
+int putSiteInfoPage_spacePerNextBtn = 20; // 넥스트 버튼과의 간격
+int putSiteInfoPage_containerPadding = 10;  // 바텀시트 패딩
+double putSiteInfoPage_bottomsheetHeight = 0.6; // 바텀 시트 크기(세로)
+// Font
+double putSiteInfoPage_siteListTileFontSize = 20;
+// Padding
+double putSiteInfoPage_siteListTileFontPadding = 10;
 
 /// WaitingAcceptPage
 // Size
@@ -88,9 +95,6 @@ double homePage_emergencyBtnFontSize = 20;  // 긴급 버튼 폰트 크기
 // Size
 int helmetCheckPage_imgWidth = 80; // 사진 크기
 int helmetCheckPage_spacePerNextBtn = 20; // 넥스트 버튼과의 간격
-// Shadow
-double helmetCheckPage_shadowBlurRadius = 10; // 그림자 둥글기
-double helmetCheckPage_shadowOffSet = 5;  // 그림자 오프셋
 
 /// CheckListPage
 // Size
@@ -103,6 +107,23 @@ double checkListPage_listTilePaddingLeft = 15;  // 리스트 타일 패딩(왼�
 double checkListPage_dialogTextPadding = 20;  // 다이얼로그 텍스트 패딩
 // Font
 double checkListPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
+
+/// SiteInfoPage
+// Size
+int siteInfoPage_spacePerTitle = 10;    // 타이틀과의 간격
+int siteInfoPage_mapWidth = 80; // 지도 너비
+int siteInfoPage_mapHeight = 110;   // 지도 높이
+int siteInfoPage_codeWidth = 7;    // 현장 코드 한 글자 너비
+int siteInfoPage_codeHeight = 10;   // 현장 코드 한 글자 높이
+int siteInfoPage_spacePerCode = 2;
+// Radius
+double siteInfoPage_codeRadius = 5;
+// Shadow
+double siteInfoPage_codeShadowBlurRadius = 5;
+double siteInfoPage_codeShadowOffSer = 2;
+// Font
+double siteInfoPage_codeFontSize = 20;
+
 
 /// EmergencyPage
 // Size

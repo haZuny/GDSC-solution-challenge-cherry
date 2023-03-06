@@ -83,3 +83,76 @@ class DrawerEmp extends StatelessWidget {
         ),
       );
 }
+/// Manager Drawer
+class DrawerManager extends StatelessWidget {
+  @override
+  Widget build(context) => Drawer(
+    child: ListView(
+      children: [
+        /// 여백
+        Container(
+          height: getFullScrennSizePercent(context, drawer_spaceTop),
+          color: Color(themaColor_black),
+        ),
+        /// 상단 유저 정보
+        UserAccountsDrawerHeader(
+          currentAccountPicture: CircleAvatar(
+            backgroundImage: AssetImage('assets/img/logo.png'),
+            backgroundColor: Color(themaColor_white),
+          ),
+          accountName: Text("Employee"),
+          accountEmail: Text("hj3175791@gmail.com"),
+          decoration: BoxDecoration(
+            color: Color(themaColor_black),
+          ),
+        ),
+
+        /// 현장 정보
+        ListTile(
+          leading: Icon(Icons.assignment),
+          title: Text("Site Information"),
+          onTap: () {},
+        ),
+
+        /// 설정
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text("Privacy settings"),
+          onTap: () {},
+        ),
+
+        /// 현장 정보설정
+        ListTile(
+          leading: Icon(Icons.build),
+          title: Text("Workspace settings"),
+          onTap: () {},
+        ),
+
+        /// 체크리스트 설정
+        ListTile(
+          leading: Icon(Icons.check_box),
+          title: Text("Check list settings"),
+          onTap: () {},
+        ),
+
+        /// 현장 초기화
+        ListTile(
+          leading: Icon(Icons.refresh, color: Colors.red,),
+          title: Text("Privacy settings", style: TextStyle(color: Colors.red)),
+          onTap: () {},
+        ),
+        Divider(
+            color: Color(themaColor_whiteBlack),
+            height: drawer_dividerHeight,
+            thickness: drawer_dividerWidth),
+
+        /// 로그아웃
+        ListTile(
+          leading: Icon(Icons.logout),
+          title: Text("Sign out"),
+          onTap: () {},
+        )
+      ],
+    ),
+  );
+}

@@ -1,4 +1,5 @@
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
+import 'package:cherry_app/Manager_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -72,9 +73,9 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                     // 그림자
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
-                          blurRadius: helmetCheckPage_shadowBlurRadius,
-                          offset: Offset(helmetCheckPage_shadowOffSet,
-                              helmetCheckPage_shadowOffSet),
+                          blurRadius: allPage_shadowBlurRadius,
+                          offset: Offset(allPage_shadowOffSet,
+                              allPage_shadowOffSet),
                           color: Color(themaColor_whiteBlack))
                     ]),
                   ),
@@ -82,7 +83,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   // 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, signUpPage_spacePerTFs),
+                        context, putSiteInfoPage_spacePerTFs),
                   ),
 
                   /// 주소 TF
@@ -141,7 +142,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   // 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, signUpPage_spacePerTFs),
+                        context, putSiteInfoPage_spacePerTFs),
                   ),
 
                   /// 상세주소
@@ -186,20 +187,16 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   // 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, signUpPage_spacePerNextBtn),
+                        context, putSiteInfoPage_spacePerNextBtn),
                   ),
 
                   // next 버튼
                   TextButton(
                       onPressed: () {
-                        // 근로자 가입으로 이동
-                        if (global_signUpClass == SignUpClass.employee) {
-                          Navigator.push(
+                        Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PutCheckCodePageEmp()));
-                        }
-                        // 관리자 가입으로 이동
+                                  builder: (context) => HomePageManager()));
                       },
                       child: Text(
                         "Next",
@@ -215,17 +212,64 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
       );
 }
 
-
 /// 바텀 시트
-class SiteInfoBottomSheet extends StatelessWidget{
+class SiteInfoBottomSheet extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Container(
-    // 크기 설정
-    height: MediaQuery.of(context).size.height *
-        putSiteInfoPage_bottomsheetHeight,
-    child: Column(
-      
-    ),
-
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: (){
+      FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
+    },
+    child: Container(
+          padding: EdgeInsets.all(getFullScrennSizePercent(
+              context, putSiteInfoPage_containerPadding)),
+          // 크기 설정
+          height: MediaQuery.of(context).size.height *
+              putSiteInfoPage_bottomsheetHeight,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: 'Address',
+                          hintStyle:
+                              TextStyle(color: Color(themaColor_whiteBlack))),
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Search",
+                        style: TextStyle(
+                            fontSize: putCheckCodePage_checkBtnFontSize,
+                            color: Color(allPage_btnFontColor)),
+                      )),
+                ],
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    GestureDetector(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: putSiteInfoPage_siteListTileFontPadding,
+                            bottom: putSiteInfoPage_siteListTileFontPadding),
+                        child: Text(
+                          "충남 아산시 순천향로 23",
+                          style: TextStyle(
+                              fontSize: putSiteInfoPage_siteListTileFontSize),
+                        ),
+                      ),
+                      onTap: (){
+                        print("asdf");
+                      },
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
   );
 }

@@ -73,9 +73,9 @@ class _SignUpPage extends State<SignUpPage> {
                     // 그림자
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
-                          blurRadius: helmetCheckPage_shadowBlurRadius,
-                          offset: Offset(helmetCheckPage_shadowOffSet,
-                              helmetCheckPage_shadowOffSet),
+                          blurRadius: allPage_shadowBlurRadius,
+                          offset: Offset(allPage_shadowOffSet,
+                              allPage_shadowOffSet),
                           color: Color(themaColor_whiteBlack))
                     ]),
                   ),
