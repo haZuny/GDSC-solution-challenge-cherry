@@ -57,6 +57,10 @@ int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 int putCheckCodePage_spacePerNextBtn = 25; // 넥스트 버튼 사이의 간격
 double putCheckCodePage_checkBtnFontSize = 14;  // 체크 버튼 폰트 크기
 
+// / PutCheckCodePage
+// Size
+double putSiteInfoPage_bottomsheetHeight = 0.7; // 바텀 시트 크기(세로)
+
 /// WaitingAcceptPage
 // Size
 int waitingAcceptPage_spacePerNextBtn = 35; // Re-type 버튼 사이의 간격

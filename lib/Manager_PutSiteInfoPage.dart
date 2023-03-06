@@ -1,16 +1,15 @@
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
-import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
 
-class SignUpPage extends StatefulWidget {
+class PutSiteInfoPageManager extends StatefulWidget {
   @override
-  State<SignUpPage> createState() => _SignUpPage();
+  State<PutSiteInfoPageManager> createState() => _PutSiteInfoPageManager();
 }
 
-class _SignUpPage extends State<SignUpPage> {
+class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -31,7 +30,7 @@ class _SignUpPage extends State<SignUpPage> {
                   ),
 
                   Text(
-                    "Put your info",
+                    "Put workspace's info",
                     style: TextStyle(fontSize: allPage_titleFontSize),
                   ),
 
@@ -41,14 +40,14 @@ class _SignUpPage extends State<SignUpPage> {
                         context, allPage_spacePerTitleAndComponents),
                   ),
 
-                  /// 이름 TF
+                  /// 작업 현장 이름 TF
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_signUpTFWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
-                        hintText: "Name",
+                        hintText: "Workspace name",
                         hintStyle:
                             TextStyle(color: Color(themaColor_whiteBlack)),
                         // 색상(설정 안하면 그림자에 먹힘)
@@ -86,14 +85,14 @@ class _SignUpPage extends State<SignUpPage> {
                         context, signUpPage_spacePerTFs),
                   ),
 
-                  /// 휴대전화 TF
+                  /// 주소 TF
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_signUpTFWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
-                        hintText: "Phone number",
+                        hintText: "Address",
                         hintStyle:
                             TextStyle(color: Color(themaColor_whiteBlack)),
                         // 색상(설정 안하면 그림자에 먹힘)
@@ -114,6 +113,20 @@ class _SignUpPage extends State<SignUpPage> {
                             borderRadius:
                                 BorderRadius.circular(allPage_TFRadius)),
                       ),
+                      // 수정 불가 설정
+                      readOnly: true,
+                      // 터치 메소드
+                      onTap: () {
+                        /// 바텀 쉬트
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(allPage_bigBoxRadious),
+                            ),
+                            context: context,
+                            builder: (context) => SiteInfoBottomSheet());
+                      },
                     ),
                     // 그림자
                     decoration: BoxDecoration(boxShadow: [
@@ -131,14 +144,14 @@ class _SignUpPage extends State<SignUpPage> {
                         context, signUpPage_spacePerTFs),
                   ),
 
-                  /// 나이 TF
+                  /// 상세주소
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_signUpTFWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
-                        hintText: "Age",
+                        hintText: "Address detail",
                         hintStyle:
                             TextStyle(color: Color(themaColor_whiteBlack)),
                         // 색상(설정 안하면 그림자에 먹힘)
@@ -187,13 +200,6 @@ class _SignUpPage extends State<SignUpPage> {
                                   builder: (context) => PutCheckCodePageEmp()));
                         }
                         // 관리자 가입으로 이동
-                        else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PutSiteInfoPageManager()));
-                        }
                       },
                       child: Text(
                         "Next",
@@ -207,4 +213,19 @@ class _SignUpPage extends State<SignUpPage> {
           ),
         ),
       );
+}
+
+
+/// 바텀 시트
+class SiteInfoBottomSheet extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) => Container(
+    // 크기 설정
+    height: MediaQuery.of(context).size.height *
+        putSiteInfoPage_bottomsheetHeight,
+    child: Column(
+      
+    ),
+
+  );
 }

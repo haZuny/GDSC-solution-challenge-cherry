@@ -34,7 +34,7 @@ class _SelectRolePage extends State<SelectRolePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Manager
+                    /// Manager
                     ElevatedButton(
                       onPressed: () {
                         global_signUpClass = SignUpClass.manager;
@@ -79,7 +79,8 @@ class _SelectRolePage extends State<SelectRolePage> {
                       width: getFullScrennSizePercent(
                           context, selectRolePage_widgetSpaceRow),
                     ),
-                    // Employee
+
+                    /// Employee
                     ElevatedButton(
                       onPressed: () {
                         global_signUpClass = SignUpClass.employee;
