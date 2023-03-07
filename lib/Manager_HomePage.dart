@@ -2,6 +2,7 @@ import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/All_EmergencyPage.dart';
 import 'package:cherry_app/Emp_HelmetCheckPage.dart';
+import 'package:cherry_app/Manager_manageEmpPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class _HomePageManager extends State<HomePageManager> {
               Image.asset(
                 'assets/img/logo.png',
                 width: getFullScrennSizePercent(
-                    context, homePage_logoWidth),
+                    context, allPage_mainComponentsWidth),
               ),
 
               /// 로고와 간격
@@ -44,7 +45,7 @@ class _HomePageManager extends State<HomePageManager> {
               /// 타이틀
               Container(
                 width: getFullScrennSizePercent(
-                    context, homePage_logoWidth),
+                    context, allPage_mainComponentsWidth),
                 child: Text(
                   "Check your safety.",
                   style: TextStyle(fontSize: allPage_subTitleFontSize),
@@ -60,13 +61,12 @@ class _HomePageManager extends State<HomePageManager> {
               // 버튼 열
               Container(
                 width: getFullScrennSizePercent(
-                    context, homePage_logoWidth),
+                    context, allPage_mainComponentsWidth),
                 child: Row(
                   children: [
                     /// 작업 시작 버튼
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HelmetCheckPage()));
                       },
                       // 내부 컴포넌트
                       child: Text(
@@ -171,12 +171,12 @@ class _HomePageManager extends State<HomePageManager> {
                   // 크기 설정
                     minimumSize: Size(
                         getFullScrennSizePercent(
-                            context, homePage_bigBtnWidth),
+                            context, allPage_mainComponentsWidth),
                         getFullScrennSizePercent(
                             context, homePage_bigBtnHeight)),
                     maximumSize: Size(
                         getFullScrennSizePercent(
-                            context, homePage_bigBtnWidth),
+                            context, allPage_mainComponentsWidth),
                         getFullScrennSizePercent(
                             context, homePage_bigBtnHeight)),
                     // 모양 및 테두리 설정
@@ -202,7 +202,7 @@ class _HomePageManager extends State<HomePageManager> {
               // 버튼 열
               Container(
                 width: getFullScrennSizePercent(
-                    context, homePage_logoWidth),
+                    context, allPage_mainComponentsWidth),
                 child: Row(
                   children: [
                     /// 현장 정보
@@ -252,7 +252,7 @@ class _HomePageManager extends State<HomePageManager> {
                     /// 직원 관리
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckListPageEmp()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ManageEmpPageManager()));
                       },
                       // 내부 컴포넌트
                       child: Text(

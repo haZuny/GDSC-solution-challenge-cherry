@@ -27,7 +27,7 @@ class _EmergencyPage extends State<EmergencyPage> {
               /// 타이틀
               Container(
                 width: getFullScrennSizePercent(
-                    context, homePage_logoWidth),
+                    context, allPage_mainComponentsWidth),
                 child: Text(
                   "Near casualty.",
                   style: TextStyle(fontSize: allPage_titleFontSize),
@@ -43,9 +43,9 @@ class _EmergencyPage extends State<EmergencyPage> {
               /// 로고 이미지
               Container(
                 width: getFullScrennSizePercent(
-                    context, helmetCheckPage_imgWidth),
+                    context, allPage_mainComponentsWidth),
                 height: getFullScrennSizePercent(
-                    context, helmetCheckPage_imgWidth),
+                    context, allPage_mainComponentsWidth),
                 decoration:
                 BoxDecoration(color: Color(themaColor_white), boxShadow: [
                   BoxShadow(
@@ -57,7 +57,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                 child: Image.asset(
                   'assets/img/logo.png',
                   width: getFullScrennSizePercent(
-                      context, helmetCheckPage_imgWidth),
+                      context, allPage_mainComponentsWidth),
                 ),
               ),
 

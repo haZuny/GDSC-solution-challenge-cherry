@@ -51,12 +51,12 @@ class _SignInPage extends State<SignInPage> {
                       // 크기 설정
                       minimumSize: Size(
                           getFullScrennSizePercent(
-                              context, signInPage_loginBtnWidth),
+                              context, allPage_mainComponentsWidth),
                           getFullScrennSizePercent(
                               context, signInPage_loginBtnHeight)),
                       maximumSize: Size(
                           getFullScrennSizePercent(
-                              context, signInPage_loginBtnWidth),
+                              context, allPage_mainComponentsWidth),
                           getFullScrennSizePercent(
                               context, signInPage_loginBtnHeight)),
                       // 모양 및 테두리 설정

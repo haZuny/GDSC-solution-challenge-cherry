@@ -44,7 +44,7 @@ class _SignUpPage extends State<SignUpPage> {
                   /// 이름 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
@@ -89,7 +89,7 @@ class _SignUpPage extends State<SignUpPage> {
                   /// 휴대전화 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
@@ -134,7 +134,7 @@ class _SignUpPage extends State<SignUpPage> {
                   /// 나이 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트

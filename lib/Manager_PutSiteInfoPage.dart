@@ -44,7 +44,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   /// 작업 현장 이름 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
@@ -89,7 +89,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   /// 주소 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
@@ -148,7 +148,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   /// 상세주소
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트

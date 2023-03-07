@@ -29,7 +29,7 @@ class _HomePageEmp extends State<HomePageEmp> {
                   Image.asset(
                     'assets/img/logo.png',
                     width: getFullScrennSizePercent(
-                        context, homePage_logoWidth),
+                        context, allPage_mainComponentsWidth),
                   ),
 
                   /// 로고와 간격
@@ -41,7 +41,7 @@ class _HomePageEmp extends State<HomePageEmp> {
                   /// 타이틀
                   Container(
                     width: getFullScrennSizePercent(
-                        context, homePage_logoWidth),
+                        context, allPage_mainComponentsWidth),
                     child: Text(
                       "Check your safety.",
                       style: TextStyle(fontSize: allPage_subTitleFontSize),
@@ -57,7 +57,7 @@ class _HomePageEmp extends State<HomePageEmp> {
                   // 버튼 열
                   Container(
                     width: getFullScrennSizePercent(
-                        context, homePage_logoWidth),
+                        context, allPage_mainComponentsWidth),
                     child: Row(
                       children: [
                         /// 헬멧 체크 버튼
@@ -168,12 +168,12 @@ class _HomePageEmp extends State<HomePageEmp> {
                         // 크기 설정
                         minimumSize: Size(
                             getFullScrennSizePercent(
-                                context, homePage_bigBtnWidth),
+                                context, allPage_mainComponentsWidth),
                             getFullScrennSizePercent(
                                 context, homePage_bigBtnHeight)),
                         maximumSize: Size(
                             getFullScrennSizePercent(
-                                context, homePage_bigBtnWidth),
+                                context, allPage_mainComponentsWidth),
                             getFullScrennSizePercent(
                                 context, homePage_bigBtnHeight)),
                         // 모양 및 테두리 설정

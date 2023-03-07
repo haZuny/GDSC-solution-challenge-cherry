@@ -269,7 +269,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                   /// 로고 이미지
                   Container(
                     width: getFullScrennSizePercent(
-                        context, siteInfoPage_mapWidth),
+                        context, allPage_mainComponentsWidth),
                     height: getFullScrennSizePercent(
                         context, siteInfoPage_mapHeight),
                     decoration: BoxDecoration(
@@ -286,7 +286,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                     child: Image.asset(
                       'assets/img/logo.png',
                       width: getFullScrennSizePercent(
-                          context, helmetCheckPage_imgWidth),
+                          context, allPage_mainComponentsWidth),
                     ),
                   ),
                 ],

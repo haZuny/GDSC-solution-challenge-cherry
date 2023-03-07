@@ -43,7 +43,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                   /// 현장코드 TF
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     child: TextField(
                       decoration: InputDecoration(
                         // 힌트
@@ -80,7 +80,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
 
                   /// check 버튼
                   Container(
-                    width: getFullScrennSizePercent(context, allPage_signUpTFWidth),
+                    width: getFullScrennSizePercent(context, allPage_mainComponentsWidth),
                     alignment: Alignment.centerRight,
                     child: TextButton(
                         onPressed: () {},

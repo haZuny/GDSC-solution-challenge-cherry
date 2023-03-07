@@ -37,7 +37,7 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
                   /// 체크 영역
                   Container(
                       width: getFullScrennSizePercent(
-                          context, checkListPage_checkFormWidth),
+                          context, allPage_mainComponentsWidth),
                       height: getFullScrennSizePercent(
                           context, checkListPage_checkFormHeight),
                       decoration: BoxDecoration(

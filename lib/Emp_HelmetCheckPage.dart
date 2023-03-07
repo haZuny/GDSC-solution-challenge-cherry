@@ -26,9 +26,9 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                   /// 로고 이미지
                   Container(
                     width: getFullScrennSizePercent(
-                        context, helmetCheckPage_imgWidth),
+                        context, allPage_mainComponentsWidth),
                     height: getFullScrennSizePercent(
-                        context, helmetCheckPage_imgWidth),
+                        context, allPage_mainComponentsWidth),
                     decoration:
                         BoxDecoration(color: Color(themaColor_white), boxShadow: [
                       BoxShadow(
@@ -40,14 +40,14 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                     child: Image.asset(
                       'assets/img/logo.png',
                       width: getFullScrennSizePercent(
-                          context, helmetCheckPage_imgWidth),
+                          context, allPage_mainComponentsWidth),
                     ),
                   ),
 
                   /// check 버튼
                   Container(
                     width: getFullScrennSizePercent(
-                        context, allPage_signUpTFWidth),
+                        context, allPage_mainComponentsWidth),
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

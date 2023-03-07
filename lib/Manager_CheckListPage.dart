@@ -37,7 +37,7 @@ class _CheckListPageManager extends State<CheckListPageManager> {
                   /// 체크 영역
                   Container(
                       width: getFullScrennSizePercent(
-                          context, checkListPage_checkFormWidth),
+                          context, allPage_mainComponentsWidth),
                       height: getFullScrennSizePercent(
                           context, checkListPage_checkFormHeight),
                       decoration: BoxDecoration(
@@ -70,10 +70,9 @@ class _CheckListPageManager extends State<CheckListPageManager> {
                   /// Back 버튼
                   TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
                       },
                       child: Text(
-                        "Back",
+                        "Add",
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),
