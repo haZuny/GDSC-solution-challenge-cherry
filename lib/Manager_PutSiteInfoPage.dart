@@ -9,6 +9,7 @@ import 'package:dio/dio.dart';
 
 /// TF 컨트롤러
 TextEditingController _addr1Controller = TextEditingController();
+TextEditingController _bottomSheetAddrController = TextEditingController();
 
 class PutSiteInfoPageManager extends StatefulWidget {
   @override
@@ -98,6 +99,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: TextField(
+                      controller: _addr1Controller,
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Address",
@@ -125,6 +127,8 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                       readOnly: true,
                       // 터치 메소드
                       onTap: () {
+                        // 텍스트 필드 초기화
+                        _bottomSheetAddrController.text = "";
                         /// 바텀 쉬트
                         showModalBottomSheet(
                             isScrollControlled: true,
@@ -248,7 +252,7 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                 children: [
                   Expanded(
                     child: TextField(
-                      controller: _addr1Controller,
+                      controller: _bottomSheetAddrController,
                       decoration: InputDecoration(
                           hintText: 'Address',
                           hintStyle:
@@ -258,6 +262,8 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                   // Search 버튼
                   TextButton(
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
+
                         String _AddrSearchURL = "http://dapi.kakao.com/v2/local/search/address.json?query=";
                         String _AddrSearchKey = "93349143720fbaa860b00f8191e7f2de";
 
@@ -265,11 +271,13 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                         dio.options.headers =
                         {'Authorization': 'KakaoAK ' + _AddrSearchKey};
 
-                        var res = await dio.get(_AddrSearchURL + _addr1Controller.text);
-                        print(res.data);
+                        var res = await dio.get(_AddrSearchURL + _bottomSheetAddrController.text);
 
                         setState((){
-                          addrList.add("asf");
+                          addrList.clear();
+                          for(int i = 0; i < res.data['meta']['total_count']; i++){
+                            addrList.add(res.data['documents'][i]['address_name']);
+                          }
                         });
                       },
                       child: Text(
@@ -282,6 +290,7 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
               ),
               Expanded(
                 child: ListView.builder(itemBuilder: (context, index) => AddrSearchListTile(addrList[index]),
+                  itemCount: addrList.length,
                 ),
               )
             ],
@@ -298,20 +307,28 @@ class AddrSearchListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      GestureDetector(
-        child: Padding(
-          padding: EdgeInsets.only(
-              top: putSiteInfoPage_siteListTileFontPadding,
-              bottom: putSiteInfoPage_siteListTileFontPadding),
-          child: Text(
-            this.addr,
-            style: TextStyle(
-                fontSize: putSiteInfoPage_siteListTileFontSize),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: putSiteInfoPage_siteListTileFontPadding,
+                  bottom: putSiteInfoPage_siteListTileFontPadding),
+              child: Text(
+                this.addr,
+                style: TextStyle(
+                    fontSize: putSiteInfoPage_siteListTileFontSize),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            onTap: () {
+              _addr1Controller.text = this.addr;
+              Navigator.pop(context);
+            },
           ),
-        ),
-        onTap: () {
-          print(_addr1Controller.text);
-        },
+          Divider(height: 0,)
+        ],
       );
 }
 
