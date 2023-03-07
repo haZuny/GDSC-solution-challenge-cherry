@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
 
+// import 'package:kopo/kopo.dart';
+
+/// TF 컨트롤러
+TextEditingController _addr1Controller = TextEditingController();
+
 class PutSiteInfoPageManager extends StatefulWidget {
   @override
   State<PutSiteInfoPageManager> createState() => _PutSiteInfoPageManager();
@@ -74,8 +79,8 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                           blurRadius: allPage_shadowBlurRadius,
-                          offset: Offset(allPage_shadowOffSet,
-                              allPage_shadowOffSet),
+                          offset: Offset(
+                              allPage_shadowOffSet, allPage_shadowOffSet),
                           color: Color(themaColor_whiteBlack))
                     ]),
                   ),
@@ -194,9 +199,9 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   TextButton(
                       onPressed: () {
                         Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePageManager()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePageManager()));
                       },
                       child: Text(
                         "Next",
@@ -216,10 +221,10 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
 class SiteInfoBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
-    onTap: (){
-      FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
-    },
-    child: Container(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
+        },
+        child: Container(
           padding: EdgeInsets.all(getFullScrennSizePercent(
               context, putSiteInfoPage_containerPadding)),
           // 크기 설정
@@ -231,14 +236,18 @@ class SiteInfoBottomSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: _addr1Controller,
                       decoration: InputDecoration(
                           hintText: 'Address',
                           hintStyle:
                               TextStyle(color: Color(themaColor_whiteBlack))),
                     ),
                   ),
+                  // Search 버튼
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(_addr1Controller.text);
+                      },
                       child: Text(
                         "Search",
                         style: TextStyle(
@@ -261,8 +270,8 @@ class SiteInfoBottomSheet extends StatelessWidget {
                               fontSize: putSiteInfoPage_siteListTileFontSize),
                         ),
                       ),
-                      onTap: (){
-                        print("asdf");
+                      onTap: () {
+                        print(_addr1Controller.text);
                       },
                     ),
                   ],
@@ -271,5 +280,5 @@ class SiteInfoBottomSheet extends StatelessWidget {
             ],
           ),
         ),
-  );
+      );
 }
