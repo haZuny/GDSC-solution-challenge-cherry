@@ -4,8 +4,8 @@ import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
+import 'package:dio/dio.dart';
 
-// import 'package:kopo/kopo.dart';
 
 /// TF 컨트롤러
 TextEditingController _addr1Controller = TextEditingController();
@@ -245,8 +245,17 @@ class SiteInfoBottomSheet extends StatelessWidget {
                   ),
                   // Search 버튼
                   TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         print(_addr1Controller.text);
+
+                        String _AddrSearchURL="http://dapi.kakao.com/v2/local/search/address.json?query=";
+                        String _AddrSearchKey="93349143720fbaa860b00f8191e7f2de";
+
+                        Dio dio = Dio();
+                        dio.options.headers = {'Authorization': 'KakaoAK ' + _AddrSearchKey};
+
+                        var res = await dio.get(_AddrSearchURL + '순천향로 22');
+                        print(res.data);
                       },
                       child: Text(
                         "Search",
@@ -282,3 +291,7 @@ class SiteInfoBottomSheet extends StatelessWidget {
         ),
       );
 }
+
+
+
+/// 주소 검색 함수
