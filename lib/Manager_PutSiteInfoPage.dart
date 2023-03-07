@@ -220,8 +220,12 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
 }
 
 /// 바텀 시트
-class SiteInfoBottomSheet extends StatelessWidget {
-  
+class SiteInfoBottomSheet extends StatefulWidget{
+  @override
+  State<SiteInfoBottomSheet> createState()=>_SiteInfoBottomSheet();
+}
+class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
+  List<String> addrList = [];
 
   @override
   Widget build(BuildContext context) =>
@@ -254,8 +258,6 @@ class SiteInfoBottomSheet extends StatelessWidget {
                   // Search 버튼
                   TextButton(
                       onPressed: () async {
-                        print(_addr1Controller.text);
-
                         String _AddrSearchURL = "http://dapi.kakao.com/v2/local/search/address.json?query=";
                         String _AddrSearchKey = "93349143720fbaa860b00f8191e7f2de";
 
@@ -263,8 +265,12 @@ class SiteInfoBottomSheet extends StatelessWidget {
                         dio.options.headers =
                         {'Authorization': 'KakaoAK ' + _AddrSearchKey};
 
-                        var res = await dio.get(_AddrSearchURL + '순천향로 22');
+                        var res = await dio.get(_AddrSearchURL + _addr1Controller.text);
                         print(res.data);
+
+                        setState((){
+                          addrList.add("asf");
+                        });
                       },
                       child: Text(
                         "Search",
@@ -275,10 +281,7 @@ class SiteInfoBottomSheet extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: ListView(
-                  children: [
-                    AddrSearchListTile('ㅁㄴㅇㄹ')
-                  ],
+                child: ListView.builder(itemBuilder: (context, index) => AddrSearchListTile(addrList[index]),
                 ),
               )
             ],

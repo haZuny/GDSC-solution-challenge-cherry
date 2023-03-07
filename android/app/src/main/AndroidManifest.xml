@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gdsc.sch.cherry_app">
+    package="com.gdsc.sch.cherry">
    <application
         android:label="cherry_app"
         android:name="${applicationName}"
