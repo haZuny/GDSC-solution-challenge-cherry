@@ -1,6 +1,8 @@
 import 'package:cherry_app/All_SelectRolePage.dart';
+import 'package:cherry_app/All_SignUpPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'AppBar_Drawer.dart';
 
@@ -34,8 +36,10 @@ class _SignInPage extends State<SignInPage> {
 
                 /// 로그인 버튼
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectRolePage()));
+                  onPressed: () async {
+                    // Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectRolePage()));
+                    googleUser = await GoogleSignIn().signIn();
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
                   },
                   // 내부 컴포넌트
                   child: ListTile(

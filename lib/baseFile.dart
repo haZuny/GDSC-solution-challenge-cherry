@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 /// var
+// SignIn
+GoogleSignInAccount? googleUser;    // 구글 로그인
 // SignUp logic, 회원가입시 어느 페이지 선택했는지 결정
 enum SignUpClass{manager, employee}
 SignUpClass? global_signUpClass;
