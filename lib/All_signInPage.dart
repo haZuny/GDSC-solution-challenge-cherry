@@ -37,9 +37,19 @@ class _SignInPage extends State<SignInPage> {
                 /// 로그인 버튼
                 ElevatedButton(
                   onPressed: () async {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context)=> SelectRolePage()));
-                    googleUser = await GoogleSignIn().signIn();
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
+                    print("===========");
+                    googleUser = await GoogleSignIn(scopes: [
+                      'email',
+                      'https://www.googleapis.com/auth/contacts.readonly',
+                      "https://www.googleapis.com/auth/userinfo.profile"
+                    ],).signIn(
+
+                    );
+                    print((await googleUser?.authentication)?.idToken);
+                    print((await googleUser?.authentication)?.accessToken);
+                    // print((await googleUser?.authentication)?.idToken);
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectRolePage()));
                   },
                   // 내부 컴포넌트
                   child: ListTile(
