@@ -1,6 +1,7 @@
 import 'package:cherry_app/All_SelectRolePage.dart';
 import 'package:cherry_app/All_SignUpPage.dart';
 import 'package:cherry_app/baseFile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -38,16 +39,29 @@ class _SignInPage extends State<SignInPage> {
                 ElevatedButton(
                   onPressed: () async {
                     print("===========");
-                    googleUser = await GoogleSignIn(scopes: [
-                      'email',
-                      'https://www.googleapis.com/auth/contacts.readonly',
-                      "https://www.googleapis.com/auth/userinfo.profile"
-                    ],).signIn(
 
-                    );
-                    print((await googleUser?.authentication)?.idToken);
-                    print((await googleUser?.authentication)?.accessToken);
-                    // print((await googleUser?.authentication)?.idToken);
+                    // 인증 클래스
+                    FirebaseAuth auth = FirebaseAuth.instance;
+                    GoogleSignIn googleSignIn = GoogleSignIn();
+
+                    // 로그인 수행
+                    GoogleSignInAccount? account = await googleSignIn.signIn();
+                    GoogleSignInAuthentication? authentication = await account?.authentication;
+
+                    // 인증 정보 가져오기
+                    AuthCredential credential = GoogleAuthProvider.credential(
+                        idToken: authentication?.idToken,
+                        accessToken: authentication?.accessToken);
+
+
+
+
+                    print("======");
+                    // ID token get
+                    var user = await auth.currentUser;
+                    var idTokenResult = await user?.getIdToken();
+                    print(idTokenResult);
+                    print("======");
 
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectRolePage()));
                   },
