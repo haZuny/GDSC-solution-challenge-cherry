@@ -1,1 +1,47 @@
-{"installed":{"client_id":"828190382334-t1008nf9nvqmi3r75psffjuggvnut8u6.apps.googleusercontent.com","project_id":"cherry-auth-380207","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs"}}
+{
+  "project_info": {
+    "project_number": "452956723966",
+    "project_id": "gdsc-sch-cherry-c3a64",
+    "storage_bucket": "gdsc-sch-cherry-c3a64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452956723966:android:51847d9d31a2e9aa4ae3af",
+        "android_client_info": {
+          "package_name": "com.gdsc.sch.cherry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452956723966-r2ogsgnhr8mttvhmrip19r538c7dsq3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gdsc.sch.cherry",
+            "certificate_hash": "a3b89d5dcdb740c9c77945c40d231ea8958a65a2"
+          }
+        },
+        {
+          "client_id": "452956723966-00n1usn3nhfnm4cj00eg162sodoe897b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF-zI4xPteYNijEzDhF9Ydk4dLupFfq_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452956723966-00n1usn3nhfnm4cj00eg162sodoe897b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

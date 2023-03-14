@@ -94,6 +94,7 @@ double homePage_emergencyBtnFontSize = 20;  // 긴급 버튼 폰트 크기
 /// HelmetCheckPage
 // Size
 int helmetCheckPage_spacePerNextBtn = 20; // 넥스트 버튼과의 간격
+int helmetCheckPage_progressIndicatorPadding = 35;
 
 /// CheckListPage
 // Size

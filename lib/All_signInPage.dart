@@ -41,26 +41,17 @@ class _SignInPage extends State<SignInPage> {
                     print("===========");
 
                     // 인증 클래스
-                    FirebaseAuth auth = FirebaseAuth.instance;
                     GoogleSignIn googleSignIn = GoogleSignIn();
 
                     // 로그인 수행
                     GoogleSignInAccount? account = await googleSignIn.signIn();
                     GoogleSignInAuthentication? authentication = await account?.authentication;
 
-                    // 인증 정보 가져오기
-                    AuthCredential credential = GoogleAuthProvider.credential(
-                        idToken: authentication?.idToken,
-                        accessToken: authentication?.accessToken);
-
-
-
 
                     print("======");
-                    // ID token get
-                    var user = await auth.currentUser;
-                    var idTokenResult = await user?.getIdToken();
-                    print(idTokenResult);
+                    print((await account!.authentication).idToken);
+                    print("안녕");
+                    print((await account!.authentication).accessToken);
                     print("======");
 
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectRolePage()));
