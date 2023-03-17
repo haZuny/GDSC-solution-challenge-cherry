@@ -3,6 +3,7 @@ import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
 
 import 'AppBar_Drawer.dart';
 
@@ -209,48 +210,43 @@ class _SignUpPage extends State<SignUpPage> {
 
                         // 근로자 가입
                         if (global_signUpClass == enum_Role.employee) {
-                          try {
-                            Response res = await api_user_signUp(
-                                global_googleUser!.email, name, phNum, age);
-                            if (res.data["success"]) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PutCheckCodePageEmp()));
-                            }
-                            authorization = res.headers['authorization']![0].split(' ')[1];
-                            refreshToken = res.headers['refreshToken']![0];
-                            dio.options.headers = {
-                              'Authorization': "bearer " + authorization,
-                            };
-                            print(">>> 근로자 회원가입 성공");
-                          } catch (e) {
-                            print(e);
-                            print(">>> 근로자 회원가입 실패");
+                          Response res = await api_user_signUp(
+                              global_googleUser!.email, name, phNum, age);
+                          if (res.data["success"]) {
+                            Navigator.push(
+                                context,
+                                Transition(
+                                    child: PutCheckCodePageEmp(),
+                                    transitionEffect:
+                                        TransitionEffect.RIGHT_TO_LEFT));
                           }
+                          authorization =
+                              res.headers['authorization']![0].split(' ')[1];
+                          refreshToken = res.headers['refreshToken']![0];
+                          global_userId = res.data['data'];
+                          dio.options.headers = {
+                            'Authorization': "bearer " + authorization,
+                          };
                         }
                         // 관리자 가입
                         else {
-                          try {
-                            Response res = await api_admin_signUp(
-                                global_googleUser!.email, name, phNum, age);
-                            if (res.data["success"]) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PutSiteInfoPageManager()));
-                            }
-                            authorization = res.headers['authorization']![0].split(' ')[1];
-                            refreshToken = res.headers['refreshToken']![0];
-                            dio.options.headers = {
-                              'Authorization': "bearer " + authorization,
-                            };
-                            print(">>> 관리자 회원가입 성공");
-                          } catch (e) {
-                            print(">>> 관리자 회원가입 실패");
+                          Response res = await api_admin_signUp(
+                              global_googleUser!.email, name, phNum, age);
+                          if (res.data["success"]) {
+                            Navigator.push(
+                                context,
+                                Transition(
+                                    child: PutSiteInfoPageManager(),
+                                    transitionEffect:
+                                        TransitionEffect.RIGHT_TO_LEFT));
                           }
+                          authorization =
+                              res.headers['authorization']![0].split(' ')[1];
+                          refreshToken = res.headers['refreshToken']![0];
+                          global_userId = res.data['data'];
+                          dio.options.headers = {
+                            'Authorization': "bearer " + authorization,
+                          };
                         }
                       },
                       child: Text(
@@ -265,5 +261,4 @@ class _SignUpPage extends State<SignUpPage> {
           ),
         ),
       );
-
 }

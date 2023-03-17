@@ -25,7 +25,7 @@ class _HomePageManager extends State<HomePageManager> {
     api_admin_getSiteInfo(global_googleUser!.email)
         .then((value) => api_site_getSiteInfo(global_siteId));
     // 개인 정보 조회
-    api_admin_getPrivacy(global_googleUser!.email);
+    api_admin_getPrivacy(global_userId);
   }
 
   @override

@@ -37,6 +37,7 @@ Future<Response> api_admin_signIn(String email) async {
   late Response res;
   try {
     res = await dio.post(uri);
+    print(res);
     print(">>> 관리자 로그인 성공");
   } catch (e) {
     print(">>> 관리자 로그인 실패");
@@ -76,17 +77,38 @@ Future<Response> api_admin_getSiteInfo(String email) async {
   return res;
 }
 
-// getAdminPrivacy
-Future<Response> api_admin_getPrivacy(String email) async {
+// 관리자 개인 정보 조회
+Future<Response> api_admin_getPrivacy(int id) async {
   late Response res;
   try {
-    String uri = api_hostURI + "admin/$email";
+    print(id);
+    String uri = api_hostURI + "admin/$id";
     res = await dio.get(uri);
     print(res);
+    global_userName = res.data['data']['adminName'];
+    global_userPhoneNum = res.data['data']['adminPhoneNum'];
+    global_userAge = res.data['data']['adminAge'];
     print(">>> 관리자 개인 정보 조회 성공");
-    print("+++++++++++++++++++++++");
   } catch (e) {
     print(">>> 관리자 개인 정보 조회 실패");
+  }
+  return res;
+}
+// 관리자 정보 수정
+Future<Response> api_admin_editPrivacy(String adminName,
+    String adminPhoneNum, String adminAge) async {
+  String uri = api_hostURI + "admin/editInfo";
+  Map body = {
+    "adminName": adminName,
+    "adminPhoneNum": adminPhoneNum,
+    "adminAge": int.parse(adminAge)
+  };
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 관리자 정보 수정 성공");
+  } catch (e) {
+    print(">>> 관리자 정보 수정 실패");
   }
   return res;
 }
@@ -217,13 +239,25 @@ Future<Response> api_site_editSite(int siteId, String siteName, double latitude,
   } catch (e) {
     print(">>> 현장 정보 수정 실패");
   }
-  print(res);
   return res;
 }
 
 // 현장 정보 삭제
 Future<Response> api_site_deleteSite(int siteId) async {
   String uri = api_hostURI + "site/$siteId";
+  late Response res;
+  try {
+    res = await dio.delete(uri);
+    print(">>> 현장 제거 성공");
+  } catch (e) {
+    print(">>> 현장 제거 실패");
+  }
+  return res;
+}
+
+// 현장 코드 유효 여부 조회
+Future<Response> api_site_vaildCheck(String siteCode) async {
+  String uri = api_hostURI + "site/valit/$siteCode";
   late Response res;
   try {
     res = await dio.delete(uri);

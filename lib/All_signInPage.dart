@@ -51,7 +51,9 @@ class _SignInPage extends State<SignInPage> {
                     String _signInRole = 'null';
                     bool _siteAssigned = false;
 
-                    // googleSignIn?.signOut();
+                    try {
+                      global_googleSignIn!.signOut();
+                    } catch (e) {}
 
                     // google auth
                     global_googleSignIn = GoogleSignIn();
@@ -59,10 +61,12 @@ class _SignInPage extends State<SignInPage> {
 
                     // Admin SignIn
                     try {
-                      Response res = await api_admin_signIn(global_googleUser!.email);
+                      Response res =
+                          await api_admin_signIn(global_googleUser!.email);
                       // 변수 설정
                       _signInRole = res.data['data']['role'];
                       _siteAssigned = res.data['data']['existSiteInfo'];
+                      global_userId = res.data['data']['id'];
                       authorization =
                           res.headers['authorization']![0].split(' ')[1];
                       refreshToken = res.headers['refreshToken']![0];
@@ -73,10 +77,13 @@ class _SignInPage extends State<SignInPage> {
 
                     // User SignIn
                     try {
-                      Response res = await api_user_signIn(global_googleUser!.email);
+                      Response res =
+                          await api_user_signIn(global_googleUser!.email);
                       // 변수 설정
                       _signInRole = res.data['data']['role'];
                       _siteAssigned = res.data['data']['existSiteInfo'];
+                      global_userId = res.data['data']['id'];
+                      global_userId = res.data['data']['id'];
                       authorization =
                           res.headers['authorization']![0].split(' ')[1];
                       refreshToken = res.headers['refreshToken']![0];
@@ -90,13 +97,18 @@ class _SignInPage extends State<SignInPage> {
                       if (_siteAssigned) {
                         Navigator.pushReplacement(
                           context,
-                          Transition(child: HomePageManager(),transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                          Transition(
+                              child: HomePageManager(),
+                              transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
                         );
                       } else {
                         // 관리자 현장 생성 페이지로 이동
                         Navigator.pushReplacement(
                             context,
-                            Transition(child: PutSiteInfoPageManager(),transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            Transition(
+                                child: PutSiteInfoPageManager(),
+                                transitionEffect:
+                                    TransitionEffect.RIGHT_TO_LEFT));
                       }
                       print(">>> 관리자 로그인 성공");
                     } else if (_signInRole == "GUEST") {
@@ -104,19 +116,28 @@ class _SignInPage extends State<SignInPage> {
                       if (_siteAssigned) {
                         Navigator.pushReplacement(
                             context,
-                            Transition(child: HomePageEmp(),transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            Transition(
+                                child: HomePageEmp(),
+                                transitionEffect:
+                                    TransitionEffect.RIGHT_TO_LEFT));
                       } else {
                         // 게스트 현장 가입 페이지로 이동
                         Navigator.pushReplacement(
                             context,
-                            Transition(child: PutCheckCodePageEmp(),transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            Transition(
+                                child: PutCheckCodePageEmp(),
+                                transitionEffect:
+                                    TransitionEffect.RIGHT_TO_LEFT));
                       }
                       print(">>> 근로자 로그인 성공");
                     } else {
                       // 회원가입 페이지로 이동
                       Navigator.push(
                           context,
-                          Transition(child: SelectRolePage(),transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                          Transition(
+                              child: SelectRolePage(),
+                              transitionEffect:
+                                  TransitionEffect.RIGHT_TO_LEFT));
                     }
                     // googleSignIn.signOut();
                   },
