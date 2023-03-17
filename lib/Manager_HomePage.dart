@@ -26,6 +26,8 @@ class _HomePageManager extends State<HomePageManager> {
         .then((value) => api_site_getSiteInfo(global_siteId));
     // 개인 정보 조회
     api_admin_getPrivacy(global_userId);
+    // 현재 로그인된 계정 등급 설정
+    global_signUpClass = enum_Role.manager;
   }
 
   @override

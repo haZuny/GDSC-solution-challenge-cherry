@@ -213,7 +213,7 @@ class _SignUpPage extends State<SignUpPage> {
                           Response res = await api_user_signUp(
                               global_googleUser!.email, name, phNum, age);
                           if (res.data["success"]) {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 Transition(
                                     child: PutCheckCodePageEmp(),
@@ -233,7 +233,7 @@ class _SignUpPage extends State<SignUpPage> {
                           Response res = await api_admin_signUp(
                               global_googleUser!.email, name, phNum, age);
                           if (res.data["success"]) {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 Transition(
                                     child: PutSiteInfoPageManager(),

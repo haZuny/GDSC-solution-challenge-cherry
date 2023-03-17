@@ -119,9 +119,9 @@ Future<Response> api_user_signUp(
     String email, String userName, String userPhoneNum, String userAge) async {
   String uri = api_hostURI + "user/testSignUp?email=$email";
   Map body = {
-    "adminName": userName,
-    "adminPhoneNum": userPhoneNum,
-    "adminAge": int.parse(userAge)
+    "userName": userName,
+    "userPhoneNum": userPhoneNum,
+    "userAge": int.parse(userAge)
   };
   late Response res;
   try {
@@ -129,6 +129,7 @@ Future<Response> api_user_signUp(
     global_userId = res.data["data"];
     print(">>> 유저 가입 성공");
   } catch (e) {
+    print(e);
     print(">>> 유저 가입 실패");
   }
   return res;

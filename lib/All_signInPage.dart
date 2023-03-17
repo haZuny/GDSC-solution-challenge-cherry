@@ -52,7 +52,8 @@ class _SignInPage extends State<SignInPage> {
                     bool _siteAssigned = false;
 
                     try {
-                      global_googleSignIn!.signOut();
+                      await global_googleSignIn!.signOut();
+                      print(">>> 구글 로그아웃");
                     } catch (e) {}
 
                     // google auth
