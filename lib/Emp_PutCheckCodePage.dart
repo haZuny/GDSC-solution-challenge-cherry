@@ -1,6 +1,9 @@
+import 'package:cherry_app/All_signInPage.dart';
 import 'package:cherry_app/Emp_WaitingAcceptPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:transition/transition.dart';
 
 import 'AppBar_Drawer.dart';
 
@@ -10,6 +13,8 @@ class PutCheckCodePageEmp extends StatefulWidget {
 }
 
 class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -26,7 +31,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, putCheckCodePage_spacePerNextBtn),
+                        context, putCheckCodePage_spacePerBottomBtn),
                   ),
 
                   Text(
@@ -48,7 +53,8 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Code",
-                        hintStyle: TextStyle(color: Color(themaColor_whiteBlack)),
+                        hintStyle:
+                            TextStyle(color: Color(themaColor_whiteBlack)),
                         // 색상(설정 안하면 그림자에 먹힘)
                         filled: true,
                         fillColor: Colors.white,
@@ -72,15 +78,16 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                           blurRadius: allPage_shadowBlurRadius,
-                          offset:
-                              Offset(allPage_shadowOffSet, allPage_shadowOffSet),
+                          offset: Offset(
+                              allPage_shadowOffSet, allPage_shadowOffSet),
                           color: Color(themaColor_whiteBlack))
                     ]),
                   ),
 
                   /// check 버튼
                   Container(
-                    width: getFullScrennSizePercent(context, allPage_mainComponentsWidth),
+                    width: getFullScrennSizePercent(
+                        context, allPage_mainComponentsWidth),
                     alignment: Alignment.centerRight,
                     child: TextButton(
                         onPressed: () {},
@@ -95,20 +102,48 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, putCheckCodePage_spacePerNextBtn),
+                        context, putCheckCodePage_spacePerBottomBtn),
                   ),
 
-                  /// next 버튼
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>WaitingAcceptPage()));
-                      },
-                      child: Text(
-                        "Next",
-                        style: TextStyle(
-                            fontSize: allPage_btnFontSize,
-                            color: Color(allPage_btnFontColor)),
-                      ))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      /// Back 버튼
+                      TextButton(
+                          onPressed: () {
+                            global_googleSignIn?.signOut();
+                            api_user_logout();
+                            print(">>> Google SignOut");
+                            Navigator.pushReplacement(
+                                context,
+                                Transition(child: SignInPage()));
+                          },
+                          child: Text(
+                            "Back",
+                            style: TextStyle(
+                                fontSize: allPage_btnFontSize,
+                                color: Color(allPage_btnFontColor)),
+                          )),
+
+                      // 간격
+                      Container(width: getFullScrennSizePercent(context, putCheckCodePage_spaceBottomBtn)),
+
+                      /// next 버튼
+                      if (isChecked)
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  Transition(child: WaitingAcceptPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            },
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                  fontSize: allPage_btnFontSize,
+                                  color: Color(allPage_btnFontColor)),
+                            )),
+                    ],
+                  )
                 ],
               ),
             ),

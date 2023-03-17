@@ -1,12 +1,108 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+/// ########################
+/// API
+/// ########################
+Dio dio = Dio();
+String api_hostURI = "http://3.37.201.188:8080/";
+String authorization = '';
+String refreshToken = '';
+
+/// Admin
+// logout
+Future<Response> api_admin_logout() async {
+    String uri = api_hostURI + "admin/logout";
+    dio.options.headers = {
+        'Authorization': "bearer " + authorization,
+        'RefreshToken': refreshToken
+    };
+    Response res = await dio.post(uri);
+    return res;
+}
+// getSiteInfo
+Future<Response> api_admin_getSiteInfo(String email) async {
+    String uri = api_hostURI + "admin/getSiteInfo?email=$email";
+    Response res = await dio.get(uri);
+    global_siteId = res.data['data'];
+    return res;
+}
+
+/// User
+// logout
+Future<Response> api_user_logout() async {
+    String uri = api_hostURI + "user/logout";
+    dio.options.headers = {
+        'Authorization': "bearer " + authorization,
+        'RefreshToken': refreshToken
+    };
+    Response res = await dio.post(uri);
+    return res;
+}
+// getSiteInfo
+Future<Response> api_user_getSiteInfo(String email) async {
+    String uri = api_hostURI + "user/getSiteInfo?email=$email";
+    Response res = await dio.get(uri);
+    global_siteId = res.data['data'];
+    return res;
+}
+
+/// Site
+// getSiteInfo
+Future<Response> api_site_getSiteInfo(int siteId) async {
+    String uri = api_hostURI + "site/$siteId";
+    Response res = await dio.get(uri,);
+    global_siteCode = res.data['data']['siteCode'];
+    global_siteName = res.data['data']['siteName'];
+    global_siteLat = res.data['data']['siteLatitude'];
+    global_siteLon = res.data['data']['siteLongitude'];
+    global_siteAdd1 = res.data['data']['address1'];
+    global_siteAdd2 = res.data['data']['address2'];
+    return res;
+}
+// CreateSite
+Future<Response> api_site_createSite(String siteName, double latitude,
+    double longitude, String address1, String address2) async {
+    String uri = api_hostURI + "site/createSite";
+    Map createSiteBody = {
+        "siteName": siteName,
+        "siteLatitude": latitude,
+        "siteLongitude": longitude,
+        "address1": address1,
+        "address2": address2,
+    };
+    Response res = await dio.post(uri, data: createSiteBody);
+    print(res);
+    return res;
+}
+// 현장 정보 조회
+// 현장 정보 삭제
+Future<Response> api_site_deleteSite(int siteId) async {
+    String uri = api_hostURI + "site/$siteId";
+    Response res = await dio.delete(uri,);
+    return res;
+}
+
+
+
+
 /// var
 // SignIn
-GoogleSignInAccount? googleUser;    // 구글 로그인
+GoogleSignIn? global_googleSignIn;
+GoogleSignInAccount? global_googleUser;    // 구글 로그인
 // SignUp logic, 회원가입시 어느 페이지 선택했는지 결정
-enum SignUpClass{manager, employee}
-SignUpClass? global_signUpClass;
+enum enum_Role{manager, employee}
+enum_Role? global_signUpClass;
+// site
+int global_siteId = -1;
+String global_siteCode = "";
+String global_siteName = "";
+double global_siteLat = 0;
+double global_siteLon = 0;
+String global_siteAdd1 = "";
+String global_siteAdd2 = "";
+
 
 /// 공통
 // Color
@@ -56,13 +152,15 @@ int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 
 /// PutCheckCodePage
 // Size
-int putCheckCodePage_spacePerNextBtn = 25; // 넥스트 버튼 사이의 간격
+int putCheckCodePage_spacePerBottomBtn = 25; // 하단 버튼 과의 간격(세로)
+int putCheckCodePage_spaceBottomBtn = 10; // 하단 버튼 끼리의 간격(세로)
 double putCheckCodePage_checkBtnFontSize = 14;  // 체크 버튼 폰트 크기
 
 /// PutSiteInfoPage
 // Size
 int putSiteInfoPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
-int putSiteInfoPage_spacePerNextBtn = 20; // 넥스트 버튼과의 간격
+int putSiteInfoPage_spacePerBottomBtn = 20; // 하단 버튼과의 간격(세로)
+int putSiteInfoPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
 int putSiteInfoPage_containerPadding = 10;  // 바텀시트 패딩
 double putSiteInfoPage_bottomsheetHeight = 0.6; // 바텀 시트 크기(세로)
 // Font

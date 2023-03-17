@@ -1,6 +1,7 @@
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:cherry_app/baseFile.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'AppBar_Drawer.dart';
@@ -11,6 +12,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPage extends State<SignUpPage> {
+  TextEditingController _nameTFController = TextEditingController();
+  TextEditingController _phnumTFController = TextEditingController();
+  TextEditingController _ageTFController = TextEditingController();
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -46,6 +51,7 @@ class _SignUpPage extends State<SignUpPage> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: TextField(
+                      controller: _nameTFController,
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Name",
@@ -74,8 +80,8 @@ class _SignUpPage extends State<SignUpPage> {
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                           blurRadius: allPage_shadowBlurRadius,
-                          offset: Offset(allPage_shadowOffSet,
-                              allPage_shadowOffSet),
+                          offset: Offset(
+                              allPage_shadowOffSet, allPage_shadowOffSet),
                           color: Color(themaColor_whiteBlack))
                     ]),
                   ),
@@ -91,6 +97,8 @@ class _SignUpPage extends State<SignUpPage> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: TextField(
+                      keyboardType: TextInputType.number,
+                      controller: _phnumTFController,
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Phone number",
@@ -136,6 +144,8 @@ class _SignUpPage extends State<SignUpPage> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: TextField(
+                      keyboardType: TextInputType.number,
+                      controller: _ageTFController,
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Age",
@@ -178,21 +188,69 @@ class _SignUpPage extends State<SignUpPage> {
 
                   // next 버튼
                   TextButton(
-                      onPressed: () {
-                        // 근로자 가입으로 이동
-                        if (global_signUpClass == SignUpClass.employee) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PutCheckCodePageEmp()));
+                      onPressed: () async {
+                        String name = _nameTFController.text;
+                        String phNum = _phnumTFController.text;
+                        String age = _ageTFController.text;
+
+                        // 널처리
+                        if (name == "") {
+                          print(">>> Empty Name");
+                          return;
                         }
-                        // 관리자 가입으로 이동
+                        if (phNum == "") {
+                          print(">>> Empty PhoneNum");
+                          return;
+                        }
+                        if (age == "") {
+                          print(">>> Empty Age");
+                          return;
+                        }
+
+                        // 근로자 가입
+                        if (global_signUpClass == enum_Role.employee) {
+                          try {
+                            Response res = await api_user_signUp(
+                                global_googleUser!.email, name, phNum, age);
+                            if (res.data["success"]) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PutCheckCodePageEmp()));
+                            }
+                            authorization = res.headers['authorization']![0].split(' ')[1];
+                            refreshToken = res.headers['refreshToken']![0];
+                            dio.options.headers = {
+                              'Authorization': "bearer " + authorization,
+                            };
+                            print(">>> 근로자 회원가입 성공");
+                          } catch (e) {
+                            print(e);
+                            print(">>> 근로자 회원가입 실패");
+                          }
+                        }
+                        // 관리자 가입
                         else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PutSiteInfoPageManager()));
+                          try {
+                            Response res = await api_admin_signUp(
+                                global_googleUser!.email, name, phNum, age);
+                            if (res.data["success"]) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PutSiteInfoPageManager()));
+                            }
+                            authorization = res.headers['authorization']![0].split(' ')[1];
+                            refreshToken = res.headers['refreshToken']![0];
+                            dio.options.headers = {
+                              'Authorization': "bearer " + authorization,
+                            };
+                            print(">>> 관리자 회원가입 성공");
+                          } catch (e) {
+                            print(">>> 관리자 회원가입 실패");
+                          }
                         }
                       },
                       child: Text(
@@ -207,4 +265,31 @@ class _SignUpPage extends State<SignUpPage> {
           ),
         ),
       );
+
+  /// API
+  // AdminSignUp
+  Future<Response> api_admin_signUp(String email, String adminName,
+      String adminPhoneNum, String adminAge) async {
+    String uri = api_hostURI + "admin/testSignUp?email=$email";
+    Map body = {
+      "adminName": adminName,
+      "adminPhoneNum": adminPhoneNum,
+      "adminAge": int.parse(adminAge)
+    };
+    Response res = await dio.post(uri, data: body);
+    return res;
+  }
+
+  // UserSignUp
+  Future<Response> api_user_signUp(String email, String userName,
+      String userPhoneNum, String userAge) async {
+    String uri = api_hostURI + "user/testSignUp?email=$email";
+    Map body = {
+      "adminName": userName,
+      "adminPhoneNum": userPhoneNum,
+      "adminAge": int.parse(userAge)
+    };
+    Response res = await dio.post(uri, data: body);
+    return res;
+  }
 }

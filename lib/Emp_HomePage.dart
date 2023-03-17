@@ -12,12 +12,24 @@ class HomePageEmp extends StatefulWidget {
 
 class _HomePageEmp extends State<HomePageEmp> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    try{
+      api_user_getSiteInfo(global_googleUser!.email)
+          .then((value) =>api_site_getSiteInfo(global_siteId)).then((value) => print(">>> user 현장 정보 조회 성공"));
+    }catch(e){
+      print(">>> user 현장 정보 조회 실패");
+    }
+  }
+
+  @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarEmp(),
+          appBar: AppBarAll(),
           drawer: DrawerEmp(),
           body: Container(
             alignment: Alignment.center,

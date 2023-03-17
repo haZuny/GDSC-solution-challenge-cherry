@@ -555,6 +555,13 @@ packages:
       url: "https://github.com/filofan1/tflite_flutter_helper.git"
     source: git
     version: "0.3.0"
+  transition:
+    dependency: "direct main"
+    description:
+      name: transition
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   tuple:
     dependency: transitive
     description:

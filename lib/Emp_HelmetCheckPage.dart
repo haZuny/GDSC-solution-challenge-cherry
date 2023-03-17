@@ -35,7 +35,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarEmp(),
+          appBar: AppBarAll(),
           drawer: DrawerEmp(),
           body: Container(
             alignment: Alignment.center,

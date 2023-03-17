@@ -21,7 +21,7 @@ class _EmergencyPage extends State<EmergencyPage> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarEmp(),
+          appBar: AppBarAll(),
           drawer: DrawerEmp(),
           body: Container(
             alignment: Alignment.center,
@@ -65,13 +65,9 @@ class _EmergencyPage extends State<EmergencyPage> {
                     child: GoogleMap(
                       onMapCreated: (controller) async {
                         _googleMapController = controller;
-                        // 현재 위치로 이동
-                        LocationData currentLoc = await Location().getLocation();
-                        controller.moveCamera(CameraUpdate.newCameraPosition(
-                            CameraPosition(target: LatLng(currentLoc.latitude!, currentLoc.longitude!), zoom: 15, tilt: 1),));
                       },
                       initialCameraPosition:
-                          CameraPosition(target: LatLng(0, 0)),
+                          CameraPosition(target: LatLng(global_siteLat, global_siteLon), zoom: 15),
                     ),
                   ),
 

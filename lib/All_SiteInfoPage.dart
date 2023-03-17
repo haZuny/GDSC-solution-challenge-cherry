@@ -2,21 +2,26 @@ import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class SiteInfoPageManager extends StatefulWidget {
+class SiteInfoPageAll extends StatefulWidget {
   @override
-  State<SiteInfoPageManager> createState() => _SiteInfoPageManager();
+  State<SiteInfoPageAll> createState() => _SiteInfoPageAll();
 }
 
-class _SiteInfoPageManager extends State<SiteInfoPageManager> {
+class _SiteInfoPageAll extends State<SiteInfoPageAll> {
+  GoogleMapController? _googleMapController;
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarEmp(),
-          drawer: DrawerEmp(),
+          appBar: AppBarAll(),
+          drawer: global_signUpClass == enum_Role.employee
+              ? DrawerEmp()
+              : DrawerManager(),
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -25,7 +30,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                 children: [
                   /// 타이틀
                   Text(
-                    "현장 이름",
+                    global_siteName,
                     style: TextStyle(fontSize: allPage_titleFontSize),
                   ),
 
@@ -58,7 +63,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[0],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -84,7 +89,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[1],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -110,7 +115,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[2],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -136,7 +141,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[3],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -170,7 +175,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[4],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -196,7 +201,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[5],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -222,7 +227,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               ],
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
-                          child: Text("A",
+                          child: Text(global_siteCode[6],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
                       Container(
@@ -249,7 +254,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                               borderRadius: BorderRadius.circular(
                                   siteInfoPage_codeRadius)),
                           child: Text(
-                            "A",
+                            global_siteCode[7],
                             style:
                                 TextStyle(fontSize: siteInfoPage_codeFontSize),
                           )),
@@ -266,7 +271,7 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                         context, siteInfoPage_spacePerTitle),
                   ),
 
-                  /// 로고 이미지
+                  /// 지도
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
@@ -283,10 +288,12 @@ class _SiteInfoPageManager extends State<SiteInfoPageManager> {
                         ],
                         borderRadius:
                             BorderRadius.circular(allPage_bigBoxRadious)),
-                    child: Image.asset(
-                      'assets/img/logo.png',
-                      width: getFullScrennSizePercent(
-                          context, allPage_mainComponentsWidth),
+                    child: GoogleMap(
+                      onMapCreated: (controller) async {
+                        _googleMapController = controller;
+                      },
+                      initialCameraPosition: CameraPosition(
+                          target: LatLng(global_siteLat, global_siteLon), zoom: 17),
                     ),
                   ),
                 ],
