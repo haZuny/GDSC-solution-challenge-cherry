@@ -266,30 +266,4 @@ class _SignUpPage extends State<SignUpPage> {
         ),
       );
 
-  /// API
-  // AdminSignUp
-  Future<Response> api_admin_signUp(String email, String adminName,
-      String adminPhoneNum, String adminAge) async {
-    String uri = api_hostURI + "admin/testSignUp?email=$email";
-    Map body = {
-      "adminName": adminName,
-      "adminPhoneNum": adminPhoneNum,
-      "adminAge": int.parse(adminAge)
-    };
-    Response res = await dio.post(uri, data: body);
-    return res;
-  }
-
-  // UserSignUp
-  Future<Response> api_user_signUp(String email, String userName,
-      String userPhoneNum, String userAge) async {
-    String uri = api_hostURI + "user/testSignUp?email=$email";
-    Map body = {
-      "adminName": userName,
-      "adminPhoneNum": userPhoneNum,
-      "adminAge": int.parse(userAge)
-    };
-    Response res = await dio.post(uri, data: body);
-    return res;
-  }
 }

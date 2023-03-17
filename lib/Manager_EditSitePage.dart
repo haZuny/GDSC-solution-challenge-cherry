@@ -8,9 +8,9 @@ import 'All_signInPage.dart';
 import 'AppBar_Drawer.dart';
 import 'package:dio/dio.dart';
 
-class PutSiteInfoPageManager extends StatefulWidget {
+class EditSitePageManager extends StatefulWidget {
   @override
-  State<PutSiteInfoPageManager> createState() => _PutSiteInfoPageManager();
+  State<EditSitePageManager> createState() => _EditSitePageManager();
 }
 
 /// TF 컨트롤러
@@ -22,7 +22,7 @@ TextEditingController _bottomSheetAddrController = TextEditingController();
 int _selectedAddrIdx = -1;
 List<Addr> _addrList = [];
 
-class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
+class _EditSitePageManager extends State<EditSitePageManager> {
   @override
   void initState() {
     // TODO: implement initState
@@ -55,7 +55,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   ),
 
                   Text(
-                    "Put workspace's info",
+                    "Edit workspace's info",
                     style: TextStyle(fontSize: allPage_titleFontSize),
                   ),
 
@@ -108,7 +108,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   // 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, putSiteInfoPage_spacePerTFs),
+                        context, editSiteInfoPage_spacePerTFs),
                   ),
 
                   /// 주소 TF
@@ -171,7 +171,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                   // 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, putSiteInfoPage_spacePerBottomBtn),
+                        context, editSiteInfoPage_spacePerBottomBtn),
                   ),
 
                   Row(
@@ -180,11 +180,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                       /// Back 버튼
                       TextButton(
                           onPressed: () {
-                            global_googleSignIn?.signOut();
-                            api_admin_logout();
-                            print(">>> Google SignOut");
-                            Navigator.pushReplacement(
-                                context, Transition(child: SignInPage()));
+                            Navigator.pop(context);
                           },
                           child: Text(
                             "Back",
@@ -194,13 +190,17 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                           )),
 
                       /// 간격
-                      Container(width: getFullScrennSizePercent(context, putSiteInfoPage_spaceBottomBtn),),
+                      Container(
+                        width: getFullScrennSizePercent(
+                            context, editSiteInfoPage_spaceBottomBtn),
+                      ),
 
-                      // next 버튼
+                      // 완료 버튼
                       TextButton(
                           onPressed: () async {
                             String siteName = _siteNameController.text;
 
+                            /// 널처리
                             if (siteName == "") {
                               print(">>> null WorkspaceName TextField");
                               return;
@@ -212,25 +212,23 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
 
                             Response? res;
                             try {
-                              res = await api_site_createSite(
+                              res = await api_site_editSite(
+                                  global_siteId,
                                   _siteNameController.text,
                                   _addrList[_selectedAddrIdx].lat!,
                                   _addrList[_selectedAddrIdx].lon!,
                                   _addrList[_selectedAddrIdx].addr1!,
                                   _addrList[_selectedAddrIdx].addr2!);
 
-                              print(">>> 현장 생성 성공");
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePageManager()));
+                              print(">>> 현장 정보 수정 성공");
+                              Navigator.pushAndRemoveUntil(context, Transition(child: HomePageManager()), (_) => false);
                             } catch (e) {
-                              print('>>> 현장 생성 실패');
+                              print('>>> 현장 정보 수정 실패');
                               print(e);
                             }
                           },
                           child: Text(
-                            "Next",
+                            "Done",
                             style: TextStyle(
                                 fontSize: allPage_btnFontSize,
                                 color: Color(allPage_btnFontColor)),
@@ -259,10 +257,10 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
         },
         child: Container(
           padding: EdgeInsets.all(getFullScrennSizePercent(
-              context, putSiteInfoPage_containerPadding)),
+              context, editSiteInfoPage_containerPadding)),
           // 크기 설정
           height: MediaQuery.of(context).size.height *
-              putSiteInfoPage_bottomsheetHeight,
+              editSiteInfoPage_bottomsheetHeight,
           child: Column(
             children: [
               Row(
@@ -315,7 +313,7 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                       child: Text(
                         "Search",
                         style: TextStyle(
-                            fontSize: putSiteInfoPage_checkBtnFontSize,
+                            fontSize: editSiteInfoPage_checkBtnFontSize,
                             color: Color(allPage_btnFontColor)),
                       )),
                 ],
@@ -365,12 +363,12 @@ class AddrSearchListTile extends StatelessWidget {
           GestureDetector(
             child: Padding(
               padding: EdgeInsets.only(
-                  top: putSiteInfoPage_siteListTileFontPadding,
-                  bottom: putSiteInfoPage_siteListTileFontPadding),
+                  top: editSiteInfoPage_siteListTileFontPadding,
+                  bottom: editSiteInfoPage_siteListTileFontPadding),
               child: Text(
                 this.addr,
                 style:
-                    TextStyle(fontSize: putSiteInfoPage_siteListTileFontSize),
+                    TextStyle(fontSize: editSiteInfoPage_siteListTileFontSize),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

@@ -1,4 +1,6 @@
+import 'package:cherry_app/All_EditPravacy.dart';
 import 'package:cherry_app/All_signInPage.dart';
+import 'package:cherry_app/Manager_EditSitePage.dart';
 import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -128,14 +130,30 @@ class DrawerManager extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Privacy settings"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  Transition(
+                      child: EditPrivacyPage(),
+                      transitionEffect:
+                      TransitionEffect.RIGHT_TO_LEFT),);
+              },
             ),
 
             /// 현장 정보설정
             ListTile(
               leading: Icon(Icons.build),
               title: Text("Workspace settings"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  Transition(
+                      child: EditSitePageManager(),
+                      transitionEffect:
+                      TransitionEffect.RIGHT_TO_LEFT),);
+              },
             ),
 
             /// 체크리스트 설정

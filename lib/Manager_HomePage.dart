@@ -21,14 +21,11 @@ class _HomePageManager extends State<HomePageManager> {
   initState() {
     // TODO: implement initState
     super.initState();
-    Response? res;
-    try {
-      api_admin_getSiteInfo(global_googleUser!.email)
-          .then((value) => api_site_getSiteInfo(global_siteId))
-          .then((value) => print(">>> admin 현장 정보 조회 성공"));
-    } catch (e) {
-      print(">>> admin 현장 정보 조회 실패");
-    }
+    // 현장 정보 조회
+    api_admin_getSiteInfo(global_googleUser!.email)
+        .then((value) => api_site_getSiteInfo(global_siteId));
+    // 개인 정보 조회
+    api_admin_getPrivacy(global_googleUser!.email);
   }
 
   @override
@@ -181,11 +178,11 @@ class _HomePageManager extends State<HomePageManager> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
+                        context,
                         Transition(
                             child: EmergencyPage(),
-                            transitionEffect:
-                            TransitionEffect.RIGHT_TO_LEFT),);
+                            transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                      );
                     },
                     // 내부 컴포넌트
                     child: Text(
@@ -238,11 +235,12 @@ class _HomePageManager extends State<HomePageManager> {
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
+                              context,
                               Transition(
                                   child: SiteInfoPageAll(),
                                   transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT),);
+                                      TransitionEffect.RIGHT_TO_LEFT),
+                            );
                           },
                           // 내부 컴포넌트
                           child: Text(
@@ -288,11 +286,12 @@ class _HomePageManager extends State<HomePageManager> {
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
+                              context,
                               Transition(
                                   child: ManageEmpPageManager(),
                                   transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT),);
+                                      TransitionEffect.RIGHT_TO_LEFT),
+                            );
                           },
                           // 내부 컴포넌트
                           child: Text(

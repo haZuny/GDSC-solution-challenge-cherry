@@ -161,21 +161,6 @@ class _SignInPage extends State<SignInPage> {
         ),
       );
 
-  /// API
-  // UserLogin
-  Future<Response> api_user_signIn(String email) async {
-    String uri = api_hostURI + "user/testSignIn?email=$email";
-    Response res = await dio.post(uri);
-    return res;
-  }
-
-  // AdminLogin
-  Future<Response> api_admin_signIn(String email) async {
-    String uri = api_hostURI + "admin/testSignIn?email=$email";
-    Response res = await dio.post(uri);
-    return res;
-  }
-
   /// 변수 초기화
   void resetVal() {}
 }
