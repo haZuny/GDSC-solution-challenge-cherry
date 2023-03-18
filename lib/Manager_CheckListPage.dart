@@ -1,6 +1,9 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import 'Dialog.dart';
 
 class CheckListPageManager extends StatefulWidget {
   @override
@@ -8,6 +11,15 @@ class CheckListPageManager extends StatefulWidget {
 }
 
 class _CheckListPageManager extends State<CheckListPageManager> {
+  List<CheckListTile> checkList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    updateCheckList(global_siteId);
+  }
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -51,14 +63,9 @@ class _CheckListPageManager extends State<CheckListPageManager> {
                           ],
                           borderRadius:
                               BorderRadius.circular(allPage_bigBoxRadious)),
-                      child: ListView(
-                        children: [
-                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
-                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
-                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
-                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
-                          CheckListTileEmp("적합한 안전 도구 제공 제공 제공"),
-                        ],
+                      child: ListView.builder(
+                        itemBuilder: (context, idx) => checkList[idx],
+                        itemCount: checkList.length,
                       )),
 
                   /// 간격
@@ -67,9 +74,15 @@ class _CheckListPageManager extends State<CheckListPageManager> {
                         context, checkListPage_spacePerBackBtn),
                   ),
 
-                  /// Back 버튼
+                  /// ADD 버튼
                   TextButton(
                       onPressed: () {
+                        showDialog(
+                                context: context,
+                                builder: (context) => AddCheckListDialog(true))
+                            .then((value) {
+                          updateCheckList(global_siteId);
+                        });
                       },
                       child: Text(
                         "Add",
@@ -83,13 +96,56 @@ class _CheckListPageManager extends State<CheckListPageManager> {
           ),
         ),
       );
+
+  // 리스트 업데이트
+  Future<void> updateCheckList(int siteId) async {
+    checkList.clear();
+
+    late Response res;
+    try {
+      res = await api_siteCheck_getCheckList(siteId);
+      List checks = res.data['data'];
+      setState(() {
+        for (Map tile in checks) {
+          checkList.add(CheckListTile(tile['checkId'], tile['siteQuestion'],
+              tile['siteAnswer'], updateCheckList));
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 /// 리스트 타일 요소
-class CheckListTileEmp extends StatelessWidget {
-  late String msg;
+class CheckListTile extends StatefulWidget {
+  late int checkId;
+  late String checkMSG;
+  late bool checkState;
+  late Function updateState;
 
-  CheckListTileEmp(String msg) : this.msg = msg;
+  CheckListTile(int id, String msg, bool state, Function updateState)
+      : this.checkId = id,
+        this.checkMSG = msg,
+        this.checkState = state,
+        this.updateState = updateState;
+
+  @override
+  State<CheckListTile> createState() =>
+      _CheckListTile(checkId, checkMSG, checkState, updateState);
+}
+
+class _CheckListTile extends State<CheckListTile> {
+  late int checkId;
+  late String checkMSG;
+  late bool checkState;
+  late Function updateState;
+
+  _CheckListTile(int id, String msg, bool state, Function updateState)
+      : this.checkId = id,
+        this.checkMSG = msg,
+        this.checkState = state,
+        this.updateState = updateState;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -98,18 +154,28 @@ class CheckListTileEmp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Expanded(
+                    child: Text(
+                  checkMSG,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: allPage_subTitleFontSize),
+                )),
+                Checkbox(
+                  activeColor: Color(themaColor_black),
+                    value: checkState,
+                    onChanged: (val) async {
+                      late Response res;
+                      try {
+                        res = await api_siteCheck_editAnswer(checkId, val!);
+                        setState(() {
+                          checkState = val;
+                        });
+                      } catch (e) {}
+                    }),
                 // 간격
                 Container(
                   width: checkListPage_listTilePaddingLeft,
                 ),
-                Expanded(
-                  child: Text(
-                    msg,
-                    style: TextStyle(fontSize: checkListPage_listTextFontSize),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Checkbox(value: false, onChanged: (val) {})
               ],
             ),
             Divider(
@@ -127,36 +193,8 @@ class CheckListTileEmp extends StatelessWidget {
         onTap: () {
           showDialog(
               context: context,
-              builder: (context) => Dialog(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.all(checkListPage_dialogTextPadding),
-                          child: Text(
-                            msg,
-                            // textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: checkListPage_listTextFontSize),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: checkListPage_dialogTextPadding),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              TextButton(onPressed: () {}, child: Text("Edit",)),
-                              TextButton(
-                                  onPressed: () {}, child: Text("Delete")),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ));
+              builder: (context) => ViewCheckListInfoDialog(
+                  checkId, checkMSG, checkState, updateState));
         },
       );
 }

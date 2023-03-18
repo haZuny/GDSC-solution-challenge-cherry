@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Classifier.dart';
 import 'package:cherry_app/Emp_CheckListPage.dart';
+import 'package:cherry_app/Emp_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transition/transition.dart';
 
 class HelmetCheckPage extends StatefulWidget {
   @override
@@ -104,15 +107,23 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
 
                   /// next 버튼
                   TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         // 확인
                         if (_stateChecked) {
+                          late Response res;
+                          try {
+                            res = await api_user_editHelmetCheck(true);
+                            print(res);
+                            Navigator.pushAndRemoveUntil(context,
+                                Transition(child: HomePageEmp()), (_) => false);
+                          } catch (e) {}
                         }
                         // 실패
                         else {
                           getMyImage().then((value) {
                             // ML
-                            Classifier classifier = Classifier(File(_pickedImage!.path));
+                            Classifier classifier =
+                                Classifier(File(_pickedImage!.path));
                             classifier.classify().then((value) {
                               if (value > 0.6) {
                                 setState(() {

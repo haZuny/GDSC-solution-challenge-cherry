@@ -11,21 +11,25 @@ class HomePageEmp extends StatefulWidget {
 }
 
 class _HomePageEmp extends State<HomePageEmp> {
+  bool _helmetState = false;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     try {
+      // 현재 로그인된 계정 등급 설정
+      global_userRole = enum_Role.user;
+      // 개인 정보 조회
+      api_user_getPrivacy(global_userId);
+      // 헬멧 체크 여부 조회
+      api_user_getHelmetCheck().then((value) {
+        _helmetState = value.data['data'];
+      });
       // 현장 정보 조회
       api_user_getSiteInfo(global_googleUser!.email)
           .then((value) => api_site_getSiteInfo(global_siteId));
-      // 개인 정보 조회
-      api_user_getPrivacy(global_userId);
-      // 현재 로그인된 계정 등급 설정
-      global_userRole = enum_Role.user;
-    } catch (e) {
-      print(">>> user 현장 정보 조회 실패");
-    }
+    } catch (e) {}
   }
 
   @override
@@ -80,10 +84,14 @@ class _HomePageEmp extends State<HomePageEmp> {
                         /// 헬멧 체크 버튼
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HelmetCheckPage()));
+                            if (_helmetState) {
+                              print(">>> Helmet checked already");
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HelmetCheckPage()));
+                            }
                           },
                           // 내부 컴포넌트
                           child: Text(

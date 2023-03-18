@@ -81,7 +81,12 @@ class _HomePageManager extends State<HomePageManager> {
                       children: [
                         /// 작업 시작 버튼
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            late Response res;
+                            try{
+                              res = await api_site_clearSite(global_siteId);
+                            }catch(e){}
+                          },
                           // 내부 컴포넌트
                           child: Text(
                             "Start work",

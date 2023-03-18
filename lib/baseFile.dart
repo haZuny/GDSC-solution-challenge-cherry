@@ -9,6 +9,7 @@ GoogleSignInAccount? global_googleUser; // 구글 로그인
 
 // SignUp logic, 회원가입시 어느 페이지 선택했는지 결정
 enum enum_Role { manager, user, staff }
+
 enum_Role? global_userRole;
 // site
 int global_siteId = -1;
@@ -543,6 +544,34 @@ Future<Response> api_user_cancleCheckCode(int userId) async {
   return res;
 }
 
+// 안전모 체크 여부 조회
+Future<Response> api_user_getHelmetCheck() async {
+  String uri = api_hostURI + "user/helmetCheck";
+  late Response res;
+  try {
+    res = await dio.get(uri);
+    print(">>> 유저 헬멧 체크 여부 조회 완료");
+  } catch (e) {
+    print(">>> 유저 헬멧 체크 여부 조회 실패");
+  }
+  return res;
+}
+
+// 안전모 체크 여부 수정
+Future<Response> api_user_editHelmetCheck(bool state) async {
+  String uri = api_hostURI + "user/editHelmet";
+  late Response res;
+  Map body = {'helmetCheck': state};
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 유저 헬멧 체크 여부 변경 완료");
+  } catch (e) {
+    print(e);
+    print(">>> 유저 헬멧 체크 여부 변경 실패");
+  }
+  return res;
+}
+
 /// Site
 // getSiteInfo
 Future<Response> api_site_getSiteInfo(int siteId) async {
@@ -629,6 +658,88 @@ Future<Response> api_site_vaildCheck(String siteCode) async {
     print(">>> 현장 코드 유효 여부 조회 완료");
   } catch (e) {
     print(">>> 현장 코드 유효 여부 조회 실패");
+  }
+  return res;
+}
+
+// 현장 초기화
+Future<Response> api_site_clearSite(int siteId) async {
+  String uri = api_hostURI + "site/workStart/$siteId";
+  late Response res;
+  try {
+    res = await dio.patch(uri);
+    print(">>> 현장 상태 초기화 완료");
+  } catch (e) {
+    print(">>> 현장 상태 초기화 실패");
+  }
+  return res;
+}
+
+/// SiteCheck
+// 체크리스트 목록 조회
+Future<Response> api_siteCheck_getCheckList(int siteId) async {
+  String uri = api_hostURI + "siteCheck/list/$siteId";
+  late Response res;
+  try {
+    res = await dio.get(uri);
+    print(">>> 체크리스트 목록 조회 완료");
+  } catch (e) {
+    print(">>> 체크리스트 목록 조회 실패");
+  }
+  return res;
+}
+
+// 체크리스트 생성
+Future<Response> api_siteCheck_addCheckList(int siteId, String msg) async {
+  String uri = api_hostURI + "siteCheck/createCheck";
+  late Response res;
+  Map body = {'siteId': siteId, 'siteQuestion': msg};
+  try {
+    res = await dio.post(uri, data: body);
+    print(">>> 체크리스트 생성 완료");
+  } catch (e) {
+    print(">>> 체크리스트 생성 실패");
+  }
+  return res;
+}
+
+// 체크리스트 수정
+Future<Response> api_siteCheck_editCheckList(int checkId, String msg) async {
+  String uri = api_hostURI + "siteCheck/question/$checkId";
+  late Response res;
+  Map body = {'question': msg};
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 체크리스트 수정 완료");
+  } catch (e) {
+    print(">>> 체크리스트 수정 실패");
+  }
+  return res;
+}
+
+// 체크리스트 삭제
+Future<Response> api_siteCheck_deleteCheckList(int checkId) async {
+  String uri = api_hostURI + "siteCheck/$checkId";
+  late Response res;
+  try {
+    res = await dio.delete(uri);
+    print(">>> 체크리스트 제거 완료");
+  } catch (e) {
+    print(">>> 체크리스트 제거 실패");
+  }
+  return res;
+}
+
+// 체크리스트 상태 수정
+Future<Response> api_siteCheck_editAnswer(int checkId, bool answer) async {
+  String uri = api_hostURI + "siteCheck/answer/${checkId}";
+  late Response res;
+  Map body = {'answer': answer};
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 체크리스트 상태 수정 완료");
+  } catch (e) {
+    print(">>> 체크리스트 상태 수정 실패");
   }
   return res;
 }
