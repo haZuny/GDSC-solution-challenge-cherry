@@ -37,7 +37,7 @@ class _SelectRolePage extends State<SelectRolePage> {
                     /// Manager
                     ElevatedButton(
                       onPressed: () {
-                        global_signUpClass = enum_Role.manager;
+                        global_userRole = enum_Role.manager;
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -83,7 +83,7 @@ class _SelectRolePage extends State<SelectRolePage> {
                     /// Employee
                     ElevatedButton(
                       onPressed: () {
-                        global_signUpClass = enum_Role.employee;
+                        global_userRole = enum_Role.user;
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

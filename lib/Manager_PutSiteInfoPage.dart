@@ -183,8 +183,13 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                             global_googleSignIn?.signOut();
                             api_admin_logout();
                             print(">>> Google SignOut");
-                            Navigator.pushReplacement(
-                                context, Transition(child: SignInPage()));
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                Transition(
+                                    child: SignInPage(),
+                                    transitionEffect:
+                                        TransitionEffect.LEFT_TO_RIGHT),
+                                (_) => false);
                           },
                           child: Text(
                             "Back",
@@ -194,7 +199,10 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                           )),
 
                       /// 간격
-                      Container(width: getFullScrennSizePercent(context, putSiteInfoPage_spaceBottomBtn),),
+                      Container(
+                        width: getFullScrennSizePercent(
+                            context, putSiteInfoPage_spaceBottomBtn),
+                      ),
 
                       // next 버튼
                       TextButton(
@@ -220,10 +228,13 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                                   _addrList[_selectedAddrIdx].addr2!);
 
                               print(">>> 현장 생성 성공");
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePageManager()));
+                                  Transition(
+                                      child: HomePageManager(),
+                                      transitionEffect:
+                                      TransitionEffect.RIGHT_TO_LEFT),
+                                      (_) => false);
                             } catch (e) {
                               print('>>> 현장 생성 실패');
                               print(e);

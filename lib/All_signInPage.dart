@@ -12,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:transition/transition.dart';
 
 import 'AppBar_Drawer.dart';
+import 'Emp_WaitingAcceptPage.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -50,6 +51,7 @@ class _SignInPage extends State<SignInPage> {
                     // 변수 초기화
                     String _signInRole = 'null';
                     bool _siteAssigned = false;
+                    bool _waitingAccept = false;
 
                     try {
                       await global_googleSignIn!.signOut();
@@ -74,6 +76,8 @@ class _SignInPage extends State<SignInPage> {
                       dio.options.headers = {
                         'Authorization': "bearer " + authorization,
                       };
+
+                      print(res.data);
                     } catch (e) {}
 
                     // User SignIn
@@ -83,7 +87,7 @@ class _SignInPage extends State<SignInPage> {
                       // 변수 설정
                       _signInRole = res.data['data']['role'];
                       _siteAssigned = res.data['data']['existSiteInfo'];
-                      global_userId = res.data['data']['id'];
+                      _waitingAccept = res.data['data']['waitingAccept'];
                       global_userId = res.data['data']['id'];
                       authorization =
                           res.headers['authorization']![0].split(' ')[1];
@@ -91,6 +95,8 @@ class _SignInPage extends State<SignInPage> {
                       dio.options.headers = {
                         'Authorization': "bearer " + authorization,
                       };
+
+                      print(res.data);
                     } catch (e) {}
 
                     if (_signInRole == "ADMIN") {
@@ -104,34 +110,44 @@ class _SignInPage extends State<SignInPage> {
                         );
                       } else {
                         // 관리자 현장 생성 페이지로 이동
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             Transition(
                                 child: PutSiteInfoPageManager(),
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
                       }
-                      print(">>> 관리자 로그인 성공");
                     } else if (_signInRole == "GUEST") {
-                      // 게스트 홈페이지로 이동
-                      if (_siteAssigned) {
-                        Navigator.pushReplacement(
+                      // 승인 대기중
+                      if (_waitingAccept) {
+                        Navigator.push(
                             context,
                             Transition(
-                                child: HomePageEmp(),
+                                child: WaitingAcceptPage(),
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
-                      } else {
-                        // 게스트 현장 가입 페이지로 이동
-                        Navigator.pushReplacement(
+                      }
+                      // 현장 코드 입력해야함
+                      else {
+                        Navigator.push(
                             context,
                             Transition(
                                 child: PutCheckCodePageEmp(),
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
                       }
-                      print(">>> 근로자 로그인 성공");
-                    } else {
+                    }
+                    // 유저
+                    else if (_signInRole == "USER") {
+                      Navigator.pushReplacement(
+                          context,
+                          Transition(
+                              child: HomePageEmp(),
+                              transitionEffect:
+                                  TransitionEffect.RIGHT_TO_LEFT));
+                    }
+                    // 회원가입 안함
+                    else {
                       // 회원가입 페이지로 이동
                       Navigator.push(
                           context,

@@ -209,7 +209,7 @@ class _SignUpPage extends State<SignUpPage> {
                         }
 
                         // 근로자 가입
-                        if (global_signUpClass == enum_Role.employee) {
+                        if (global_userRole == enum_Role.user) {
                           Response res = await api_user_signUp(
                               global_googleUser!.email, name, phNum, age);
                           if (res.data["success"]) {

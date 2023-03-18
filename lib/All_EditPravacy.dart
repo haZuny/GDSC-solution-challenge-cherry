@@ -1,3 +1,4 @@
+import 'package:cherry_app/Emp_HomePage.dart';
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/Manager_HomePage.dart';
 import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
@@ -218,20 +219,36 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
                           return;
                         }
 
-                        Response res =
-                            await api_admin_editPrivacy(name, phNum, age);
-                        if (res.data["success"]) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              Transition(
-                                  child: HomePageManager(),
-                                  transitionEffect:
-                                      TransitionEffect.LEFT_TO_RIGHT),
-                              (_) => false);
+                        late Response res;
+                        if (global_userRole == enum_Role.manager) {
+                          // 관리자
+                          try {
+                            res = await api_admin_editPrivacy(name, phNum, age);
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                Transition(
+                                    child: HomePageManager(),
+                                    transitionEffect:
+                                        TransitionEffect.LEFT_TO_RIGHT),
+                                (_) => false);
+                          } catch (e) {}
+                        }
+                        // 유저
+                        else if(global_userRole == enum_Role.user) {
+                          try {
+                            res = await api_user_editPrivacy(name, phNum, age);
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                Transition(
+                                    child: HomePageEmp(),
+                                    transitionEffect:
+                                        TransitionEffect.LEFT_TO_RIGHT),
+                                (_) => false);
+                          } catch (e) {}
                         }
                       },
                       child: Text(
-                        "Next",
+                        "Done",
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),

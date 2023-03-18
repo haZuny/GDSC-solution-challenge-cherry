@@ -2,310 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-/// ########################
-/// API
-/// ########################
-Dio dio = Dio();
-String api_hostURI = "http://3.37.201.188:8080/";
-String authorization = '';
-String refreshToken = '';
-
-/// Admin
-// AdminSignUp
-Future<Response> api_admin_signUp(String email, String adminName,
-    String adminPhoneNum, String adminAge) async {
-  String uri = api_hostURI + "admin/testSignUp?email=$email";
-  Map body = {
-    "adminName": adminName,
-    "adminPhoneNum": adminPhoneNum,
-    "adminAge": int.parse(adminAge)
-  };
-  late Response res;
-  try {
-    res = await dio.post(uri, data: body);
-    global_userId = res.data["data"];
-    print(">>> 관리자 가입 성공");
-  } catch (e) {
-    print(">>> 관리자 가입 실패");
-  }
-  return res;
-}
-
-// AdminLogin
-Future<Response> api_admin_signIn(String email) async {
-  String uri = api_hostURI + "admin/testSignIn?email=$email";
-  late Response res;
-  try {
-    res = await dio.post(uri);
-    print(res);
-    print(">>> 관리자 로그인 성공");
-  } catch (e) {
-    print(">>> 관리자 로그인 실패");
-  }
-  return res;
-}
-
-// logout
-Future<Response> api_admin_logout() async {
-  String uri = api_hostURI + "admin/logout";
-  dio.options.headers = {
-    'Authorization': "bearer " + authorization,
-    'RefreshToken': refreshToken
-  };
-
-  late Response res;
-  try {
-    res = await dio.post(uri);
-    print(">>> 관리자 로그아웃 성공");
-  } catch (e) {
-    print(">>> 관리자 로그아웃 실패");
-  }
-  return res;
-}
-
-// getSiteInfo
-Future<Response> api_admin_getSiteInfo(String email) async {
-  late Response res;
-  try {
-    String uri = api_hostURI + "admin/getSiteInfo?email=$email";
-    res = await dio.get(uri);
-    global_siteId = res.data['data'];
-    print(">>> 유저 현장 정보 조회 성공");
-  } catch (e) {
-    print(">>> 유저 현장 정보 조회 실패");
-  }
-  return res;
-}
-
-// 관리자 개인 정보 조회
-Future<Response> api_admin_getPrivacy(int id) async {
-  late Response res;
-  try {
-    print(id);
-    String uri = api_hostURI + "admin/$id";
-    res = await dio.get(uri);
-    print(res);
-    global_userName = res.data['data']['adminName'];
-    global_userPhoneNum = res.data['data']['adminPhoneNum'];
-    global_userAge = res.data['data']['adminAge'];
-    print(">>> 관리자 개인 정보 조회 성공");
-  } catch (e) {
-    print(">>> 관리자 개인 정보 조회 실패");
-  }
-  return res;
-}
-// 관리자 정보 수정
-Future<Response> api_admin_editPrivacy(String adminName,
-    String adminPhoneNum, String adminAge) async {
-  String uri = api_hostURI + "admin/editInfo";
-  Map body = {
-    "adminName": adminName,
-    "adminPhoneNum": adminPhoneNum,
-    "adminAge": int.parse(adminAge)
-  };
-  late Response res;
-  try {
-    res = await dio.patch(uri, data: body);
-    print(">>> 관리자 정보 수정 성공");
-  } catch (e) {
-    print(">>> 관리자 정보 수정 실패");
-  }
-  return res;
-}
-// 대기 유저 조회
-Future<Response> api_admin_getWaitingList(int siteId) async {
-  String uri = api_hostURI + "admin/acceptList/$siteId";
-  late Response res;
-  try {
-    res = await dio.get(uri,);
-    print(">>> 관리자 대기 유저 목록 조회 완료");
-  } catch (e) {
-    print(">>> 관리자 대기 유저 목록 조회 완료");
-  }
-  return res;
-}
-
-/// User
-// UserSignUp
-Future<Response> api_user_signUp(
-    String email, String userName, String userPhoneNum, String userAge) async {
-  String uri = api_hostURI + "user/testSignUp?email=$email";
-  Map body = {
-    "userName": userName,
-    "userPhoneNum": userPhoneNum,
-    "userAge": int.parse(userAge)
-  };
-  late Response res;
-  try {
-    res = await dio.post(uri, data: body);
-    global_userId = res.data["data"];
-    print(">>> 유저 가입 성공");
-  } catch (e) {
-    print(e);
-    print(">>> 유저 가입 실패");
-  }
-  return res;
-}
-
-// UserLogin
-Future<Response> api_user_signIn(String email) async {
-  String uri = api_hostURI + "user/testSignIn?email=$email";
-  late Response res;
-  try {
-    res = await dio.post(uri);
-    print(">>> 유저 로그인 성공");
-  } catch (e) {
-    print(">>> 유저 로그인 실패");
-  }
-  return res;
-}
-
-// logout
-Future<Response> api_user_logout() async {
-  String uri = api_hostURI + "user/logout";
-  dio.options.headers = {
-    'Authorization': "bearer " + authorization,
-    'RefreshToken': refreshToken
-  };
-  late Response res;
-  try {
-    res = await dio.post(uri);
-    print(">>> 유저 로그아웃 성공");
-  } catch (e) {
-    print(">>> 유저 로그아웃 실패");
-  }
-  return res;
-}
-// getSiteInfo
-Future<Response> api_user_getSiteInfo(String email) async {
-  String uri = api_hostURI + "user/getSiteInfo?email=$email";
-  late Response res;
-  try {
-    res = await dio.get(uri);
-    global_siteId = res.data['data'];
-    print(">>> 유저 현장 정보 조회 성공");
-  } catch (e) {
-    print(">>> 유저 현장 정보 조회 실패");
-  }
-  return res;
-}
-// inputCheckCode
-Future<Response> api_user_returnCheckCode(String checkCode) async {
-  String uri = api_hostURI + "user/acceptSite";
-  Map body = {
-    "siteCode" : checkCode
-  };
-  late Response res;
-  try {
-    res = await dio.patch(uri, data: body);
-    print(res);
-    print(">>> 유저 현장코드 제출 완료");
-  } catch (e) {
-    print(">>> 유저 현장 코드 제출 실패");
-  }
-  return res;
-}
-
-/// Site
-// getSiteInfo
-Future<Response> api_site_getSiteInfo(int siteId) async {
-  String uri = api_hostURI + "site/$siteId";
-  late Response res;
-  try {
-    res = await dio.get(
-      uri,
-    );
-    global_siteCode = res.data['data']['siteCode'];
-    global_siteName = res.data['data']['siteName'];
-    global_siteLat = res.data['data']['siteLatitude'];
-    global_siteLon = res.data['data']['siteLongitude'];
-    global_siteAdd1 = res.data['data']['address1'];
-    global_siteAdd2 = res.data['data']['address2'];
-    print(">>> 현장 정보 조회 성공");
-  } catch (e) {
-    print(">>> 현장 정보 조회 실패");
-  }
-  return res;
-}
-
-// CreateSite
-Future<Response> api_site_createSite(String siteName, double latitude,
-    double longitude, String address1, String address2) async {
-  String uri = api_hostURI + "site/createSite";
-  Map createSiteBody = {
-    "siteName": siteName,
-    "siteLatitude": latitude,
-    "siteLongitude": longitude,
-    "address1": address1,
-    "address2": address2,
-  };
-  late Response res;
-  try {
-    res = await dio.post(uri, data: createSiteBody);
-    print(">>> 현장 생성 성공");
-  } catch (e) {
-    print(">>> 현장 생성 실패");
-  }
-  return res;
-}
-
-// 현장 정보 수정
-Future<Response> api_site_editSite(int siteId, String siteName, double latitude,
-    double longitude, String address1, String address2) async {
-  String uri = api_hostURI + "site/$siteId";
-  Map createSiteBody = {
-    "siteName": siteName,
-    "siteLatitude": latitude,
-    "siteLongitude": longitude,
-    "address1": address1,
-    "address2": address2,
-  };
-  late Response res;
-  try {
-    res = await dio.patch(uri, data: createSiteBody);
-    print(">>> 현장 정보 수정 성공");
-  } catch (e) {
-    print(">>> 현장 정보 수정 실패");
-  }
-  return res;
-}
-
-// 현장 정보 삭제
-Future<Response> api_site_deleteSite(int siteId) async {
-  String uri = api_hostURI + "site/$siteId";
-  late Response res;
-  try {
-    res = await dio.delete(uri);
-    print(">>> 현장 제거 성공");
-  } catch (e) {
-    print(">>> 현장 제거 실패");
-  }
-  return res;
-}
-
-// 현장 코드 유효 여부 조회
-Future<Response> api_site_vaildCheck(String siteCode) async {
-  String uri = api_hostURI + "site/valid/$siteCode";
-  late Response res;
-  try {
-    res = await dio.get(uri);
-    print(res);
-    print(">>> 현장 코드 유효 여부 조회 완료");
-  } catch (e) {
-    print(">>> 현장 코드 유효 여부 조회 실패");
-  }
-  return res;
-}
-
 /// var
 // SignIn
 GoogleSignIn? global_googleSignIn;
 GoogleSignInAccount? global_googleUser; // 구글 로그인
 
 // SignUp logic, 회원가입시 어느 페이지 선택했는지 결정
-enum enum_Role { manager, employee }
-
-enum_Role? global_signUpClass;
+enum enum_Role { manager, user, staff }
+enum_Role? global_userRole;
 // site
 int global_siteId = -1;
 String global_siteCode = "";
@@ -465,11 +169,19 @@ int manageEmpPage_page1_spacePerBigBox = 10; // 두 영역 사이 간격
 int manageEmpPage_page2_spacePerTitle = 10; // 타이틀과의 간격
 int manageEmpPage_page2_waiteListHeight = 110; // 타이틀과의 간격
 int manageEmpPage_pageIndicatorIconSize = 3; // 페이지 표시 아이콘 크기
+int manageEmpPage_spaceTopBottom = 10; // 위 아래 여백 크기
+int manageEmpPage_spacePerRole = 5; // role 드롭다운과 텍스트 사이 간격
 // Padding
 double manageEmpPage_listTilePaddingTopBottom = 5; // 리스트 타일 패딩(위아래)
 double manageEmpPage_listTilePadding = 15; // 리스트 타일 패딩
 // Font
 double manageEmpPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
+
+/// EmergencyPage
+// Size
+int emergencyPage_spacePerTitle = 3; // 타이틀과의 간격
+int emergencyPage_spacePerMap = 10; // 지도와의 간격
+int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
 
 /// ViewPeopleInfoPage
 // Size
@@ -479,19 +191,444 @@ int viewPeopleInfoPage_spacePerBtns = 10; // 버튼끼리 간격
 // Font
 double viewPeopleInfoPage_fontSize = 20; // 폰트 크기
 
-/// EmergencyPage
+/// ViewWaitingListPage
 // Size
-int emergencyPage_spacePerTitle = 3; // 타이틀과의 간격
-int emergencyPage_spacePerMap = 10; // 지도와의 간격
-int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
+int viewWaitingListDialog_spacePerText = 2; // 텍스트간 간격
+int viewWaitingListDialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
+int viewWaitingListDialog_spacePerBtns = 10; // 버튼끼리 간격
+// Font
+double viewWaitingListDialog_fontSize = 20; // 폰트 크기
+// Round
+double viewWaitingListDialog_dialogRound = 20; // 둥글기
 
 /// 화면 사이즈 대비 퍼센트 반환 함수(가로)
-// double getFullScrennSizePercent(BuildContext context, int percent, bool isWidth){
-//   if (isWidth)
-//     return MediaQuery.of(context).size.width * percent / 100;
-//   else
-//     return MediaQuery.of(context).size.height * percent / 100;
-// }
 double getFullScrennSizePercent(BuildContext context, int percent) {
   return MediaQuery.of(context).size.width * percent / 100;
+}
+
+/// ########################
+/// API
+/// ########################
+Dio dio = Dio();
+String api_hostURI = "http://3.37.201.188:8080/";
+String authorization = '';
+String refreshToken = '';
+
+/// Admin
+// AdminSignUp
+Future<Response> api_admin_signUp(String email, String adminName,
+    String adminPhoneNum, String adminAge) async {
+  String uri = api_hostURI + "admin/testSignUp?email=$email";
+  Map body = {
+    "adminName": adminName,
+    "adminPhoneNum": adminPhoneNum,
+    "adminAge": int.parse(adminAge)
+  };
+  late Response res;
+  try {
+    res = await dio.post(uri, data: body);
+    global_userId = res.data["data"];
+    print(">>> 관리자 가입 성공");
+  } catch (e) {
+    print(">>> 관리자 가입 실패");
+  }
+  return res;
+}
+
+// AdminLogin
+Future<Response> api_admin_signIn(String email) async {
+  String uri = api_hostURI + "admin/testSignIn?email=$email";
+  late Response res;
+  try {
+    res = await dio.post(uri);
+    print(">>> 관리자 로그인 성공");
+  } catch (e) {
+    print(">>> 관리자 로그인 실패");
+  }
+  return res;
+}
+
+// logout
+Future<Response> api_admin_logout() async {
+  String uri = api_hostURI + "admin/logout";
+  dio.options.headers = {
+    'Authorization': "bearer " + authorization,
+    'RefreshToken': refreshToken
+  };
+
+  late Response res;
+  try {
+    res = await dio.post(uri);
+    print(">>> 관리자 로그아웃 성공");
+  } catch (e) {
+    print(">>> 관리자 로그아웃 실패");
+  }
+  return res;
+}
+
+// getSiteInfo
+Future<Response> api_admin_getSiteInfo(String email) async {
+  late Response res;
+  try {
+    String uri = api_hostURI + "admin/getSiteInfo?email=$email";
+    res = await dio.get(uri);
+    global_siteId = res.data['data'];
+    print(">>> 유저 현장 정보 조회 성공");
+  } catch (e) {
+    print(">>> 유저 현장 정보 조회 실패");
+  }
+  return res;
+}
+
+// 관리자 개인 정보 조회
+Future<Response> api_admin_getPrivacy(int id) async {
+  late Response res;
+  try {
+    print(id);
+    String uri = api_hostURI + "admin/$id";
+    res = await dio.get(uri);
+    global_userName = res.data['data']['adminName'];
+    global_userPhoneNum = res.data['data']['adminPhoneNum'];
+    global_userAge = res.data['data']['adminAge'];
+    print(">>> 관리자 개인 정보 조회 성공");
+  } catch (e) {
+    print(">>> 관리자 개인 정보 조회 실패");
+  }
+  return res;
+}
+
+// 관리자 정보 수정
+Future<Response> api_admin_editPrivacy(
+    String adminName, String adminPhoneNum, String adminAge) async {
+  String uri = api_hostURI + "admin/editInfo";
+  Map body = {
+    "adminName": adminName,
+    "adminPhoneNum": adminPhoneNum,
+    "adminAge": int.parse(adminAge)
+  };
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 관리자 정보 수정 성공");
+  } catch (e) {
+    print(">>> 관리자 정보 수정 실패");
+  }
+  return res;
+}
+
+// 유저 목록 조회
+Future<Response> api_admin_getUserList(int siteId) async {
+  String uri = api_hostURI + "admin/checkHelmet/$siteId";
+  late Response res;
+  try {
+    res = await dio.get(
+      uri,
+    );
+    print(">>> 유저 목록 조회 완료");
+  } catch (e) {
+    print(">>> 유저 목록 조회 완료");
+  }
+  return res;
+}
+
+// 대기 유저 조회
+Future<Response> api_admin_getWaitingList(int siteId) async {
+  String uri = api_hostURI + "admin/acceptList/$siteId";
+  late Response res;
+  try {
+    res = await dio.get(
+      uri,
+    );
+    print(">>> 관리자 대기 유저 목록 조회 완료");
+  } catch (e) {
+    print(">>> 관리자 대기 유저 목록 조회 실패");
+  }
+  return res;
+}
+
+// 유저 상세 정보 조회
+Future<Response> api_admin_getUserInfo(int userId) async {
+  String uri = api_hostURI + "admin/detail/$userId";
+  late Response res;
+  try {
+    res = await dio.get(
+      uri,
+    );
+    print(">>> 관리자 유저 상세정보 조회 완료");
+  } catch (e) {
+    print(">>> 관리자 유저 상세정보 조회 실패");
+  }
+  return res;
+}
+
+// 유저 등급 변경
+Future<Response> api_admin_changeUserRole(int userId, String role) async {
+  String uri = api_hostURI + "admin/acceptUser/$userId";
+  late Response res;
+  Map body = {'role': role};
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 관리자 유저 등급 변경 완료");
+  } catch (e) {
+    print(">>> 관리자 유저 등급 변경 실패");
+  }
+  return res;
+}
+
+// 유저 현장에서 제거
+Future<Response> api_admin_deleteEmp(int userId) async {
+  String uri = api_hostURI + "admin/$userId";
+  late Response res;
+  try {
+    res = await dio.delete(uri);
+    print(">>> 관리자 유저 제거 완료");
+  } catch (e) {
+    print(">>> 관리자 유저 제거 실패");
+  }
+  return res;
+}
+
+// 대기 유저 승인
+Future<Response> api_admin_acceptWaiting(int userId) async {
+  String uri = api_hostURI + "admin/acceptGuest/$userId";
+  late Response res;
+  try {
+    res = await dio.patch(uri);
+    print(">>> 관리자 대기 유저 승인 완료");
+  } catch (e) {
+    print(">>> 관리자 대기 유저 승인 실패");
+  }
+  return res;
+}
+
+// 유저 삭제
+Future<Response> api_admin_deleteUser(int userId) async {
+  String uri = api_hostURI + "admin/$userId";
+  late Response res;
+  try {
+    res = await dio.delete(uri);
+    print(">>> 관리자 유저 삭제 완료");
+  } catch (e) {
+    print(">>> 관리자 유저 삭제 실패");
+  }
+  return res;
+}
+
+/// User
+// UserSignUp
+Future<Response> api_user_signUp(
+    String email, String userName, String userPhoneNum, String userAge) async {
+  String uri = api_hostURI + "user/testSignUp?email=$email";
+  Map body = {
+    "userName": userName,
+    "userPhoneNum": userPhoneNum,
+    "userAge": int.parse(userAge)
+  };
+  late Response res;
+  try {
+    res = await dio.post(uri, data: body);
+    global_userId = res.data["data"];
+    print(">>> 유저 가입 성공");
+  } catch (e) {
+    print(e);
+    print(">>> 유저 가입 실패");
+  }
+  return res;
+}
+
+// UserLogin
+Future<Response> api_user_signIn(String email) async {
+  String uri = api_hostURI + "user/testSignIn?email=$email";
+  late Response res;
+  try {
+    res = await dio.post(uri);
+    print(">>> 유저 로그인 성공");
+  } catch (e) {
+    print(">>> 유저 로그인 실패");
+  }
+  return res;
+}
+
+// logout
+Future<Response> api_user_logout() async {
+  String uri = api_hostURI + "user/logout";
+  dio.options.headers = {
+    'Authorization': "bearer " + authorization,
+    'RefreshToken': refreshToken
+  };
+  late Response res;
+  try {
+    res = await dio.post(uri);
+    print(">>> 유저 로그아웃 성공");
+  } catch (e) {
+    print(">>> 유저 로그아웃 실패");
+  }
+  return res;
+}
+
+// getSiteInfo
+Future<Response> api_user_getSiteInfo(String email) async {
+  String uri = api_hostURI + "user/getSiteInfo?email=$email";
+  late Response res;
+  try {
+    res = await dio.get(uri);
+    global_siteId = res.data['data'];
+    print(">>> 유저 현장 정보 조회 성공");
+  } catch (e) {
+    print(">>> 유저 현장 정보 조회 실패");
+  }
+  return res;
+}
+
+// 유저 개인 정보 조회
+Future<Response> api_user_getPrivacy(int id) async {
+  late Response res;
+  try {
+    print(id);
+    String uri = api_hostURI + "user/$id";
+    res = await dio.get(uri);
+    global_userName = res.data['data']['userName'];
+    global_userPhoneNum = res.data['data']['userPhoneNum'];
+    global_userAge = res.data['data']['userAge'];
+    print(">>> 유저 개인 정보 조회 성공");
+  } catch (e) {
+    print(">>> 유저 개인 정보 조회 실패");
+  }
+  return res;
+}
+
+// 유저 정보 수정
+Future<Response> api_user_editPrivacy(
+    String userName, String userPhoneNum, String userAge) async {
+  String uri = api_hostURI + "user/editInfo";
+  Map body = {
+    "userName": userName,
+    "userPhoneNum": userPhoneNum,
+    "userAge": int.parse(userAge)
+  };
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 유저 개인 정보 수정 성공");
+  } catch (e) {
+    print(">>> 유저 개인 정보 수정 실패");
+  }
+  return res;
+}
+
+// inputCheckCode
+Future<Response> api_user_returnCheckCode(String checkCode) async {
+  String uri = api_hostURI + "user/acceptSite";
+  Map body = {"siteCode": checkCode};
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: body);
+    print(">>> 유저 현장코드 제출 완료");
+  } catch (e) {
+    print(">>> 유저 현장 코드 제출 실패");
+  }
+  return res;
+}
+
+// cancleCheckCode
+Future<Response> api_user_cancleCheckCode(int userId) async {
+  String uri = api_hostURI + "user/cancelAccept/$userId";
+  late Response res;
+  try {
+    res = await dio.patch(uri);
+    print(">>> 유저 승인 대기 취소 완료");
+  } catch (e) {
+    print(">>> 유저 승인 대기 취소 실패");
+  }
+  return res;
+}
+
+/// Site
+// getSiteInfo
+Future<Response> api_site_getSiteInfo(int siteId) async {
+  String uri = api_hostURI + "site/$siteId";
+  late Response res;
+  try {
+    res = await dio.get(
+      uri,
+    );
+    global_siteCode = res.data['data']['siteCode'];
+    global_siteName = res.data['data']['siteName'];
+    global_siteLat = res.data['data']['siteLatitude'];
+    global_siteLon = res.data['data']['siteLongitude'];
+    global_siteAdd1 = res.data['data']['address1'];
+    global_siteAdd2 = res.data['data']['address2'];
+    print(">>> 현장 정보 조회 성공");
+  } catch (e) {
+    print(">>> 현장 정보 조회 실패");
+  }
+  return res;
+}
+
+// CreateSite
+Future<Response> api_site_createSite(String siteName, double latitude,
+    double longitude, String address1, String address2) async {
+  String uri = api_hostURI + "site/createSite";
+  Map createSiteBody = {
+    "siteName": siteName,
+    "siteLatitude": latitude,
+    "siteLongitude": longitude,
+    "address1": address1,
+    "address2": address2,
+  };
+  late Response res;
+  try {
+    res = await dio.post(uri, data: createSiteBody);
+    print(">>> 현장 생성 성공");
+  } catch (e) {
+    print(">>> 현장 생성 실패");
+  }
+  return res;
+}
+
+// 현장 정보 수정
+Future<Response> api_site_editSite(int siteId, String siteName, double latitude,
+    double longitude, String address1, String address2) async {
+  String uri = api_hostURI + "site/$siteId";
+  Map createSiteBody = {
+    "siteName": siteName,
+    "siteLatitude": latitude,
+    "siteLongitude": longitude,
+    "address1": address1,
+    "address2": address2,
+  };
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: createSiteBody);
+    print(">>> 현장 정보 수정 성공");
+  } catch (e) {
+    print(">>> 현장 정보 수정 실패");
+  }
+  return res;
+}
+
+// 현장 정보 삭제
+Future<Response> api_site_deleteSite(int siteId) async {
+  String uri = api_hostURI + "site/$siteId";
+  late Response res;
+  try {
+    res = await dio.delete(uri);
+    print(">>> 현장 제거 성공");
+  } catch (e) {
+    print(">>> 현장 제거 실패");
+  }
+  return res;
+}
+
+// 현장 코드 유효 여부 조회
+Future<Response> api_site_vaildCheck(String siteCode) async {
+  String uri = api_hostURI + "site/valid/$siteCode";
+  late Response res;
+  try {
+    res = await dio.get(uri);
+    print(">>> 현장 코드 유효 여부 조회 완료");
+  } catch (e) {
+    print(">>> 현장 코드 유효 여부 조회 실패");
+  }
+  return res;
 }

@@ -113,7 +113,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
   /// 사진 촬영 메소드
   Future getMyImage() async {
     PickedFile? pickedImage =
-        await _picker.getImage(source: ImageSource.camera);
+        await _picker.getImage(source: ImageSource.gallery);
     // 이미지 보여주기
     setState(() {
       helmetImage = Image.file(File(pickedImage!.path));

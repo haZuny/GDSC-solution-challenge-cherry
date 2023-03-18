@@ -19,7 +19,7 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: global_signUpClass == enum_Role.employee
+          drawer: global_userRole == enum_Role.user
               ? DrawerEmp()
               : DrawerManager(),
           body: Container(

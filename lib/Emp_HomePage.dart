@@ -15,10 +15,15 @@ class _HomePageEmp extends State<HomePageEmp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    try{
+    try {
+      // 현장 정보 조회
       api_user_getSiteInfo(global_googleUser!.email)
-          .then((value) =>api_site_getSiteInfo(global_siteId)).then((value) => print(">>> user 현장 정보 조회 성공"));
-    }catch(e){
+          .then((value) => api_site_getSiteInfo(global_siteId));
+      // 개인 정보 조회
+      api_user_getPrivacy(global_userId);
+      // 현재 로그인된 계정 등급 설정
+      global_userRole = enum_Role.user;
+    } catch (e) {
       print(">>> user 현장 정보 조회 실패");
     }
   }
@@ -75,12 +80,16 @@ class _HomePageEmp extends State<HomePageEmp> {
                         /// 헬멧 체크 버튼
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HelmetCheckPage()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HelmetCheckPage()));
                           },
                           // 내부 컴포넌트
                           child: Text(
                             "Helmet wear\ninspection",
-                            style: TextStyle(color: Color(themaColor_whiteBlack)),
+                            style:
+                                TextStyle(color: Color(themaColor_whiteBlack)),
                             textAlign: TextAlign.center,
                           ),
                           style: ElevatedButton.styleFrom(
@@ -119,12 +128,16 @@ class _HomePageEmp extends State<HomePageEmp> {
                         /// 현장 체크 현황 확인
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckListPageEmp()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CheckListPageEmp()));
                           },
                           // 내부 컴포넌트
                           child: Text(
                             "Today's site\nCheck List",
-                            style: TextStyle(color: Color(themaColor_whiteBlack)),
+                            style:
+                                TextStyle(color: Color(themaColor_whiteBlack)),
                             textAlign: TextAlign.center,
                           ),
                           style: ElevatedButton.styleFrom(
@@ -159,14 +172,17 @@ class _HomePageEmp extends State<HomePageEmp> {
 
                   /// 간격
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, homePage_spacePerBtn),
+                    height:
+                        getFullScrennSizePercent(context, homePage_spacePerBtn),
                   ),
 
                   /// 긴급 버튼
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EmergencyPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EmergencyPage()));
                     },
                     // 내부 컴포넌트
                     child: Text(
@@ -190,7 +206,8 @@ class _HomePageEmp extends State<HomePageEmp> {
                                 context, homePage_bigBtnHeight)),
                         // 모양 및 테두리 설정
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(allPage_btnRadius),
+                          borderRadius:
+                              BorderRadius.circular(allPage_btnRadius),
                           side: BorderSide(
                               color: Color(themaColor_black),
                               width: allPage_btnBorderWidth),

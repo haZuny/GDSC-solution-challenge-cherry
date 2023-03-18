@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:transition/transition.dart';
 
+import 'All_SiteInfoPage.dart';
 import 'baseFile.dart';
 
 /// None AppBar
@@ -39,6 +40,15 @@ class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
 
 /// Emp Drawer
 class DrawerEmp extends StatelessWidget {
+  late ImageProvider profileImg;
+
+  DrawerEmp(){
+    if (global_googleUser?.photoUrl == null) {
+      profileImg = AssetImage('assets/img/defaultUserImg.png');
+    } else {
+      profileImg = NetworkImage(global_googleUser!.photoUrl!);
+    }
+  }
   @override
   Widget build(context) => Drawer(
         child: ListView(
@@ -52,11 +62,11 @@ class DrawerEmp extends StatelessWidget {
             /// 상단 유저 정보
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/logo.png'),
+                backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName: Text("Employee"),
-              accountEmail: Text("hj3175791@gmail.com"),
+              accountName: Text(global_userRole==enum_Role.user ? "USER" : "STAFF"),
+              accountEmail: Text(global_googleUser!.email),
               decoration: BoxDecoration(
                 color: Color(themaColor_black),
               ),
@@ -66,14 +76,31 @@ class DrawerEmp extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.assignment),
               title: Text("Site Information"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  Transition(
+                      child: SiteInfoPageAll(),
+                      transitionEffect:
+                      TransitionEffect.RIGHT_TO_LEFT),
+                );
+              },
             ),
 
             /// 설정
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Privacy settings"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  Transition(
+                      child: EditPrivacyPage(),
+                      transitionEffect:
+                      TransitionEffect.RIGHT_TO_LEFT),);
+              },
             ),
             Divider(
                 color: Color(themaColor_whiteBlack),
@@ -84,7 +111,18 @@ class DrawerEmp extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text("Sign out"),
-              onTap: () {},
+              onTap: () async {
+                Response? res;
+                try {
+                  res = await api_user_logout();
+                } catch (e) {}
+                if (res?.data['success']) {
+                  global_googleSignIn?.signOut();
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: SignInPage()), (route) => false);
+                  print(">>> SuccessLogout");
+                }
+              },
             )
           ],
         ),
@@ -119,7 +157,7 @@ class DrawerManager extends StatelessWidget {
                 backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName: Text("Manager"),
+              accountName: Text("ADMIN"),
               accountEmail: Text(global_googleUser!.email!),
               decoration: BoxDecoration(
                 color: Color(themaColor_black),

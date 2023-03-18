@@ -152,8 +152,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                             global_googleSignIn?.signOut();
                             api_user_logout();
                             print(">>> Google SignOut");
-                            Navigator.pushReplacement(
-                                context, Transition(child: SignInPage()));
+                            Navigator.pushAndRemoveUntil(context, Transition(child: SignInPage(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
                           },
                           child: Text(
                             "Back",
@@ -176,13 +175,12 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                               try {
                                 res = await api_user_returnCheckCode(checkCode);
                                 if (res.data['success']) {
-                                  Navigator.pushAndRemoveUntil(
+                                  Navigator.pushReplacement(
                                       context,
                                       Transition(
                                           child: WaitingAcceptPage(),
                                           transitionEffect:
-                                              TransitionEffect.RIGHT_TO_LEFT),
-                                      (_) => false);
+                                              TransitionEffect.RIGHT_TO_LEFT));
                                 }
                               } catch (e) {}
                             },
