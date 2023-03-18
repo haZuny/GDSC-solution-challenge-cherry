@@ -13,7 +13,17 @@ class PutCheckCodePageEmp extends StatefulWidget {
 }
 
 class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
+  String checkCode = "";
+  TextEditingController checkCodeController = TextEditingController();
   bool isChecked = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // reset
+    isChecked = false;
+  }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -50,6 +60,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: TextField(
+                      controller: checkCodeController,
                       decoration: InputDecoration(
                         // 힌트
                         hintText: "Code",
@@ -90,12 +101,39 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                         context, allPage_mainComponentsWidth),
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                        onPressed: () {},
+                        // 현장코드 유효 여부 조회
+                        onPressed: () async {
+                          // 현장코드
+                          checkCode = checkCodeController.text;
+                          // 현장 코드 유효 여부 조회
+                          late Response res;
+                          try {
+                            res = await api_site_vaildCheck(checkCode);
+                            // 현장코드 조회
+                            if (res.data['data'] == true) {
+                              setState(() {
+                                isChecked = true;
+                              });
+                              print(">>> 현장코드 존재");
+                            } else {
+                              setState(() {
+                                isChecked = false;
+                              });
+                              print(">>> 현장코드 없음");
+                            }
+                          } catch (e) {
+                            setState(() {
+                              isChecked = false;
+                            });
+                          }
+                        },
                         child: Text(
                           "Check",
                           style: TextStyle(
                               fontSize: putCheckCodePage_checkBtnFontSize,
-                              color: Color(allPage_btnSubFontColor)),
+                              color: Color(isChecked
+                                  ? allPage_btnFontColor
+                                  : allPage_btnSubFontColor)),
                         )),
                   ),
 
@@ -115,8 +153,7 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                             api_user_logout();
                             print(">>> Google SignOut");
                             Navigator.pushReplacement(
-                                context,
-                                Transition(child: SignInPage()));
+                                context, Transition(child: SignInPage()));
                           },
                           child: Text(
                             "Back",
@@ -126,15 +163,28 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                           )),
 
                       // 간격
-                      Container(width: getFullScrennSizePercent(context, putCheckCodePage_spaceBottomBtn)),
+                      Container(
+                          width: getFullScrennSizePercent(
+                              context, putCheckCodePage_spaceBottomBtn)),
 
                       /// next 버튼
                       if (isChecked)
                         TextButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  Transition(child: WaitingAcceptPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                          /// 현장코드 제출
+                            onPressed: () async {
+                              late Response res;
+                              try {
+                                res = await api_user_returnCheckCode(checkCode);
+                                if (res.data['success']) {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      Transition(
+                                          child: WaitingAcceptPage(),
+                                          transitionEffect:
+                                              TransitionEffect.RIGHT_TO_LEFT),
+                                      (_) => false);
+                                }
+                              } catch (e) {}
                             },
                             child: Text(
                               "Next",

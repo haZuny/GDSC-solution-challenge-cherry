@@ -14,6 +14,34 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
   /// 현재 페이지
   int currentPage = 0;
 
+  /// Waiting List
+  List<WaiteListTile> waitingUserList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // 초기화
+    setState(() {
+      waitingUserList.clear();
+    });
+
+    // 승인 대기 유저 조회
+    try {
+      api_admin_getWaitingList(global_siteId).then((value) {
+        setState(() {
+          print(value.data);
+          List dataList = value.data['data'];
+          for (Map data in dataList) {
+            waitingUserList.add(WaiteListTile(
+                data['userId'], data['userName'], data['userAge']));
+          }
+        });
+      });
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -21,7 +49,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer: DrawerManager(),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: Row(
@@ -169,7 +197,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                     children: [
                       /// 타이틀
                       Text(
-                        "Checked",
+                        "Waiting List",
                         style: TextStyle(fontSize: allPage_titleFontSize),
                       ),
 
@@ -195,16 +223,11 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius:
-                              BorderRadius.circular(allPage_bigBoxRadious)),
-                          child: ListView(
-                            children: [
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                              WaiteListTile("Hajun Kwon / 24 / Employee"),
-                            ],
+                                  BorderRadius.circular(allPage_bigBoxRadious)),
+                          child: ListView.builder(
+                            itemBuilder: (context, index) =>
+                                waitingUserList[index],
+                            itemCount: waitingUserList.length,
                           )),
                     ],
                   ),
@@ -244,42 +267,49 @@ class EmpListTile extends StatelessWidget {
             )
           ],
         ),
-    onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewEmpInfoPage()));
-    },
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ViewEmpInfoPage()));
+        },
       );
 }
 
 /// 리스트 타일 요소(두번째 화면)
 class WaiteListTile extends StatelessWidget {
-  late String msg;
+  late int userId;
+  late String userName;
+  late int userAge;
 
-  WaiteListTile(String msg) : this.msg = msg;
+  WaiteListTile(int id, String name, int age)
+      : this.userId = id,
+        this.userName = name,
+        this.userAge = age;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.all(manageEmpPage_listTilePadding),
-          child: Text(
-            "Hajun Kwon / 24 / Employee",
-            style: TextStyle(fontSize: manageEmpPage_listTextFontSize),
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(manageEmpPage_listTilePadding),
+              child: Text(
+                "$userName / $userAge",
+                style: TextStyle(fontSize: manageEmpPage_listTextFontSize),
+              ),
+            ),
+            Divider(
+              color: Color(themaColor_whiteBlack),
+              height: 0,
+            ),
+            // 간격
+            Container(
+              height: manageEmpPage_listTilePaddingTopBottom,
+            )
+          ],
         ),
-        Divider(
-          color: Color(themaColor_whiteBlack),
-          height: 0,
-        ),
-        // 간격
-        Container(
-          height: manageEmpPage_listTilePaddingTopBottom,
-        )
-      ],
-    ),
-    onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewWaiteInfoPage()));
-    },
-  );
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ViewWaiteInfoPage()));
+        },
+      );
 }

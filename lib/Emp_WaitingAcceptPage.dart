@@ -1,6 +1,8 @@
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
 
+import 'All_signInPage.dart';
 import 'AppBar_Drawer.dart';
 import 'Emp_HomePage.dart';
 
@@ -44,16 +46,43 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
               ),
 
               /// Re-type 버튼
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePageEmp()));
-                  },
-                  child: Text(
-                    "Re-type",
-                    style: TextStyle(
-                        fontSize: allPage_btnFontSize,
-                        color: Color(allPage_btnFontColor)),
-                  ))
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  /// Back 버튼
+                  TextButton(
+                      onPressed: () {
+                        global_googleSignIn?.signOut();
+                        api_user_logout();
+                        print(">>> Google SignOut");
+                        Navigator.pushReplacement(
+                            context, Transition(child: SignInPage()));
+                      },
+                      child: Text(
+                        "Back",
+                        style: TextStyle(
+                            fontSize: allPage_btnFontSize,
+                            color: Color(allPage_btnFontColor)),
+                      )),
+
+                  // 간격
+                  Container(
+                      width: getFullScrennSizePercent(
+                          context, waitingAcceptPage_spaceBottomBtn)),
+
+
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePageEmp()));
+                      },
+                      child: Text(
+                        "Re-type",
+                        style: TextStyle(
+                            fontSize: allPage_btnFontSize,
+                            color: Color(allPage_btnFontColor)),
+                      )),
+                ],
+              )
             ],
           ),
         ),

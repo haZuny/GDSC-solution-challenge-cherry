@@ -112,6 +112,18 @@ Future<Response> api_admin_editPrivacy(String adminName,
   }
   return res;
 }
+// 대기 유저 조회
+Future<Response> api_admin_getWaitingList(int siteId) async {
+  String uri = api_hostURI + "admin/acceptList/$siteId";
+  late Response res;
+  try {
+    res = await dio.get(uri,);
+    print(">>> 관리자 대기 유저 목록 조회 완료");
+  } catch (e) {
+    print(">>> 관리자 대기 유저 목록 조회 완료");
+  }
+  return res;
+}
 
 /// User
 // UserSignUp
@@ -164,7 +176,6 @@ Future<Response> api_user_logout() async {
   }
   return res;
 }
-
 // getSiteInfo
 Future<Response> api_user_getSiteInfo(String email) async {
   String uri = api_hostURI + "user/getSiteInfo?email=$email";
@@ -175,6 +186,22 @@ Future<Response> api_user_getSiteInfo(String email) async {
     print(">>> 유저 현장 정보 조회 성공");
   } catch (e) {
     print(">>> 유저 현장 정보 조회 실패");
+  }
+  return res;
+}
+// inputCheckCode
+Future<Response> api_user_returnCheckCode(String checkCode) async {
+  String uri = api_hostURI + "user/acceptSite";
+  Map body = {
+    "siteCode" : checkCode
+  };
+  late Response res;
+  try {
+    res = await dio.patch(uri, data: body);
+    print(res);
+    print(">>> 유저 현장코드 제출 완료");
+  } catch (e) {
+    print(">>> 유저 현장 코드 제출 실패");
   }
   return res;
 }
@@ -258,13 +285,14 @@ Future<Response> api_site_deleteSite(int siteId) async {
 
 // 현장 코드 유효 여부 조회
 Future<Response> api_site_vaildCheck(String siteCode) async {
-  String uri = api_hostURI + "site/valit/$siteCode";
+  String uri = api_hostURI + "site/valid/$siteCode";
   late Response res;
   try {
-    res = await dio.delete(uri);
-    print(">>> 현장 제거 성공");
+    res = await dio.get(uri);
+    print(res);
+    print(">>> 현장 코드 유효 여부 조회 완료");
   } catch (e) {
-    print(">>> 현장 제거 실패");
+    print(">>> 현장 코드 유효 여부 조회 실패");
   }
   return res;
 }
@@ -378,6 +406,7 @@ double editSiteInfoPage_siteListTileFontPadding = 10;
 /// WaitingAcceptPage
 // Size
 int waitingAcceptPage_spacePerNextBtn = 35; // Re-type 버튼 사이의 간격
+int waitingAcceptPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
 
 /// SelectRolePage
 // Size
@@ -435,7 +464,7 @@ int manageEmpPage_page1_uncheckedFoemHeight = 50; // 체크 안된 사람 공간
 int manageEmpPage_page1_spacePerBigBox = 10; // 두 영역 사이 간격
 int manageEmpPage_page2_spacePerTitle = 10; // 타이틀과의 간격
 int manageEmpPage_page2_waiteListHeight = 110; // 타이틀과의 간격
-int manageEmpPage_pageIndicatorIconSize = 5; // 페이지 표시 아이콘 크기
+int manageEmpPage_pageIndicatorIconSize = 3; // 페이지 표시 아이콘 크기
 // Padding
 double manageEmpPage_listTilePaddingTopBottom = 5; // 리스트 타일 패딩(위아래)
 double manageEmpPage_listTilePadding = 15; // 리스트 타일 패딩
