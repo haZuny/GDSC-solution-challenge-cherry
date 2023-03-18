@@ -15,18 +15,29 @@ class HelmetCheckPage extends StatefulWidget {
 class _HelmetCheckPage extends State<HelmetCheckPage> {
   // Image Picker
   final ImagePicker _picker = ImagePicker();
+  PickedFile? _pickedImage;
 
   // 이미지
-  Image? helmetImage;
+  Image? _helmetImage;
 
   // 체크 여부
-  bool stateChecked = false;
+  bool _stateChecked = false;
 
   @override
   initState() {
     // TODO: implement initState
     super.initState();
-    getMyImage();
+    getMyImage().then((value) {
+      // ML
+      Classifier classifier = Classifier(File(_pickedImage!.path));
+      classifier.classify().then((value) {
+        if (value > 0.6) {
+          setState(() {
+            _stateChecked = true;
+          });
+        }
+      });
+    });
   }
 
   @override
@@ -58,9 +69,11 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                                   allPage_shadowOffSet, allPage_shadowOffSet),
                               color: Color(themaColor_whiteBlack))
                         ]),
-                    child: helmetImage ??
+                    child: _helmetImage ??
                         Padding(
-                            padding: EdgeInsets.all(getFullScrennSizePercent(context, helmetCheckPage_progressIndicatorPadding)),
+                            padding: EdgeInsets.all(getFullScrennSizePercent(
+                                context,
+                                helmetCheckPage_progressIndicatorPadding)),
                             child: CircularProgressIndicator()),
                   ),
 
@@ -72,11 +85,13 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        stateChecked ? "Checked":"Unchecked",
+                        _stateChecked ? "Checked" : "Unchecked",
                         style: TextStyle(
                             fontSize: putCheckCodePage_checkBtnFontSize,
                             fontWeight: FontWeight.w500,
-                            color: stateChecked?Color(allPage_btnFontColor):Color(allPage_btnSubFontColor)),
+                            color: _stateChecked
+                                ? Color(allPage_btnFontColor)
+                                : Color(allPage_btnSubFontColor)),
                       ),
                     ),
                   ),
@@ -90,15 +105,26 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                   /// next 버튼
                   TextButton(
                       onPressed: () {
-                        if(stateChecked){
-
+                        // 확인
+                        if (_stateChecked) {
                         }
-                        else{
-
+                        // 실패
+                        else {
+                          getMyImage().then((value) {
+                            // ML
+                            Classifier classifier = Classifier(File(_pickedImage!.path));
+                            classifier.classify().then((value) {
+                              if (value > 0.6) {
+                                setState(() {
+                                  _stateChecked = true;
+                                });
+                              }
+                            });
+                          });
                         }
                       },
                       child: Text(
-                        stateChecked?"Next":"Re-try",
+                        _stateChecked ? "Next" : "Re-try",
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),
@@ -112,17 +138,12 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
 
   /// 사진 촬영 메소드
   Future getMyImage() async {
-    PickedFile? pickedImage =
-        await _picker.getImage(source: ImageSource.gallery);
+    _pickedImage = await _picker.getImage(source: ImageSource.gallery);
     // 이미지 보여주기
     setState(() {
-      helmetImage = Image.file(File(pickedImage!.path));
-      stateChecked = true;
+      _helmetImage = Image.file(File(_pickedImage!.path));
     });
 
-    // ML
-    Classifier classifier = Classifier(File(pickedImage!.path));
-    classifier.classify();
     // return Image.file(File(pickedImage!.path));
   }
 }

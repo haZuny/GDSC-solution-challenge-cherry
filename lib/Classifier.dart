@@ -24,13 +24,14 @@ class Classifier {
   // 사진 초기화
   Future<TensorImage> preProcess() async {
     _inputImage = TensorImage(interpreter.getInputTensor(0).type);
-    _inputImage.loadImage(IMG.decodeImage(imgFile.readAsBytesSync())!);
+    _inputImage.loadImage(IMG.decodeImage(this.imgFile.readAsBytesSync())!);
     int cropSize = min(_inputImage.height, _inputImage.width);
+
     return ImageProcessorBuilder()
         .add(ResizeWithCropOrPadOp(cropSize, cropSize))
         .add(ResizeOp(
         interpreter.getInputTensor(0).shape[1], interpreter.getInputTensor(0).shape[2], ResizeMethod.NEAREST_NEIGHBOUR))
-        .add(NormalizeOp(112, 112))
+        .add(NormalizeOp(127.5, 127.5)).add(QuantizeOp(128.0, 1/128.0))
         .build()
         .process(_inputImage);
   }
@@ -41,19 +42,13 @@ class Classifier {
   }
 
   // 분류
-  Future classify() async {
+  Future<double> classify() async {
     await loadModel();
     tensorImage = await preProcess();
-    var output = List<double>.filled(1, 0).reshape([1, 1]);
-    interpreter.run(tensorImage.buffer, output);
+    TensorBuffer output = TensorBuffer.createFixedSize(interpreter.getOutputTensor(0).shape, interpreter.getOutputTensor(0).type);
+    interpreter.run(tensorImage.buffer, output.getBuffer());
     int maxIdx = 0;
     double maxVal = 0;
-    for (int i = 0; i < output[0].length; i++){
-      if(output[0][i] > maxVal){
-        maxIdx = i;
-        maxVal = output[0][i];
-      }
-    }
-    print(output);
+    return output.getDoubleList()[0];
   }
 }
