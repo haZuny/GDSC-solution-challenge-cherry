@@ -219,12 +219,8 @@ class _EditSitePageManager extends State<EditSitePageManager> {
                                   _addrList[_selectedAddrIdx].lon!,
                                   _addrList[_selectedAddrIdx].addr1!,
                                   _addrList[_selectedAddrIdx].addr2!);
-
-                              print(">>> 현장 정보 수정 성공");
-                              Navigator.pushAndRemoveUntil(context, Transition(child: HomePageManager()), (_) => false);
+                              Navigator.pushAndRemoveUntil(context, Transition(child: HomePageManager(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
                             } catch (e) {
-                              print('>>> 현장 정보 수정 실패');
-                              print(e);
                             }
                           },
                           child: Text(

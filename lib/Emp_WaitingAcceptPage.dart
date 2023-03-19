@@ -50,10 +50,13 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                     children: [
                       /// Back 버튼
                       TextButton(
-                          onPressed: () {
-                            global_googleSignIn?.signOut();
-                            api_user_logout();
-                            print(">>> Google SignOut");
+                          onPressed: () async {
+                            late Response res;
+                            try {
+                              res = await api_user_logout();
+                            } catch (e) {}
+                            await global_googleSignIn?.signOut();
+                            print(">>> 구글 로그아웃");
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 Transition(

@@ -111,9 +111,7 @@ class _CheckListPageManager extends State<CheckListPageManager> {
               tile['siteAnswer'], updateCheckList));
         }
       });
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 }
 
@@ -161,7 +159,7 @@ class _CheckListTile extends State<CheckListTile> {
                   style: TextStyle(fontSize: allPage_subTitleFontSize),
                 )),
                 Checkbox(
-                  activeColor: Color(themaColor_black),
+                    activeColor: Color(themaColor_black),
                     value: checkState,
                     onChanged: (val) async {
                       late Response res;

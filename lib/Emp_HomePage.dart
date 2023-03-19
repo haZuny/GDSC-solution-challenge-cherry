@@ -4,6 +4,7 @@ import 'package:cherry_app/All_EmergencyPage.dart';
 import 'package:cherry_app/Emp_HelmetCheckPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
 
 class HomePageEmp extends StatefulWidget {
   @override
@@ -89,8 +90,10 @@ class _HomePageEmp extends State<HomePageEmp> {
                             } else {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HelmetCheckPage()));
+                                  Transition(
+                                      child: HelmetCheckPage(),
+                                      transitionEffect:
+                                          TransitionEffect.RIGHT_TO_LEFT));
                             }
                           },
                           // 내부 컴포넌트
@@ -138,8 +141,10 @@ class _HomePageEmp extends State<HomePageEmp> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => CheckListPageEmp()));
+                                Transition(
+                                    child: CheckListPageEmp(),
+                                    transitionEffect:
+                                        TransitionEffect.RIGHT_TO_LEFT));
                           },
                           // 내부 컴포넌트
                           child: Text(
@@ -189,8 +194,10 @@ class _HomePageEmp extends State<HomePageEmp> {
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => EmergencyPage()));
+                          Transition(
+                              child: EmergencyPage(),
+                              transitionEffect:
+                                  TransitionEffect.RIGHT_TO_LEFT));
                     },
                     // 내부 컴포넌트
                     child: Text(

@@ -113,9 +113,8 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                           late Response res;
                           try {
                             res = await api_user_editHelmetCheck(true);
-                            print(res);
                             Navigator.pushAndRemoveUntil(context,
-                                Transition(child: HomePageEmp()), (_) => false);
+                                Transition(child: HomePageEmp(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
                           } catch (e) {}
                         }
                         // 실패
@@ -149,7 +148,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
 
   /// 사진 촬영 메소드
   Future getMyImage() async {
-    _pickedImage = await _picker.getImage(source: ImageSource.gallery);
+    _pickedImage = await _picker.getImage(source: ImageSource.camera);
     // 이미지 보여주기
     setState(() {
       _helmetImage = Image.file(File(_pickedImage!.path));

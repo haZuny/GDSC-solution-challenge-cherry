@@ -179,10 +179,13 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                     children: [
                       /// Back 버튼
                       TextButton(
-                          onPressed: () {
-                            global_googleSignIn?.signOut();
-                            api_admin_logout();
-                            print(">>> Google SignOut");
+                          onPressed: () async {
+                            late Response res;
+                            try {
+                              res = await api_admin_logout();
+                            } catch (e) {}
+                            await global_googleSignIn?.signOut();
+                            print(">>> 구글 로그아웃");
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 Transition(
@@ -226,18 +229,14 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                                   _addrList[_selectedAddrIdx].lon!,
                                   _addrList[_selectedAddrIdx].addr1!,
                                   _addrList[_selectedAddrIdx].addr2!);
-
-                              print(">>> 현장 생성 성공");
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   Transition(
                                       child: HomePageManager(),
                                       transitionEffect:
-                                      TransitionEffect.RIGHT_TO_LEFT),
-                                      (_) => false);
+                                          TransitionEffect.RIGHT_TO_LEFT),
+                                  (_) => false);
                             } catch (e) {
-                              print('>>> 현장 생성 실패');
-                              print(e);
                             }
                           },
                           child: Text(
@@ -285,43 +284,18 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                           hintText: 'Address',
                           hintStyle:
                               TextStyle(color: Color(themaColor_whiteBlack))),
+                      onChanged: (val) {
+                        searchAddr(val);
+                      },
                     ),
                   ),
                   // Search 버튼
                   TextButton(
-
-                      /// 카카오 주소검색 api
                       onPressed: () async {
                         FocusManager.instance.primaryFocus
                             ?.unfocus(); // 키보드 닫기 이벤트
-
-                        String _AddrSearchURL =
-                            "http://dapi.kakao.com/v2/local/search/address.json?query=";
-                        String _AddrSearchKey =
-                            "93349143720fbaa860b00f8191e7f2de";
-
-                        Dio dio = Dio();
-                        dio.options.headers = {
-                          'Authorization': 'KakaoAK ' + _AddrSearchKey
-                        };
-
-                        var res = await dio.get(
-                            _AddrSearchURL + _bottomSheetAddrController.text);
-
-                        setState(() {
-                          _addrList.clear();
-                          for (int i = 0;
-                              i < res.data['meta']['total_count'];
-                              i++) {
-                            Map data = res.data['documents'][i]['road_address'];
-                            _addrList.add(Addr(
-                                data['address_name'],
-                                double.parse(data['x']),
-                                double.parse(data['y']),
-                                data['region_1depth_name'],
-                                data['region_2depth_name']));
-                          }
-                        });
+                        /// 카카오 주소검색 api
+                        searchAddr(_bottomSheetAddrController.text);
                       },
                       child: Text(
                         "Search",
@@ -342,6 +316,35 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
           ),
         ),
       );
+
+  searchAddr(String addr) async {
+    String _AddrSearchURL =
+        "http://dapi.kakao.com/v2/local/search/address.json?query=";
+    String _AddrSearchKey = "93349143720fbaa860b00f8191e7f2de";
+
+    Dio dio = Dio();
+    dio.options.headers = {'Authorization': 'KakaoAK ' + _AddrSearchKey};
+
+    late Response res;
+    try {
+      res = await dio.get(_AddrSearchURL + addr);
+
+      // 리스트 갱신
+      setState(() {
+        _addrList.clear();
+        for (int i = 0; i < res.data['meta']['total_count']; i++) {
+          Map data = res.data['documents'][i]['road_address'];
+          _addrList.add(Addr(
+              data['address_name'],
+              double.parse(data['x']),
+              double.parse(data['y']),
+              data['region_1depth_name'],
+              data['region_2depth_name']));
+        }
+      });
+      print(">>> 카카오 로컬 api 호출 받아옴");
+    } catch (e) {}
+  }
 }
 
 /// 주소 클래스

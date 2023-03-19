@@ -42,13 +42,14 @@ class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
 class DrawerEmp extends StatelessWidget {
   late ImageProvider profileImg;
 
-  DrawerEmp(){
+  DrawerEmp() {
     if (global_googleUser?.photoUrl == null) {
       profileImg = AssetImage('assets/img/defaultUserImg.png');
     } else {
       profileImg = NetworkImage(global_googleUser!.photoUrl!);
     }
   }
+
   @override
   Widget build(context) => Drawer(
         child: ListView(
@@ -65,7 +66,8 @@ class DrawerEmp extends StatelessWidget {
                 backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName: Text(global_userRole==enum_Role.user ? "USER" : "STAFF"),
+              accountName:
+                  Text(global_userRole == enum_Role.user ? "USER" : "STAFF"),
               accountEmail: Text(global_googleUser!.email),
               decoration: BoxDecoration(
                 color: Color(themaColor_black),
@@ -82,8 +84,7 @@ class DrawerEmp extends StatelessWidget {
                   context,
                   Transition(
                       child: SiteInfoPageAll(),
-                      transitionEffect:
-                      TransitionEffect.RIGHT_TO_LEFT),
+                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
                 );
               },
             ),
@@ -98,8 +99,8 @@ class DrawerEmp extends StatelessWidget {
                   context,
                   Transition(
                       child: EditPrivacyPage(),
-                      transitionEffect:
-                      TransitionEffect.RIGHT_TO_LEFT),);
+                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                );
               },
             ),
             Divider(
@@ -118,8 +119,12 @@ class DrawerEmp extends StatelessWidget {
                 } catch (e) {}
                 if (res?.data['success']) {
                   global_googleSignIn?.signOut();
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: SignInPage()), (route) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      Transition(
+                          child: SignInPage(),
+                          transitionEffect: TransitionEffect.LEFT_TO_RIGHT),
+                      (_) => false);
                   print(">>> SuccessLogout");
                 }
               },
@@ -174,8 +179,8 @@ class DrawerManager extends StatelessWidget {
                   context,
                   Transition(
                       child: EditPrivacyPage(),
-                      transitionEffect:
-                      TransitionEffect.RIGHT_TO_LEFT),);
+                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                );
               },
             ),
 
@@ -189,8 +194,8 @@ class DrawerManager extends StatelessWidget {
                   context,
                   Transition(
                       child: EditSitePageManager(),
-                      transitionEffect:
-                      TransitionEffect.RIGHT_TO_LEFT),);
+                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                );
               },
             ),
 
@@ -215,9 +220,11 @@ class DrawerManager extends StatelessWidget {
                   res = await api_site_deleteSite(global_siteId);
                   Navigator.pushAndRemoveUntil(
                       context,
-                      Transition(child: PutSiteInfoPageManager()),
-                      (route) => false);
-                  print("site 제거 성공");
+                      Transition(
+                          child: PutSiteInfoPageManager(),
+                          transitionEffect: TransitionEffect.LEFT_TO_RIGHT),
+                      (_) => false);
+                  print(">>> site 제거 성공");
                 } catch (e) {
                   print(">>> site 제거 실패");
                 }
@@ -238,10 +245,10 @@ class DrawerManager extends StatelessWidget {
                   res = await api_admin_logout();
                 } catch (e) {}
                 if (res?.data['success']) {
-                  global_googleSignIn?.signOut();
+                  await global_googleSignIn?.signOut();
+                  print(">>> 구글 로그아웃");
                   Navigator.pushAndRemoveUntil(context,
-                      Transition(child: SignInPage()), (route) => false);
-                  print(">>> SuccessLogout");
+                      Transition(child: SignInPage()), (_) => false);
                 }
               },
             )

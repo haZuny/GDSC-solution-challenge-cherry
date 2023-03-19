@@ -229,9 +229,10 @@ Future<Response> api_admin_signUp(String email, String adminName,
   try {
     res = await dio.post(uri, data: body);
     global_userId = res.data["data"];
-    print(">>> 관리자 가입 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 가입 실패");
+    print(">>> ###관리자 가입 실패");
+    print(e);
   }
   return res;
 }
@@ -242,9 +243,10 @@ Future<Response> api_admin_signIn(String email) async {
   late Response res;
   try {
     res = await dio.post(uri);
-    print(">>> 관리자 로그인 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 로그인 실패");
+    print(">>> ###관리자 로그인 실패");
+    print(e);
   }
   return res;
 }
@@ -260,9 +262,10 @@ Future<Response> api_admin_logout() async {
   late Response res;
   try {
     res = await dio.post(uri);
-    print(">>> 관리자 로그아웃 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 로그아웃 실패");
+    print(">>> ###관리자 로그아웃 실패");
+    print(e);
   }
   return res;
 }
@@ -274,9 +277,10 @@ Future<Response> api_admin_getSiteInfo(String email) async {
     String uri = api_hostURI + "admin/getSiteInfo?email=$email";
     res = await dio.get(uri);
     global_siteId = res.data['data'];
-    print(">>> 유저 현장 정보 조회 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 현장 정보 조회 실패");
+    print(">>> ###유저 현장 정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -285,15 +289,15 @@ Future<Response> api_admin_getSiteInfo(String email) async {
 Future<Response> api_admin_getPrivacy(int id) async {
   late Response res;
   try {
-    print(id);
     String uri = api_hostURI + "admin/$id";
     res = await dio.get(uri);
     global_userName = res.data['data']['adminName'];
     global_userPhoneNum = res.data['data']['adminPhoneNum'];
     global_userAge = res.data['data']['adminAge'];
-    print(">>> 관리자 개인 정보 조회 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 개인 정보 조회 실패");
+    print(">>> ###관리자 개인 정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -310,9 +314,10 @@ Future<Response> api_admin_editPrivacy(
   late Response res;
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 관리자 정보 수정 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 정보 수정 실패");
+    print(">>> ###관리자 정보 수정 실패");
+    print(e);
   }
   return res;
 }
@@ -325,9 +330,10 @@ Future<Response> api_admin_getUserList(int siteId) async {
     res = await dio.get(
       uri,
     );
-    print(">>> 유저 목록 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 목록 조회 완료");
+    print(">>> ###유저 목록 조회 완료");
+    print(e);
   }
   return res;
 }
@@ -340,9 +346,10 @@ Future<Response> api_admin_getWaitingList(int siteId) async {
     res = await dio.get(
       uri,
     );
-    print(">>> 관리자 대기 유저 목록 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 대기 유저 목록 조회 실패");
+    print(">>> ###관리자 대기 유저 목록 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -355,9 +362,10 @@ Future<Response> api_admin_getUserInfo(int userId) async {
     res = await dio.get(
       uri,
     );
-    print(">>> 관리자 유저 상세정보 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 유저 상세정보 조회 실패");
+    print(">>> ###관리자 유저 상세정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -369,9 +377,10 @@ Future<Response> api_admin_changeUserRole(int userId, String role) async {
   Map body = {'role': role};
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 관리자 유저 등급 변경 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 유저 등급 변경 실패");
+    print(">>> ###관리자 유저 등급 변경 실패");
+    print(e);
   }
   return res;
 }
@@ -382,9 +391,10 @@ Future<Response> api_admin_deleteEmp(int userId) async {
   late Response res;
   try {
     res = await dio.delete(uri);
-    print(">>> 관리자 유저 제거 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 유저 제거 실패");
+    print(">>> ###관리자 유저 제거 실패");
+    print(e);
   }
   return res;
 }
@@ -395,9 +405,10 @@ Future<Response> api_admin_acceptWaiting(int userId) async {
   late Response res;
   try {
     res = await dio.patch(uri);
-    print(">>> 관리자 대기 유저 승인 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 대기 유저 승인 실패");
+    print(">>> ###관리자 대기 유저 승인 실패");
+    print(e);
   }
   return res;
 }
@@ -408,9 +419,10 @@ Future<Response> api_admin_deleteUser(int userId) async {
   late Response res;
   try {
     res = await dio.delete(uri);
-    print(">>> 관리자 유저 삭제 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 관리자 유저 삭제 실패");
+    print(">>> ###관리자 유저 삭제 실패");
+    print(e);
   }
   return res;
 }
@@ -429,10 +441,11 @@ Future<Response> api_user_signUp(
   try {
     res = await dio.post(uri, data: body);
     global_userId = res.data["data"];
-    print(">>> 유저 가입 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
     print(e);
-    print(">>> 유저 가입 실패");
+    print(">>> ###유저 가입 실패");
+    print(e);
   }
   return res;
 }
@@ -443,9 +456,10 @@ Future<Response> api_user_signIn(String email) async {
   late Response res;
   try {
     res = await dio.post(uri);
-    print(">>> 유저 로그인 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 로그인 실패");
+    print(">>> ###유저 로그인 실패");
+    print(e);
   }
   return res;
 }
@@ -460,9 +474,10 @@ Future<Response> api_user_logout() async {
   late Response res;
   try {
     res = await dio.post(uri);
-    print(">>> 유저 로그아웃 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 로그아웃 실패");
+    print(">>> ###유저 로그아웃 실패");
+    print(e);
   }
   return res;
 }
@@ -474,9 +489,10 @@ Future<Response> api_user_getSiteInfo(String email) async {
   try {
     res = await dio.get(uri);
     global_siteId = res.data['data'];
-    print(">>> 유저 현장 정보 조회 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 현장 정보 조회 실패");
+    print(">>> ###유저 현장 정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -485,15 +501,15 @@ Future<Response> api_user_getSiteInfo(String email) async {
 Future<Response> api_user_getPrivacy(int id) async {
   late Response res;
   try {
-    print(id);
     String uri = api_hostURI + "user/$id";
     res = await dio.get(uri);
     global_userName = res.data['data']['userName'];
     global_userPhoneNum = res.data['data']['userPhoneNum'];
     global_userAge = res.data['data']['userAge'];
-    print(">>> 유저 개인 정보 조회 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 개인 정보 조회 실패");
+    print(">>> ###유저 개인 정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -510,9 +526,10 @@ Future<Response> api_user_editPrivacy(
   late Response res;
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 유저 개인 정보 수정 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 개인 정보 수정 실패");
+    print(">>> ###유저 개인 정보 수정 실패");
+    print(e);
   }
   return res;
 }
@@ -524,9 +541,10 @@ Future<Response> api_user_returnCheckCode(String checkCode) async {
   late Response res;
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 유저 현장코드 제출 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 현장 코드 제출 실패");
+    print(">>> ###유저 현장 코드 제출 실패");
+    print(e);
   }
   return res;
 }
@@ -537,9 +555,10 @@ Future<Response> api_user_cancleCheckCode(int userId) async {
   late Response res;
   try {
     res = await dio.patch(uri);
-    print(">>> 유저 승인 대기 취소 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 승인 대기 취소 실패");
+    print(">>> ###유저 승인 대기 취소 실패");
+    print(e);
   }
   return res;
 }
@@ -550,9 +569,10 @@ Future<Response> api_user_getHelmetCheck() async {
   late Response res;
   try {
     res = await dio.get(uri);
-    print(">>> 유저 헬멧 체크 여부 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 유저 헬멧 체크 여부 조회 실패");
+    print(">>> ###유저 헬멧 체크 여부 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -564,10 +584,11 @@ Future<Response> api_user_editHelmetCheck(bool state) async {
   Map body = {'helmetCheck': state};
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 유저 헬멧 체크 여부 변경 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
     print(e);
-    print(">>> 유저 헬멧 체크 여부 변경 실패");
+    print(">>> ###유저 헬멧 체크 여부 변경 실패");
+    print(e);
   }
   return res;
 }
@@ -587,9 +608,10 @@ Future<Response> api_site_getSiteInfo(int siteId) async {
     global_siteLon = res.data['data']['siteLongitude'];
     global_siteAdd1 = res.data['data']['address1'];
     global_siteAdd2 = res.data['data']['address2'];
-    print(">>> 현장 정보 조회 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 정보 조회 실패");
+    print(">>> ###현장 정보 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -608,9 +630,10 @@ Future<Response> api_site_createSite(String siteName, double latitude,
   late Response res;
   try {
     res = await dio.post(uri, data: createSiteBody);
-    print(">>> 현장 생성 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 생성 실패");
+    print(">>> ###현장 생성 실패");
+    print(e);
   }
   return res;
 }
@@ -629,9 +652,10 @@ Future<Response> api_site_editSite(int siteId, String siteName, double latitude,
   late Response res;
   try {
     res = await dio.patch(uri, data: createSiteBody);
-    print(">>> 현장 정보 수정 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 정보 수정 실패");
+    print(">>> ###현장 정보 수정 실패");
+    print(e);
   }
   return res;
 }
@@ -642,9 +666,10 @@ Future<Response> api_site_deleteSite(int siteId) async {
   late Response res;
   try {
     res = await dio.delete(uri);
-    print(">>> 현장 제거 성공");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 제거 실패");
+    print(">>> ###현장 제거 실패");
+    print(e);
   }
   return res;
 }
@@ -655,9 +680,10 @@ Future<Response> api_site_vaildCheck(String siteCode) async {
   late Response res;
   try {
     res = await dio.get(uri);
-    print(">>> 현장 코드 유효 여부 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 코드 유효 여부 조회 실패");
+    print(">>> ###현장 코드 유효 여부 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -668,9 +694,10 @@ Future<Response> api_site_clearSite(int siteId) async {
   late Response res;
   try {
     res = await dio.patch(uri);
-    print(">>> 현장 상태 초기화 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 현장 상태 초기화 실패");
+    print(">>> ###현장 상태 초기화 실패");
+    print(e);
   }
   return res;
 }
@@ -682,9 +709,10 @@ Future<Response> api_siteCheck_getCheckList(int siteId) async {
   late Response res;
   try {
     res = await dio.get(uri);
-    print(">>> 체크리스트 목록 조회 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 체크리스트 목록 조회 실패");
+    print(">>> ###체크리스트 목록 조회 실패");
+    print(e);
   }
   return res;
 }
@@ -696,9 +724,10 @@ Future<Response> api_siteCheck_addCheckList(int siteId, String msg) async {
   Map body = {'siteId': siteId, 'siteQuestion': msg};
   try {
     res = await dio.post(uri, data: body);
-    print(">>> 체크리스트 생성 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 체크리스트 생성 실패");
+    print(">>> ###체크리스트 생성 실패");
+    print(e);
   }
   return res;
 }
@@ -710,9 +739,10 @@ Future<Response> api_siteCheck_editCheckList(int checkId, String msg) async {
   Map body = {'question': msg};
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 체크리스트 수정 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 체크리스트 수정 실패");
+    print(">>> ###체크리스트 수정 실패");
+    print(e);
   }
   return res;
 }
@@ -723,9 +753,10 @@ Future<Response> api_siteCheck_deleteCheckList(int checkId) async {
   late Response res;
   try {
     res = await dio.delete(uri);
-    print(">>> 체크리스트 제거 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 체크리스트 제거 실패");
+    print(">>> ###체크리스트 제거 실패");
+    print(e);
   }
   return res;
 }
@@ -737,9 +768,10 @@ Future<Response> api_siteCheck_editAnswer(int checkId, bool answer) async {
   Map body = {'answer': answer};
   try {
     res = await dio.patch(uri, data: body);
-    print(">>> 체크리스트 상태 수정 완료");
+    print(">>> ${res.data['successResponseMessage']}");
   } catch (e) {
-    print(">>> 체크리스트 상태 수정 실패");
+    print(">>> ###체크리스트 상태 수정 실패");
+    print(e);
   }
   return res;
 }

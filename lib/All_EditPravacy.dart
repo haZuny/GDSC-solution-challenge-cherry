@@ -1,7 +1,5 @@
 import 'package:cherry_app/Emp_HomePage.dart';
-import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/Manager_HomePage.dart';
-import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

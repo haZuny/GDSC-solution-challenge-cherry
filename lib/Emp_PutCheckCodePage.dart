@@ -148,11 +148,20 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                     children: [
                       /// Back 버튼
                       TextButton(
-                          onPressed: () {
-                            global_googleSignIn?.signOut();
-                            api_user_logout();
-                            print(">>> Google SignOut");
-                            Navigator.pushAndRemoveUntil(context, Transition(child: SignInPage(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
+                          onPressed: () async {
+                            late Response res;
+                            try {
+                              res = await api_user_logout();
+                            } catch (e) {}
+                            await global_googleSignIn?.signOut();
+                            print(">>> 구글 로그아웃");
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                Transition(
+                                    child: SignInPage(),
+                                    transitionEffect:
+                                        TransitionEffect.LEFT_TO_RIGHT),
+                                (_) => false);
                           },
                           child: Text(
                             "Back",
@@ -169,7 +178,8 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                       /// next 버튼
                       if (isChecked)
                         TextButton(
-                          /// 현장코드 제출
+
+                            /// 현장코드 제출
                             onPressed: () async {
                               late Response res;
                               try {
