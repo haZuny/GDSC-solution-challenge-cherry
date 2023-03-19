@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:cherry_app/AppBar_Drawer.dart';
-import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:ui' as ui;
 
 class SiteInfoPageAll extends StatefulWidget {
   @override
@@ -12,6 +15,37 @@ class SiteInfoPageAll extends StatefulWidget {
 class _SiteInfoPageAll extends State<SiteInfoPageAll> {
   GoogleMapController? _googleMapController;
 
+  /// 현장 마커
+  BitmapDescriptor marker_site = BitmapDescriptor.defaultMarker;
+
+  /// 마커 이미지 비트맵 전환
+  Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
+
+  /// 비트맵 이미지 마커로 전환
+  Future<BitmapDescriptor> getBitmapDescriptorFromAssetBytes(
+      String path, int width) async {
+    final Uint8List imageData = await getBytesFromAsset(path, width);
+    return BitmapDescriptor.fromBytes(imageData);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getBitmapDescriptorFromAssetBytes("assets/img/marker_mint.png", 100)
+        .then((value) {
+      setState(() => marker_site = value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
@@ -19,9 +53,8 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: global_userRole == enum_Role.user
-              ? DrawerEmp()
-              : DrawerManager(),
+          drawer:
+              global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -288,12 +321,51 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                         ],
                         borderRadius:
                             BorderRadius.circular(allPage_bigBoxRadious)),
-                    child: GoogleMap(
-                      onMapCreated: (controller) async {
-                        _googleMapController = controller;
-                      },
-                      initialCameraPosition: CameraPosition(
-                          target: LatLng(global_siteLat, global_siteLon), zoom: 17),
+                    child: Stack(
+                      children: [
+                        // 지도 본체
+                        GoogleMap(
+                          myLocationEnabled: true,
+                          myLocationButtonEnabled: false,
+                          zoomControlsEnabled: false,
+                          onMapCreated: (controller) async {
+                            _googleMapController = controller;
+                          },
+                          initialCameraPosition: CameraPosition(
+                              target: LatLng(global_siteLat, global_siteLon),
+                              zoom: 15),
+                          markers: [
+                            Marker(
+                              markerId: const MarkerId("marker1"),
+                              position: LatLng(global_siteLat, global_siteLon),
+                              icon: marker_site,
+                              onDragEnd: (value) {
+                                // value는 새 위치입니다.
+                              },
+                            ),
+                          ].toSet(),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.explore_outlined,
+                                size: getFullScrennSizePercent(
+                                    context, googleMap_iconSize),
+                                color: Color(themaColor_whiteBlack),
+                              ),
+                              // 초기 위치 이동
+                              onPressed: () {
+                                _googleMapController?.moveCamera(
+                                    CameraUpdate.newCameraPosition(
+                                        CameraPosition(
+                                            target: LatLng(
+                                                global_siteLat, global_siteLon),
+                                            zoom: 15)));
+                              },
+                            ))
+                      ],
                     ),
                   ),
                 ],

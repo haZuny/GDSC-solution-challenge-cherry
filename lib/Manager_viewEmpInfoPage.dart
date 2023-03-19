@@ -193,7 +193,7 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
         this.userRole = res.data['data']['role'];
         this.userAge = res.data['data']['userAge'];
         this.userEmail = res.data['data']['userEmail'];
-        // this.userPhone = res.data['data']['userPhone'];
+        this.userPhone = res.data['data']['userPhoneNum'];
 
         if (this.userRole == 'USER')
           this._dropdownVal = 0;

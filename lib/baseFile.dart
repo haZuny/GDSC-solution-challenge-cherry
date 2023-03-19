@@ -202,6 +202,11 @@ double viewWaitingListDialog_fontSize = 20; // 폰트 크기
 // Round
 double viewWaitingListDialog_dialogRound = 20; // 둥글기
 
+/// Google Map
+// Size
+int googleMap_iconSize = 10;
+int googleMap_markerSize = 10;
+
 /// 화면 사이즈 대비 퍼센트 반환 함수(가로)
 double getFullScrennSizePercent(BuildContext context, int percent) {
   return MediaQuery.of(context).size.width * percent / 100;
