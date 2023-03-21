@@ -184,6 +184,13 @@ int emergencyPage_spacePerTitle = 3; // 타이틀과의 간격
 int emergencyPage_spacePerMap = 10; // 지도와의 간격
 int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
 
+/// CPR Page
+// Size
+int cprPage_spaceTopDown = 10;
+int cprPage_spacePerComponent = 10;
+int cprPage_spacePerTitleAndComponent = 3;
+
+
 /// ViewPeopleInfoPage
 // Size
 int viewPeopleInfoPage_spacePerText = 10; // 텍스트간 간격

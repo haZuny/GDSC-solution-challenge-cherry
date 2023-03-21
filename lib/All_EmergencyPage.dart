@@ -1,11 +1,14 @@
 import 'dart:typed_data';
 
+import 'package:cherry_app/All_CPR_Page.dart';
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui' as ui;
+
+import 'package:transition/transition.dart';
 
 class EmergencyPage extends StatefulWidget {
   @override
@@ -43,9 +46,7 @@ class _EmergencyPage extends State<EmergencyPage> {
     super.initState();
     getBitmapDescriptorFromAssetBytes("assets/img/marker_mint.png", 100)
         .then((value) {
-      setState(
-        () => marker_site = value
-      );
+      setState(() => marker_site = value);
     });
   }
 
@@ -152,7 +153,14 @@ class _EmergencyPage extends State<EmergencyPage> {
 
                   /// CPR 버튼
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            Transition(
+                                child: CPRPage(),
+                                transitionEffect:
+                                    TransitionEffect.RIGHT_TO_LEFT));
+                      },
                       child: Text(
                         "CPR manual",
                         style: TextStyle(
