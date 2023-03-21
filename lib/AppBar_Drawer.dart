@@ -18,13 +18,17 @@ class AppBarNone extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(context) => AppBar(
-        backgroundColor: Color(themaColor_black),
+        backgroundColor: Color(themaColor_white),
         centerTitle: true,
-        title: Text("Cherry"),
+        title: Text(
+          "C H E R R Y",
+          style: TextStyle(color: Color(themaColor_black)),
+        ),
+        elevation: 0,
       );
 }
 
-/// Emp AppBar
+/// AppBar
 class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
   // 앱바에 대한 크기 정보를 줌
   @override
@@ -32,9 +36,14 @@ class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(context) => AppBar(
-        backgroundColor: Color(themaColor_black),
+        backgroundColor: Color(themaColor_white),
         centerTitle: true,
-        title: Text((global_googleUser!.email).split('@')[0]),
+        title: Text(
+          "C H E R R Y",
+          style: TextStyle(color: Color(themaColor_black)),
+        ),
+        elevation: 0,
+        iconTheme: IconThemeData(color: Color(themaColor_black)),
       );
 }
 
@@ -57,7 +66,7 @@ class DrawerEmp extends StatelessWidget {
             /// 여백
             Container(
               height: getFullScrennSizePercent(context, drawer_spaceTop),
-              color: Color(themaColor_black),
+              color: Color(themaColor_whiteYellow),
             ),
 
             /// 상단 유저 정보
@@ -153,7 +162,7 @@ class DrawerManager extends StatelessWidget {
             /// 여백
             Container(
               height: getFullScrennSizePercent(context, drawer_spaceTop),
-              color: Color(themaColor_black),
+              color: Color(themaColor_whiteYellow),
             ),
 
             /// 상단 유저 정보
@@ -162,10 +171,10 @@ class DrawerManager extends StatelessWidget {
                 backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName: Text("ADMIN"),
-              accountEmail: Text(global_googleUser!.email!),
+              accountName: Text("ADMIN", style: TextStyle(color: Color(themaColor_black)),),
+              accountEmail: Text(global_googleUser!.email!, style: TextStyle(color: Color(themaColor_black)),),
               decoration: BoxDecoration(
-                color: Color(themaColor_black),
+                color: Color(themaColor_whiteYellow),
               ),
             ),
 
@@ -247,8 +256,8 @@ class DrawerManager extends StatelessWidget {
                 if (res?.data['success']) {
                   await global_googleSignIn?.signOut();
                   print(">>> 구글 로그아웃");
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: SignInPage()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: SignInPage()), (_) => false);
                 }
               },
             )

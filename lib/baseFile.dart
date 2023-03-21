@@ -30,8 +30,10 @@ int global_userAge = 0;
 int themaColor_white = 0xFFFFFFFF; // 하얀색
 int themaColor_black = 0xFF000000; // 검정색
 int themaColor_whiteBlack = 0xff909090; // 연한 검정
+int themaColor_whiteYellow = 0xFBFBF6; // 연한 노랑
+int themaColor_yellow = 0xffebba09;
 int allPage_btnFontColor = 0xff2378b7; // 텍스트버튼 컬러
-int allPage_btnSubFontColor = 0xff965454; // 텍스트버튼 서브 컬러
+int allPage_btnSubFontColor = 0xffbb2f2f; // 텍스트버튼 서브 컬러
 // Size(Percent)
 int allPage_spacePerTitleAndComponents = 15; // 타이틀과 컴포넌트 사이의 간격
 int allPage_mainComponentsWidth = 80; // 컴포넌트 너비
@@ -59,7 +61,7 @@ double drawer_dividerHeight = 0;
 /// SignInPage
 // Size(Percent)
 int signInPage_logoWidth = 70; // 로고 가로 크기
-int signInPage_spacePerLogo = 20; // 로고와의 간격
+int signInPage_spacePerLogo = 30; // 로고와의 간격
 int signInPage_loginBtnHeight = 15; // 로그인 버튼 세로
 int siginInPage_googleLogoSize_width = 8; // 구글 로그 사이즈
 int siginInPage_googleLogoFontColor = 0xffb4b4b4; // 구글 로그 사이즈
@@ -124,9 +126,19 @@ int selectRolePage_loginBtnHeight = 45; // 역할 선택 버튼 세로 패딩
 int homePage_spacePerLogo = 3; // 로고과의 간격
 int homePage_spacePerTitle = 7; // 타이틀과의 간격
 int homePage_spacePerBtn = 6; // 버튼 사이 간격(가로)
-int homePage_smallBtnWidth = 37; // 작은 버튼 가로
-int homePage_smallBtnHeight = 30; // 작은 버튼 높이
+int homePage_smallBtnWidth = 36; // 작은 버튼 가로
+int homePage_smallBtnHeight = 33; // 작은 버튼 높이
 int homePage_bigBtnHeight = 45; // 큰 버튼 높이
+// icon
+int homePage_iconSize = 10; // 버튼 아이콘 크기
+int homePage_spacePerIcon = 3; // 버튼 아이콘 간격
+int homePage_iconSizeBig = 20; // 버튼 큰 아이콘 크기
+int homePage_spacePerIconBig = 3; // 버튼 큰 아이콘 간격
+
+// Weighet
+double homePage_iconWeight = 3; // 버튼 아이콘 테두리 두께
+// Round
+double homePage_iconRound = 50;
 // Font
 double homePage_emergencyBtnFontSize = 20; // 긴급 버튼 폰트 크기
 
@@ -189,7 +201,6 @@ int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
 int cprPage_spaceTopDown = 10;
 int cprPage_spacePerComponent = 10;
 int cprPage_spacePerTitleAndComponent = 3;
-
 
 /// ViewPeopleInfoPage
 // Size

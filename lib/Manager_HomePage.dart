@@ -39,6 +39,7 @@ class _HomePageManager extends State<HomePageManager> {
           appBar: AppBarAll(),
           drawer: DrawerManager(),
           body: Container(
+            color: Color(themaColor_whiteYellow),
             alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Column(
@@ -61,9 +62,14 @@ class _HomePageManager extends State<HomePageManager> {
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
+                    color: Color(themaColor_yellow),
                     child: Text(
-                      "Check your safety.",
-                      style: TextStyle(fontSize: allPage_subTitleFontSize),
+                      "Check your safety",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: allPage_subTitleFontSize,
+                      ),
                     ),
                   ),
 
@@ -78,21 +84,42 @@ class _HomePageManager extends State<HomePageManager> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         /// 작업 시작 버튼
                         ElevatedButton(
                           onPressed: () async {
                             late Response res;
-                            try{
+                            try {
                               res = await api_site_clearSite(global_siteId);
-                            }catch(e){}
+                            } catch (e) {}
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Start work",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      border: Border.all(
+                                          color:
+                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.replay,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              // 텍스트
+                              Text(
+                                "Start work",
+                                style: TextStyle(
+                                    color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정
@@ -139,11 +166,32 @@ class _HomePageManager extends State<HomePageManager> {
                             );
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Today's site\nCheck List",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      border: Border.all(
+                                          color:
+                                              Color(themaColor_yellow), width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.check,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              // 간격
+                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              // 텍스트
+                              Text(
+                                "Check list",
+                                style: TextStyle(
+                                    color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정
@@ -183,6 +231,7 @@ class _HomePageManager extends State<HomePageManager> {
 
                   /// 긴급 버튼
                   ElevatedButton(
+
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -192,12 +241,27 @@ class _HomePageManager extends State<HomePageManager> {
                       );
                     },
                     // 내부 컴포넌트
-                    child: Text(
-                      "Emergency",
-                      style: TextStyle(
-                          color: Color(themaColor_whiteBlack),
-                          fontSize: homePage_emergencyBtnFontSize),
-                      textAlign: TextAlign.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // 아이콘
+                        Icon(
+                          Icons.medical_services_outlined,
+                          size: getFullScrennSizePercent(
+                              context, homePage_iconSizeBig),
+                          color: Color(themaColor_yellow),
+                        ),
+                        // 간격
+                        Container(height: getFullScrennSizePercent(context, homePage_spacePerIconBig),),
+                        // 텍스트
+                        Text(
+                          "Emergency",
+                          style: TextStyle(
+                              color: Color(themaColor_whiteBlack),
+                              fontSize: homePage_emergencyBtnFontSize),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     style: ElevatedButton.styleFrom(
                         // 크기 설정
@@ -237,6 +301,7 @@ class _HomePageManager extends State<HomePageManager> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         /// 현장 정보
                         ElevatedButton(
@@ -250,11 +315,33 @@ class _HomePageManager extends State<HomePageManager> {
                             );
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Workspace's\ninfo",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      border: Border.all(
+                                          color:
+                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.location_on_outlined,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              Container(
+                                height: getFullScrennSizePercent(context, homePage_spacePerIcon),
+                              ),
+                              // 텍스트
+                              Text(
+                                "Workspace",
+                                style:
+                                    TextStyle(color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정
@@ -301,11 +388,32 @@ class _HomePageManager extends State<HomePageManager> {
                             );
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Manage\nemployee",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      border: Border.all(
+                                          color:
+                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.group,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              // 간격
+                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              // 텍스트
+                              Text(
+                                "People",
+                                style:
+                                    TextStyle(color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정

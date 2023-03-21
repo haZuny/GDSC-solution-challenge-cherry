@@ -27,6 +27,7 @@ class _SignInPage extends State<SignInPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBarNone(),
         body: Container(
+          color: Color(themaColor_whiteYellow),
           alignment: Alignment.center,
           child: SingleChildScrollView(
             child: Column(
@@ -56,7 +57,9 @@ class _SignInPage extends State<SignInPage> {
                     try {
                       await global_googleSignIn!.signOut();
                       print(">>> 구글 로그아웃");
-                    } catch (e) {}
+                    } catch (e) {
+                      print(e);
+                    }
 
                     // google auth
                     global_googleSignIn = GoogleSignIn();
