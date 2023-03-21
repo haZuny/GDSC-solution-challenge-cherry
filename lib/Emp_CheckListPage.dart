@@ -1,6 +1,10 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
+
+import 'Emp_HomePage.dart';
+import 'Manager_HomePage.dart';
 
 class CheckListPageEmp extends StatefulWidget {
   @override
@@ -15,7 +19,7 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -41,7 +45,14 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

@@ -2,6 +2,10 @@ import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
+
+import 'Emp_HomePage.dart';
+import 'Manager_HomePage.dart';
 
 class ViewEmpInfoPage extends StatefulWidget {
   late int userId;
@@ -38,7 +42,7 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -64,7 +68,14 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 
@@ -130,62 +141,65 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                   ),
 
                   /// 등급 변경
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Role: ",
-                        style: TextStyle(fontSize: viewPeopleInfoPage_fontSize),
-                      ),
-                      Container(
-                        width: getFullScrennSizePercent(
-                            context, manageEmpPage_spacePerRole),
-                      ),
-                      DropdownButton(
-                          alignment: AlignmentDirectional.center,
-                          value: _dropdownVal,
-                          items: [
-                            DropdownMenuItem(
-                                value: 0,
-                                child: Text("USER",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))),
-                            DropdownMenuItem(
-                                value: 1,
-                                child: Text(
-                                  "STAFF",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                          ],
-                          onChanged: (e) async {
-                            // user
-                            if (e == 0) {
-                              late Response res;
-                              try {
-                                res = await api_admin_changeUserRole(
-                                    this.userId, "USER");
-                                setState(() {
-                                  this.userRole = "USER";
-                                  this._dropdownVal = 0;
-                                });
-                              } catch (e) {}
-                            }
-                            // staff
-                            else if (e == 1) {
-                              late Response res;
-                              try {
-                                res = await api_admin_changeUserRole(
-                                    this.userId, "STAFF");
-                                setState(() {
-                                  this.userRole = "STAFF";
-                                  this._dropdownVal = 1;
-                                });
-                              } catch (e) {}
-                            }
-                            _dropdownVal = e!;
-                          }),
-                    ],
-                  ),
+                  if (global_userRole == enum_Role.manager)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Role: ",
+                          style:
+                              TextStyle(fontSize: viewPeopleInfoPage_fontSize),
+                        ),
+                        Container(
+                          width: getFullScrennSizePercent(
+                              context, manageEmpPage_spacePerRole),
+                        ),
+                        DropdownButton(
+                            alignment: AlignmentDirectional.center,
+                            value: _dropdownVal,
+                            items: [
+                              DropdownMenuItem(
+                                  value: 0,
+                                  child: Text("USER",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))),
+                              DropdownMenuItem(
+                                  value: 1,
+                                  child: Text(
+                                    "STAFF",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                            ],
+                            onChanged: (e) async {
+                              // user
+                              if (e == 0) {
+                                late Response res;
+                                try {
+                                  res = await api_admin_changeUserRole(
+                                      this.userId, "USER");
+                                  setState(() {
+                                    this.userRole = "USER";
+                                    this._dropdownVal = 0;
+                                  });
+                                } catch (e) {}
+                              }
+                              // staff
+                              else if (e == 1) {
+                                late Response res;
+                                try {
+                                  res = await api_admin_changeUserRole(
+                                      this.userId, "STAFF");
+                                  setState(() {
+                                    this.userRole = "STAFF";
+                                    this._dropdownVal = 1;
+                                  });
+                                } catch (e) {}
+                              }
+                              _dropdownVal = e!;
+                            }),
+                      ],
+                    ),
 
                   /// 간격
                   Container(

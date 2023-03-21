@@ -34,7 +34,7 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer:
-          global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+          DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -60,7 +60,14 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 
@@ -268,7 +275,7 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
                           } catch (e) {}
                         }
                         // 유저
-                        else if (global_userRole == enum_Role.user) {
+                        else {
                           try {
                             res = await api_user_editPrivacy(name, phNum, age);
                             Navigator.pushAndRemoveUntil(

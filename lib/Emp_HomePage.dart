@@ -6,6 +6,8 @@ import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
+import 'Manager_HomePage.dart';
+
 class HomePageEmp extends StatefulWidget {
   @override
   State<HomePageEmp> createState() => _HomePageEmp();
@@ -19,8 +21,6 @@ class _HomePageEmp extends State<HomePageEmp> {
     // TODO: implement initState
     super.initState();
     try {
-      // 현재 로그인된 계정 등급 설정
-      global_userRole = enum_Role.user;
       // 개인 정보 조회
       api_user_getPrivacy(global_userId);
       // 헬멧 체크 여부 조회
@@ -40,7 +40,7 @@ class _HomePageEmp extends State<HomePageEmp> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -66,7 +66,14 @@ class _HomePageEmp extends State<HomePageEmp> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

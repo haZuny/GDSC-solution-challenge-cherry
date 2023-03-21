@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
+import 'Emp_HomePage.dart';
 import 'Manager_CheckListPage.dart';
 import 'All_SiteInfoPage.dart';
 
@@ -26,8 +27,6 @@ class _HomePageManager extends State<HomePageManager> {
         .then((value) => api_site_getSiteInfo(global_siteId));
     // 개인 정보 조회
     api_admin_getPrivacy(global_userId);
-    // 현재 로그인된 계정 등급 설정
-    global_userRole = enum_Role.manager;
   }
 
   @override
@@ -40,7 +39,7 @@ class _HomePageManager extends State<HomePageManager> {
           appBar: AppBarAll(),
 
           /// drawer
-          drawer: DrawerManager(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -62,7 +61,14 @@ class _HomePageManager extends State<HomePageManager> {
                 size: getFullScrennSizePercent(context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

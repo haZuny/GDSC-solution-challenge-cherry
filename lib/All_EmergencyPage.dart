@@ -10,6 +10,9 @@ import 'dart:ui' as ui;
 
 import 'package:transition/transition.dart';
 
+import 'Emp_HomePage.dart';
+import 'Manager_HomePage.dart';
+
 class EmergencyPage extends StatefulWidget {
   @override
   State<EmergencyPage> createState() => _EmergencyPage();
@@ -58,7 +61,7 @@ class _EmergencyPage extends State<EmergencyPage> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer:
-          global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+          DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -84,7 +87,14 @@ class _EmergencyPage extends State<EmergencyPage> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

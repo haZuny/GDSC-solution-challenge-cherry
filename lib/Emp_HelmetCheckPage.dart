@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transition/transition.dart';
 
+import 'Manager_HomePage.dart';
+
 class HelmetCheckPage extends StatefulWidget {
   @override
   State<HelmetCheckPage> createState() => _HelmetCheckPage();
@@ -50,7 +52,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -76,7 +78,14 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

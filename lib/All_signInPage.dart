@@ -64,101 +64,111 @@ class _SignInPage extends State<SignInPage> {
                     global_googleSignIn = GoogleSignIn();
                     global_googleUser = await global_googleSignIn?.signIn();
 
-                    // Admin SignIn
-                    try {
-                      Response res =
-                          await api_admin_signIn(global_googleUser!.email);
-                      // 변수 설정
-                      _signInRole = res.data['data']['role'];
-                      _siteAssigned = res.data['data']['existSiteInfo'];
-                      global_userId = res.data['data']['id'];
-                      authorization =
-                          res.headers['authorization']![0].split(' ')[1];
-                      refreshToken = res.headers['refreshToken']![0];
-                      dio.options.headers = {
-                        'Authorization': "bearer " + authorization,
-                      };
+                    if (global_googleUser != null) {
+                      // Admin SignIn
+                      try {
+                        Response res =
+                            await api_admin_signIn(global_googleUser!.email);
+                        // 변수 설정
+                        _signInRole = res.data['data']['role'];
+                        _siteAssigned = res.data['data']['existSiteInfo'];
+                        global_userId = res.data['data']['id'];
+                        authorization =
+                            res.headers['authorization']![0].split(' ')[1];
+                        refreshToken = res.headers['refreshToken']![0];
+                        dio.options.headers = {
+                          'Authorization': "bearer " + authorization,
+                        };
+                      } catch (e) {}
 
-                      print(res.data);
-                    } catch (e) {}
+                      // User SignIn
+                      try {
+                        Response res =
+                            await api_user_signIn(global_googleUser!.email);
+                        // 변수 설정
+                        _signInRole = res.data['data']['role'];
+                        _siteAssigned = res.data['data']['existSiteInfo'];
+                        _waitingAccept = res.data['data']['waitingAccept'];
+                        global_userId = res.data['data']['id'];
+                        authorization =
+                            res.headers['authorization']![0].split(' ')[1];
+                        refreshToken = res.headers['refreshToken']![0];
+                        dio.options.headers = {
+                          'Authorization': "bearer " + authorization,
+                        };
+                      } catch (e) {}
 
-                    // User SignIn
-                    try {
-                      Response res =
-                          await api_user_signIn(global_googleUser!.email);
-                      // 변수 설정
-                      _signInRole = res.data['data']['role'];
-                      _siteAssigned = res.data['data']['existSiteInfo'];
-                      _waitingAccept = res.data['data']['waitingAccept'];
-                      global_userId = res.data['data']['id'];
-                      authorization =
-                          res.headers['authorization']![0].split(' ')[1];
-                      refreshToken = res.headers['refreshToken']![0];
-                      dio.options.headers = {
-                        'Authorization': "bearer " + authorization,
-                      };
-
-                      print(res.data);
-                    } catch (e) {}
-
-                    if (_signInRole == "ADMIN") {
-                      // 관리자 홈페이지로 이동
-                      if (_siteAssigned) {
-                        Navigator.pushReplacement(
-                          context,
-                          Transition(
+                      if (_signInRole == "ADMIN") {
+                        // 관리자 홈페이지로 이동
+                        if (_siteAssigned) {
+                          global_userRole = enum_Role.manager;
+                          Navigator.pushReplacement(
+                            context,
+                            Transition(
                               child: HomePageManager(),
-                              transitionEffect: TransitionEffect.FADE,),
-                        );
-                      } else {
-                        // 관리자 현장 생성 페이지로 이동
-                        Navigator.push(
+                              transitionEffect: TransitionEffect.FADE,
+                            ),
+                          );
+                        } else {
+                          // 관리자 현장 생성 페이지로 이동
+                          Navigator.push(
+                              context,
+                              Transition(
+                                  child: PutSiteInfoPageManager(),
+                                  transitionEffect:
+                                      TransitionEffect.RIGHT_TO_LEFT));
+                        }
+                      } else if (_signInRole == "GUEST") {
+                        // 승인 대기중
+                        if (_waitingAccept) {
+                          Navigator.push(
+                              context,
+                              Transition(
+                                  child: WaitingAcceptPage(),
+                                  transitionEffect:
+                                      TransitionEffect.RIGHT_TO_LEFT));
+                        }
+                        // 현장 코드 입력해야함
+                        else {
+                          Navigator.push(
+                              context,
+                              Transition(
+                                  child: PutCheckCodePageEmp(),
+                                  transitionEffect:
+                                      TransitionEffect.RIGHT_TO_LEFT));
+                        }
+                      }
+                      // 유저
+                      else if (_signInRole == "USER") {
+                        global_userRole = enum_Role.user;
+                        Navigator.pushReplacement(
                             context,
                             Transition(
-                                child: PutSiteInfoPageManager(),
-                                transitionEffect:
-                                    TransitionEffect.RIGHT_TO_LEFT));
+                                child: HomePageEmp(),
+                                transitionEffect: TransitionEffect.FADE));
                       }
-                    } else if (_signInRole == "GUEST") {
-                      // 승인 대기중
-                      if (_waitingAccept) {
-                        Navigator.push(
+                      // 스탭
+                      else if (_signInRole == "STAFF") {
+                        global_userRole = enum_Role.staff;
+                        Navigator.pushReplacement(
                             context,
                             Transition(
-                                child: WaitingAcceptPage(),
-                                transitionEffect:
-                                    TransitionEffect.RIGHT_TO_LEFT));
+                                child: HomePageManager(),
+                                transitionEffect: TransitionEffect.FADE));
                       }
-                      // 현장 코드 입력해야함
+                      // 회원가입 안함
                       else {
+                        // 회원가입 페이지로 이동
                         Navigator.push(
                             context,
                             Transition(
-                                child: PutCheckCodePageEmp(),
+                                child: SelectRolePage(),
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
                       }
+                    }else{
+                      print(">>> 구글 로그인 실패");
                     }
-                    // 유저
-                    else if (_signInRole == "USER") {
-                      Navigator.pushReplacement(
-                          context,
-                          Transition(
-                              child: HomePageEmp(),
-                              transitionEffect:
-                                  TransitionEffect.FADE));
-                    }
-                    // 회원가입 안함
-                    else {
-                      // 회원가입 페이지로 이동
-                      Navigator.push(
-                          context,
-                          Transition(
-                              child: SelectRolePage(),
-                              transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT));
-                    }
-                    // googleSignIn.signOut();
                   },
                   // 내부 컴포넌트
                   child: ListTile(

@@ -5,7 +5,11 @@ import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:transition/transition.dart';
 import 'dart:ui' as ui;
+
+import 'Emp_HomePage.dart';
+import 'Manager_HomePage.dart';
 
 class SiteInfoPageAll extends StatefulWidget {
   @override
@@ -54,7 +58,7 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer:
-          global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+          DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -80,7 +84,14 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

@@ -8,6 +8,8 @@ import 'All_signInPage.dart';
 import 'AppBar_Drawer.dart';
 import 'package:dio/dio.dart';
 
+import 'Emp_HomePage.dart';
+
 class EditSitePageManager extends StatefulWidget {
   @override
   State<EditSitePageManager> createState() => _EditSitePageManager();
@@ -67,7 +69,14 @@ class _EditSitePageManager extends State<EditSitePageManager> {
                     context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
-              onPressed: () {},
+              onPressed: () {
+                if (global_userRole == enum_Role.user)
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageEmp()), (_) => false);
+                else
+                  Navigator.pushAndRemoveUntil(context,
+                      Transition(child: HomePageManager()), (_) => false);
+              },
             ),
           ),
 

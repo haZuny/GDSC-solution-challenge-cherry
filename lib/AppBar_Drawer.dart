@@ -1,5 +1,6 @@
 import 'package:cherry_app/All_EditPravacy.dart';
 import 'package:cherry_app/All_signInPage.dart';
+import 'package:cherry_app/Emp_PutCheckCodePage.dart';
 import 'package:cherry_app/Manager_EditSitePage.dart';
 import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
 import 'package:dio/dio.dart';
@@ -29,11 +30,11 @@ class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
       );
 }
 
-/// Emp Drawer
-class DrawerEmp extends StatelessWidget {
+/// Drawer
+class DrawerAll extends StatelessWidget {
   late ImageProvider profileImg;
 
-  DrawerEmp() {
+  DrawerAll() {
     if (global_googleUser?.photoUrl == null) {
       profileImg = AssetImage('assets/img/defaultUserImg.png');
     } else {
@@ -58,108 +59,11 @@ class DrawerEmp extends StatelessWidget {
                 backgroundColor: Color(themaColor_white),
               ),
               accountName: Text(
-                global_userRole == enum_Role.user ? "USER" : "STAFF",
-                style: TextStyle(color: Color(themaColor_black)),
-              ),
-              accountEmail: Text(
-                global_googleUser!.email,
-                style: TextStyle(color: Color(themaColor_black)),
-              ),
-              decoration: BoxDecoration(
-                color: Color(themaColor_whiteYellow),
-              ),
-            ),
-
-            /// 현장 정보
-            ListTile(
-              leading: Icon(Icons.assignment),
-              title: Text("Site Information"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  Transition(
-                      child: SiteInfoPageAll(),
-                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
-                );
-              },
-            ),
-
-            /// 설정
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Privacy settings"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  Transition(
-                      child: EditPrivacyPage(),
-                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
-                );
-              },
-            ),
-            Divider(
-                color: Color(themaColor_whiteBlack),
-                height: drawer_dividerHeight,
-                thickness: drawer_dividerWidth),
-
-            /// 로그아웃
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text("Sign out"),
-              onTap: () async {
-                Response? res;
-                try {
-                  res = await api_user_logout();
-                } catch (e) {}
-                if (res?.data['success']) {
-                  global_googleSignIn?.signOut();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      Transition(
-                          child: SignInPage(),
-                          transitionEffect: TransitionEffect.LEFT_TO_RIGHT),
-                      (_) => false);
-                  print(">>> SuccessLogout");
-                }
-              },
-            )
-          ],
-        ),
-      );
-}
-
-/// Manager Drawer
-class DrawerManager extends StatelessWidget {
-  late ImageProvider profileImg;
-
-  DrawerManager() {
-    if (global_googleUser?.photoUrl == null) {
-      profileImg = AssetImage('assets/img/defaultUserImg.png');
-    } else {
-      profileImg = NetworkImage(global_googleUser!.photoUrl!);
-    }
-  }
-
-  @override
-  Widget build(context) => Drawer(
-        child: ListView(
-          children: [
-            /// 여백
-            Container(
-              height: getFullScrennSizePercent(context, drawer_spaceTop),
-              color: Color(themaColor_whiteYellow),
-            ),
-
-            /// 상단 유저 정보
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: profileImg,
-                backgroundColor: Color(themaColor_white),
-              ),
-              accountName: Text(
-                "ADMIN",
+                global_userRole == enum_Role.user
+                    ? "USER"
+                    : global_userRole == enum_Role.manager
+                        ? "ADMIN"
+                        : "STAFF",
                 style: TextStyle(color: Color(themaColor_black)),
               ),
               accountEmail: Text(
@@ -187,51 +91,64 @@ class DrawerManager extends StatelessWidget {
             ),
 
             /// 현장 정보설정
-            ListTile(
-              leading: Icon(Icons.build),
-              title: Text("Workspace settings"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  Transition(
-                      child: EditSitePageManager(),
-                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
-                );
-              },
-            ),
-
-            /// 체크리스트 설정
-            ListTile(
-              leading: Icon(Icons.check_box),
-              title: Text("Check list settings"),
-              onTap: () {},
-            ),
+            if (global_userRole == enum_Role.manager)
+              ListTile(
+                leading: Icon(Icons.build),
+                title: Text("Workspace settings"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    Transition(
+                        child: EditSitePageManager(),
+                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                  );
+                },
+              ),
 
             /// 현장 초기화
-            ListTile(
-              leading: Icon(
-                Icons.refresh,
-                color: Colors.red,
+            if (global_userRole == enum_Role.manager)
+              ListTile(
+                leading: Icon(
+                  Icons.refresh,
+                  color: Colors.red,
+                ),
+                title: Text("Reset workspace",
+                    style: TextStyle(color: Colors.red)),
+                onTap: () async {
+                  Response? res;
+                  try {
+                    res = await api_site_deleteSite(global_siteId);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        Transition(
+                            child: PutSiteInfoPageManager()),
+                        (_) => false);
+                  } catch (e) {}
+                },
               ),
-              title:
-                  Text("Reset workspace", style: TextStyle(color: Colors.red)),
-              onTap: () async {
-                Response? res;
-                try {
-                  res = await api_site_deleteSite(global_siteId);
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      Transition(
-                          child: PutSiteInfoPageManager(),
-                          transitionEffect: TransitionEffect.LEFT_TO_RIGHT),
-                      (_) => false);
-                  print(">>> site 제거 성공");
-                } catch (e) {
-                  print(">>> site 제거 실패");
-                }
-              },
-            ),
+
+            /// 현장 탈퇴
+            if (global_userRole != enum_Role.manager)
+              ListTile(
+                leading: Icon(
+                  Icons.refresh,
+                  color: Colors.red,
+                ),
+                title:
+                    Text("Quit workspace", style: TextStyle(color: Colors.red)),
+                onTap: () async {
+                  Response? res;
+                  try {
+                    res = await api_admin_deleteEmp(global_userId);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        Transition(
+                            child: PutCheckCodePageEmp()),
+                        (_) => false);
+                  } catch (e) {}
+                },
+              ),
             Divider(
                 color: Color(themaColor_whiteBlack),
                 height: drawer_dividerHeight,
