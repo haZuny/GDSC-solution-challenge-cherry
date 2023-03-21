@@ -36,10 +36,40 @@ class _HomePageManager extends State<HomePageManager> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
+          /// app bar
           appBar: AppBarAll(),
+
+          /// drawer
           drawer: DrawerManager(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height: getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin: getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding:
+                EdgeInsets.only(bottom: getFullScrennSizePercent(context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
           body: Container(
-            color: Color(themaColor_whiteYellow),
             alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Column(
@@ -101,17 +131,21 @@ class _HomePageManager extends State<HomePageManager> {
                               // 아이콘
                               Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
                                       border: Border.all(
-                                          color:
-                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
                                   child: Icon(
                                     Icons.replay,
                                     size: getFullScrennSizePercent(
                                         context, homePage_iconSize),
                                     color: Color(themaColor_yellow),
                                   )),
-                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              Container(
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
+                              ),
                               // 텍스트
                               Text(
                                 "Start work",
@@ -172,10 +206,11 @@ class _HomePageManager extends State<HomePageManager> {
                               // 아이콘
                               Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
                                       border: Border.all(
-                                          color:
-                                              Color(themaColor_yellow), width: homePage_iconWeight)),
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
                                   child: Icon(
                                     Icons.check,
                                     size: getFullScrennSizePercent(
@@ -183,7 +218,10 @@ class _HomePageManager extends State<HomePageManager> {
                                     color: Color(themaColor_yellow),
                                   )),
                               // 간격
-                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              Container(
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
+                              ),
                               // 텍스트
                               Text(
                                 "Check list",
@@ -231,7 +269,6 @@ class _HomePageManager extends State<HomePageManager> {
 
                   /// 긴급 버튼
                   ElevatedButton(
-
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -252,7 +289,10 @@ class _HomePageManager extends State<HomePageManager> {
                           color: Color(themaColor_yellow),
                         ),
                         // 간격
-                        Container(height: getFullScrennSizePercent(context, homePage_spacePerIconBig),),
+                        Container(
+                          height: getFullScrennSizePercent(
+                              context, homePage_spacePerIconBig),
+                        ),
                         // 텍스트
                         Text(
                           "Emergency",
@@ -321,10 +361,11 @@ class _HomePageManager extends State<HomePageManager> {
                               // 아이콘
                               Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
                                       border: Border.all(
-                                          color:
-                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
                                   child: Icon(
                                     Icons.location_on_outlined,
                                     size: getFullScrennSizePercent(
@@ -332,13 +373,14 @@ class _HomePageManager extends State<HomePageManager> {
                                     color: Color(themaColor_yellow),
                                   )),
                               Container(
-                                height: getFullScrennSizePercent(context, homePage_spacePerIcon),
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
                               ),
                               // 텍스트
                               Text(
                                 "Workspace",
-                                style:
-                                    TextStyle(color: Color(themaColor_whiteBlack)),
+                                style: TextStyle(
+                                    color: Color(themaColor_whiteBlack)),
                                 textAlign: TextAlign.center,
                               ),
                             ],
@@ -394,10 +436,11 @@ class _HomePageManager extends State<HomePageManager> {
                               // 아이콘
                               Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(homePage_iconRound),
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
                                       border: Border.all(
-                                          color:
-                                          Color(themaColor_yellow), width: homePage_iconWeight)),
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
                                   child: Icon(
                                     Icons.group,
                                     size: getFullScrennSizePercent(
@@ -405,12 +448,15 @@ class _HomePageManager extends State<HomePageManager> {
                                     color: Color(themaColor_yellow),
                                   )),
                               // 간격
-                              Container(height: getFullScrennSizePercent(context, homePage_spacePerIcon),),
+                              Container(
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
+                              ),
                               // 텍스트
                               Text(
                                 "People",
-                                style:
-                                    TextStyle(color: Color(themaColor_whiteBlack)),
+                                style: TextStyle(
+                                    color: Color(themaColor_whiteBlack)),
                                 textAlign: TextAlign.center,
                               ),
                             ],

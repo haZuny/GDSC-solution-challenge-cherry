@@ -16,6 +16,40 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer: DrawerEmp(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -87,65 +121,58 @@ class _CheckListPageEmp extends State<CheckListPageEmp> {
 }
 
 /// 리스트 타일 요소
-class CheckListTileEmp extends StatelessWidget{
+class CheckListTileEmp extends StatelessWidget {
   late String msg;
 
   CheckListTileEmp(String msg) : this.msg = msg;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    child: Column(
-      children: [
-        Row(
-          mainAxisAlignment:
-          MainAxisAlignment.spaceBetween,
+        child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // 간격
+                Container(
+                  width: checkListPage_listTilePaddingLeft,
+                ),
+                Expanded(
+                  child: Text(
+                    msg,
+                    style: TextStyle(fontSize: checkListPage_listTextFontSize),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Checkbox(value: false, onChanged: (val) {})
+              ],
+            ),
+            Divider(
+              color: Color(themaColor_whiteBlack),
+              height: 0,
+            ),
             // 간격
             Container(
-              width: checkListPage_listTilePaddingLeft,
-            ),
-            Expanded(
-              child: Text(
-                msg,
-                style: TextStyle(
-                    fontSize:
-                    checkListPage_listTextFontSize),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            Checkbox(value: false, onChanged: (val) {})
+              height: checkListPage_listTilePaddingTopBottom,
+            )
           ],
         ),
-        Divider(
-          color: Color(themaColor_whiteBlack),
-          height: 0,
-        ),
-        // 간격
-        Container(
-          height:
-          checkListPage_listTilePaddingTopBottom,
-        )
-      ],
-    ),
-    // 다이얼로그
-    onTap: () {
-      showDialog(
-          context: context,
-          builder: (context) => Dialog(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.all(
-                  checkListPage_dialogTextPadding),
-              child: Text(
-                msg,
-                // textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize:
-                    checkListPage_listTextFontSize),
-              ),
-            ),
-          ));
-    },
-  );
-
+        // 다이얼로그
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (context) => Dialog(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.all(checkListPage_dialogTextPadding),
+                      child: Text(
+                        msg,
+                        // textAlign: TextAlign.center,
+                        style:
+                            TextStyle(fontSize: checkListPage_listTextFontSize),
+                      ),
+                    ),
+                  ));
+        },
+      );
 }

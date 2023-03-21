@@ -29,9 +29,9 @@ int global_userAge = 0;
 // Color
 int themaColor_white = 0xFFFFFFFF; // 하얀색
 int themaColor_black = 0xFF000000; // 검정색
+int themaColor_yellow = 0xffebba09; // 노랑색
 int themaColor_whiteBlack = 0xff909090; // 연한 검정
-int themaColor_whiteYellow = 0xFBFBF6; // 연한 노랑
-int themaColor_yellow = 0xffebba09;
+int themaColor_whiteYellow = 0xFFFFF2C1; // 연한 노랑
 int allPage_btnFontColor = 0xff2378b7; // 텍스트버튼 컬러
 int allPage_btnSubFontColor = 0xffbb2f2f; // 텍스트버튼 서브 컬러
 // Size(Percent)
@@ -52,11 +52,17 @@ double allPage_btnFontSize = 18; // 텍스트 버튼 폰트 크기
 double allPage_shadowBlurRadius = 10;
 double allPage_shadowOffSet = 5;
 
-/// AppBar, Drawer
+/// AppBar, Drawer, bottomAppBar
 // drawer
 int drawer_spaceTop = 10;
 double drawer_dividerWidth = 0.2;
 double drawer_dividerHeight = 0;
+// bottomBar
+int bottomBar_bottomBarHeight = 10;  // 바텀 네비게이션 높이
+int bottomBar_bottomBarNorch = 2;  // 바텀 네비게이션 파인부분
+int bottomBar_floatingBtnMargin = 5;  // 바텀 플로팅버튼 하단 마진
+int bottomBar_floatingBtnSize = 10;  // 바텀 플로팅버튼 크기
+
 
 /// SignInPage
 // Size(Percent)
@@ -129,6 +135,7 @@ int homePage_spacePerBtn = 6; // 버튼 사이 간격(가로)
 int homePage_smallBtnWidth = 36; // 작은 버튼 가로
 int homePage_smallBtnHeight = 33; // 작은 버튼 높이
 int homePage_bigBtnHeight = 45; // 큰 버튼 높이
+
 // icon
 int homePage_iconSize = 10; // 버튼 아이콘 크기
 int homePage_spacePerIcon = 3; // 버튼 아이콘 간격

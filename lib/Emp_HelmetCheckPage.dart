@@ -51,6 +51,40 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer: DrawerEmp(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -113,8 +147,13 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                           late Response res;
                           try {
                             res = await api_user_editHelmetCheck(true);
-                            Navigator.pushAndRemoveUntil(context,
-                                Transition(child: HomePageEmp(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                Transition(
+                                    child: HomePageEmp(),
+                                    transitionEffect:
+                                        TransitionEffect.LEFT_TO_RIGHT),
+                                (_) => false);
                           } catch (e) {}
                         }
                         // 실패

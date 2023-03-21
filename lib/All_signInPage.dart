@@ -25,9 +25,8 @@ class _SignInPage extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarNone(),
+        appBar: AppBarAll(),
         body: Container(
-          color: Color(themaColor_whiteYellow),
           alignment: Alignment.center,
           child: SingleChildScrollView(
             child: Column(
@@ -109,7 +108,7 @@ class _SignInPage extends State<SignInPage> {
                           context,
                           Transition(
                               child: HomePageManager(),
-                              transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
+                              transitionEffect: TransitionEffect.FADE,),
                         );
                       } else {
                         // 관리자 현장 생성 페이지로 이동
@@ -147,7 +146,7 @@ class _SignInPage extends State<SignInPage> {
                           Transition(
                               child: HomePageEmp(),
                               transitionEffect:
-                                  TransitionEffect.RIGHT_TO_LEFT));
+                                  TransitionEffect.FADE));
                     }
                     // 회원가입 안함
                     else {

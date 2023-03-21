@@ -54,7 +54,41 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer:
-              global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+          global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(

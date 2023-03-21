@@ -41,7 +41,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarNone(),
+          appBar: AppBarAll(),
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -234,7 +234,7 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                                   Transition(
                                       child: HomePageManager(),
                                       transitionEffect:
-                                          TransitionEffect.RIGHT_TO_LEFT),
+                                          TransitionEffect.FADE),
                                   (_) => false);
                             } catch (e) {
                             }

@@ -316,10 +316,11 @@ class EmpListTile extends StatelessWidget {
         ),
         onTap: () {
           Navigator.push(
-              context,
-              Transition(
-                  child: ViewEmpInfoPage(this.userId),
-                  transitionEffect: TransitionEffect.RIGHT_TO_LEFT)).then((value) => updateList!());
+                  context,
+                  Transition(
+                      child: ViewEmpInfoPage(this.userId),
+                      transitionEffect: TransitionEffect.RIGHT_TO_LEFT))
+              .then((value) => updateList!());
         },
       );
 }

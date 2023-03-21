@@ -20,7 +20,7 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarNone(),
+          appBar: AppBarAll(),
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(

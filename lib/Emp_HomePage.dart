@@ -41,6 +41,40 @@ class _HomePageEmp extends State<HomePageEmp> {
         child: Scaffold(
           appBar: AppBarAll(),
           drawer: DrawerEmp(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -64,9 +98,14 @@ class _HomePageEmp extends State<HomePageEmp> {
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
+                    color: Color(themaColor_yellow),
                     child: Text(
-                      "Check your safety.",
-                      style: TextStyle(fontSize: allPage_subTitleFontSize),
+                      "Check your safety",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: allPage_subTitleFontSize,
+                      ),
                     ),
                   ),
 
@@ -97,11 +136,35 @@ class _HomePageEmp extends State<HomePageEmp> {
                             }
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Helmet wear\ninspection",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
+                                      border: Border.all(
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.engineering,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              Container(
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
+                              ),
+                              // 텍스트
+                              Text(
+                                "Helmet wear\ninspection",
+                                style: TextStyle(
+                                    color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정
@@ -147,11 +210,35 @@ class _HomePageEmp extends State<HomePageEmp> {
                                         TransitionEffect.RIGHT_TO_LEFT));
                           },
                           // 내부 컴포넌트
-                          child: Text(
-                            "Today's site\nCheck List",
-                            style:
-                                TextStyle(color: Color(themaColor_whiteBlack)),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 아이콘
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          homePage_iconRound),
+                                      border: Border.all(
+                                          color: Color(themaColor_yellow),
+                                          width: homePage_iconWeight)),
+                                  child: Icon(
+                                    Icons.check,
+                                    size: getFullScrennSizePercent(
+                                        context, homePage_iconSize),
+                                    color: Color(themaColor_yellow),
+                                  )),
+                              Container(
+                                height: getFullScrennSizePercent(
+                                    context, homePage_spacePerIcon),
+                              ),
+                              // 텍스트
+                              Text(
+                                "Check list",
+                                style:
+                                    TextStyle(color: Color(themaColor_whiteBlack)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                           style: ElevatedButton.styleFrom(
                               // 크기 설정
@@ -200,12 +287,30 @@ class _HomePageEmp extends State<HomePageEmp> {
                                   TransitionEffect.RIGHT_TO_LEFT));
                     },
                     // 내부 컴포넌트
-                    child: Text(
-                      "Emergency",
-                      style: TextStyle(
-                          color: Color(themaColor_whiteBlack),
-                          fontSize: homePage_emergencyBtnFontSize),
-                      textAlign: TextAlign.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // 아이콘
+                        Icon(
+                          Icons.medical_services_outlined,
+                          size: getFullScrennSizePercent(
+                              context, homePage_iconSizeBig),
+                          color: Color(themaColor_yellow),
+                        ),
+                        // 간격
+                        Container(
+                          height: getFullScrennSizePercent(
+                              context, homePage_spacePerIconBig),
+                        ),
+                        // 텍스트
+                        Text(
+                          "Emergency",
+                          style: TextStyle(
+                              color: Color(themaColor_whiteBlack),
+                              fontSize: homePage_emergencyBtnFontSize),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     style: ElevatedButton.styleFrom(
                         // 크기 설정

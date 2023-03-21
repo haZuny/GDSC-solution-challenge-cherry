@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,38 @@ class CPRPage extends StatefulWidget {
   State<CPRPage> createState() => _CPRPage();
 }
 
-class _CPRPage extends State<CPRPage> {
+class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
+  AudioPlayer audio = AudioPlayer();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    audio.setReleaseMode(ReleaseMode.loop);
+    audio.play(
+      AssetSource('sound/cpr.ogg'),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    audio.stop();
+    audio.release();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        audio.resume();
+        break;
+      case AppLifecycleState.inactive:
+        print("inactive");
+        break;
+    }
   }
 
   @override
@@ -26,7 +54,42 @@ class _CPRPage extends State<CPRPage> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer: DrawerEmp(),
+          drawer:
+              global_userRole == enum_Role.user ? DrawerEmp() : DrawerManager(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -53,6 +116,12 @@ class _CPRPage extends State<CPRPage> {
                     ),
                   ),
 
+                  /// 간격
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, cprPage_spacePerComponent),
+                  ),
+
                   /// 전체 과정 이미지
                   Image.asset("assets/img/cpr_steps.jpg"),
 
@@ -73,7 +142,8 @@ class _CPRPage extends State<CPRPage> {
                           "Step 1. Call 911",
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(themaColor_yellow)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -103,8 +173,10 @@ class _CPRPage extends State<CPRPage> {
                         Text(
                           "Step 2. Place the person on their back and open their airway",
                           style: TextStyle(
-                              fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                            fontSize: allPage_titleFontSize,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Color(themaColor_yellow),
+                          ),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -134,8 +206,10 @@ class _CPRPage extends State<CPRPage> {
                         Text(
                           "Step 3. Check for breathing",
                           style: TextStyle(
-                              fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                            fontSize: allPage_titleFontSize,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Color(themaColor_yellow),
+                          ),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -165,8 +239,10 @@ class _CPRPage extends State<CPRPage> {
                         Text(
                           "Step 4. Perform 30 chest compressions",
                           style: TextStyle(
-                              fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                            fontSize: allPage_titleFontSize,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Color(themaColor_yellow),
+                          ),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -197,8 +273,10 @@ class _CPRPage extends State<CPRPage> {
                         Text(
                           "Step 5. Perform two rescue breaths",
                           style: TextStyle(
-                              fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                            fontSize: allPage_titleFontSize,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Color(themaColor_yellow),
+                          ),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -229,8 +307,10 @@ class _CPRPage extends State<CPRPage> {
                         Text(
                           "Step 6. Repeat",
                           style: TextStyle(
-                              fontSize: allPage_titleFontSize,
-                              fontWeight: FontWeight.bold),
+                            fontSize: allPage_titleFontSize,
+                            fontWeight: FontWeight.bold,
+                            backgroundColor: Color(themaColor_yellow),
+                          ),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -243,7 +323,6 @@ class _CPRPage extends State<CPRPage> {
                       ],
                     ),
                   ),
-
 
                   /// 간격
                   Container(

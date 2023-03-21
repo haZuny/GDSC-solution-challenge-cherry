@@ -41,7 +41,41 @@ class _EditSitePageManager extends State<EditSitePageManager> {
           FocusManager.instance.primaryFocus?.unfocus(); // 키보드 닫기 이벤트
         },
         child: Scaffold(
-          appBar: AppBarNone(),
+          appBar: AppBarAll(),
+
+          /// bottom bar
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+            ),
+            shape: CircularNotchedRectangle(),
+            color: Color(themaColor_white),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+          ),
+
+          /// floating btn
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.home,
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
+              ),
+              backgroundColor: Color(themaColor_yellow),
+              onPressed: () {},
+            ),
+          ),
+
+          /// floating btn location
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+
+          /// body
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -219,9 +253,14 @@ class _EditSitePageManager extends State<EditSitePageManager> {
                                   _addrList[_selectedAddrIdx].lon!,
                                   _addrList[_selectedAddrIdx].addr1!,
                                   _addrList[_selectedAddrIdx].addr2!);
-                              Navigator.pushAndRemoveUntil(context, Transition(child: HomePageManager(), transitionEffect: TransitionEffect.LEFT_TO_RIGHT), (_) => false);
-                            } catch (e) {
-                            }
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  Transition(
+                                      child: HomePageManager(),
+                                      transitionEffect:
+                                          TransitionEffect.LEFT_TO_RIGHT),
+                                  (_) => false);
+                            } catch (e) {}
                           },
                           child: Text(
                             "Done",

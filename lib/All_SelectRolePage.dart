@@ -13,7 +13,7 @@ class SelectRolePage extends StatefulWidget {
 class _SelectRolePage extends State<SelectRolePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarNone(),
+        appBar: AppBarAll(),
         body: Container(
           alignment: Alignment.center,
           child: SingleChildScrollView(

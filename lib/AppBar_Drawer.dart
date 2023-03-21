@@ -10,24 +10,6 @@ import 'package:transition/transition.dart';
 import 'All_SiteInfoPage.dart';
 import 'baseFile.dart';
 
-/// None AppBar
-class AppBarNone extends StatelessWidget implements PreferredSizeWidget {
-  // 앱바에 대한 크기 정보를 줌
-  @override
-  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
-
-  @override
-  Widget build(context) => AppBar(
-        backgroundColor: Color(themaColor_white),
-        centerTitle: true,
-        title: Text(
-          "C H E R R Y",
-          style: TextStyle(color: Color(themaColor_black)),
-        ),
-        elevation: 0,
-      );
-}
-
 /// AppBar
 class AppBarAll extends StatelessWidget implements PreferredSizeWidget {
   // 앱바에 대한 크기 정보를 줌
@@ -75,11 +57,16 @@ class DrawerEmp extends StatelessWidget {
                 backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName:
-                  Text(global_userRole == enum_Role.user ? "USER" : "STAFF"),
-              accountEmail: Text(global_googleUser!.email),
+              accountName: Text(
+                global_userRole == enum_Role.user ? "USER" : "STAFF",
+                style: TextStyle(color: Color(themaColor_black)),
+              ),
+              accountEmail: Text(
+                global_googleUser!.email,
+                style: TextStyle(color: Color(themaColor_black)),
+              ),
               decoration: BoxDecoration(
-                color: Color(themaColor_black),
+                color: Color(themaColor_whiteYellow),
               ),
             ),
 
@@ -171,8 +158,14 @@ class DrawerManager extends StatelessWidget {
                 backgroundImage: profileImg,
                 backgroundColor: Color(themaColor_white),
               ),
-              accountName: Text("ADMIN", style: TextStyle(color: Color(themaColor_black)),),
-              accountEmail: Text(global_googleUser!.email!, style: TextStyle(color: Color(themaColor_black)),),
+              accountName: Text(
+                "ADMIN",
+                style: TextStyle(color: Color(themaColor_black)),
+              ),
+              accountEmail: Text(
+                global_googleUser!.email!,
+                style: TextStyle(color: Color(themaColor_black)),
+              ),
               decoration: BoxDecoration(
                 color: Color(themaColor_whiteYellow),
               ),
