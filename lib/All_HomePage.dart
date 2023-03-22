@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
+import 'Dialog.dart';
 import 'Emp_HelmetCheckPage.dart';
 import 'All_CheckListPage.dart';
 import 'All_SiteInfoPage.dart';
@@ -87,8 +88,8 @@ class _HomePageAll extends State<HomePageAll> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageAll()), (_) => false);
+                Navigator.pushAndRemoveUntil(
+                    context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),
@@ -224,12 +225,20 @@ class _HomePageAll extends State<HomePageAll> {
 
                             /// 작업 시작 버튼
                             ElevatedButton(
-                                onPressed: () async {
-                                  late Response res;
-                                  try {
-                                    res =
-                                        await api_site_clearSite(global_siteId);
-                                  } catch (e) {}
+                                onPressed: () {
+                                  showDialog(
+                                          context: context,
+                                          builder: (context) =>
+                                              ResetSiteAlertDialog())
+                                      .then((value) async {
+                                    if (value) {
+                                      late Response res;
+                                      try {
+                                        res = await api_site_clearSite(
+                                            global_siteId);
+                                      } catch (e) {}
+                                    }
+                                  });
                                 },
                                 // 내부 컴포넌트
                                 child: Column(
@@ -255,7 +264,7 @@ class _HomePageAll extends State<HomePageAll> {
                                     ),
                                     // 텍스트
                                     Text(
-                                      "Start work",
+                                      "Reset site",
                                       style: TextStyle(
                                           color: Color(themaColor_whiteBlack)),
                                       textAlign: TextAlign.center,
