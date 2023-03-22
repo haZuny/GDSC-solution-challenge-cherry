@@ -279,7 +279,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
 
 
 
-    
+
     updateWaitingList();
   }
 

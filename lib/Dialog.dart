@@ -106,12 +106,12 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
       );
 }
 
-/// 메니저 체크리스트 자세히 보기
+/// 체크리스트 자세히 보기
 class ViewCheckListInfoDialog extends StatefulWidget {
   late int checkId;
   late String checkMSG;
   late bool checkState;
-  late Function updateState;
+  final updateState;
 
   ViewCheckListInfoDialog(int id, String msg, bool state, Function updateState)
       : this.checkId = id,
@@ -128,7 +128,7 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
   late int checkId;
   late String checkMSG;
   late bool checkState;
-  late Function updateState;
+  final updateState;
 
   _ViewCheckListInfoDialog(int id, String msg, bool state, Function updateState)
       : this.checkId = id,
@@ -172,15 +172,17 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
           // 수정
           TextButton(
               onPressed: () async {
+                // Navigator.pop(context);
                 Navigator.pop(context);
                 showDialog(
                     context: context,
                     builder: (context) => AddCheckListDialog(
                           false,
+                          updateState,
                           id: checkId,
                           msg: checkMSG,
                           state: checkState,
-                        )).then((value) => this.updateState(global_siteId));
+                        ));
               },
               child: Text(
                 "Edit",
@@ -213,19 +215,22 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
 /// 메니저 체크리스트 추가/수정
 class AddCheckListDialog extends StatefulWidget {
   late bool isAdd;
+  final updateState;
   late int? checkId;
   late String? checkMSG;
   late bool? checkState;
 
-  AddCheckListDialog(bool isAdd, {int? id, String? msg, bool? state})
+  AddCheckListDialog(bool isAdd, Function updateState,
+      {int? id, String? msg, bool? state})
       : this.isAdd = isAdd,
+        this.updateState = updateState,
         this.checkId = id,
         this.checkMSG = msg,
         this.checkState = state;
 
   @override
   State<AddCheckListDialog> createState() =>
-      _AddCheckListDialog(isAdd, checkId, checkMSG, checkState);
+      _AddCheckListDialog(isAdd, checkId, checkMSG, checkState, updateState);
 }
 
 class _AddCheckListDialog extends State<AddCheckListDialog> {
@@ -235,12 +240,15 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
   late int? checkId;
   late String? checkMSG;
   late bool? checkState;
+  final updateState;
 
-  _AddCheckListDialog(bool isAdd, int? id, String? msg, bool? state)
+  _AddCheckListDialog(
+      bool isAdd, int? id, String? msg, bool? state, Function updateState)
       : this.isAdd = isAdd,
         this.checkId = id,
         this.checkMSG = msg,
-        this.checkState = state;
+        this.checkState = state,
+        this.updateState = updateState;
 
   @override
   void initState() {
@@ -286,7 +294,8 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
                   late Response res;
                   try {
                     res = await api_siteCheck_addCheckList(global_siteId, text);
-                  Navigator.pop(context);
+                    updateState(global_siteId);
+                    Navigator.pop(context);
                   } catch (e) {}
                 }
                 // 수정
@@ -294,6 +303,7 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
                   late Response res;
                   try {
                     res = await api_siteCheck_editCheckList(checkId!, text);
+                    updateState(global_siteId);
                     Navigator.pop(context);
                   } catch (e) {}
                 }

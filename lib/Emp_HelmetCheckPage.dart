@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Classifier.dart';
-import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/Emp_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';

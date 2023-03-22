@@ -37,13 +37,15 @@ int allPage_btnSubFontColor = 0xffbb2f2f; // 텍스트버튼 서브 컬러
 // Size(Percent)
 int allPage_spacePerTitleAndComponents = 15; // 타이틀과 컴포넌트 사이의 간격
 int allPage_mainComponentsWidth = 80; // 컴포넌트 너비
-// int allPage_signUpTFHeight = 15;  // 회원가입 텍스트필드 세로
+int allPage_spacePerTitleAndSubTitme = 1; // 타이틀과 서브타이틀 간격
 // Radius
+double allPage_subTitleLineRadius = 20; // 서브타이틀 배경 둥글기
 double allPage_btnRadius = 10; // 버튼 둥글기
 double allPage_TFRadius = 10; // 텍스트필드 둥글기
 double allPage_bigBoxRadious = 20; // 큰 박스 둥글기
 // Width(두께)
 double allPage_btnBorderWidth = 0.1; // 버튼 테두리
+double allPage_addBtnWidth = 2;  // 버튼 테두리 두께
 // FontSize
 double allPage_titleFontSize = 25; // 타이틀 폰트 크기
 double allPage_subTitleFontSize = 17; // 서브 타이틀 폰트 크기
@@ -156,14 +158,21 @@ int helmetCheckPage_progressIndicatorPadding = 35;
 
 /// CheckListPage
 // Size
+int checkListPage_spacePerSubTitle = 10;  // 서브타이틀과 컴포넌트 간격
 int checkListPage_checkFormHeight = 100; // 체크 영역 높이
 int checkListPage_spacePerBackBtn = 6; // 뒤로가기 버튼과의 간격
+int checkListPage_btnWidth = 40;  // Add 버튼 가로
+int checkListPage_btnHeight = 15; // Add 버튼 세로
 // Padding
 double checkListPage_listTilePaddingTopBottom = 5; // 리스트 타일 패딩(위아래)
 double checkListPage_listTilePaddingLeft = 15; // 리스트 타일 패딩(왼쪽)
 double checkListPage_dialogTextPadding = 20; // 다이얼로그 텍스트 패딩
 // Font
 double checkListPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
+// Width
+double checkListPage_checkFormWidth = 1;  // 체크 영역 테두리 두께
+// Radius
+double checkListPage_addBtnRadius = 30; // add 버튼 둥글기
 
 /// SiteInfoPage
 // Size

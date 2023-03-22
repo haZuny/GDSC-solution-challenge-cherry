@@ -1,7 +1,5 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
-import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/All_EmergencyPage.dart';
-import 'package:cherry_app/Emp_HelmetCheckPage.dart';
 import 'package:cherry_app/Manager_manageEmpPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
@@ -9,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
 import 'Emp_HomePage.dart';
-import 'Manager_CheckListPage.dart';
+import 'All_CheckListPage.dart';
 import 'All_SiteInfoPage.dart';
 
 class HomePageManager extends StatefulWidget {
@@ -44,27 +42,31 @@ class _HomePageManager extends State<HomePageManager> {
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
             child: Container(
-              height: getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
+              height:
+                  getFullScrennSizePercent(context, bottomBar_bottomBarHeight),
             ),
             shape: CircularNotchedRectangle(),
             color: Color(themaColor_white),
-            notchMargin: getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
+            notchMargin:
+                getFullScrennSizePercent(context, bottomBar_bottomBarNorch),
           ),
 
           /// floating btn
           floatingActionButton: Padding(
-            padding:
-                EdgeInsets.only(bottom: getFullScrennSizePercent(context, bottomBar_floatingBtnMargin)),
+            padding: EdgeInsets.only(
+                bottom: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnMargin)),
             child: FloatingActionButton(
               child: Icon(
                 Icons.home,
-                size: getFullScrennSizePercent(context, bottomBar_floatingBtnSize),
+                size: getFullScrennSizePercent(
+                    context, bottomBar_floatingBtnSize),
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -99,13 +101,17 @@ class _HomePageManager extends State<HomePageManager> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     alignment: Alignment.center,
-                    color: Color(themaColor_yellow),
+
                     child: Text(
-                      "Check your safety",
+                      "C H E R R Y",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(themaColor_white),
                         fontSize: allPage_subTitleFontSize,
                       ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(themaColor_yellow),
+                        borderRadius: BorderRadius.circular(allPage_subTitleLineRadius)
                     ),
                   ),
 
@@ -178,8 +184,8 @@ class _HomePageManager extends State<HomePageManager> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정
@@ -200,7 +206,7 @@ class _HomePageManager extends State<HomePageManager> {
                             Navigator.push(
                               context,
                               Transition(
-                                  child: CheckListPageManager(),
+                                  child: CheckListPage(),
                                   transitionEffect:
                                       TransitionEffect.RIGHT_TO_LEFT),
                             );
@@ -254,8 +260,8 @@ class _HomePageManager extends State<HomePageManager> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정
@@ -326,8 +332,8 @@ class _HomePageManager extends State<HomePageManager> {
                           borderRadius:
                               BorderRadius.circular(allPage_btnRadius),
                           side: BorderSide(
-                              color: Color(themaColor_black),
-                              width: allPage_btnBorderWidth),
+                              color: Color(themaColor_yellow),
+                              width: allPage_addBtnWidth),
                         ),
 
                         // 배경 색상 설정
@@ -408,8 +414,8 @@ class _HomePageManager extends State<HomePageManager> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정
@@ -484,8 +490,8 @@ class _HomePageManager extends State<HomePageManager> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정

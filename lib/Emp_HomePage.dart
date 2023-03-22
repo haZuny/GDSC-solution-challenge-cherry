@@ -1,11 +1,11 @@
 import 'package:cherry_app/AppBar_Drawer.dart';
-import 'package:cherry_app/Emp_CheckListPage.dart';
 import 'package:cherry_app/All_EmergencyPage.dart';
 import 'package:cherry_app/Emp_HelmetCheckPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
+import 'All_CheckListPage.dart';
 import 'Manager_HomePage.dart';
 
 class HomePageEmp extends StatefulWidget {
@@ -106,13 +106,17 @@ class _HomePageEmp extends State<HomePageEmp> {
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
                     alignment: Alignment.center,
-                    color: Color(themaColor_yellow),
+
                     child: Text(
-                      "Check your safety",
+                      "C H E R R Y",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(themaColor_white),
                         fontSize: allPage_subTitleFontSize,
                       ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(themaColor_yellow),
+                        borderRadius: BorderRadius.circular(allPage_subTitleLineRadius)
                     ),
                   ),
 
@@ -190,8 +194,8 @@ class _HomePageEmp extends State<HomePageEmp> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정
@@ -212,7 +216,7 @@ class _HomePageEmp extends State<HomePageEmp> {
                             Navigator.push(
                                 context,
                                 Transition(
-                                    child: CheckListPageEmp(),
+                                    child: CheckListPage(),
                                     transitionEffect:
                                         TransitionEffect.RIGHT_TO_LEFT));
                           },
@@ -264,8 +268,8 @@ class _HomePageEmp extends State<HomePageEmp> {
                                 borderRadius:
                                     BorderRadius.circular(allPage_btnRadius),
                                 side: BorderSide(
-                                    color: Color(themaColor_black),
-                                    width: allPage_btnBorderWidth),
+                                    color: Color(themaColor_yellow),
+                                    width: allPage_addBtnWidth),
                               ),
 
                               // 배경 색상 설정
@@ -336,8 +340,8 @@ class _HomePageEmp extends State<HomePageEmp> {
                           borderRadius:
                               BorderRadius.circular(allPage_btnRadius),
                           side: BorderSide(
-                              color: Color(themaColor_black),
-                              width: allPage_btnBorderWidth),
+                              color: Color(themaColor_yellow),
+                              width: allPage_addBtnWidth),
                         ),
 
                         // 배경 색상 설정
