@@ -33,11 +33,6 @@ class _SignInPage extends State<SignInPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                /// 위, 아래 공간
-                Container(
-                  height:
-                  getFullScrennSizePercent(context, allPage_spaceTopDown),
-                ),
                 /// 로고 이미지
                 Image.asset(
                   'assets/img/logo.png',
@@ -76,6 +71,7 @@ class _SignInPage extends State<SignInPage> {
                             await api_admin_signIn(global_googleUser!.email);
                         // 변수 설정
                         _signInRole = res.data['data']['role'];
+                        print(res);
                         global_haveSite = res.data['data']['existSiteInfo'];
                         global_userId = res.data['data']['id'];
                         authorization =
@@ -104,9 +100,9 @@ class _SignInPage extends State<SignInPage> {
                       } catch (e) {}
 
                       if (_signInRole == "ADMIN") {
+                        global_userRole = enum_Role.manager;
                         // 관리자 홈페이지로 이동
                         if (global_haveSite) {
-                          global_userRole = enum_Role.manager;
                           Navigator.pushReplacement(
                             context,
                             Transition(

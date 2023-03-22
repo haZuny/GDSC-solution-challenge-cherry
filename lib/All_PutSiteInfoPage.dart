@@ -255,11 +255,8 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                         } catch (e) {}
                         await global_googleSignIn?.signOut();
                         print(">>> 구글 로그아웃");
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            Transition(
-                                child: SignInPage()),
-                            (_) => false);
+                        Navigator.pushAndRemoveUntil(context,
+                            Transition(child: SignInPage()), (_) => false);
                       },
                       // 내부 컴포넌트
                       child: Column(
@@ -336,11 +333,8 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                               _addrList[_selectedAddrIdx].lon!,
                               _addrList[_selectedAddrIdx].addr1!,
                               _addrList[_selectedAddrIdx].addr2!);
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              Transition(
-                                  child: HomePageAll()),
-                              (_) => false);
+                          Navigator.pushAndRemoveUntil(context,
+                              Transition(child: HomePageAll()), (_) => false);
                         } catch (e) {}
                       }
 
@@ -353,11 +347,8 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                               _addrList[_selectedAddrIdx].lon!,
                               _addrList[_selectedAddrIdx].addr1!,
                               _addrList[_selectedAddrIdx].addr2!);
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              Transition(
-                                  child: HomePageAll()),
-                              (_) => false);
+                          Navigator.pushAndRemoveUntil(context,
+                              Transition(child: HomePageAll()), (_) => false);
                         } catch (e) {}
                       }
                     },
@@ -540,7 +531,8 @@ class AddrSearchListTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
-            child: Padding(
+            child: Container(
+              width: double.infinity,
               padding: EdgeInsets.only(
                   top: editSiteInfoPage_siteListTileFontPadding,
                   bottom: editSiteInfoPage_siteListTileFontPadding),
