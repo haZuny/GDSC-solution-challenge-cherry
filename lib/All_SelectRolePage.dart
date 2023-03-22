@@ -20,6 +20,12 @@ class _SelectRolePage extends State<SelectRolePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                /// 위, 아래 공간
+                Container(
+                  height:
+                  getFullScrennSizePercent(context, allPage_spaceTopDown),
+                ),
+
                 Text(
                   "Select your role",
                   style: TextStyle(fontSize: allPage_titleFontSize),
@@ -118,6 +124,11 @@ class _SelectRolePage extends State<SelectRolePage> {
                           backgroundColor: Color(themaColor_white),
                           // 그림자 투명도
                           elevation: 10),
+                    ),
+                    /// 위, 아래 공간
+                    Container(
+                      height:
+                      getFullScrennSizePercent(context, allPage_spaceTopDown),
                     ),
                   ],
                 )

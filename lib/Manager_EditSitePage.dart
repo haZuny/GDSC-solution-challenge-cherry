@@ -91,10 +91,10 @@ class _EditSitePageManager extends State<EditSitePageManager> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, allPage_spacePerTitleAndComponents),
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   Text(
@@ -278,7 +278,12 @@ class _EditSitePageManager extends State<EditSitePageManager> {
                                 color: Color(allPage_btnFontColor)),
                           )),
                     ],
-                  )
+                  ),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

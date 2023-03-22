@@ -35,36 +35,41 @@ int themaColor_whiteYellow = 0xFFFFF2C1; // 연한 노랑
 int allPage_btnFontColor = 0xff2378b7; // 텍스트버튼 컬러
 int allPage_btnSubFontColor = 0xffbb2f2f; // 텍스트버튼 서브 컬러
 // Size(Percent)
+int allPage_spaceTopDown = 10; // 위아래 공간
 int allPage_spacePerTitleAndComponents = 15; // 타이틀과 컴포넌트 사이의 간격
 int allPage_mainComponentsWidth = 80; // 컴포넌트 너비
-int allPage_spacePerTitleAndSubTitme = 1; // 타이틀과 서브타이틀 간격
+int allPage_spacePerTitleAndSubTitme = 3; // 타이틀과 서브타이틀 간격
+int allPage_roundBtnWidth = 60; // 둥근 버튼 가로
+int allPage_roundBtnHeight = 15; // 둥근 버튼 세로
 // Radius
 double allPage_subTitleLineRadius = 20; // 서브타이틀 배경 둥글기
 double allPage_btnRadius = 10; // 버튼 둥글기
 double allPage_TFRadius = 10; // 텍스트필드 둥글기
 double allPage_bigBoxRadious = 20; // 큰 박스 둥글기
+double allPage_roundBtnRadius = 30; // 둥근 버튼 둥글기
 // Width(두께)
 double allPage_btnBorderWidth = 0.1; // 버튼 테두리
-double allPage_addBtnWidth = 2;  // 버튼 테두리 두께
+double allPage_addBtnWidth = 2; // 버튼 테두리 두께
+double allPage_BigSpaceWidth = 1; // 큰 영역 테두리 두께
 // FontSize
 double allPage_titleFontSize = 25; // 타이틀 폰트 크기
 double allPage_subTitleFontSize = 17; // 서브 타이틀 폰트 크기
 double allPage_btnFontSize = 18; // 텍스트 버튼 폰트 크기
+double allPage_roundBtnFontSize = 20; // 둥근 버튼 폰트 크기
 // Shadow
 double allPage_shadowBlurRadius = 10;
 double allPage_shadowOffSet = 5;
 
 /// AppBar, Drawer, bottomAppBar
 // drawer
-int drawer_spaceTop = 10;
+int drawer_spaceTop = 2;
 double drawer_dividerWidth = 0.2;
 double drawer_dividerHeight = 0;
 // bottomBar
-int bottomBar_bottomBarHeight = 10;  // 바텀 네비게이션 높이
-int bottomBar_bottomBarNorch = 2;  // 바텀 네비게이션 파인부분
-int bottomBar_floatingBtnMargin = 5;  // 바텀 플로팅버튼 하단 마진
-int bottomBar_floatingBtnSize = 10;  // 바텀 플로팅버튼 크기
-
+int bottomBar_bottomBarHeight = 10; // 바텀 네비게이션 높이
+int bottomBar_bottomBarNorch = 2; // 바텀 네비게이션 파인부분
+int bottomBar_floatingBtnMargin = 5; // 바텀 플로팅버튼 하단 마진
+int bottomBar_floatingBtnSize = 10; // 바텀 플로팅버튼 크기
 
 /// SignInPage
 // Size(Percent)
@@ -158,21 +163,14 @@ int helmetCheckPage_progressIndicatorPadding = 35;
 
 /// CheckListPage
 // Size
-int checkListPage_spacePerSubTitle = 10;  // 서브타이틀과 컴포넌트 간격
+int checkListPage_spacePerSubTitle = 10; // 서브타이틀과 컴포넌트 간격
 int checkListPage_checkFormHeight = 100; // 체크 영역 높이
 int checkListPage_spacePerBackBtn = 6; // 뒤로가기 버튼과의 간격
-int checkListPage_btnWidth = 40;  // Add 버튼 가로
-int checkListPage_btnHeight = 15; // Add 버튼 세로
 // Padding
 double checkListPage_listTilePaddingTopBottom = 5; // 리스트 타일 패딩(위아래)
 double checkListPage_listTilePaddingLeft = 15; // 리스트 타일 패딩(왼쪽)
-double checkListPage_dialogTextPadding = 20; // 다이얼로그 텍스트 패딩
 // Font
 double checkListPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
-// Width
-double checkListPage_checkFormWidth = 1;  // 체크 영역 테두리 두께
-// Radius
-double checkListPage_addBtnRadius = 30; // add 버튼 둥글기
 
 /// SiteInfoPage
 // Size
@@ -188,29 +186,40 @@ double siteInfoPage_codeShadowBlurRadius = 5; // 코드 한글자 그림자 번�
 double siteInfoPage_codeShadowOffSer = 2; // 코드 한글자 그림자 오프셋
 // Font
 double siteInfoPage_codeFontSize = 20; // 코드 한글자 폰트 크기
+// Width
+double siteInfoPage_codeBoxWidth = 1; // 현장코드 테두리 두께
 
 /// ManageEmpPage
 // Size
 int manageEmpPage_page1_spacePerTitle = 5; // 타이틀과의 간격
-int manageEmpPage_page1_checkedFoemHeight = 80; // 체크된 사람 공간 높이
-int manageEmpPage_page1_uncheckedFoemHeight = 50; // 체크 안된 사람 공간 높이
+int manageEmpPage_page1_listFoemHeight = 80; // 리스트 공간 높이
 int manageEmpPage_page1_spacePerBigBox = 10; // 두 영역 사이 간격
+int manageEmpPage_page1_spacePerBtns = 15; // 버튼과의 간격
+int manageEmpPage_page1_tileNameWidth = 40; // 페이지1 타일 이름 너비
+int manageEmpPage_page1_tileAgeWidth = 20; // 페이지1 타일 나이 너비
+int manageEmpPage_page1_tileRoleWidth = 20; // 페이지1 타일 등급 너비
 int manageEmpPage_page2_spacePerTitle = 10; // 타이틀과의 간격
 int manageEmpPage_page2_waiteListHeight = 110; // 타이틀과의 간격
+int manageEmpPage_page2_spacePerBtns = 10; // 버튼과의 간격
+int manageEmpPage_page2_spacePerBtn = 5; // 버튼끼리의 간격
+int manageEmpPage_page2_tileNameWidth = 40; // 페이지1 타일 이름 너비
+int manageEmpPage_page2_tileAgeWidth = 40; // 페이지1 타일 나이 너비
 int manageEmpPage_pageIndicatorIconSize = 3; // 페이지 표시 아이콘 크기
 int manageEmpPage_spaceTopBottom = 10; // 위 아래 여백 크기
 int manageEmpPage_spacePerRole = 5; // role 드롭다운과 텍스트 사이 간격
 // Padding
 double manageEmpPage_listTilePaddingTopBottom = 5; // 리스트 타일 패딩(위아래)
 double manageEmpPage_listTilePadding = 15; // 리스트 타일 패딩
+double manageEmpPage_listTileTextPadding = 10; // 리스트 타일 내부 글자 패딩
 // Font
 double manageEmpPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
 
 /// EmergencyPage
 // Size
-int emergencyPage_spacePerTitle = 3; // 타이틀과의 간격
+int emergencyPage_spacePerTitle = 10; // 타이틀과의 간격
 int emergencyPage_spacePerMap = 10; // 지도와의 간격
-int emergencyPage_spacePerTextBtn = 0; // 버튼끼리의 간격
+int emergencyPage_spacePerBtn = 5; // 버튼끼리의 간격
+int emergencyPage_spaceBottom = 10; // 하단 간격
 
 /// CPR Page
 // Size
@@ -226,15 +235,15 @@ int viewPeopleInfoPage_spacePerBtns = 10; // 버튼끼리 간격
 // Font
 double viewPeopleInfoPage_fontSize = 20; // 폰트 크기
 
-/// ViewWaitingListPage
+/// Dialog
 // Size
-int viewWaitingListDialog_spacePerText = 2; // 텍스트간 간격
-int viewWaitingListDialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
-int viewWaitingListDialog_spacePerBtns = 10; // 버튼끼리 간격
+int dialog_spacePerText = 2; // 텍스트간 간격
+int dialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
+int dalog_spacePerBtns = 10; // 버튼끼리 간격
 // Font
-double viewWaitingListDialog_fontSize = 20; // 폰트 크기
+double dialog_fontSize = 20; // 폰트 크기
 // Round
-double viewWaitingListDialog_dialogRound = 20; // 둥글기
+double dialog_dialogRound = 20; // 둥글기
 
 /// Google Map
 // Size
@@ -366,10 +375,9 @@ Future<Response> api_admin_getUserList(int siteId) async {
   String uri = api_hostURI + "admin/checkHelmet/$siteId";
   late Response res;
   try {
-    res = await dio.get(
-      uri,
-    );
+    res = await dio.get(uri);
     print(">>> ${res.data['successResponseMessage']}");
+    print(res);
   } catch (e) {
     print(">>> ###유저 목록 조회 완료");
     print(e);

@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/baseFile.dart';
-import 'package:flutter/material.dart';
 
 /// 메니저 승인 대기 목록 조회
 class ViewWaiteInfoDialog extends StatefulWidget {
@@ -35,40 +33,49 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
   Widget build(BuildContext context) => AlertDialog(
         // 둥글기
         shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(viewWaitingListDialog_dialogRound)),
+            borderRadius: BorderRadius.circular(dialog_dialogRound)),
         // 메인 타이틀
-        title: Column(
-          children: <Widget>[
-            new Text("Waiting User"),
-          ],
-        ),
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Color(themaColor_whiteYellow),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(dialog_dialogRound),
+                    topRight: Radius.circular(dialog_dialogRound))),
+            child: Text("Detail")),
         // 내용
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            /// 이름
-            Text(
-              userName,
-              style: TextStyle(fontSize: viewWaitingListDialog_fontSize),
-            ),
-
-            /// 간격
-            Container(
-              height: getFullScrennSizePercent(
-                  context, viewWaitingListDialog_spacePerText),
-            ),
-
-            /// 나이
-            Text(
-              "$userAge years old",
-              style: TextStyle(fontSize: viewWaitingListDialog_fontSize),
-            ),
+            RichText(
+                text: TextSpan(
+                    text: "Name: ",
+                    style: TextStyle(
+                        fontSize: dialog_fontSize,
+                        color: Color(themaColor_black),
+                        fontWeight: FontWeight.bold),
+                    children: [
+                  TextSpan(
+                    text: userName,
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                  ),
+                  TextSpan(
+                    text: "\nAge:\t\t",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text: userAge.toString(),
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                  ),
+                ])),
           ],
         ),
 
         /// 버튼
+        actionsAlignment: MainAxisAlignment.end,
         actions: <Widget>[
           // 승인
           TextButton(
@@ -82,8 +89,7 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               child: Text(
                 "Accept",
                 style: TextStyle(
-                    color: Color(allPage_btnFontColor),
-                    fontSize: allPage_btnFontSize),
+                    color: Color(allPage_btnFontColor)),
               )),
 
           // 내쫒기
@@ -98,11 +104,9 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               child: Text(
                 "Delete",
                 style: TextStyle(
-                    color: Color(allPage_btnSubFontColor),
-                    fontSize: allPage_btnFontSize),
+                    color: Color(allPage_btnSubFontColor)),
               )),
         ],
-        actionsAlignment: MainAxisAlignment.center,
       );
 }
 
@@ -140,39 +144,46 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
   Widget build(BuildContext context) => AlertDialog(
         // 둥글기
         shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(viewWaitingListDialog_dialogRound)),
+            borderRadius: BorderRadius.circular(dialog_dialogRound)),
         // 메인 타이틀
-        title: Column(
-          children: <Widget>[
-            new Text("Check List"),
-          ],
-        ),
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Color(themaColor_whiteYellow),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(dialog_dialogRound),
+                    topRight: Radius.circular(dialog_dialogRound))),
+            child: Text("Detail")),
         // 내용
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            /// 메시지
-            Text(
-              checkMSG,
-              style: TextStyle(fontSize: viewWaitingListDialog_fontSize),
-            ),
-
-            /// 간격
-            Container(
-              height: getFullScrennSizePercent(
-                  context, viewWaitingListDialog_spacePerText),
-            ),
-          ],
+        content: Text(
+          checkMSG,
+          style: TextStyle(fontSize: dialog_fontSize),
         ),
 
         /// 버튼
+        actionsAlignment: MainAxisAlignment.end,
         actions: <Widget>[
+          // 삭제
+          TextButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                late Response res;
+                try {
+                  res = await api_siteCheck_deleteCheckList(checkId);
+                  updateState(global_siteId);
+                } catch (e) {}
+              },
+              child: Text(
+                "Delete",
+                style: TextStyle(
+                  color: Color(allPage_btnSubFontColor),
+                ),
+              )),
           // 수정
           TextButton(
               onPressed: () async {
-                // Navigator.pop(context);
                 Navigator.pop(context);
                 showDialog(
                     context: context,
@@ -187,28 +198,10 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
               child: Text(
                 "Edit",
                 style: TextStyle(
-                    color: Color(allPage_btnFontColor),
-                    fontSize: allPage_btnFontSize),
-              )),
-
-          // 삭제
-          TextButton(
-              onPressed: () async {
-                Navigator.pop(context);
-                late Response res;
-                try {
-                  res = await api_siteCheck_deleteCheckList(checkId);
-                  updateState(global_siteId);
-                } catch (e) {}
-              },
-              child: Text(
-                "Delete",
-                style: TextStyle(
-                    color: Color(allPage_btnSubFontColor),
-                    fontSize: allPage_btnFontSize),
+                  color: Color(allPage_btnFontColor),
+                ),
               )),
         ],
-        actionsAlignment: MainAxisAlignment.center,
       );
 }
 
@@ -263,14 +256,19 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
   Widget build(BuildContext context) => AlertDialog(
         // 둥글기
         shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(viewWaitingListDialog_dialogRound)),
+            borderRadius: BorderRadius.circular(dialog_dialogRound)),
         // 메인 타이틀
-        title: Column(
-          children: <Widget>[
-            new Text("Check List"),
-          ],
-        ),
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Color(themaColor_whiteYellow),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(dialog_dialogRound),
+                    topRight: Radius.circular(dialog_dialogRound))),
+            child: Text("Input")),
+        // Content
         content: Builder(builder: (context) {
           return Container(
             width:
@@ -283,6 +281,7 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
         }),
 
         /// 버튼
+        actionsAlignment: MainAxisAlignment.end,
         actions: <Widget>[
           // 완료
           TextButton(
@@ -311,10 +310,8 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
               child: Text(
                 "Done",
                 style: TextStyle(
-                    color: Color(allPage_btnFontColor),
-                    fontSize: allPage_btnFontSize),
+                    color: Color(allPage_btnFontColor)),
               )),
         ],
-        actionsAlignment: MainAxisAlignment.center,
       );
 }

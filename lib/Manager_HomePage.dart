@@ -503,10 +503,10 @@ class _HomePageManager extends State<HomePageManager> {
                     ),
                   ),
 
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
                     height:
-                        getFullScrennSizePercent(context, homePage_spacePerBtn),
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
                 ],
               ),

@@ -33,8 +33,7 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer:
-          DrawerAll(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -62,8 +61,8 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -82,10 +81,10 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, allPage_spacePerTitleAndComponents),
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   Text(
@@ -293,7 +292,13 @@ class _EditPrivacyPage extends State<EditPrivacyPage> {
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),
-                      ))
+                      )),
+
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

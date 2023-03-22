@@ -57,8 +57,7 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer:
-          DrawerAll(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -86,8 +85,8 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -106,10 +105,44 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 공간
+                  Container(
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
+
                   /// 타이틀
                   Text(
-                    global_siteName,
-                    style: TextStyle(fontSize: allPage_titleFontSize),
+                    "Site information",
+                    style: TextStyle(
+                      fontSize: allPage_titleFontSize,
+                      // color: Color(themaColor_yellow),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  /// 타이틀과 서브타이틀 사이 공간
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, allPage_spacePerTitleAndSubTitme),
+                  ),
+
+                  /// 서브타이틀
+                  Container(
+                    width: getFullScrennSizePercent(
+                        context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "C H E R R Y",
+                      style: TextStyle(
+                        color: Color(themaColor_white),
+                        fontSize: allPage_subTitleFontSize,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(themaColor_yellow),
+                        borderRadius:
+                            BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
 
                   /// 간격
@@ -140,7 +173,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[0],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -166,7 +202,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[1],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -192,7 +231,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[2],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -218,7 +260,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[3],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -252,7 +297,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[4],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -278,7 +326,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[5],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -304,7 +355,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(global_siteCode[6],
                               style: TextStyle(
                                   fontSize: siteInfoPage_codeFontSize))),
@@ -330,7 +384,10 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                     color: Color(themaColor_whiteBlack))
                               ],
                               borderRadius: BorderRadius.circular(
-                                  siteInfoPage_codeRadius)),
+                                  siteInfoPage_codeRadius),
+                              border: Border.all(
+                                  color: Color(themaColor_yellow),
+                                  width: siteInfoPage_codeBoxWidth)),
                           child: Text(
                             global_siteCode[7],
                             style:
@@ -364,8 +421,9 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                                   allPage_shadowOffSet, allPage_shadowOffSet),
                               color: Color(themaColor_whiteBlack))
                         ],
-                        borderRadius:
-                            BorderRadius.circular(allPage_bigBoxRadious)),
+                        border: Border.all(
+                            color: Color(themaColor_yellow),
+                            width: allPage_BigSpaceWidth)),
                     child: Stack(
                       children: [
                         // 지도 본체
@@ -412,6 +470,12 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
                             ))
                       ],
                     ),
+                  ),
+
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
                 ],
               ),

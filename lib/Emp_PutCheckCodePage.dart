@@ -39,6 +39,11 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
@@ -202,7 +207,12 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                                   color: Color(allPage_btnFontColor)),
                             )),
                     ],
-                  )
+                  ),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

@@ -99,6 +99,11 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                   /// 이미지 or Progress Indicator
                   Container(
                     width: getFullScrennSizePercent(
@@ -185,7 +190,12 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),
-                      ))
+                      )),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

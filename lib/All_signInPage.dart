@@ -32,6 +32,11 @@ class _SignInPage extends State<SignInPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                /// 위, 아래 공간
+                Container(
+                  height:
+                  getFullScrennSizePercent(context, allPage_spaceTopDown),
+                ),
                 /// 로고 이미지
                 Image.asset(
                   'assets/img/logo.png',
@@ -204,7 +209,12 @@ class _SignInPage extends State<SignInPage> {
                       backgroundColor: Color(themaColor_white),
                       // 그림자 투명도
                       elevation: 10),
-                )
+                ),
+                /// 위, 아래 공간
+                Container(
+                  height:
+                  getFullScrennSizePercent(context, allPage_spaceTopDown),
+                ),
               ],
             ),
           ),

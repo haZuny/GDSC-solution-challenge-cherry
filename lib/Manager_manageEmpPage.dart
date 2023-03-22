@@ -27,259 +27,6 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
     super.initState();
 
     // 유저 리스트 조회
-    // updateUserList();
-    // 승인 요청 리스트 조회
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     updateWaitingList();
   }
 
@@ -335,16 +82,43 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      /// 간격
+                      /// 위, 아래 공간
                       Container(
                         height: getFullScrennSizePercent(
-                            context, manageEmpPage_spaceTopBottom),
+                            context, allPage_spaceTopDown),
                       ),
 
                       /// 타이틀
                       Text(
-                        "Checked",
-                        style: TextStyle(fontSize: allPage_titleFontSize),
+                        "Checked list",
+                        style: TextStyle(
+                          fontSize: allPage_titleFontSize,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      /// 타이틀과 서브타이틀 사이 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spacePerTitleAndSubTitme),
+                      ),
+
+                      /// 서브타이틀
+                      Container(
+                        width: getFullScrennSizePercent(
+                            context, allPage_mainComponentsWidth),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "C H E C K E D",
+                          style: TextStyle(
+                            color: Color(themaColor_white),
+                            fontSize: allPage_subTitleFontSize,
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Color(themaColor_yellow),
+                            borderRadius: BorderRadius.circular(
+                                allPage_subTitleLineRadius)),
                       ),
 
                       /// 간격
@@ -358,7 +132,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                           width: getFullScrennSizePercent(
                               context, allPage_mainComponentsWidth),
                           height: getFullScrennSizePercent(
-                              context, manageEmpPage_page1_checkedFoemHeight),
+                              context, manageEmpPage_page1_listFoemHeight),
                           decoration: BoxDecoration(
                               color: Color(themaColor_white),
                               boxShadow: [
@@ -384,10 +158,36 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
 
                       /// 타이틀
                       Text(
-                        "Unchecked",
+                        "Unchecked list",
                         style: TextStyle(
                           fontSize: allPage_titleFontSize,
+                          // color: Color(themaColor_yellow),
+                          fontWeight: FontWeight.bold,
                         ),
+                      ),
+
+                      /// 타이틀과 서브타이틀 사이 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spacePerTitleAndSubTitme),
+                      ),
+
+                      /// 서브타이틀
+                      Container(
+                        width: getFullScrennSizePercent(
+                            context, allPage_mainComponentsWidth),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "U N C H E C K E D",
+                          style: TextStyle(
+                            color: Color(themaColor_white),
+                            fontSize: allPage_subTitleFontSize,
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Color(themaColor_yellow),
+                            borderRadius: BorderRadius.circular(
+                                allPage_subTitleLineRadius)),
                       ),
 
                       /// 간격
@@ -401,7 +201,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                           width: getFullScrennSizePercent(
                               context, allPage_mainComponentsWidth),
                           height: getFullScrennSizePercent(
-                              context, manageEmpPage_page1_uncheckedFoemHeight),
+                              context, manageEmpPage_page1_listFoemHeight),
                           decoration: BoxDecoration(
                               color: Color(themaColor_white),
                               boxShadow: [
@@ -422,7 +222,71 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                       /// 간격
                       Container(
                         height: getFullScrennSizePercent(
-                            context, manageEmpPage_spaceTopBottom),
+                            context, manageEmpPage_page1_spacePerBtns),
+                      ),
+
+                      /// 모두 제거 버튼
+                      ElevatedButton(
+                        onPressed: () async {
+                          for (EmpListTile tile in _uncheckedUserList) {
+                            late Response res;
+                            try {
+                              res = await api_admin_deleteUser(tile.userId);
+                            } catch (e) {}
+                          }
+                          for (EmpListTile tile in _checkedUserList) {
+                            late Response res;
+                            try {
+                              res = await api_admin_deleteUser(tile.userId);
+                            } catch (e) {}
+                          }
+                          updateUserList();
+                        },
+                        // 내부 컴포넌트
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // 텍스트
+                            Text(
+                              "Delete all",
+                              style: TextStyle(
+                                  color: Color(allPage_btnSubFontColor),
+                                  fontSize: allPage_roundBtnFontSize),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            // 크기 설정
+                            minimumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            maximumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            // 모양 및 테두리 설정
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(allPage_roundBtnRadius),
+                              side: BorderSide(
+                                  color: Color(allPage_btnSubFontColor),
+                                  width: allPage_addBtnWidth),
+                            ),
+
+                            // 배경 색상 설정
+                            backgroundColor: Color(themaColor_white),
+                            // 그림자 투명도
+                            elevation: 10),
+                      ),
+
+                      /// 위, 아래 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spaceTopDown),
                       ),
                     ],
                   ),
@@ -436,10 +300,43 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      /// 위, 아래 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spaceTopDown),
+                      ),
+
                       /// 타이틀
                       Text(
-                        "Waiting List",
-                        style: TextStyle(fontSize: allPage_titleFontSize),
+                        "Waiting list",
+                        style: TextStyle(
+                          fontSize: allPage_titleFontSize,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      /// 타이틀과 서브타이틀 사이 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spacePerTitleAndSubTitme),
+                      ),
+
+                      /// 서브타이틀
+                      Container(
+                        width: getFullScrennSizePercent(
+                            context, allPage_mainComponentsWidth),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "C H E R R Y",
+                          style: TextStyle(
+                            color: Color(themaColor_white),
+                            fontSize: allPage_subTitleFontSize,
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Color(themaColor_yellow),
+                            borderRadius: BorderRadius.circular(
+                                allPage_subTitleLineRadius)),
                       ),
 
                       /// 간격
@@ -470,6 +367,128 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                                 _waitingUserList[index],
                             itemCount: _waitingUserList.length,
                           )),
+
+                      /// 간격
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, manageEmpPage_page2_spacePerBtns),
+                      ),
+
+                      /// 모두 수락 버튼
+                      ElevatedButton(
+                        onPressed: () async {
+                          for (WaiteListTile tile in _waitingUserList) {
+                            late Response res;
+                            try {
+                              res = await api_admin_acceptWaiting(tile.userId);
+                            } catch (e) {}
+                          }
+                          updateWaitingList();
+                        },
+                        // 내부 컴포넌트
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // 텍스트
+                            Text(
+                              "Accept all",
+                              style: TextStyle(
+                                  color: Color(themaColor_yellow),
+                                  fontSize: allPage_roundBtnFontSize),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            // 크기 설정
+                            minimumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            maximumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            // 모양 및 테두리 설정
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(allPage_roundBtnRadius),
+                              side: BorderSide(
+                                  color: Color(themaColor_yellow),
+                                  width: allPage_addBtnWidth),
+                            ),
+
+                            // 배경 색상 설정
+                            backgroundColor: Color(themaColor_white),
+                            // 그림자 투명도
+                            elevation: 10),
+                      ),
+
+                      /// 간격
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, manageEmpPage_page2_spacePerBtn),
+                      ),
+
+                      /// 모두 거절 버튼
+                      ElevatedButton(
+                        onPressed: () async {
+                          for (WaiteListTile tile in _waitingUserList) {
+                            late Response res;
+                            try {
+                              res = await api_admin_deleteUser(tile.userId);
+                            } catch (e) {}
+                          }
+                          updateWaitingList();
+                        },
+                        // 내부 컴포넌트
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // 텍스트
+                            Text(
+                              "Delete all",
+                              style: TextStyle(
+                                  color: Color(allPage_btnSubFontColor),
+                                  fontSize: allPage_roundBtnFontSize),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            // 크기 설정
+                            minimumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            maximumSize: Size(
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnWidth),
+                                getFullScrennSizePercent(
+                                    context, allPage_roundBtnHeight)),
+                            // 모양 및 테두리 설정
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(allPage_roundBtnRadius),
+                              side: BorderSide(
+                                  color: Color(allPage_btnSubFontColor),
+                                  width: allPage_addBtnWidth),
+                            ),
+
+                            // 배경 색상 설정
+                            backgroundColor: Color(themaColor_white),
+                            // 그림자 투명도
+                            elevation: 10),
+                      ),
+
+                      /// 위, 아래 공간
+                      Container(
+                        height: getFullScrennSizePercent(
+                            context, allPage_spaceTopDown),
+                      ),
                     ],
                   ),
                 ),
@@ -495,13 +514,17 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
       setState(() {
         // checked update
         for (Map user in checkedList) {
-          _checkedUserList.add(EmpListTile(user['id'], user['userName'],
-              user['userAge'], user['role'], updateUserList));
+          if (user['role'] != "GUEST") {
+            _checkedUserList.add(EmpListTile(user['id'], user['userName'],
+                user['userAge'], user['role'], updateUserList));
+          }
         }
         // unchecked update
         for (Map user in uncheckedList) {
-          _uncheckedUserList.add(EmpListTile(user['id'], user['userName'],
-              user['userAge'], user['role'], updateUserList));
+          if (user['role'] != "GUEST") {
+            _uncheckedUserList.add(EmpListTile(user['id'], user['userName'],
+                user['userAge'], user['role'], updateUserList));
+          }
         }
       });
     } catch (e) {}
@@ -554,11 +577,45 @@ class EmpListTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.all(manageEmpPage_listTilePadding),
-                child: Text(
-                  "$userName / $userAge / $userClass",
-                  style: TextStyle(fontSize: manageEmpPage_listTextFontSize),
+              IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Container(
+                      width: getFullScrennSizePercent(
+                          context, manageEmpPage_page1_tileNameWidth),
+                      child: Text(userName),
+                      padding: EdgeInsets.only(
+                          left: manageEmpPage_listTileTextPadding,
+                          top: manageEmpPage_listTilePadding,
+                          bottom: manageEmpPage_listTilePadding),
+                    ),
+                    VerticalDivider(
+                      color: Colors.black,
+                      width: 0,
+                    ),
+                    Container(
+                      width: getFullScrennSizePercent(
+                          context, manageEmpPage_page1_tileAgeWidth),
+                      child: Text("Age: $userAge"),
+                      padding: EdgeInsets.only(
+                          left: manageEmpPage_listTileTextPadding,
+                          top: manageEmpPage_listTilePadding,
+                          bottom: manageEmpPage_listTilePadding),
+                    ),
+                    VerticalDivider(
+                      color: Colors.black,
+                      width: 0,
+                    ),
+                    Container(
+                      width: getFullScrennSizePercent(
+                          context, manageEmpPage_page1_tileRoleWidth),
+                      child: Text(userClass),
+                      padding: EdgeInsets.only(
+                          left: manageEmpPage_listTileTextPadding,
+                          top: manageEmpPage_listTilePadding,
+                          bottom: manageEmpPage_listTilePadding),
+                    ),
+                  ],
                 ),
               ),
               Divider(
@@ -599,11 +656,32 @@ class WaiteListTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.all(manageEmpPage_listTilePadding),
-                child: Text(
-                  "$userName / $userAge",
-                  style: TextStyle(fontSize: manageEmpPage_listTextFontSize),
+              IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Container(
+                      width: getFullScrennSizePercent(
+                          context, manageEmpPage_page2_tileNameWidth),
+                      child: Text(userName),
+                      padding: EdgeInsets.only(
+                          left: manageEmpPage_listTileTextPadding,
+                          top: manageEmpPage_listTilePadding,
+                          bottom: manageEmpPage_listTilePadding),
+                    ),
+                    VerticalDivider(
+                      color: Colors.black,
+                      width: 0,
+                    ),
+                    Container(
+                      width: getFullScrennSizePercent(
+                          context, manageEmpPage_page2_tileAgeWidth),
+                      child: Text("Age: $userAge"),
+                      padding: EdgeInsets.only(
+                          left: manageEmpPage_listTileTextPadding,
+                          top: manageEmpPage_listTilePadding,
+                          bottom: manageEmpPage_listTilePadding),
+                    ),
+                  ],
                 ),
               ),
               Divider(

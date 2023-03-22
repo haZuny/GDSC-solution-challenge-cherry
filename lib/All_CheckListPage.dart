@@ -78,6 +78,12 @@ class _CheckListPage extends State<CheckListPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
+
                   /// 타이틀
                   Text(
                     "Check the list",
@@ -88,7 +94,7 @@ class _CheckListPage extends State<CheckListPage> {
                     ),
                   ),
 
-                  /// 타이틀과 서브타이틀
+                  /// 타이틀과 서브타이틀 사이 공간
                   Container(
                     height: getFullScrennSizePercent(
                         context, allPage_spacePerTitleAndSubTitme),
@@ -137,7 +143,7 @@ class _CheckListPage extends State<CheckListPage> {
                               BorderRadius.circular(allPage_bigBoxRadious),
                           border: Border.all(
                               color: Color(themaColor_yellow),
-                              width: checkListPage_checkFormWidth)),
+                              width: allPage_BigSpaceWidth)),
 
                       /// 리스트 타일
                       child: ListView.builder(
@@ -167,7 +173,8 @@ class _CheckListPage extends State<CheckListPage> {
                           // 텍스트
                           Text(
                             "Add",
-                            style: TextStyle(color: Color(themaColor_yellow)),
+                            style: TextStyle(color: Color(themaColor_yellow),
+                            fontSize: allPage_roundBtnFontSize),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -176,18 +183,18 @@ class _CheckListPage extends State<CheckListPage> {
                           // 크기 설정
                           minimumSize: Size(
                               getFullScrennSizePercent(
-                                  context, checkListPage_btnWidth),
+                                  context, allPage_roundBtnWidth),
                               getFullScrennSizePercent(
-                                  context, checkListPage_btnHeight)),
+                                  context, allPage_roundBtnHeight)),
                           maximumSize: Size(
                               getFullScrennSizePercent(
-                                  context, checkListPage_btnWidth),
+                                  context, allPage_roundBtnWidth),
                               getFullScrennSizePercent(
-                                  context, checkListPage_btnHeight)),
+                                  context, allPage_roundBtnHeight)),
                           // 모양 및 테두리 설정
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                checkListPage_addBtnRadius),
+                                allPage_roundBtnRadius),
                             side: BorderSide(
                                 color: Color(themaColor_yellow),
                                 width: allPage_addBtnWidth),
@@ -198,6 +205,12 @@ class _CheckListPage extends State<CheckListPage> {
                           // 그림자 투명도
                           elevation: 10),
                     ),
+
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

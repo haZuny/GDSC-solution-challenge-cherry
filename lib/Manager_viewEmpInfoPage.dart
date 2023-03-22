@@ -70,8 +70,8 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -90,6 +90,12 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
+
                   /// 이름, 등급
                   Text(
                     userName == "" ? "" : "$userName / $userRole",
@@ -221,7 +227,13 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                         style: TextStyle(
                             color: Color(allPage_btnSubFontColor),
                             fontSize: allPage_btnFontSize),
-                      ))
+                      )),
+
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

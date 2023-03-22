@@ -349,6 +349,11 @@ class _HomePageEmp extends State<HomePageEmp> {
                         // 그림자 투명도
                         elevation: 10),
                   ),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

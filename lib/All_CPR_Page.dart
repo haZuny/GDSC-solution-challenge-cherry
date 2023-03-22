@@ -86,8 +86,8 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -107,23 +107,43 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
                     height:
-                        getFullScrennSizePercent(context, cprPage_spaceTopDown),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   /// 타이틀
+                  Text(
+                    "The step of CPR",
+                    style: TextStyle(
+                      fontSize: allPage_titleFontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  /// 타이틀과 서브타이틀 사이 공간
                   Container(
-                    alignment: Alignment.center,
+                    height: getFullScrennSizePercent(
+                        context, allPage_spacePerTitleAndSubTitme),
+                  ),
+
+                  /// 서브타이틀
+                  Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
                     child: Text(
-                      "The step of CPR",
+                      "E m e r g e n c y",
                       style: TextStyle(
-                          fontSize: allPage_titleFontSize,
-                          fontWeight: FontWeight.bold),
+                        color: Color(themaColor_white),
+                        fontSize: allPage_subTitleFontSize,
+                      ),
                     ),
+                    decoration: BoxDecoration(
+                        color: Color(allPage_btnSubFontColor),
+                        borderRadius:
+                            BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
 
                   /// 간격
@@ -141,7 +161,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         context, cprPage_spacePerComponent),
                   ),
 
-                  /// Strp1
+                  /// Step1
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
@@ -153,7 +173,8 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(themaColor_yellow)),
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -183,10 +204,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         Text(
                           "Step 2. Place the person on their back and open their airway",
                           style: TextStyle(
-                            fontSize: allPage_titleFontSize,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor: Color(themaColor_yellow),
-                          ),
+                              fontSize: allPage_titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -216,10 +237,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         Text(
                           "Step 3. Check for breathing",
                           style: TextStyle(
-                            fontSize: allPage_titleFontSize,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor: Color(themaColor_yellow),
-                          ),
+                              fontSize: allPage_titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -249,10 +270,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         Text(
                           "Step 4. Perform 30 chest compressions",
                           style: TextStyle(
-                            fontSize: allPage_titleFontSize,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor: Color(themaColor_yellow),
-                          ),
+                              fontSize: allPage_titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -283,10 +304,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         Text(
                           "Step 5. Perform two rescue breaths",
                           style: TextStyle(
-                            fontSize: allPage_titleFontSize,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor: Color(themaColor_yellow),
-                          ),
+                              fontSize: allPage_titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -317,10 +338,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                         Text(
                           "Step 6. Repeat",
                           style: TextStyle(
-                            fontSize: allPage_titleFontSize,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor: Color(themaColor_yellow),
-                          ),
+                              fontSize: allPage_titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Color(allPage_btnSubFontColor),
+                              color: Color(themaColor_white)),
                         ),
                         Container(
                           height: getFullScrennSizePercent(
@@ -334,10 +355,10 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                     ),
                   ),
 
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
                     height:
-                        getFullScrennSizePercent(context, cprPage_spaceTopDown),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
                 ],
               ),

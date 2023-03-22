@@ -60,8 +60,7 @@ class _EmergencyPage extends State<EmergencyPage> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-          drawer:
-          DrawerAll(),
+          drawer: DrawerAll(),
 
           /// bottom bar
           bottomNavigationBar: BottomAppBar(
@@ -89,8 +88,8 @@ class _EmergencyPage extends State<EmergencyPage> {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                 if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context, Transition(child: HomePageEmp()), (_) => false);
                 else
                   Navigator.pushAndRemoveUntil(context,
                       Transition(child: HomePageManager()), (_) => false);
@@ -109,14 +108,43 @@ class _EmergencyPage extends State<EmergencyPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                   /// 타이틀
+                  Text(
+                    "Emergency",
+                    style: TextStyle(
+                      fontSize: allPage_titleFontSize,
+                      // color: Color(themaColor_yellow),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  /// 타이틀과 서브타이틀
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, allPage_spacePerTitleAndSubTitme),
+                  ),
+
+                  /// 서브타이틀
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
                     child: Text(
-                      "Near casualty.",
-                      style: TextStyle(fontSize: allPage_titleFontSize),
+                      "Nearby hospital",
+                      style: TextStyle(
+                        color: Color(themaColor_white),
+                        fontSize: allPage_subTitleFontSize,
+                      ),
                     ),
+                    decoration: BoxDecoration(
+                        color: Color(allPage_btnSubFontColor),
+                        borderRadius:
+                            BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
 
                   /// 간격
@@ -140,8 +168,9 @@ class _EmergencyPage extends State<EmergencyPage> {
                                   allPage_shadowOffSet, allPage_shadowOffSet),
                               color: Color(themaColor_whiteBlack))
                         ],
-                        borderRadius:
-                            BorderRadius.circular(allPage_bigBoxRadious)),
+                        border: Border.all(
+                            color: Color(allPage_btnSubFontColor),
+                            width: allPage_BigSpaceWidth)),
                     child: Stack(
                       children: [
                         // 지도 본체
@@ -197,7 +226,8 @@ class _EmergencyPage extends State<EmergencyPage> {
                   ),
 
                   /// CPR 버튼
-                  TextButton(
+                  if (global_userRole != enum_Role.user)
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -206,44 +236,110 @@ class _EmergencyPage extends State<EmergencyPage> {
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
                       },
-                      child: Text(
-                        "CPR manual",
-                        style: TextStyle(
-                            fontSize: allPage_btnFontSize,
-                            color: Color(allPage_btnFontColor)),
-                      )),
+                      // 내부 컴포넌트
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // 텍스트
+                          Text(
+                            "CPR",
+                            style: TextStyle(
+                                color: Color(allPage_btnSubFontColor),
+                                fontSize: allPage_roundBtnFontSize),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          // 크기 설정
+                          minimumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          maximumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          // 모양 및 테두리 설정
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(allPage_roundBtnRadius),
+                            side: BorderSide(
+                                color: Color(allPage_btnSubFontColor),
+                                width: allPage_addBtnWidth),
+                          ),
+
+                          // 배경 색상 설정
+                          backgroundColor: Color(themaColor_white),
+                          // 그림자 투명도
+                          elevation: 5),
+                    ),
 
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, emergencyPage_spacePerTextBtn),
+                        context, emergencyPage_spacePerBtn),
                   ),
 
-                  /// 지혈 방법 버튼
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Hemostatic method",
-                        style: TextStyle(
-                            fontSize: allPage_btnFontSize,
-                            color: Color(allPage_btnFontColor)),
-                      )),
+                  /// 지혈 버튼
+                  if (global_userRole != enum_Role.user)
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigator.push(
+                        //     context,
+                        //     Transition(
+                        //         child: CPRPage(),
+                        //         transitionEffect:
+                        //             TransitionEffect.RIGHT_TO_LEFT));
+                      },
+                      // 내부 컴포넌트
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // 텍스트
+                          Text(
+                            "Homostasis",
+                            style: TextStyle(
+                                color: Color(allPage_btnSubFontColor),
+                                fontSize: allPage_roundBtnFontSize),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          // 크기 설정
+                          minimumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          maximumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          // 모양 및 테두리 설정
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(allPage_roundBtnRadius),
+                            side: BorderSide(
+                                color: Color(allPage_btnSubFontColor),
+                                width: allPage_addBtnWidth),
+                          ),
 
-                  /// 간격
+                          // 배경 색상 설정
+                          backgroundColor: Color(themaColor_white),
+                          // 그림자 투명도
+                          elevation: 5),
+                    ),
+
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, emergencyPage_spacePerTextBtn),
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
-
-                  /// 부러졌을때 매뉴얼 버튼
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "When fractured",
-                        style: TextStyle(
-                            fontSize: allPage_btnFontSize,
-                            color: Color(allPage_btnFontColor)),
-                      )),
                 ],
               ),
             ),

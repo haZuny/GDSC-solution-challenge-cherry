@@ -48,10 +48,10 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, allPage_spacePerTitleAndComponents),
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   Text(
@@ -246,7 +246,12 @@ class _PutSiteInfoPageManager extends State<PutSiteInfoPageManager> {
                                 color: Color(allPage_btnFontColor)),
                           )),
                     ],
-                  )
+                  ),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

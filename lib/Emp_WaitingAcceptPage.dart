@@ -27,10 +27,10 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, waitingAcceptPage_spacePerNextBtn),
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   /// 타이틀
@@ -101,7 +101,12 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                                 color: Color(allPage_btnFontColor)),
                           )),
                     ],
-                  )
+                  ),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),

@@ -30,10 +30,10 @@ class _SignUpPage extends State<SignUpPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// 간격
+                  /// 위, 아래 공간
                   Container(
-                    height: getFullScrennSizePercent(
-                        context, allPage_spacePerTitleAndComponents),
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
                   Text(
@@ -254,7 +254,12 @@ class _SignUpPage extends State<SignUpPage> {
                         style: TextStyle(
                             fontSize: allPage_btnFontSize,
                             color: Color(allPage_btnFontColor)),
-                      ))
+                      )),
+                  /// 위, 아래 공간
+                  Container(
+                    height:
+                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                  ),
                 ],
               ),
             ),
