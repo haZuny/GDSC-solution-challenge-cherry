@@ -2,14 +2,13 @@ import 'dart:io';
 
 import 'package:cherry_app/AppBar_Drawer.dart';
 import 'package:cherry_app/Classifier.dart';
-import 'package:cherry_app/Emp_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transition/transition.dart';
 
-import 'Manager_HomePage.dart';
+import 'All_HomePage.dart';
 
 class HelmetCheckPage extends StatefulWidget {
   @override
@@ -78,12 +77,8 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                Navigator.pushAndRemoveUntil(
+                    context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),
@@ -102,8 +97,48 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                   /// 위, 아래 공간
                   Container(
                     height:
-                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
+
+                  /// 타이틀
+                  Text(
+                    "Check helmet",
+                    style: TextStyle(
+                      fontSize: allPage_titleFontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  /// 타이틀과 서브타이틀 사이 공간
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, allPage_spacePerTitleAndSubTitme),
+                  ),
+
+                  /// 서브타이틀
+                  Container(
+                    width: getFullScrennSizePercent(
+                        context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "C H E R R Y",
+                      style: TextStyle(
+                        color: Color(themaColor_white),
+                        fontSize: allPage_subTitleFontSize,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(themaColor_yellow),
+                        borderRadius:
+                            BorderRadius.circular(allPage_subTitleLineRadius)),
+                  ),
+
+                  /// 간격
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, helmetCheckPage_spacePerTitle),
+                  ),
+
                   /// 이미지 or Progress Indicator
                   Container(
                     width: getFullScrennSizePercent(
@@ -118,7 +153,10 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                               offset: Offset(
                                   allPage_shadowOffSet, allPage_shadowOffSet),
                               color: Color(themaColor_whiteBlack))
-                        ]),
+                        ],
+                        border: Border.all(
+                            color: Color(themaColor_yellow),
+                            width: allPage_BigSpaceWidth)),
                     child: _helmetImage ??
                         Padding(
                             padding: EdgeInsets.all(getFullScrennSizePercent(
@@ -152,49 +190,84 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                         context, helmetCheckPage_spacePerNextBtn),
                   ),
 
-                  /// next 버튼
-                  TextButton(
-                      onPressed: () async {
-                        // 확인
-                        if (_stateChecked) {
-                          late Response res;
-                          try {
-                            res = await api_user_editHelmetCheck(true);
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                Transition(
-                                    child: HomePageEmp(),
-                                    transitionEffect:
-                                        TransitionEffect.LEFT_TO_RIGHT),
-                                (_) => false);
-                          } catch (e) {}
-                        }
-                        // 실패
-                        else {
-                          getMyImage().then((value) {
-                            // ML
-                            Classifier classifier =
-                                Classifier(File(_pickedImage!.path));
-                            classifier.classify().then((value) {
-                              if (value > 0.6) {
-                                setState(() {
-                                  _stateChecked = true;
-                                });
-                              }
-                            });
+                  /// 버튼
+                  ElevatedButton(
+                    onPressed: () async {
+                      // 확인
+                      if (_stateChecked) {
+                        late Response res;
+                        try {
+                          res = await api_user_editHelmetCheck(true);
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              Transition(
+                                  child: HomePageAll(),
+                                  transitionEffect:
+                                      TransitionEffect.LEFT_TO_RIGHT),
+                              (_) => false);
+                        } catch (e) {}
+                      }
+                      // 실패
+                      else {
+                        getMyImage().then((value) {
+                          // ML
+                          Classifier classifier =
+                              Classifier(File(_pickedImage!.path));
+                          classifier.classify().then((value) {
+                            if (value > 0.6) {
+                              setState(() {
+                                _stateChecked = true;
+                              });
+                            }
                           });
-                        }
-                      },
-                      child: Text(
-                        _stateChecked ? "Next" : "Re-try",
-                        style: TextStyle(
-                            fontSize: allPage_btnFontSize,
-                            color: Color(allPage_btnFontColor)),
-                      )),
+                        });
+                      }
+                    },
+                    // 내부 컴포넌트
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // 텍스트
+                        Text(
+                          _stateChecked ? "Submit" : "Re-try",
+                          style: TextStyle(
+                              color: Color(themaColor_yellow),
+                              fontSize: allPage_roundBtnFontSize),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        // 크기 설정
+                        minimumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        maximumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        // 모양 및 테두리 설정
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(allPage_roundBtnRadius),
+                          side: BorderSide(
+                              color: Color(themaColor_yellow),
+                              width: allPage_addBtnWidth),
+                        ),
+
+                        // 배경 색상 설정
+                        backgroundColor: Color(themaColor_white),
+                        // 그림자 투명도
+                        elevation: 10),
+                  ),
+
                   /// 위, 아래 공간
                   Container(
                     height:
-                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
                 ],
               ),

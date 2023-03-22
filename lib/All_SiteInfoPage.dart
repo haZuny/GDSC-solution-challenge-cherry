@@ -7,9 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:transition/transition.dart';
 import 'dart:ui' as ui;
-
-import 'Emp_HomePage.dart';
-import 'Manager_HomePage.dart';
+import 'All_HomePage.dart';
 
 class SiteInfoPageAll extends StatefulWidget {
   @override
@@ -84,12 +82,8 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                      context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),
@@ -113,7 +107,7 @@ class _SiteInfoPageAll extends State<SiteInfoPageAll> {
 
                   /// 타이틀
                   Text(
-                    "Site information",
+                    global_siteName,
                     style: TextStyle(
                       fontSize: allPage_titleFontSize,
                       // color: Color(themaColor_yellow),

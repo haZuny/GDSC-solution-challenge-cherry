@@ -3,9 +3,7 @@ import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
-
-import 'Emp_HomePage.dart';
-import 'Manager_HomePage.dart';
+import 'All_HomePage.dart';
 
 class ViewEmpInfoPage extends StatefulWidget {
   late int userId;
@@ -69,12 +67,8 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                      context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),

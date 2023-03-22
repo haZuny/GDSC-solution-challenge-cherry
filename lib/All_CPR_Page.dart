@@ -2,13 +2,10 @@ import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cherry_app/AppBar_Drawer.dart';
-import 'package:cherry_app/Emp_HomePage.dart';
-import 'package:cherry_app/Manager_HomePage.dart';
+import 'package:cherry_app/All_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:ui' as ui;
 
 import 'package:transition/transition.dart';
 
@@ -85,12 +82,8 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                      context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),

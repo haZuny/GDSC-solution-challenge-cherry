@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 
 import 'Dialog.dart';
-import 'Emp_HomePage.dart';
-import 'Manager_HomePage.dart';
+import 'All_HomePage.dart';
 
 class CheckListPage extends StatefulWidget {
   @override
@@ -57,12 +56,8 @@ class _CheckListPage extends State<CheckListPage> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                      context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),

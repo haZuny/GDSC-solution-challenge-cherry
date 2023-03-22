@@ -1,16 +1,13 @@
 import 'package:cherry_app/All_SelectRolePage.dart';
-import 'package:cherry_app/All_SignUpPage.dart';
-import 'package:cherry_app/Emp_HomePage.dart';
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
-import 'package:cherry_app/Manager_HomePage.dart';
-import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
+import 'package:cherry_app/All_HomePage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:transition/transition.dart';
 
+import 'All_PutSiteInfoPage.dart';
 import 'AppBar_Drawer.dart';
 import 'Emp_WaitingAcceptPage.dart';
 
@@ -20,8 +17,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPage extends State<SignInPage> {
-  String _signInRole = 'null';
-  bool _siteAssigned = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    clearGlobalVar();
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -55,7 +56,6 @@ class _SignInPage extends State<SignInPage> {
                   onPressed: () async {
                     // 변수 초기화
                     String _signInRole = 'null';
-                    bool _siteAssigned = false;
                     bool _waitingAccept = false;
 
                     try {
@@ -76,7 +76,7 @@ class _SignInPage extends State<SignInPage> {
                             await api_admin_signIn(global_googleUser!.email);
                         // 변수 설정
                         _signInRole = res.data['data']['role'];
-                        _siteAssigned = res.data['data']['existSiteInfo'];
+                        global_haveSite = res.data['data']['existSiteInfo'];
                         global_userId = res.data['data']['id'];
                         authorization =
                             res.headers['authorization']![0].split(' ')[1];
@@ -92,7 +92,7 @@ class _SignInPage extends State<SignInPage> {
                             await api_user_signIn(global_googleUser!.email);
                         // 변수 설정
                         _signInRole = res.data['data']['role'];
-                        _siteAssigned = res.data['data']['existSiteInfo'];
+                        global_haveSite = res.data['data']['existSiteInfo'];
                         _waitingAccept = res.data['data']['waitingAccept'];
                         global_userId = res.data['data']['id'];
                         authorization =
@@ -105,12 +105,12 @@ class _SignInPage extends State<SignInPage> {
 
                       if (_signInRole == "ADMIN") {
                         // 관리자 홈페이지로 이동
-                        if (_siteAssigned) {
+                        if (global_haveSite) {
                           global_userRole = enum_Role.manager;
                           Navigator.pushReplacement(
                             context,
                             Transition(
-                              child: HomePageManager(),
+                              child: HomePageAll(),
                               transitionEffect: TransitionEffect.FADE,
                             ),
                           );
@@ -119,7 +119,7 @@ class _SignInPage extends State<SignInPage> {
                           Navigator.push(
                               context,
                               Transition(
-                                  child: PutSiteInfoPageManager(),
+                                  child: PutSiteInfoPageAll(),
                                   transitionEffect:
                                       TransitionEffect.RIGHT_TO_LEFT));
                         }
@@ -149,7 +149,7 @@ class _SignInPage extends State<SignInPage> {
                         Navigator.pushReplacement(
                             context,
                             Transition(
-                                child: HomePageEmp(),
+                                child: HomePageAll(),
                                 transitionEffect: TransitionEffect.FADE));
                       }
                       // 스탭
@@ -158,7 +158,7 @@ class _SignInPage extends State<SignInPage> {
                         Navigator.pushReplacement(
                             context,
                             Transition(
-                                child: HomePageManager(),
+                                child: HomePageAll(),
                                 transitionEffect: TransitionEffect.FADE));
                       }
                       // 회원가입 안함

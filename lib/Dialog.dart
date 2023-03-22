@@ -88,8 +88,7 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               },
               child: Text(
                 "Accept",
-                style: TextStyle(
-                    color: Color(allPage_btnFontColor)),
+                style: TextStyle(color: Color(allPage_btnFontColor)),
               )),
 
           // 내쫒기
@@ -103,8 +102,7 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               },
               child: Text(
                 "Delete",
-                style: TextStyle(
-                    color: Color(allPage_btnSubFontColor)),
+                style: TextStyle(color: Color(allPage_btnSubFontColor)),
               )),
         ],
       );
@@ -166,41 +164,57 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
         actionsAlignment: MainAxisAlignment.end,
         actions: <Widget>[
           // 삭제
-          TextButton(
-              onPressed: () async {
-                Navigator.pop(context);
-                late Response res;
-                try {
-                  res = await api_siteCheck_deleteCheckList(checkId);
-                  updateState(global_siteId);
-                } catch (e) {}
-              },
-              child: Text(
-                "Delete",
-                style: TextStyle(
-                  color: Color(allPage_btnSubFontColor),
-                ),
-              )),
+          if (global_userRole != enum_Role.user)
+            TextButton(
+                onPressed: () async {
+                  Navigator.pop(context);
+                  late Response res;
+                  try {
+                    res = await api_siteCheck_deleteCheckList(checkId);
+                    updateState(global_siteId);
+                  } catch (e) {}
+                },
+                child: Text(
+                  "Delete",
+                  style: TextStyle(
+                    color: Color(allPage_btnSubFontColor),
+                  ),
+                )),
+
           // 수정
-          TextButton(
-              onPressed: () async {
-                Navigator.pop(context);
-                showDialog(
-                    context: context,
-                    builder: (context) => AddCheckListDialog(
-                          false,
-                          updateState,
-                          id: checkId,
-                          msg: checkMSG,
-                          state: checkState,
-                        ));
-              },
-              child: Text(
-                "Edit",
-                style: TextStyle(
-                  color: Color(allPage_btnFontColor),
-                ),
-              )),
+          if (global_userRole != enum_Role.user)
+            TextButton(
+                onPressed: () async {
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) => AddCheckListDialog(
+                            false,
+                            updateState,
+                            id: checkId,
+                            msg: checkMSG,
+                            state: checkState,
+                          ));
+                },
+                child: Text(
+                  "Edit",
+                  style: TextStyle(
+                    color: Color(allPage_btnFontColor),
+                  ),
+                )),
+
+          // 완료
+          if (global_userRole == enum_Role.user)
+            TextButton(
+                onPressed: () async {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Done",
+                  style: TextStyle(
+                    color: Color(allPage_btnFontColor),
+                  ),
+                )),
         ],
       );
 }
@@ -309,8 +323,7 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
               },
               child: Text(
                 "Done",
-                style: TextStyle(
-                    color: Color(allPage_btnFontColor)),
+                style: TextStyle(color: Color(allPage_btnFontColor)),
               )),
         ],
       );

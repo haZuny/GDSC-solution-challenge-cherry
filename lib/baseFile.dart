@@ -24,6 +24,7 @@ int global_userId = -1;
 String global_userName = "";
 String global_userPhoneNum = "";
 int global_userAge = 0;
+bool global_haveSite = false;
 
 /// 공통
 // Color
@@ -89,7 +90,8 @@ int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 /// EditPrivacyPage
 // Size
 int EditPrivacyPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
-int EditPrivacyPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
+int EditPrivacyPage_spacePerNextBtn = 15; // 넥스트 버튼 사이의 간격
+int EditPrivacyPage_spacePerBtn = 5; // 버튼 사이의 간격
 
 /// PutCheckCodePage
 // Size
@@ -116,6 +118,7 @@ int editSiteInfoPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
 int editSiteInfoPage_spacePerBottomBtn = 20; // 하단 버튼과의 간격(세로)
 int editSiteInfoPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
 int editSiteInfoPage_containerPadding = 10; // 바텀시트 패딩
+int editSiteInfoPage_spacePerBtns = 5;  // 버튼 사이 간격
 double editSiteInfoPage_bottomsheetHeight = 0.6; // 바텀 시트 크기(세로)
 double editSiteInfoPage_checkBtnFontSize = 14; // 서치 버튼 폰트 크기
 // Font
@@ -158,8 +161,9 @@ double homePage_emergencyBtnFontSize = 20; // 긴급 버튼 폰트 크기
 
 /// HelmetCheckPage
 // Size
-int helmetCheckPage_spacePerNextBtn = 20; // 넥스트 버튼과의 간격
-int helmetCheckPage_progressIndicatorPadding = 35;
+int helmetCheckPage_spacePerNextBtn = 15; // 넥스트 버튼과의 간격
+int helmetCheckPage_progressIndicatorPadding = 35;  // 로딩 크기
+int helmetCheckPage_spacePerTitle = 10;
 
 /// CheckListPage
 // Size
@@ -253,6 +257,25 @@ int googleMap_markerSize = 10;
 /// 화면 사이즈 대비 퍼센트 반환 함수(가로)
 double getFullScrennSizePercent(BuildContext context, int percent) {
   return MediaQuery.of(context).size.width * percent / 100;
+}
+
+/// 전역변수 초기화 함수
+void clearGlobalVar(){
+  // Site global
+  global_haveSite = false;
+  global_siteId = -1;
+  global_siteName = "";
+  global_siteLon = 0;
+  global_siteLat = 0;
+  global_siteAdd1 = "";
+  global_siteAdd2 = "";
+  global_siteCode = "";
+  // privacy global
+  global_userId = -1;
+  global_userRole = null;
+  global_userAge = -1;
+  global_userPhoneNum = "";
+  global_userName = "";
 }
 
 /// ########################

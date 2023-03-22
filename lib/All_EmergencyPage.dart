@@ -7,11 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui' as ui;
-
 import 'package:transition/transition.dart';
-
-import 'Emp_HomePage.dart';
-import 'Manager_HomePage.dart';
+import 'All_HomePage.dart';
 
 class EmergencyPage extends StatefulWidget {
   @override
@@ -87,12 +84,8 @@ class _EmergencyPage extends State<EmergencyPage> {
               ),
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
-                if (global_userRole == enum_Role.user)
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageEmp()), (_) => false);
-                else
-                  Navigator.pushAndRemoveUntil(context,
-                      Transition(child: HomePageManager()), (_) => false);
+                      context, Transition(child: HomePageAll()), (_) => false);
               },
             ),
           ),

@@ -1,14 +1,11 @@
-import 'package:cherry_app/All_EditPravacy.dart';
+import 'package:cherry_app/All_PutPrivacyPage.dart';
 import 'package:cherry_app/All_signInPage.dart';
 import 'package:cherry_app/Emp_PutCheckCodePage.dart';
-import 'package:cherry_app/Manager_EditSitePage.dart';
-import 'package:cherry_app/Manager_PutSiteInfoPage.dart';
+import 'package:cherry_app/All_PutSiteInfoPage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:transition/transition.dart';
-
-import 'All_SiteInfoPage.dart';
 import 'baseFile.dart';
 
 /// AppBar
@@ -84,7 +81,7 @@ class DrawerAll extends StatelessWidget {
                 Navigator.push(
                   context,
                   Transition(
-                      child: EditPrivacyPage(),
+                      child: PutPrivacyPage(),
                       transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
                 );
               },
@@ -100,7 +97,7 @@ class DrawerAll extends StatelessWidget {
                   Navigator.push(
                     context,
                     Transition(
-                        child: EditSitePageManager(),
+                        child: PutSiteInfoPageAll(),
                         transitionEffect: TransitionEffect.RIGHT_TO_LEFT),
                   );
                 },
@@ -122,7 +119,7 @@ class DrawerAll extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         Transition(
-                            child: PutSiteInfoPageManager()),
+                            child: PutSiteInfoPageAll()),
                         (_) => false);
                   } catch (e) {}
                 },

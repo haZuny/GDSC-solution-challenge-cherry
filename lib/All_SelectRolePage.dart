@@ -1,4 +1,4 @@
-import 'package:cherry_app/All_SignUpPage.dart';
+import 'package:cherry_app/All_PutPrivacyPage.dart';
 import 'package:cherry_app/baseFile.dart';
 import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
@@ -47,7 +47,7 @@ class _SelectRolePage extends State<SelectRolePage> {
                         global_userRole = enum_Role.manager;
                         Navigator.pushReplacement(
                             context,
-                            Transition(child: SignUpPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            Transition(child: PutPrivacyPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
                       },
                       // 내부 컴포넌트
                       child: Text(
@@ -92,7 +92,7 @@ class _SelectRolePage extends State<SelectRolePage> {
                         global_userRole = enum_Role.user;
                         Navigator.pushReplacement(
                             context,
-                            Transition(child: SignUpPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
+                            Transition(child: PutPrivacyPage(), transitionEffect: TransitionEffect.RIGHT_TO_LEFT));
                       },
                       // 내부 컴포넌트
                       child: Text(
