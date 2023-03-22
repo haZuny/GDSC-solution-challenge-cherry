@@ -33,8 +33,8 @@ int themaColor_black = 0xFF000000; // 검정색
 int themaColor_yellow = 0xffebba09; // 노랑색
 int themaColor_whiteBlack = 0xff909090; // 연한 검정
 int themaColor_whiteYellow = 0xFFFFF2C1; // 연한 노랑
-int allPage_btnFontColor = 0xff2378b7; // 텍스트버튼 컬러
-int allPage_btnSubFontColor = 0xffbb2f2f; // 텍스트버튼 서브 컬러
+int themaColor_blue = 0xff2378b7; // 텍스트버튼 컬러
+int themaColor_red = 0xffbb2f2f; // 텍스트버튼 서브 컬러
 // Size(Percent)
 int allPage_spaceTopDown = 10; // 위아래 공간
 int allPage_spacePerTitleAndComponents = 15; // 타이틀과 컴포넌트 사이의 간격
@@ -61,7 +61,7 @@ double allPage_roundBtnFontSize = 20; // 둥근 버튼 폰트 크기
 double allPage_shadowBlurRadius = 10;
 double allPage_shadowOffSet = 5;
 
-/// AppBar, Drawer, bottomAppBar
+/// AppBar, Drawer, bottomAppBar, dialog
 // drawer
 int drawer_spaceTop = 2;
 double drawer_dividerWidth = 0.2;
@@ -71,21 +71,22 @@ int bottomBar_bottomBarHeight = 10; // 바텀 네비게이션 높이
 int bottomBar_bottomBarNorch = 2; // 바텀 네비게이션 파인부분
 int bottomBar_floatingBtnMargin = 5; // 바텀 플로팅버튼 하단 마진
 int bottomBar_floatingBtnSize = 10; // 바텀 플로팅버튼 크기
+// Dialog
+int dialog_spacePerText = 2; // 텍스트간 간격
+int dialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
+int dalog_spacePerBtns = 10; // 버튼끼리 간격
+double dialog_fontSize = 20; // 폰트 크기
+double dialog_dialogRound = 20; // 둥글기
 
 /// SignInPage
 // Size(Percent)
 int signInPage_logoWidth = 70; // 로고 가로 크기
-int signInPage_spacePerLogo = 30; // 로고와의 간격
+int signInPage_spacePerLogo = 15; // 로고와의 간격
 int signInPage_loginBtnHeight = 15; // 로그인 버튼 세로
 int siginInPage_googleLogoSize_width = 8; // 구글 로그 사이즈
 int siginInPage_googleLogoFontColor = 0xffb4b4b4; // 구글 로그 사이즈
 // Width(두께)
 double signInPage_loginBtnBorderWidth = 0.1;
-
-/// SignUpPage
-// Size
-int signUpPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
-int signUpPage_spacePerNextBtn = 5; // 넥스트 버튼 사이의 간격
 
 /// EditPrivacyPage
 // Size
@@ -95,22 +96,10 @@ int EditPrivacyPage_spacePerBtn = 5; // 버튼 사이의 간격
 
 /// PutCheckCodePage
 // Size
-int putCheckCodePage_spacePerBottomBtn = 25; // 하단 버튼 과의 간격(세로)
+int putCheckCodePage_spaceTitle = 15; // 타이틀과의 간격
 int putCheckCodePage_spaceBottomBtn = 10; // 하단 버튼 끼리의 간격(세로)
+int putCheckCodePage_spacePerBtns = 5;  // 버튼 사이 간격
 double putCheckCodePage_checkBtnFontSize = 14; // 체크 버튼 폰트 크기
-
-/// PutSiteInfoPage
-// Size
-int putSiteInfoPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
-int putSiteInfoPage_spacePerBottomBtn = 20; // 하단 버튼과의 간격(세로)
-int putSiteInfoPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
-int putSiteInfoPage_containerPadding = 10; // 바텀시트 패딩
-double putSiteInfoPage_bottomsheetHeight = 0.6; // 바텀 시트 크기(세로)
-double putSiteInfoPage_checkBtnFontSize = 14; // 서치 버튼 폰트 크기
-// Font
-double putSiteInfoPage_siteListTileFontSize = 20;
-// Padding
-double putSiteInfoPage_siteListTileFontPadding = 10;
 
 /// EditSiteInfoPage
 // Size
@@ -128,8 +117,8 @@ double editSiteInfoPage_siteListTileFontPadding = 10;
 
 /// WaitingAcceptPage
 // Size
-int waitingAcceptPage_spacePerNextBtn = 35; // Re-type 버튼 사이의 간격
-int waitingAcceptPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
+int waitingAcceptPage_spacePerTitle = 30;
+int waitingAcceptPage_spacePerNextBtn = 25; // Re-type 버튼 사이의 간격
 
 /// SelectRolePage
 // Size
@@ -145,13 +134,11 @@ int homePage_spacePerBtn = 6; // 버튼 사이 간격(가로)
 int homePage_smallBtnWidth = 36; // 작은 버튼 가로
 int homePage_smallBtnHeight = 33; // 작은 버튼 높이
 int homePage_bigBtnHeight = 45; // 큰 버튼 높이
-
 // icon
 int homePage_iconSize = 10; // 버튼 아이콘 크기
 int homePage_spacePerIcon = 3; // 버튼 아이콘 간격
 int homePage_iconSizeBig = 20; // 버튼 큰 아이콘 크기
 int homePage_spacePerIconBig = 3; // 버튼 큰 아이콘 간격
-
 // Weighet
 double homePage_iconWeight = 3; // 버튼 아이콘 테두리 두께
 // Round
@@ -203,11 +190,11 @@ int manageEmpPage_page1_tileNameWidth = 40; // 페이지1 타일 이름 너비
 int manageEmpPage_page1_tileAgeWidth = 20; // 페이지1 타일 나이 너비
 int manageEmpPage_page1_tileRoleWidth = 20; // 페이지1 타일 등급 너비
 int manageEmpPage_page2_spacePerTitle = 10; // 타이틀과의 간격
-int manageEmpPage_page2_waiteListHeight = 110; // 타이틀과의 간격
+int manageEmpPage_page2_waiteListHeight = 80; // 체크 리스트 높이
 int manageEmpPage_page2_spacePerBtns = 10; // 버튼과의 간격
 int manageEmpPage_page2_spacePerBtn = 5; // 버튼끼리의 간격
-int manageEmpPage_page2_tileNameWidth = 40; // 페이지1 타일 이름 너비
-int manageEmpPage_page2_tileAgeWidth = 40; // 페이지1 타일 나이 너비
+int manageEmpPage_page2_tileNameWidth = 50; // 페이지2 타일 이름 너비
+int manageEmpPage_page2_tileAgeWidth = 30; // 페이지2 타일 나이 너비
 int manageEmpPage_pageIndicatorIconSize = 3; // 페이지 표시 아이콘 크기
 int manageEmpPage_spaceTopBottom = 10; // 위 아래 여백 크기
 int manageEmpPage_spacePerRole = 5; // role 드롭다운과 텍스트 사이 간격
@@ -239,15 +226,7 @@ int viewPeopleInfoPage_spacePerBtns = 10; // 버튼끼리 간격
 // Font
 double viewPeopleInfoPage_fontSize = 20; // 폰트 크기
 
-/// Dialog
-// Size
-int dialog_spacePerText = 2; // 텍스트간 간격
-int dialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
-int dalog_spacePerBtns = 10; // 버튼끼리 간격
-// Font
-double dialog_fontSize = 20; // 폰트 크기
-// Round
-double dialog_dialogRound = 20; // 둥글기
+
 
 /// Google Map
 // Size
@@ -276,6 +255,19 @@ void clearGlobalVar(){
   global_userAge = -1;
   global_userPhoneNum = "";
   global_userName = "";
+}
+
+/// 현장 전역변수 초기화 함수
+void clearSiteGlobalVar(){
+  // Site global
+  global_haveSite = false;
+  global_siteId = -1;
+  global_siteName = "";
+  global_siteLon = 0;
+  global_siteLat = 0;
+  global_siteAdd1 = "";
+  global_siteAdd2 = "";
+  global_siteCode = "";
 }
 
 /// ########################

@@ -258,9 +258,7 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             Transition(
-                                child: SignInPage(),
-                                transitionEffect:
-                                    TransitionEffect.LEFT_TO_RIGHT),
+                                child: SignInPage()),
                             (_) => false);
                       },
                       // 내부 컴포넌트
@@ -341,9 +339,7 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               Transition(
-                                  child: HomePageAll(),
-                                  transitionEffect:
-                                      TransitionEffect.LEFT_TO_RIGHT),
+                                  child: HomePageAll()),
                               (_) => false);
                         } catch (e) {}
                       }
@@ -360,8 +356,7 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               Transition(
-                                  child: HomePageAll(),
-                                  transitionEffect: TransitionEffect.LEFT_TO_RIGHT),
+                                  child: HomePageAll()),
                               (_) => false);
                         } catch (e) {}
                       }
@@ -468,7 +463,7 @@ class _SiteInfoBottomSheet extends State<SiteInfoBottomSheet> {
                           "Search",
                           style: TextStyle(
                               fontSize: editSiteInfoPage_checkBtnFontSize,
-                              color: Color(allPage_btnFontColor)),
+                              color: Color(themaColor_blue)),
                         )),
                   ],
                 ),

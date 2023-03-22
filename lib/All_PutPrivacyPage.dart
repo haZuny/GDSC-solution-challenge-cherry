@@ -358,12 +358,11 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                         if (global_userRole == enum_Role.manager) {
                           try {
                             res = await api_admin_editPrivacy(name, phNum, age);
+                            global_userRole = enum_Role.manager;
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 Transition(
-                                    child: HomePageAll(),
-                                    transitionEffect:
-                                        TransitionEffect.LEFT_TO_RIGHT),
+                                    child: HomePageAll()),
                                 (_) => false);
                           } catch (e) {}
                         }
@@ -371,12 +370,11 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                         else {
                           try {
                             res = await api_user_editPrivacy(name, phNum, age);
+                            global_userRole = enum_Role.user;
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 Transition(
-                                    child: HomePageAll(),
-                                    transitionEffect:
-                                        TransitionEffect.LEFT_TO_RIGHT),
+                                    child: HomePageAll()),
                                 (_) => false);
                           } catch (e) {}
                         }

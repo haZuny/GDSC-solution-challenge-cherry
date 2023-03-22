@@ -128,14 +128,14 @@ class _EmergencyPage extends State<EmergencyPage> {
                         context, allPage_mainComponentsWidth),
                     alignment: Alignment.center,
                     child: Text(
-                      "Nearby hospital",
+                      "N e a r b y - h o s p i t a l",
                       style: TextStyle(
                         color: Color(themaColor_white),
                         fontSize: allPage_subTitleFontSize,
                       ),
                     ),
                     decoration: BoxDecoration(
-                        color: Color(allPage_btnSubFontColor),
+                        color: Color(themaColor_red),
                         borderRadius:
                             BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
@@ -162,7 +162,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                               color: Color(themaColor_whiteBlack))
                         ],
                         border: Border.all(
-                            color: Color(allPage_btnSubFontColor),
+                            color: Color(themaColor_red),
                             width: allPage_BigSpaceWidth)),
                     child: Stack(
                       children: [
@@ -237,7 +237,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                           Text(
                             "CPR",
                             style: TextStyle(
-                                color: Color(allPage_btnSubFontColor),
+                                color: Color(themaColor_red),
                                 fontSize: allPage_roundBtnFontSize),
                             textAlign: TextAlign.center,
                           ),
@@ -260,7 +260,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                             borderRadius:
                                 BorderRadius.circular(allPage_roundBtnRadius),
                             side: BorderSide(
-                                color: Color(allPage_btnSubFontColor),
+                                color: Color(themaColor_red),
                                 width: allPage_addBtnWidth),
                           ),
 
@@ -295,7 +295,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                           Text(
                             "Homostasis",
                             style: TextStyle(
-                                color: Color(allPage_btnSubFontColor),
+                                color: Color(themaColor_red),
                                 fontSize: allPage_roundBtnFontSize),
                             textAlign: TextAlign.center,
                           ),
@@ -318,7 +318,7 @@ class _EmergencyPage extends State<EmergencyPage> {
                             borderRadius:
                                 BorderRadius.circular(allPage_roundBtnRadius),
                             side: BorderSide(
-                                color: Color(allPage_btnSubFontColor),
+                                color: Color(themaColor_red),
                                 width: allPage_addBtnWidth),
                           ),
 

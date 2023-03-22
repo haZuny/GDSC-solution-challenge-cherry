@@ -48,23 +48,23 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                       Icons.radio_button_checked,
                       size: getFullScrennSizePercent(
                           context, manageEmpPage_pageIndicatorIconSize),
-                      color: Color(allPage_btnFontColor),
+                      color: Color(themaColor_blue),
                     )
                   : Icon(Icons.radio_button_unchecked,
                       size: getFullScrennSizePercent(
                           context, manageEmpPage_pageIndicatorIconSize),
-                      color: Color(allPage_btnFontColor)),
+                      color: Color(themaColor_blue)),
               _currentPage == 1
                   ? Icon(
                       Icons.radio_button_checked,
                       size: getFullScrennSizePercent(
                           context, manageEmpPage_pageIndicatorIconSize),
-                      color: Color(allPage_btnFontColor),
+                      color: Color(themaColor_blue),
                     )
                   : Icon(Icons.radio_button_unchecked,
                       size: getFullScrennSizePercent(
                           context, manageEmpPage_pageIndicatorIconSize),
-                      color: Color(allPage_btnFontColor)),
+                      color: Color(themaColor_blue)),
             ],
           ),
           body: PageView(
@@ -250,7 +250,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                             Text(
                               "Delete all",
                               style: TextStyle(
-                                  color: Color(allPage_btnSubFontColor),
+                                  color: Color(themaColor_red),
                                   fontSize: allPage_roundBtnFontSize),
                               textAlign: TextAlign.center,
                             ),
@@ -273,7 +273,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                               borderRadius:
                                   BorderRadius.circular(allPage_roundBtnRadius),
                               side: BorderSide(
-                                  color: Color(allPage_btnSubFontColor),
+                                  color: Color(themaColor_red),
                                   width: allPage_addBtnWidth),
                             ),
 
@@ -451,7 +451,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                             Text(
                               "Delete all",
                               style: TextStyle(
-                                  color: Color(allPage_btnSubFontColor),
+                                  color: Color(themaColor_red),
                                   fontSize: allPage_roundBtnFontSize),
                               textAlign: TextAlign.center,
                             ),
@@ -474,7 +474,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                               borderRadius:
                                   BorderRadius.circular(allPage_roundBtnRadius),
                               side: BorderSide(
-                                  color: Color(allPage_btnSubFontColor),
+                                  color: Color(themaColor_red),
                                   width: allPage_addBtnWidth),
                             ),
 

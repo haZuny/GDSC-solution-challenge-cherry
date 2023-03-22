@@ -178,8 +178,8 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                             fontSize: putCheckCodePage_checkBtnFontSize,
                             fontWeight: FontWeight.w500,
                             color: _stateChecked
-                                ? Color(allPage_btnFontColor)
-                                : Color(allPage_btnSubFontColor)),
+                                ? Color(themaColor_blue)
+                                : Color(themaColor_red)),
                       ),
                     ),
                   ),
@@ -201,9 +201,7 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               Transition(
-                                  child: HomePageAll(),
-                                  transitionEffect:
-                                      TransitionEffect.LEFT_TO_RIGHT),
+                                  child: HomePageAll()),
                               (_) => false);
                         } catch (e) {}
                       }

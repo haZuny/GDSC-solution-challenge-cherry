@@ -134,7 +134,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                       ),
                     ),
                     decoration: BoxDecoration(
-                        color: Color(allPage_btnSubFontColor),
+                        color: Color(themaColor_red),
                         borderRadius:
                             BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
@@ -166,7 +166,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(
@@ -199,7 +199,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(
@@ -232,7 +232,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(
@@ -265,7 +265,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(
@@ -299,7 +299,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(
@@ -333,7 +333,7 @@ class _CPRPage extends State<CPRPage> with WidgetsBindingObserver {
                           style: TextStyle(
                               fontSize: allPage_titleFontSize,
                               fontWeight: FontWeight.bold,
-                              backgroundColor: Color(allPage_btnSubFontColor),
+                              backgroundColor: Color(themaColor_red),
                               color: Color(themaColor_white)),
                         ),
                         Container(

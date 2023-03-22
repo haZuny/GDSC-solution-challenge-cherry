@@ -57,7 +57,7 @@ class _CheckListPage extends State<CheckListPage> {
               backgroundColor: Color(themaColor_yellow),
               onPressed: () {
                   Navigator.pushAndRemoveUntil(
-                      context, Transition(child: HomePageAll()), (_) => false);
+                      context, Transition(child: HomePageAll(), ), (_) => false);
               },
             ),
           ),

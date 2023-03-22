@@ -219,7 +219,7 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                       child: Text(
                         "Delete",
                         style: TextStyle(
-                            color: Color(allPage_btnSubFontColor),
+                            color: Color(themaColor_red),
                             fontSize: allPage_btnFontSize),
                       )),
 

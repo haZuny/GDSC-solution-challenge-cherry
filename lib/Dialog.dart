@@ -88,7 +88,7 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               },
               child: Text(
                 "Accept",
-                style: TextStyle(color: Color(allPage_btnFontColor)),
+                style: TextStyle(color: Color(themaColor_blue)),
               )),
 
           // 내쫒기
@@ -102,7 +102,7 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
               },
               child: Text(
                 "Delete",
-                style: TextStyle(color: Color(allPage_btnSubFontColor)),
+                style: TextStyle(color: Color(themaColor_red)),
               )),
         ],
       );
@@ -177,7 +177,7 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
                 child: Text(
                   "Delete",
                   style: TextStyle(
-                    color: Color(allPage_btnSubFontColor),
+                    color: Color(themaColor_red),
                   ),
                 )),
 
@@ -199,7 +199,7 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
                 child: Text(
                   "Edit",
                   style: TextStyle(
-                    color: Color(allPage_btnFontColor),
+                    color: Color(themaColor_blue),
                   ),
                 )),
 
@@ -212,7 +212,7 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
                 child: Text(
                   "Done",
                   style: TextStyle(
-                    color: Color(allPage_btnFontColor),
+                    color: Color(themaColor_blue),
                   ),
                 )),
         ],
@@ -323,7 +323,60 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
               },
               child: Text(
                 "Done",
-                style: TextStyle(color: Color(allPage_btnFontColor)),
+                style: TextStyle(color: Color(themaColor_blue)),
+              )),
+        ],
+      );
+}
+
+/// 현장 탈퇴 경고 다이얼로그
+class CheckAlertDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+        // 둥글기
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(dialog_dialogRound)),
+        // 메인 타이틀
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Color(themaColor_whiteYellow),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(dialog_dialogRound),
+                    topRight: Radius.circular(dialog_dialogRound))),
+            child: Text("Alert")),
+        // Content
+        content: Builder(builder: (context) {
+          return Container(
+            width:
+                getFullScrennSizePercent(context, allPage_mainComponentsWidth),
+            // 내용
+            child: Text(global_userRole != enum_Role.manager ? "Are you really removing the scene?" : "Are you sure you want to leave the field?"),
+          );
+        }),
+
+        /// 버튼
+        actionsAlignment: MainAxisAlignment.end,
+        actions: <Widget>[
+          // 취소
+          TextButton(
+              onPressed: () async {
+                Navigator.pop(context, false);
+              },
+              child: Text(
+                "Back",
+                style: TextStyle(color: Color(themaColor_blue)),
+              )),
+          // 제거
+          TextButton(
+              onPressed: () async {
+                Navigator.pop(context, true);
+              },
+              child: Text(
+                global_userRole == enum_Role.manager ? "Reset" : "Leave",
+                style: TextStyle(color: Color(themaColor_red)),
               )),
         ],
       );

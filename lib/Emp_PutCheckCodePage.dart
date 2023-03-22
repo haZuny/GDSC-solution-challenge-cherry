@@ -32,7 +32,6 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
         },
         child: Scaffold(
           appBar: AppBarAll(),
-
           body: Container(
             alignment: Alignment.center,
             child: SingleChildScrollView(
@@ -42,23 +41,47 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                   /// 위, 아래 공간
                   Container(
                     height:
-                    getFullScrennSizePercent(context, allPage_spaceTopDown),
-                  ),
-                  /// 간격
-                  Container(
-                    height: getFullScrennSizePercent(
-                        context, putCheckCodePage_spacePerBottomBtn),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
 
+                  /// 타이틀
                   Text(
-                    "Put check code",
-                    style: TextStyle(fontSize: allPage_titleFontSize),
+                    "Put site check code",
+                    style: TextStyle(
+                      fontSize: allPage_titleFontSize,
+                      // color: Color(themaColor_yellow),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  /// 타이틀과 서브타이틀 사이 공간
+                  Container(
+                    height: getFullScrennSizePercent(
+                        context, allPage_spacePerTitleAndSubTitme),
+                  ),
+
+                  /// 서브타이틀
+                  Container(
+                    width: getFullScrennSizePercent(
+                        context, allPage_mainComponentsWidth),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "C H E R R Y",
+                      style: TextStyle(
+                        color: Color(themaColor_white),
+                        fontSize: allPage_subTitleFontSize,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(themaColor_yellow),
+                        borderRadius:
+                            BorderRadius.circular(allPage_subTitleLineRadius)),
                   ),
 
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, allPage_spacePerTitleAndComponents),
+                        context, putCheckCodePage_spaceTitle),
                   ),
 
                   /// 현장코드 TF
@@ -138,80 +161,138 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                           style: TextStyle(
                               fontSize: putCheckCodePage_checkBtnFontSize,
                               color: Color(isChecked
-                                  ? allPage_btnFontColor
-                                  : allPage_btnSubFontColor)),
+                                  ? themaColor_blue
+                                  : themaColor_red)),
                         )),
                   ),
 
                   /// 간격
                   Container(
                     height: getFullScrennSizePercent(
-                        context, putCheckCodePage_spacePerBottomBtn),
+                        context, putCheckCodePage_spaceBottomBtn),
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      /// Back 버튼
-                      TextButton(
-                          onPressed: () async {
-                            late Response res;
-                            try {
-                              res = await api_user_logout();
-                            } catch (e) {}
-                            await global_googleSignIn?.signOut();
-                            print(">>> 구글 로그아웃");
-                            Navigator.pushAndRemoveUntil(
+                  /// Back 버튼
+                  ElevatedButton(
+                    onPressed: () async {
+                      late Response res;
+                      try {
+                        res = await api_user_logout();
+                      } catch (e) {}
+                      await global_googleSignIn?.signOut();
+                      print(">>> 구글 로그아웃");
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          Transition(
+                              child: SignInPage()),
+                          (_) => false);
+                    },
+                    // 내부 컴포넌트
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // 텍스트
+                        Text(
+                          "Back",
+                          style: TextStyle(
+                              color: Color(themaColor_yellow),
+                              fontSize: allPage_roundBtnFontSize),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        // 크기 설정
+                        minimumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        maximumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        // 모양 및 테두리 설정
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(allPage_roundBtnRadius),
+                          side: BorderSide(
+                              color: Color(themaColor_yellow),
+                              width: allPage_addBtnWidth),
+                        ),
+
+                        // 배경 색상 설정
+                        backgroundColor: Color(themaColor_white),
+                        // 그림자 투명도
+                        elevation: 10),
+                  ),
+
+                  if(isChecked)
+                    Container(height: getFullScrennSizePercent(context, putCheckCodePage_spacePerBtns),),
+
+                  /// Next 버튼
+                  if (isChecked)
+                    ElevatedButton(
+                      onPressed: () async {
+                        late Response res;
+                        try {
+                          res = await api_user_returnCheckCode(checkCode);
+                          if (res.data['success']) {
+                            Navigator.pushReplacement(
                                 context,
                                 Transition(
-                                    child: SignInPage(),
+                                    child: WaitingAcceptPage(),
                                     transitionEffect:
-                                        TransitionEffect.LEFT_TO_RIGHT),
-                                (_) => false);
-                          },
-                          child: Text(
-                            "Back",
+                                        TransitionEffect.RIGHT_TO_LEFT));
+                          }
+                        } catch (e) {}
+                      },
+                      // 내부 컴포넌트
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // 텍스트
+                          Text(
+                            "Next",
                             style: TextStyle(
-                                fontSize: allPage_btnFontSize,
-                                color: Color(allPage_btnFontColor)),
-                          )),
+                                color: Color(themaColor_yellow),
+                                fontSize: allPage_roundBtnFontSize),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          // 크기 설정
+                          minimumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          maximumSize: Size(
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnWidth),
+                              getFullScrennSizePercent(
+                                  context, allPage_roundBtnHeight)),
+                          // 모양 및 테두리 설정
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(allPage_roundBtnRadius),
+                            side: BorderSide(
+                                color: Color(themaColor_yellow),
+                                width: allPage_addBtnWidth),
+                          ),
 
-                      // 간격
-                      Container(
-                          width: getFullScrennSizePercent(
-                              context, putCheckCodePage_spaceBottomBtn)),
+                          // 배경 색상 설정
+                          backgroundColor: Color(themaColor_white),
+                          // 그림자 투명도
+                          elevation: 10),
+                    ),
 
-                      /// next 버튼
-                      if (isChecked)
-                        TextButton(
-
-                            /// 현장코드 제출
-                            onPressed: () async {
-                              late Response res;
-                              try {
-                                res = await api_user_returnCheckCode(checkCode);
-                                if (res.data['success']) {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      Transition(
-                                          child: WaitingAcceptPage(),
-                                          transitionEffect:
-                                              TransitionEffect.RIGHT_TO_LEFT));
-                                }
-                              } catch (e) {}
-                            },
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                  fontSize: allPage_btnFontSize,
-                                  color: Color(allPage_btnFontColor)),
-                            )),
-                    ],
-                  ),
                   /// 위, 아래 공간
                   Container(
                     height:
-                    getFullScrennSizePercent(context, allPage_spaceTopDown),
+                        getFullScrennSizePercent(context, allPage_spaceTopDown),
                   ),
                 ],
               ),

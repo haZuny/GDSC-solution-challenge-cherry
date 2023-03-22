@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:transition/transition.dart';
+import 'Dialog.dart';
 import 'baseFile.dart';
 
 /// AppBar
@@ -112,16 +113,23 @@ class DrawerAll extends StatelessWidget {
                 ),
                 title: Text("Reset workspace",
                     style: TextStyle(color: Colors.red)),
-                onTap: () async {
-                  Response? res;
-                  try {
-                    res = await api_site_deleteSite(global_siteId);
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        Transition(
-                            child: PutSiteInfoPageAll()),
-                        (_) => false);
-                  } catch (e) {}
+                onTap: () {
+                  showDialog(
+                          context: context,
+                          builder: (context) => CheckAlertDialog())
+                      .then((value) async {
+                    if (value) {
+                      Response? res;
+                      try {
+                        res = await api_site_deleteSite(global_siteId);
+                        clearSiteGlobalVar();
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            Transition(child: PutSiteInfoPageAll()),
+                            (_) => false);
+                      } catch (e) {}
+                    }
+                  });
                 },
               ),
 
@@ -132,18 +140,24 @@ class DrawerAll extends StatelessWidget {
                   Icons.refresh,
                   color: Colors.red,
                 ),
-                title:
-                    Text("Quit workspace", style: TextStyle(color: Colors.red)),
+                title: Text("Leave workspace",
+                    style: TextStyle(color: Colors.red)),
                 onTap: () async {
-                  Response? res;
-                  try {
-                    res = await api_admin_deleteEmp(global_userId);
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        Transition(
-                            child: PutCheckCodePageEmp()),
-                        (_) => false);
-                  } catch (e) {}
+                  showDialog(
+                          context: context,
+                          builder: (context) => CheckAlertDialog())
+                      .then((value) async {
+                    if (value) {
+                      Response? res;
+                      try {
+                        res = await api_admin_deleteEmp(global_userId);
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            Transition(child: PutCheckCodePageEmp()),
+                            (_) => false);
+                      } catch (e) {}
+                    }
+                  });
                 },
               ),
             Divider(
