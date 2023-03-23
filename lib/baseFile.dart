@@ -76,6 +76,7 @@ int dialog_spacePerText = 2; // 텍스트간 간격
 int dialog_spacePerBottomBtn = 30; // 아래 버튼과의 간격
 int dalog_spacePerBtns = 10; // 버튼끼리 간격
 double dialog_fontSize = 20; // 폰트 크기
+double dialog_subFontSize = 16; // 작은 폰트 크기
 double dialog_dialogRound = 20; // 둥글기
 
 /// SignInPage
@@ -122,9 +123,11 @@ int waitingAcceptPage_spacePerNextBtn = 25; // Re-type 버튼 사이의 간격
 
 /// SelectRolePage
 // Size
+int selectRolePage_spacePerTitle = 10;  // 타이틀과의 간격
 int selectRolePage_widgetSpaceRow = 6; // 버튼 사이의 가로 간격
 int selectRolePage_loginBtnWidth = 37; // 역할 선택 버튼 가로
 int selectRolePage_loginBtnHeight = 45; // 역할 선택 버튼 세로 패딩
+int selectRolePage_spacePerBottomBtn = 20;  // 타이틀과의 간격
 
 /// HomePage
 // Size
@@ -214,17 +217,24 @@ int emergencyPage_spaceBottom = 10; // 하단 간격
 
 /// CPR Page
 // Size
-int cprPage_spaceTopDown = 10;
-int cprPage_spacePerComponent = 10;
-int cprPage_spacePerTitleAndComponent = 3;
+int cprPage_spacePerComponent = 10; // 요소끼리 간격
+int cprPage_spacePerTitleAndComponent = 3;  // 타이틀과의 간격
+
 
 /// ViewPeopleInfoPage
 // Size
+int viewPeopleInfoPage_spacePerTitle = 10;  // 타이틀과의 간격
 int viewPeopleInfoPage_spacePerText = 10; // 텍스트간 간격
-int viewPeopleInfoPage_spacePerBottomBtn = 30; // 아래 버튼과의 간격
+int viewPeopleInfoPage_spacePerBottomBtn = 10; // 아래 버튼과의 간격
 int viewPeopleInfoPage_spacePerBtns = 10; // 버튼끼리 간격
 // Font
 double viewPeopleInfoPage_fontSize = 20; // 폰트 크기
+double viewPeopleInfoPage_smallFontSize = 15; // 폰트 크기
+// Padding
+int viewPeopleInfoPage_padding = 5; // 리스트 공간 패딩
+// Shadow
+double viewPeopleInfoPage_offset = 3; // 그림자 오프셋
+double viewPeopleInfoPage_blueray = 3; // 그림자 번짐
 
 
 
@@ -392,7 +402,6 @@ Future<Response> api_admin_getUserList(int siteId) async {
   try {
     res = await dio.get(uri);
     print(">>> ${res.data['successResponseMessage']}");
-    print(res);
   } catch (e) {
     print(">>> ###유저 목록 조회 완료");
     print(e);

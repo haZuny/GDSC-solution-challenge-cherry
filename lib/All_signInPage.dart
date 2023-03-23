@@ -56,9 +56,7 @@ class _SignInPage extends State<SignInPage> {
                     try {
                       await global_googleSignIn!.signOut();
                       print(">>> 구글 로그아웃");
-                    } catch (e) {
-                      print(e);
-                    }
+                    } catch (e) {}
 
                     // google auth
                     global_googleSignIn = GoogleSignIn();
@@ -71,7 +69,6 @@ class _SignInPage extends State<SignInPage> {
                             await api_admin_signIn(global_googleUser!.email);
                         // 변수 설정
                         _signInRole = res.data['data']['role'];
-                        print(res);
                         global_haveSite = res.data['data']['existSiteInfo'];
                         global_userId = res.data['data']['id'];
                         authorization =
@@ -167,7 +164,7 @@ class _SignInPage extends State<SignInPage> {
                                 transitionEffect:
                                     TransitionEffect.RIGHT_TO_LEFT));
                       }
-                    }else{
+                    } else {
                       print(">>> 구글 로그인 실패");
                     }
                   },
@@ -206,10 +203,11 @@ class _SignInPage extends State<SignInPage> {
                       // 그림자 투명도
                       elevation: 10),
                 ),
+
                 /// 위, 아래 공간
                 Container(
                   height:
-                  getFullScrennSizePercent(context, allPage_spaceTopDown),
+                      getFullScrennSizePercent(context, allPage_spaceTopDown),
                 ),
               ],
             ),

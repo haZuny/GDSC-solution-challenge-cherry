@@ -228,19 +228,29 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                       /// 모두 제거 버튼
                       ElevatedButton(
                         onPressed: () async {
-                          for (EmpListTile tile in _uncheckedUserList) {
-                            late Response res;
-                            try {
-                              res = await api_admin_deleteUser(tile.userId);
-                            } catch (e) {}
-                          }
-                          for (EmpListTile tile in _checkedUserList) {
-                            late Response res;
-                            try {
-                              res = await api_admin_deleteUser(tile.userId);
-                            } catch (e) {}
-                          }
-                          updateUserList();
+                          showDialog(
+                              context: context,
+                              builder: (context) => CheckAlertDialog(
+                                  "Are you sure you want to delete all users out?",
+                                  "Back",
+                                  "Delete")).then((value) async {
+                            print(value);
+                            if (value) {
+                              for (EmpListTile tile in _uncheckedUserList) {
+                                late Response res;
+                                try {
+                                  res = await api_admin_deleteUser(tile.userId);
+                                } catch (e) {}
+                              }
+                              for (EmpListTile tile in _checkedUserList) {
+                                late Response res;
+                                try {
+                                  res = await api_admin_deleteUser(tile.userId);
+                                } catch (e) {}
+                              }
+                              updateUserList();
+                            }
+                          });
                         },
                         // 내부 컴포넌트
                         child: Column(
@@ -435,13 +445,23 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                       /// 모두 거절 버튼
                       ElevatedButton(
                         onPressed: () async {
-                          for (WaiteListTile tile in _waitingUserList) {
-                            late Response res;
-                            try {
-                              res = await api_admin_deleteUser(tile.userId);
-                            } catch (e) {}
-                          }
-                          updateWaitingList();
+                          showDialog(
+                              context: context,
+                              builder: (context) => CheckAlertDialog(
+                                  "Are you sure you want to deny all users?",
+                                  "Back",
+                                  "Deny")).then((value) async {
+                            print(value);
+                            if (value) {
+                              for (WaiteListTile tile in _waitingUserList) {
+                                late Response res;
+                                try {
+                                  res = await api_admin_deleteUser(tile.userId);
+                                } catch (e) {}
+                              }
+                              updateWaitingList();
+                            }
+                          });
                         },
                         // 내부 컴포넌트
                         child: Column(

@@ -116,7 +116,7 @@ class DrawerAll extends StatelessWidget {
                 onTap: () {
                   showDialog(
                           context: context,
-                          builder: (context) => CheckAlertDialog())
+                          builder: (context) => CheckAlertDialog("Are you really removing the scene?", "Back", "Remove"))
                       .then((value) async {
                     if (value) {
                       Response? res;
@@ -145,7 +145,7 @@ class DrawerAll extends StatelessWidget {
                 onTap: () async {
                   showDialog(
                           context: context,
-                          builder: (context) => CheckAlertDialog())
+                          builder: (context) => CheckAlertDialog("Are you sure you want to leave the field?", "Back", "Leave"))
                       .then((value) async {
                     if (value) {
                       Response? res;

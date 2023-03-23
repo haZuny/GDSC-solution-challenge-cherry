@@ -10,6 +10,7 @@ import 'Dialog.dart';
 import 'Emp_HelmetCheckPage.dart';
 import 'All_CheckListPage.dart';
 import 'All_SiteInfoPage.dart';
+import 'SnackBar.dart';
 
 class HomePageAll extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _HomePageAll extends State<HomePageAll> {
     super.initState();
 
     /// 관리자
-    if (global_userRole != enum_Role.user) {
+    if (global_userRole == enum_Role.manager) {
       try {
         // 현장 정보 조회
         api_admin_getSiteInfo(global_googleUser!.email)
@@ -147,7 +148,7 @@ class _HomePageAll extends State<HomePageAll> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        global_userRole == enum_Role.user
+                        global_userRole != enum_Role.manager
                             ?
 
                             /// 헬멧 체크 버튼
@@ -227,10 +228,11 @@ class _HomePageAll extends State<HomePageAll> {
                             ElevatedButton(
                                 onPressed: () {
                                   showDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              ResetSiteAlertDialog())
-                                      .then((value) async {
+                                      context: context,
+                                      builder: (context) => CheckAlertDialog(
+                                          "Are you sure you want to reset?",
+                                          "Back",
+                                          "Reset")).then((value) async {
                                     if (value) {
                                       late Response res;
                                       try {

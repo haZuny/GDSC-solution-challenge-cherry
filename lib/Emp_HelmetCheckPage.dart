@@ -31,15 +31,20 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
     // TODO: implement initState
     super.initState();
     getMyImage().then((value) {
-      // ML
-      Classifier classifier = Classifier(File(_pickedImage!.path));
-      classifier.classify().then((value) {
-        if (value > 0.6) {
-          setState(() {
-            _stateChecked = true;
-          });
-        }
-      });
+      if (value) {
+        // ML
+        Classifier classifier = Classifier(File(_pickedImage!.path));
+        classifier.classify().then((value) {
+          if (value > 0.6) {
+            setState(() {
+              _stateChecked = true;
+            });
+          }
+        });
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context, Transition(child: HomePageAll()), (_) => false);
+      }
     });
   }
 
@@ -198,26 +203,25 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                         late Response res;
                         try {
                           res = await api_user_editHelmetCheck(true);
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              Transition(
-                                  child: HomePageAll()),
-                              (_) => false);
+                          Navigator.pushAndRemoveUntil(context,
+                              Transition(child: HomePageAll()), (_) => false);
                         } catch (e) {}
                       }
                       // 실패
                       else {
                         getMyImage().then((value) {
-                          // ML
-                          Classifier classifier =
-                              Classifier(File(_pickedImage!.path));
-                          classifier.classify().then((value) {
-                            if (value > 0.6) {
-                              setState(() {
-                                _stateChecked = true;
-                              });
-                            }
-                          });
+                          if (value) {
+                            // ML
+                            Classifier classifier =
+                                Classifier(File(_pickedImage!.path));
+                            classifier.classify().then((value) {
+                              if (value > 0.6) {
+                                setState(() {
+                                  _stateChecked = true;
+                                });
+                              }
+                            });
+                          }
                         });
                       }
                     },
@@ -277,11 +281,15 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
   /// 사진 촬영 메소드
   Future getMyImage() async {
     _pickedImage = await _picker.getImage(source: ImageSource.camera);
-    // 이미지 보여주기
-    setState(() {
-      _helmetImage = Image.file(File(_pickedImage!.path));
-    });
-
-    // return Image.file(File(pickedImage!.path));
+    try {
+      // 이미지 보여주기
+      setState(() {
+        _helmetImage = Image.file(File(_pickedImage!.path));
+      });
+      return true;
+    } catch (e) {
+      print("aaaaaaaaaaaaa");
+      return false;
+    }
   }
 }
