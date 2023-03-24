@@ -528,6 +528,7 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
     late Response res;
     try {
       res = await api_admin_getUserList(global_siteId);
+      print(res);
       List checkedList = res.data['data']['checked'];
       List uncheckedList = res.data['data']['unchecked'];
 

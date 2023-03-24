@@ -58,9 +58,11 @@ class _SignInPage extends State<SignInPage> {
                       print(">>> 구글 로그아웃");
                     } catch (e) {}
 
+                    print("asfsdfasdfdsfsd");
                     // google auth
                     global_googleSignIn = GoogleSignIn();
                     global_googleUser = await global_googleSignIn?.signIn();
+
 
                     if (global_googleUser != null) {
                       // Admin SignIn
