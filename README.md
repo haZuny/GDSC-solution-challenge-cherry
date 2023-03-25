@@ -43,10 +43,7 @@ Cherry help you prevent dangers in your work environment in advance and share in
 
 
 # Contributor
-|<img src="https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4" width="150"/>
-|<img src="https://avatars.githubusercontent.com/u/80839715?v=4" width="150"/>
-|<img src="https://avatars.githubusercontent.com/u/92250144?v=4" width="150"/>
-|<img src="https://avatars.githubusercontent.com/u/26412102?s=100&v=4" width="150"/>|
+|<img src="https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/80839715?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/92250144?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/26412102?s=100&v=4" width="150"/>|
 |---|---|---|---|
 |내용 1|내용 2|내용 3|내용 4|
 
