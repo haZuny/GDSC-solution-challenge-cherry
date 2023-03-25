@@ -10,6 +10,7 @@
 # Introduction
 <img src="https://user-images.githubusercontent.com/64102831/227731796-74e7d4d1-7499-4ba3-a2a1-947ec1cd7b44.jpg" width="600"/>
 According to data from the Ministry of Employment and Labor last year, the construction industry ranks first in fatal accidents every year due to the nature of the industry.
+
 Most of the types of accidents account for a large proportion of drops, pinches, and collisions, which occurred because **the absence of wearing safety equipment.**
 However, there is a limit to the past punishment and regulatory-oriented policies alone.
 
