@@ -8,6 +8,7 @@
 <br>
 
 # Introduction
+### Problem situation
 <img src="https://user-images.githubusercontent.com/64102831/227731796-74e7d4d1-7499-4ba3-a2a1-947ec1cd7b44.jpg" width="800"/>
 According to data from the Ministry of Employment and Labor last year, the construction industry ranks first in fatal accidents every year due to the nature of the industry.
 
@@ -19,20 +20,15 @@ We prevent accidents in various situations by **creating customizable checklists
 <br>
 
 ### What is Sustainable Development Goals?
-
 ![un_goals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
-
 The Sustainable Development Goals (SGDs) or Global Goals are a collection of 17 interlinked global goals designed to be a "blueprint to achieve a better and more sustainable future for all.
 As can be seen in the figure above, there are 17 goals.
 
 ### Our goal
-
 We have noted decent work and economic growth among the UN's Sustainable Development Goals. We're going to create a system with the app that helps protect workers' labor rights and create a safe working environment.
 
 #### Goal 8. Decent work and economic growth
-
 <img src="https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png" width="200"/>
-
 Cherry focused on providing a safer environment for workers on construction sites.
 Many workers at the construction site are working without knowing whether the safety inspection of the construction site has been properly performed. **The absence of these safety inspections gives workers anxiety and has the risk of causing a major accident.** We paid attention to this situation and discussed ways to provide a safer working environment for workers.
 
