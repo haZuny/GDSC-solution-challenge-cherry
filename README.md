@@ -18,7 +18,7 @@ We prevent accidents in various situations by **creating customizable checklists
 
 <br>
 
-# What is Sustainable Development Goals?
+### What is Sustainable Development Goals?
 
 ![un_goals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
 
