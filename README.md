@@ -8,10 +8,14 @@
 <br>
 
 # Index
-[1. Introduction](#Introduction)<br>
+[**1. Introduction**](#Introduction)<br>
 [1.1. Problem situation](#Problem-situation)<br>
 [1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
 [1.3. Our goal](#Our-goal)<br>
+[**2. Detail of fuction**](#Detail-of-fuction)<br>
+[**3. Download App**](#Download-App)<br>
+[**4. Components**](#Components)<br>
+[**5. Contributor**](#Contributor)<br>
 
 <br>
 
@@ -45,6 +49,10 @@ Many workers at the construction site are working without knowing whether the sa
 Our Cherry **provides a checklist** that must be checked by managers at each site before starting work. These daily inspections make managers more concerned about safety inspections on site. In addition, workers can check the check status of the day and work comfortably in a safer environment.
 
 **Workers as well as managers should check their safety equipment before work.** There are many cases of working without proper safety equipment leading to major accidents. Workers check their current safety equipment wearing status through Cherry and send the results to the manager. In this way, we can ensure a safer working environment.
+
+<br>
+
+# Detail of fuction
 
 <br>
 
