@@ -14,7 +14,7 @@
 The Sustainable Development Goals (SGDs) or Global Goals are a collection of 17 interlinked global goals designed to be a "blueprint to achieve a better and more sustainable future for all.
 As can be seen in the figure above, there are 17 goals.
 
-## Our goal
+### Our goal
 
 We have noted decent work and economic growth among the UN's Sustainable Development Goals. We're going to create a system with the app that helps protect workers' labor rights and create a safe working environment.
 
