@@ -29,11 +29,16 @@ As can be seen in the figure above, there are 17 goals.
 
 We have noted decent work and economic growth among the UN's Sustainable Development Goals. We're going to create a system with the app that helps protect workers' labor rights and create a safe working environment.
 
-#### Good Health and Well-Being
+#### Goal 8. Decent work and economic growth
 
 <img src="https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png" width="200"/>
 
-Cherry help you prevent dangers in your work environment in advance and share information with all workers to ensure that your work environment is safe.
+Cherry focused on providing a safer environment for workers on construction sites.
+Many workers at the construction site are working without knowing whether the safety inspection of the construction site has been properly performed. **The absence of these safety inspections gives workers anxiety and has the risk of causing a major accident.** We paid attention to this situation and discussed ways to provide a safer working environment for workers.
+
+Our Cherry **provides a checklist** that must be checked by managers at each site before starting work. These daily inspections make managers more concerned about safety inspections on site. In addition, workers can check the check status of the day and work comfortably in a safer environment.
+
+**Workers as well as managers should check their safety equipment before work.** There are many cases of working without proper safety equipment leading to major accidents. Workers check their current safety equipment wearing status through Cherry and send the results to the manager. In this way, we can ensure a safer working environment.
 
 <br>
 
