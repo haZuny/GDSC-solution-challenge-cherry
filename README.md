@@ -13,8 +13,8 @@
 [1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
 [1.3. Our goal](#Our-goal)<br>
 [**2. Detail of fuction**](#Detail-of-fuction)<br>
-[**3. Download App**](#Download-App)<br>
-[**4. Components**](#Components)<br>
+[**3. Components**](#Components)<br>
+[**4. Download App**](#Download-App)<br>
 [**5. Contributor**](#Contributor)<br>
 
 <br>
@@ -56,11 +56,6 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 
 <br>
 
-# Download App
-[Download Cherry.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk)
-
-<br>
-
 # Components
 - **Back End**<br>
   <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
@@ -75,13 +70,18 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
 - **Design**<br>
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
+  
+  <br>
+
+# Download App
+[Download Cherry.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk)
 
 <br>
 
 # Contributor
 |<img src="https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/80839715?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/92250144?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/26412102?s=100&v=4" width="150"/>|
 |---|---|---|---|
-|Fon|Fon|ON|sadf|
+|Front End|Back End|Back End|Machine Learning|
 |[HaJun Kwon](https://github.com/haZuny)|[JiYoung Song](https://github.com/Zy0ung)|[GeonHui Lee](https://github.com/GeonHui2)|[Jaehyeon Park](https://github.com/Park-jaehyeon02)|
 
 
