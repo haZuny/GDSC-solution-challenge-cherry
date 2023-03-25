@@ -7,7 +7,7 @@
 
 <br>
 
-## What is Sustainable Development Goals?
+# What is Sustainable Development Goals?
 
 ![un_goals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
 
@@ -26,7 +26,7 @@ Cherry help you prevent dangers in your work environment in advance and share in
 
 <br>
 
-## Components
+# Components
 - **BE**<br>
   <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
   <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
@@ -42,5 +42,8 @@ Cherry help you prevent dangers in your work environment in advance and share in
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 
 
-<img src="https://img.shields.io/badge/기술이름-#제외색상번호?style=for-the-badge&logo=아이콘이름&logoColor=white">
+# Contributor
+|제목 셀1|제목 셀2|제목 셀3|제목 셀4|
+|---|---|---|---|
+|내용 1|내용 2|내용 3|내용 4|
 
