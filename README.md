@@ -29,7 +29,8 @@ We have noted decent work and economic growth among the UN's Sustainable Develop
 
 #### Goal 8. Decent work and economic growth
 <img src="https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png" width="200"/>
-Cherry focused on providing a safer environment for workers on construction sites.
+
+Cherry focused on **providing a safer environment for workers on construction sites.**
 
 Many workers at the construction site are working without knowing whether the safety inspection of the construction site has been properly performed. **The absence of these safety inspections gives workers anxiety and has the risk of causing a major accident.** We paid attention to this situation and discussed ways to provide a safer working environment for workers.
 
