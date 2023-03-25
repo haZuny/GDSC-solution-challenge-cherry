@@ -76,6 +76,8 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 # Download App
 [Download Cherry.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk)
 
+Download and install the **Cherry.apk** file from the link above.
+
 <br>
 
 # Contributor
