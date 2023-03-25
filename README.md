@@ -82,6 +82,6 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 |<img src="https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/80839715?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/92250144?v=4" width="150"/>|<img src="https://avatars.githubusercontent.com/u/26412102?s=100&v=4" width="150"/>|
 |:---:|:---:|:---:|:---:|
 |Front End|Back End|Back End|Machine Learning|
-|[HaJun Kwon](https://github.com/haZuny)|[JiYoung Song](https://github.com/Zy0ung)|[GeonHui Lee](https://github.com/GeonHui2)|[Jaehyeon Park](https://github.com/Park-jaehyeon02)|
+|[HaJun Kwon](https://github.com/haZuny)|[JiYoung Song](https://github.com/Zy0ung)|[GeonHui Lee](https://github.com/GeonHui2)|[Jaeyeon Park](https://github.com/Park-jaehyeon02)|
 
 
