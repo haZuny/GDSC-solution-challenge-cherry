@@ -27,7 +27,7 @@ Cherry help you prevent dangers in your work environment in advance and share in
 <br>
 
 # Download App
-[Download Cherry.apk]([https://github.com/haZuny/cherry/blob/master/release/cherry-1.1.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk))
+[Download Cherry.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk)
 
 # Components
 - **BE**<br>
