@@ -3,7 +3,8 @@
 
 ![logo](https://user-images.githubusercontent.com/64102831/227727870-e551d3dd-4a1a-4ac3-ab1e-64661f6c1ebf.png)
 
-[2023-GDSC-Solution-Challenge] creating a safe working environment for construction site workers
+[2023-GDSC-Solution-Challenge]
+Creating a safe working environment for construction site workers
 
 ## What is Sustainable Development Goals?
 
