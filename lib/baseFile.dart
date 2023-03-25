@@ -84,7 +84,6 @@ double snackBar_margin = 10; // 스낵바 마진
 double snackBar_radius = 10; // 스낵바 둥글기
 int snackBar_duration = 1; // 스낵바 시간
 
-
 /// SignInPage
 // Size(Percent)
 int signInPage_logoWidth = 70; // 로고 가로 크기
@@ -105,7 +104,7 @@ int EditPrivacyPage_spacePerBtn = 5; // 버튼 사이의 간격
 // Size
 int putCheckCodePage_spaceTitle = 15; // 타이틀과의 간격
 int putCheckCodePage_spaceBottomBtn = 10; // 하단 버튼 끼리의 간격(세로)
-int putCheckCodePage_spacePerBtns = 5;  // 버튼 사이 간격
+int putCheckCodePage_spacePerBtns = 5; // 버튼 사이 간격
 double putCheckCodePage_checkBtnFontSize = 14; // 체크 버튼 폰트 크기
 
 /// EditSiteInfoPage
@@ -114,7 +113,7 @@ int editSiteInfoPage_spacePerTFs = 5; // 텍스트 필드 사이의 간격
 int editSiteInfoPage_spacePerBottomBtn = 20; // 하단 버튼과의 간격(세로)
 int editSiteInfoPage_spaceBottomBtn = 10; // 하단 버튼끼리의 간격(가로)
 int editSiteInfoPage_containerPadding = 10; // 바텀시트 패딩
-int editSiteInfoPage_spacePerBtns = 5;  // 버튼 사이 간격
+int editSiteInfoPage_spacePerBtns = 5; // 버튼 사이 간격
 double editSiteInfoPage_bottomsheetHeight = 0.6; // 바텀 시트 크기(세로)
 double editSiteInfoPage_checkBtnFontSize = 14; // 서치 버튼 폰트 크기
 // Font
@@ -129,11 +128,11 @@ int waitingAcceptPage_spacePerNextBtn = 25; // Re-type 버튼 사이의 간격
 
 /// SelectRolePage
 // Size
-int selectRolePage_spacePerTitle = 10;  // 타이틀과의 간격
+int selectRolePage_spacePerTitle = 10; // 타이틀과의 간격
 int selectRolePage_widgetSpaceRow = 6; // 버튼 사이의 가로 간격
 int selectRolePage_loginBtnWidth = 37; // 역할 선택 버튼 가로
 int selectRolePage_loginBtnHeight = 45; // 역할 선택 버튼 세로 패딩
-int selectRolePage_spacePerBottomBtn = 20;  // 타이틀과의 간격
+int selectRolePage_spacePerBottomBtn = 20; // 타이틀과의 간격
 
 /// HomePage
 // Size
@@ -158,7 +157,7 @@ double homePage_emergencyBtnFontSize = 20; // 긴급 버튼 폰트 크기
 /// HelmetCheckPage
 // Size
 int helmetCheckPage_spacePerNextBtn = 15; // 넥스트 버튼과의 간격
-int helmetCheckPage_progressIndicatorPadding = 35;  // 로딩 크기
+int helmetCheckPage_progressIndicatorPadding = 35; // 로딩 크기
 int helmetCheckPage_spacePerTitle = 10;
 
 /// CheckListPage
@@ -175,7 +174,7 @@ double checkListPage_listTextFontSize = 15; // 리스트 텍스트 폰트 크기
 /// SiteInfoPage
 // Size
 int siteInfoPage_spacePerTitle = 10; // 타이틀과의 간격
-int siteInfoPage_mapHeight = 110; // 지도 높이
+int siteInfoPage_mapHeight = 80; // 지도 높이
 int siteInfoPage_codeWidth = 7; // 현장 코드 한 글자 너비
 int siteInfoPage_codeHeight = 10; // 현장 코드 한 글자 높이
 int siteInfoPage_spacePerCode = 2; // 코드 한글자 한글자 끼리의 간격
@@ -220,16 +219,18 @@ int emergencyPage_spacePerTitle = 10; // 타이틀과의 간격
 int emergencyPage_spacePerMap = 10; // 지도와의 간격
 int emergencyPage_spacePerBtn = 5; // 버튼끼리의 간격
 int emergencyPage_spaceBottom = 10; // 하단 간격
+int emergencyPage_btms_height = 80; // 바텀시트 높이
+// Padding
+double emergencyPage_btms_padding = 20; // 바텀시트 패딩
 
 /// CPR Page
 // Size
 int cprPage_spacePerComponent = 10; // 요소끼리 간격
-int cprPage_spacePerTitleAndComponent = 3;  // 타이틀과의 간격
-
+int cprPage_spacePerTitleAndComponent = 3; // 타이틀과의 간격
 
 /// ViewPeopleInfoPage
 // Size
-int viewPeopleInfoPage_spacePerTitle = 10;  // 타이틀과의 간격
+int viewPeopleInfoPage_spacePerTitle = 10; // 타이틀과의 간격
 int viewPeopleInfoPage_spacePerText = 10; // 텍스트간 간격
 int viewPeopleInfoPage_spacePerBottomBtn = 10; // 아래 버튼과의 간격
 int viewPeopleInfoPage_spacePerBtns = 10; // 버튼끼리 간격
@@ -242,8 +243,6 @@ int viewPeopleInfoPage_padding = 5; // 리스트 공간 패딩
 double viewPeopleInfoPage_offset = 3; // 그림자 오프셋
 double viewPeopleInfoPage_blueray = 3; // 그림자 번짐
 
-
-
 /// Google Map
 // Size
 int googleMap_iconSize = 10;
@@ -255,7 +254,7 @@ double getFullScrennSizePercent(BuildContext context, int percent) {
 }
 
 /// 전역변수 초기화 함수
-void clearGlobalVar(){
+void clearGlobalVar() {
   // Site global
   global_haveSite = false;
   global_siteId = -1;
@@ -274,7 +273,7 @@ void clearGlobalVar(){
 }
 
 /// 현장 전역변수 초기화 함수
-void clearSiteGlobalVar(){
+void clearSiteGlobalVar() {
   // Site global
   global_haveSite = false;
   global_siteId = -1;
@@ -686,6 +685,28 @@ Future<Response> api_site_getSiteInfo(int siteId) async {
     global_siteAdd1 = res.data['data']['address1'];
     global_siteAdd2 = res.data['data']['address2'];
     print(">>> ${res.data['successResponseMessage']}");
+
+    // 행정구역 이름 변경
+    switch (global_siteAdd1) {
+      case ("충남"):
+        global_siteAdd1 = "충청남도";
+        break;
+      case ("충북"):
+        global_siteAdd1 = "충청북도";
+        break;
+      case("전남"):
+        global_siteAdd1 = "전라남도";
+        break;
+      case("전북"):
+        global_siteAdd1 = "전라북도";
+        break;
+      case("경남"):
+        global_siteAdd1 = "경상남도";
+        break;
+      case("경북"):
+        global_siteAdd1 = "경상북도";
+        break;
+    }
   } catch (e) {
     print(">>> ###현장 정보 조회 실패");
     print(e);
