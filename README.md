@@ -1,7 +1,7 @@
 # Cherry
 
 
-![logo](https://user-images.githubusercontent.com/64102831/227727870-e551d3dd-4a1a-4ac3-ab1e-64661f6c1ebf.png)
+![Cherry_logo](https://user-images.githubusercontent.com/64102831/227727870-e551d3dd-4a1a-4ac3-ab1e-64661f6c1ebf.png)
 
 [2023-GDSC-Solution-Challenge]<br>**Creating a safe working environment for construction site workers**
 
@@ -9,7 +9,7 @@
 
 ## What is Sustainable Development Goals?
 
-![ungoals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
+![un_goals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
 
 The Sustainable Development Goals (SGDs) or Global Goals are a collection of 17 interlinked global goals designed to be a "blueprint to achieve a better and more sustainable future for all.
 As can be seen in the figure above, there are 17 goals.
@@ -20,7 +20,7 @@ We have noted decent work and economic growth among the UN's Sustainable Develop
 
 #### Good Health and Well-Being
 
-![ourgoal](https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png)
+<img src="[이미지주소.png](https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png)" width="200"/>
 Cherry help you prevent dangers in your work environment in advance and share information with all workers to ensure that your work environment is safe.
 
 <br>
