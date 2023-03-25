@@ -28,9 +28,9 @@ Cherry help you prevent dangers in your work environment in advance and share in
 
 ## Components
 - **Back**
-  - spring boot
+  - <img src="https://img.shields.io/badge/Spring Boot-F8DC75?style=for-the-badge&logo=springboot&logoColor=white">
   - spring Data JPA
   - spring security
   - Oauth 2.0
 <img src="https://img.shields.io/badge/기술이름-#제외색상번호?style=for-the-badge&logo=아이콘이름&logoColor=white">
-<img src="https://img.shields.io/badge/Spring Boot-F8DC75?style=for-the-badge&logo=springboot&logoColor=white">
+
