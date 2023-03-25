@@ -8,10 +8,10 @@
 <br>
 
 # Introduction
-<img src="https://user-images.githubusercontent.com/64102831/227731796-74e7d4d1-7499-4ba3-a2a1-947ec1cd7b44.jpg" width="600"/>
+<img src="https://user-images.githubusercontent.com/64102831/227731796-74e7d4d1-7499-4ba3-a2a1-947ec1cd7b44.jpg" width="800"/>
 According to data from the Ministry of Employment and Labor last year, the construction industry ranks first in fatal accidents every year due to the nature of the industry.
 
-Most of the types of accidents account for a large proportion of drops, pinches, and collisions, which occurred because **the absence of wearing safety equipment.**
+Most of the types of accidents account for a large proportion of drops, pinches, and collisions, which occurred **because of the absence of wearing safety equipment.**
 However, there is a limit to the past punishment and regulatory-oriented policies alone.
 
 We prevent accidents in various situations by **creating customizable checklists through the Cherry app** so that field managers can check the status of safety facilities. In addition, all workers are trying to reduce accidents without a safety helmet by **recognizing whether to wear a safety helmet through a camera**
