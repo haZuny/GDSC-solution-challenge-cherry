@@ -1,4 +1,4 @@
-# Cherry
+# C H E R R Y
 
 
 ![Cherry_logo](https://user-images.githubusercontent.com/64102831/227727870-e551d3dd-4a1a-4ac3-ab1e-64661f6c1ebf.png)
