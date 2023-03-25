@@ -314,10 +314,14 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                       /// 널처리
                       if (siteName == "") {
                         print(">>> null WorkspaceName TextField");
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Please enter the site name."));
                         return;
                       }
                       if (_selectedAddrIdx < 0) {
                         print(">>> null Address");
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Please enter the site address."));
                         return;
                       }
 
@@ -335,7 +339,12 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                               _addrList[_selectedAddrIdx].addr2!);
                           Navigator.pushAndRemoveUntil(context,
                               Transition(child: HomePageAll()), (_) => false);
-                        } catch (e) {}
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Changes have been applied."));
+                        } catch (e) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Change failed."));
+                        }
                       }
 
                       /// 생성
@@ -349,7 +358,12 @@ class _PutSiteInfoPageAll extends State<PutSiteInfoPageAll> {
                               _addrList[_selectedAddrIdx].addr2!);
                           Navigator.pushAndRemoveUntil(context,
                               Transition(child: HomePageAll()), (_) => false);
-                        } catch (e) {}
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("You have successfully created a site."));
+                        } catch (e) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Creation failed."));
+                        }
                       }
                     },
                     // 내부 컴포넌트

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:cherry_app/baseFile.dart';
 
+import 'AppBar_Drawer.dart';
+
 /// 메니저 승인 대기 목록 조회
 class ViewWaiteInfoDialog extends StatefulWidget {
   late int userId;
@@ -84,7 +86,12 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
                 try {
                   res = await api_admin_acceptWaiting(userId);
                   Navigator.pop(context);
-                } catch (e) {}
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(getSnackBar("You have successfully accepted."));
+                } catch (e) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(getSnackBar("Acceptance failed"));
+                }
               },
               child: Text(
                 "Accept",
@@ -98,7 +105,12 @@ class _ViewWaiteInfoDialog extends State<ViewWaiteInfoDialog> {
                 try {
                   res = await api_admin_deleteUser(userId);
                   Navigator.pop(context);
-                } catch (e) {}
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(getSnackBar("Removed successfully."));
+                } catch (e) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(getSnackBar("Delete failed."));
+                }
               },
               child: Text(
                 "Delete",
@@ -177,7 +189,12 @@ class _ViewCheckListInfoDialog extends State<ViewCheckListInfoDialog> {
                       try {
                         res = await api_siteCheck_deleteCheckList(checkId);
                         updateState(global_siteId);
-                      } catch (e) {}
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Removed successfully."));
+                      } catch (e) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Delete failed."));
+                      }
                     }
                   });
                 },
@@ -316,7 +333,12 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
                     res = await api_siteCheck_addCheckList(global_siteId, text);
                     updateState(global_siteId);
                     Navigator.pop(context);
-                  } catch (e) {}
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(getSnackBar("You have successfully added the checklist."));
+                  } catch (e) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(getSnackBar("Add failed."));
+                  }
                 }
                 // 수정
                 else {
@@ -325,7 +347,12 @@ class _AddCheckListDialog extends State<AddCheckListDialog> {
                     res = await api_siteCheck_editCheckList(checkId!, text);
                     updateState(global_siteId);
                     Navigator.pop(context);
-                  } catch (e) {}
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(getSnackBar("You have successfully edited the checklist."));
+                  } catch (e) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(getSnackBar("Edit failed."));
+                  }
                 }
               },
               child: Text(

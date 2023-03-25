@@ -234,21 +234,24 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                                   "Are you sure you want to delete all users out?",
                                   "Back",
                                   "Delete")).then((value) async {
-                            print(value);
                             if (value) {
-                              for (EmpListTile tile in _uncheckedUserList) {
-                                late Response res;
-                                try {
+                              try {
+                                for (EmpListTile tile in _uncheckedUserList) {
+                                  late Response res;
+
                                   res = await api_admin_deleteUser(tile.userId);
-                                } catch (e) {}
-                              }
-                              for (EmpListTile tile in _checkedUserList) {
-                                late Response res;
-                                try {
+                                }
+                                for (EmpListTile tile in _checkedUserList) {
+                                  late Response res;
                                   res = await api_admin_deleteUser(tile.userId);
-                                } catch (e) {}
+                                }
+                                updateUserList();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    getSnackBar("Removed all users."));
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    getSnackBar("User removal failed."));
                               }
-                              updateUserList();
                             }
                           });
                         },
@@ -387,13 +390,18 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                       /// 모두 수락 버튼
                       ElevatedButton(
                         onPressed: () async {
-                          for (WaiteListTile tile in _waitingUserList) {
-                            late Response res;
-                            try {
+                          try {
+                            for (WaiteListTile tile in _waitingUserList) {
+                              late Response res;
                               res = await api_admin_acceptWaiting(tile.userId);
-                            } catch (e) {}
+                            }
+                            updateWaitingList();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("Accepted all users."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("User acceptance failed."));
                           }
-                          updateWaitingList();
                         },
                         // 내부 컴포넌트
                         child: Column(
@@ -453,13 +461,18 @@ class _ManageEmpPageManager extends State<ManageEmpPageManager> {
                                   "Deny")).then((value) async {
                             print(value);
                             if (value) {
-                              for (WaiteListTile tile in _waitingUserList) {
-                                late Response res;
-                                try {
+                              try {
+                                for (WaiteListTile tile in _waitingUserList) {
+                                  late Response res;
                                   res = await api_admin_deleteUser(tile.userId);
-                                } catch (e) {}
+                                }
+                                updateWaitingList();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    getSnackBar("Denied all users."));
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    getSnackBar("Failure to deny user."));
                               }
-                              updateWaitingList();
                             }
                           });
                         },

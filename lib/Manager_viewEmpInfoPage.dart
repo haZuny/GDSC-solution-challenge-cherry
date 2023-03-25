@@ -131,13 +131,15 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                   Container(
                     width: getFullScrennSizePercent(
                         context, allPage_mainComponentsWidth),
-                    padding:
-                        EdgeInsets.all(getFullScrennSizePercent(context, viewPeopleInfoPage_padding)),
+                    padding: EdgeInsets.all(getFullScrennSizePercent(
+                        context, viewPeopleInfoPage_padding)),
                     color: Color(themaColor_whiteYellow),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: getFullScrennSizePercent(context, viewPeopleInfoPage_padding),
-                          bottom: getFullScrennSizePercent(context, viewPeopleInfoPage_padding)),
+                          top: getFullScrennSizePercent(
+                              context, viewPeopleInfoPage_padding),
+                          bottom: getFullScrennSizePercent(
+                              context, viewPeopleInfoPage_padding)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -154,7 +156,9 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                 color: Color(themaColor_black),
                                 fontSize: viewPeopleInfoPage_fontSize),
                           ),
-                          Divider(height: 0,),
+                          Divider(
+                            height: 0,
+                          ),
 
                           // 등급 변경
                           Text(
@@ -178,8 +182,11 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                       color: Color(themaColor_whiteYellow),
                                       boxShadow: [
                                         BoxShadow(
-                                            offset: Offset(viewPeopleInfoPage_offset, viewPeopleInfoPage_offset),
-                                            blurRadius: viewPeopleInfoPage_blueray,
+                                            offset: Offset(
+                                                viewPeopleInfoPage_offset,
+                                                viewPeopleInfoPage_offset),
+                                            blurRadius:
+                                                viewPeopleInfoPage_blueray,
                                             color: Color(themaColor_whiteBlack))
                                       ]),
                                   child: DropdownButton(
@@ -214,7 +221,12 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                               this.userRole = "USER";
                                               this._dropdownVal = 0;
                                             });
-                                          } catch (e) {}
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                getSnackBar("User role has been changed."));
+                                          } catch (e) {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                getSnackBar("User role change failed."));
+                                          }
                                         }
                                         // staff
                                         else if (e == 1) {
@@ -241,7 +253,9 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                   color: Color(themaColor_black),
                                   fontSize: viewPeopleInfoPage_fontSize),
                             ),
-                          Divider(height: 0,),
+                          Divider(
+                            height: 0,
+                          ),
 
                           // 나이
                           Text(
@@ -256,7 +270,9 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                 color: Color(themaColor_black),
                                 fontSize: viewPeopleInfoPage_fontSize),
                           ),
-                          Divider(height: 0,),
+                          Divider(
+                            height: 0,
+                          ),
 
                           // 휴대전화
                           Text(
@@ -271,7 +287,9 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                                 color: Color(themaColor_black),
                                 fontSize: viewPeopleInfoPage_fontSize),
                           ),
-                          Divider(height: 0,),
+                          Divider(
+                            height: 0,
+                          ),
 
                           // 이메일
                           Text(
@@ -291,7 +309,9 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                               maxLines: 1,
                             ),
                           ),
-                          Divider(height: 0,),
+                          Divider(
+                            height: 0,
+                          ),
                         ],
                       ),
                     ),
@@ -306,21 +326,26 @@ class _ViewEmpInfoPage extends State<ViewEmpInfoPage> {
                   /// 쫒아내기 버튼
                   ElevatedButton(
                     onPressed: () async {
-                      late Response res;
-                      try {
-                        showDialog(
-                            context: context,
-                            builder: (context) => CheckAlertDialog(
-                                "Are you sure you want to Delete that user out?",
-                                "Back",
-                                "Delete")).then((value) async {
-                          print(value);
-                          if (value) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => CheckAlertDialog(
+                              "Are you sure you want to Delete that user out?",
+                              "Back",
+                              "Delete")).then((value) async {
+                        print(value);
+                        if (value) {
+                          late Response res;
+                          try {
                             res = await api_admin_deleteEmp(this.userId);
                             Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("You have successfully removed the user."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("User removal failed"));
                           }
-                        });
-                      } catch (e) {}
+                        }
+                      });
                     },
                     // 내부 컴포넌트
                     child: Column(

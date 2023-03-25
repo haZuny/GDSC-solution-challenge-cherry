@@ -205,7 +205,12 @@ class _HelmetCheckPage extends State<HelmetCheckPage> {
                           res = await api_user_editHelmetCheck(true);
                           Navigator.pushAndRemoveUntil(context,
                               Transition(child: HomePageAll()), (_) => false);
-                        } catch (e) {}
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Check succeeded."));
+                        } catch (e) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Check failed."));
+                        }
                       }
                       // 실패
                       else {

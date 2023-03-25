@@ -139,7 +139,7 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                         context, putCheckCodePage_spacePerBtns),
                   ),
 
-                  /// Next 버튼
+                  /// 취소 버튼
                   ElevatedButton(
                     onPressed: () async {
                       late Response res;
@@ -153,7 +153,12 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                                   transitionEffect:
                                       TransitionEffect.RIGHT_TO_LEFT));
                         }
-                      } catch (e) {}
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Your request has been cancelled."));
+                      } catch (e) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Failed to cancel request."));
+                      }
                     },
                     // 내부 컴포넌트
                     child: Column(
@@ -161,7 +166,7 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                       children: [
                         // 텍스트
                         Text(
-                          "Next",
+                          "Cancle",
                           style: TextStyle(
                               color: Color(themaColor_yellow),
                               fontSize: allPage_roundBtnFontSize),

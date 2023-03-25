@@ -144,16 +144,22 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                                 isChecked = true;
                               });
                               print(">>> 현장코드 존재");
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(getSnackBar("Check succeeded."));
                             } else {
                               setState(() {
                                 isChecked = false;
                               });
                               print(">>> 현장코드 없음");
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(getSnackBar("Check failed."));
                             }
                           } catch (e) {
                             setState(() {
                               isChecked = false;
                             });
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(getSnackBar("Check failed."));
                           }
                         },
                         child: Text(
@@ -246,7 +252,12 @@ class _PutCheckCodePageEmp extends State<PutCheckCodePageEmp> {
                                     transitionEffect:
                                         TransitionEffect.RIGHT_TO_LEFT));
                           }
-                        } catch (e) {}
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("On-site registration is requested."));
+                        } catch (e) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(getSnackBar("Registration is failed."));
+                        }
                       },
                       // 내부 컴포넌트
                       child: Column(

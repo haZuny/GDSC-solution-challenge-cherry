@@ -156,6 +156,7 @@ class _HomePageAll extends State<HomePageAll> {
                                 onPressed: () {
                                   if (_userHelmetState) {
                                     print(">>> Helmet checked already");
+                                    ScaffoldMessenger.of(context).showSnackBar(getSnackBar("The helmet has already been checked."));
                                   } else {
                                     Navigator.push(
                                         context,
@@ -238,7 +239,10 @@ class _HomePageAll extends State<HomePageAll> {
                                       try {
                                         res = await api_site_clearSite(
                                             global_siteId);
-                                      } catch (e) {}
+                                        ScaffoldMessenger.of(context).showSnackBar(getSnackBar("The check status has been reset."));
+                                      } catch (e) {
+                                        ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Reset failed."));
+                                      }
                                     }
                                   });
                                 },

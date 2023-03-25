@@ -115,9 +115,11 @@ class DrawerAll extends StatelessWidget {
                     style: TextStyle(color: Colors.red)),
                 onTap: () {
                   showDialog(
-                          context: context,
-                          builder: (context) => CheckAlertDialog("Are you really removing the scene?", "Back", "Remove"))
-                      .then((value) async {
+                      context: context,
+                      builder: (context) => CheckAlertDialog(
+                          "Are you really removing the scene?",
+                          "Back",
+                          "Remove")).then((value) async {
                     if (value) {
                       Response? res;
                       try {
@@ -144,9 +146,11 @@ class DrawerAll extends StatelessWidget {
                     style: TextStyle(color: Colors.red)),
                 onTap: () async {
                   showDialog(
-                          context: context,
-                          builder: (context) => CheckAlertDialog("Are you sure you want to leave the field?", "Back", "Leave"))
-                      .then((value) async {
+                      context: context,
+                      builder: (context) => CheckAlertDialog(
+                          "Are you sure you want to leave the field?",
+                          "Back",
+                          "Leave")).then((value) async {
                     if (value) {
                       Response? res;
                       try {
@@ -197,4 +201,21 @@ class DrawerAll extends StatelessWidget {
     Response res = await dio.post(uri);
     return res;
   }
+}
+
+/// SnackBar
+SnackBar getSnackBar(String msg) {
+  return SnackBar(
+    content: Container(
+      child: Text(msg),
+      padding: EdgeInsets.all(snackBar_padding),
+      margin: EdgeInsets.all(snackBar_margin),
+      decoration: BoxDecoration(
+          color: Colors.black45, borderRadius: BorderRadius.circular(snackBar_radius)),
+    ),
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    padding: EdgeInsets.zero,
+    duration: Duration(seconds: snackBar_duration),
+  );
 }

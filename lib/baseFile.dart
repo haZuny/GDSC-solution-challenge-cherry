@@ -78,6 +78,12 @@ int dalog_spacePerBtns = 10; // 버튼끼리 간격
 double dialog_fontSize = 20; // 폰트 크기
 double dialog_subFontSize = 16; // 작은 폰트 크기
 double dialog_dialogRound = 20; // 둥글기
+// Snack Bar
+double snackBar_padding = 10; // 스낵바 패딩
+double snackBar_margin = 10; // 스낵바 마진
+double snackBar_radius = 10; // 스낵바 둥글기
+int snackBar_duration = 1; // 스낵바 시간
+
 
 /// SignInPage
 // Size(Percent)

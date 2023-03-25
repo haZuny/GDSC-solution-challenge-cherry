@@ -58,7 +58,6 @@ class _SignInPage extends State<SignInPage> {
                       print(">>> 구글 로그아웃");
                     } catch (e) {}
 
-                    print("asfsdfasdfdsfsd");
                     // google auth
                     global_googleSignIn = GoogleSignIn();
                     global_googleUser = await global_googleSignIn?.signIn();
@@ -79,6 +78,8 @@ class _SignInPage extends State<SignInPage> {
                         dio.options.headers = {
                           'Authorization': "bearer " + authorization,
                         };
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Login successful."));
                       } catch (e) {}
 
                       // User SignIn
@@ -96,6 +97,8 @@ class _SignInPage extends State<SignInPage> {
                         dio.options.headers = {
                           'Authorization': "bearer " + authorization,
                         };
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar("Login successful."));
                       } catch (e) {}
 
                       if (_signInRole == "ADMIN") {
@@ -168,6 +171,7 @@ class _SignInPage extends State<SignInPage> {
                       }
                     } else {
                       print(">>> 구글 로그인 실패");
+                      ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Google login failed."));
                     }
                   },
                   // 내부 컴포넌트

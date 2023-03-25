@@ -339,13 +339,19 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                       // 널처리
                       if (name == "") {
                         print(">>> Empty Name");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            getSnackBar("Input your name, please."));
                         return;
                       }
                       if (phNum == "") {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            getSnackBar("Input your phone number, please."));
                         print(">>> Empty PhoneNum");
                         return;
                       }
                       if (age == "") {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            getSnackBar("Input your age, please."));
                         print(">>> Empty Age");
                         return;
                       }
@@ -359,24 +365,28 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                           try {
                             res = await api_admin_editPrivacy(name, phNum, age);
                             global_userRole = enum_Role.manager;
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                Transition(
-                                    child: HomePageAll()),
-                                (_) => false);
-                          } catch (e) {}
+                            Navigator.pushAndRemoveUntil(context,
+                                Transition(child: HomePageAll()), (_) => false);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("Changes have been applied."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(getSnackBar("Change failed."));
+                          }
                         }
                         // 유저
                         else {
                           try {
                             res = await api_user_editPrivacy(name, phNum, age);
                             global_userRole = enum_Role.user;
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                Transition(
-                                    child: HomePageAll()),
-                                (_) => false);
-                          } catch (e) {}
+                            Navigator.pushAndRemoveUntil(context,
+                                Transition(child: HomePageAll()), (_) => false);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar("Changes have been applied."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(getSnackBar("Change failed."));
+                          }
                         }
                       }
 
@@ -400,7 +410,13 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                             dio.options.headers = {
                               'Authorization': "bearer " + authorization,
                             };
-                          } catch (e) {}
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar(
+                                    "You have successfully signed up."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(getSnackBar("Sign up failed."));
+                          }
                         }
                         // 관리자 가입
                         else {
@@ -420,7 +436,13 @@ class _PutPrivacyPage extends State<PutPrivacyPage> {
                             dio.options.headers = {
                               'Authorization': "bearer " + authorization,
                             };
-                          } catch (e) {}
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                getSnackBar(
+                                    "You have successfully signed up."));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(getSnackBar("Sign up failed."));
+                          }
                         }
                       }
                     },
