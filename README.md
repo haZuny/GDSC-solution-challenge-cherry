@@ -43,7 +43,8 @@ Cherry help you prevent dangers in your work environment in advance and share in
 
 
 # Contributor
-|제목 셀1|제목 셀2|제목 셀3|제목 셀4|
+|<img src="https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4" width="150"/>|제목 셀2|제목 셀3|제목 셀4|
 |---|---|---|---|
 |내용 1|내용 2|내용 3|내용 4|
 
+https://avatars.githubusercontent.com/u/64102831?s=400&u=538e115e22d097184c5a71379178927f8968c5af&v=4
