@@ -1,12 +1,12 @@
 # Cherry
 
-![image](https://user-images.githubusercontent.com/92250144/224531007-deb3aa4b-9c0e-43bf-b8e6-4830e0304b53.png)
+![logo](https://user-images.githubusercontent.com/64102831/227727870-e551d3dd-4a1a-4ac3-ab1e-64661f6c1ebf.png)
 
 2023-GDSC-Solution-Challenge
 
 ## What is Sustainable Development Goals?
 
-![image](https://user-images.githubusercontent.com/33146152/160327143-e36bb1b9-ccea-4f96-b3b2-d92338dd56c5.png)
+![ungoals](https://user-images.githubusercontent.com/64102831/227727869-2bce4aef-fd09-470a-a489-ab64090727ee.png)
 
 The Sustainable Development Goals (SGDs) or Global Goals are a collection of 17 interlinked global goals designed to be a "blueprint to achieve a better and more sustainable future for all.
 As can be seen in the figure above, there are 17 goals.
@@ -17,7 +17,7 @@ We have noted decent work and economic growth among the UN's Sustainable Develop
 
 #### Good Health and Well-Being
 
-<img width="143" alt="image" src="https://blog.kakaocdn.net/dn/Jgc9B/btqFoQwybu0/eQRu0YHs13tT7tM5PkCIe0/img.png">
+![ourgoal](https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png)
 Cherry help you prevent dangers in your work environment in advance and share information with all workers to ensure that your work environment is safe.
 
 ## Components
