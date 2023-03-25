@@ -10,13 +10,10 @@
 # Introduction
 ![Helmet](https://user-images.githubusercontent.com/64102831/227731796-74e7d4d1-7499-4ba3-a2a1-947ec1cd7b44.jpg)
 According to data from the Ministry of Employment and Labor last year, the construction industry ranks first in fatal accidents every year due to the nature of the industry.
-Most of the types of accidents account for a large proportion of drops, pinches, and collisions, which occurred because basic safety measures were not implemented.
+Most of the types of accidents account for a large proportion of drops, pinches, and collisions, which occurred because **the absence of wearing safety equipment.**
 However, there is a limit to the past punishment and regulatory-oriented policies alone.
 
-Therefore, many construction site workers must always implement safety measures because they are exposed to various accident risks that can occur anytime, anywhere.
-Our team thought that equipment must be worn to prevent safety accidents in the construction industry, which are directly related to life, and safety facilities must be inspected. And I think many workers should be on duty with caution for safety.
-
-Therefore, we prevent accidents in various situations by creating customizable checklists through the cherry app so that field managers can check the status of safety facilities. In addition, all workers are trying to reduce accidents without a safety helmet by recognizing whether to wear a safety helmet through a camera
+We prevent accidents in various situations by creating customizable checklists through the Cherry app so that field managers can check the status of safety facilities. In addition, all workers are trying to reduce accidents without a safety helmet by recognizing whether to wear a safety helmet through a camera
 
 <br>
 
