@@ -8,8 +8,8 @@
 <br>
 
 # Index
-[1. Introduction](#Introduction)
-[1.1 Problem situation](#Problem situation)
+[1. Introduction](#Introduction)<br>
+[1.1 Problem situation](#Problem-situation)
 <br>
 
 # Introduction
