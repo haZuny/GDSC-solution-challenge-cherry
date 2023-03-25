@@ -20,7 +20,8 @@ We have noted decent work and economic growth among the UN's Sustainable Develop
 
 #### Good Health and Well-Being
 
-<img src="[이미지주소.png](https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png)" width="200"/>
+<img src="https://user-images.githubusercontent.com/64102831/227727867-ecd48a20-0e60-480d-b69b-21640c2901f7.png" width="200"/>
+
 Cherry help you prevent dangers in your work environment in advance and share information with all workers to ensure that your work environment is safe.
 
 <br>
