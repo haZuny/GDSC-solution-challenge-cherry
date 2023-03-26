@@ -359,114 +359,112 @@ class _EmergencyPage extends State<EmergencyPage> {
                   ),
 
                   /// CPR 버튼
-                  if (global_userRole != enum_Role.user)
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            Transition(
-                                child: CPRPage(),
-                                transitionEffect:
-                                    TransitionEffect.RIGHT_TO_LEFT));
-                      },
-                      // 내부 컴포넌트
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // 텍스트
-                          Text(
-                            "CPR",
-                            style: TextStyle(
-                                color: Color(themaColor_red),
-                                fontSize: allPage_roundBtnFontSize),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          // 크기 설정
-                          minimumSize: Size(
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnWidth),
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnHeight)),
-                          maximumSize: Size(
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnWidth),
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnHeight)),
-                          // 모양 및 테두리 설정
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(allPage_roundBtnRadius),
-                            side: BorderSide(
-                                color: Color(themaColor_red),
-                                width: allPage_addBtnWidth),
-                          ),
-
-                          // 배경 색상 설정
-                          backgroundColor: Color(themaColor_white),
-                          // 그림자 투명도
-                          elevation: 5),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          Transition(
+                              child: CPRPage(),
+                              transitionEffect:
+                                  TransitionEffect.RIGHT_TO_LEFT));
+                    },
+                    // 내부 컴포넌트
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // 텍스트
+                        Text(
+                          "CPR",
+                          style: TextStyle(
+                              color: Color(themaColor_red),
+                              fontSize: allPage_roundBtnFontSize),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
+                    style: ElevatedButton.styleFrom(
+                        // 크기 설정
+                        minimumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        maximumSize: Size(
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnWidth),
+                            getFullScrennSizePercent(
+                                context, allPage_roundBtnHeight)),
+                        // 모양 및 테두리 설정
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(allPage_roundBtnRadius),
+                          side: BorderSide(
+                              color: Color(themaColor_red),
+                              width: allPage_addBtnWidth),
+                        ),
 
-                  /// 간격
-                  Container(
-                    height: getFullScrennSizePercent(
-                        context, emergencyPage_spacePerBtn),
+                        // 배경 색상 설정
+                        backgroundColor: Color(themaColor_white),
+                        // 그림자 투명도
+                        elevation: 5),
                   ),
 
-                  /// 지혈 버튼
-                  if (global_userRole != enum_Role.user)
-                    ElevatedButton(
-                      onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     Transition(
-                        //         child: CPRPage(),
-                        //         transitionEffect:
-                        //             TransitionEffect.RIGHT_TO_LEFT));
-                      },
-                      // 내부 컴포넌트
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // 텍스트
-                          Text(
-                            "Homostasis",
-                            style: TextStyle(
-                                color: Color(themaColor_red),
-                                fontSize: allPage_roundBtnFontSize),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          // 크기 설정
-                          minimumSize: Size(
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnWidth),
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnHeight)),
-                          maximumSize: Size(
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnWidth),
-                              getFullScrennSizePercent(
-                                  context, allPage_roundBtnHeight)),
-                          // 모양 및 테두리 설정
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(allPage_roundBtnRadius),
-                            side: BorderSide(
-                                color: Color(themaColor_red),
-                                width: allPage_addBtnWidth),
-                          ),
+                  // /// 간격
+                  // Container(
+                  //   height: getFullScrennSizePercent(
+                  //       context, emergencyPage_spacePerBtn),
+                  // ),
 
-                          // 배경 색상 설정
-                          backgroundColor: Color(themaColor_white),
-                          // 그림자 투명도
-                          elevation: 5),
-                    ),
+                  // /// 지혈 버튼
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     // Navigator.push(
+                  //     //     context,
+                  //     //     Transition(
+                  //     //         child: CPRPage(),
+                  //     //         transitionEffect:
+                  //     //             TransitionEffect.RIGHT_TO_LEFT));
+                  //   },
+                  //   // 내부 컴포넌트
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       // 텍스트
+                  //       Text(
+                  //         "Homostasis",
+                  //         style: TextStyle(
+                  //             color: Color(themaColor_red),
+                  //             fontSize: allPage_roundBtnFontSize),
+                  //         textAlign: TextAlign.center,
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   style: ElevatedButton.styleFrom(
+                  //       // 크기 설정
+                  //       minimumSize: Size(
+                  //           getFullScrennSizePercent(
+                  //               context, allPage_roundBtnWidth),
+                  //           getFullScrennSizePercent(
+                  //               context, allPage_roundBtnHeight)),
+                  //       maximumSize: Size(
+                  //           getFullScrennSizePercent(
+                  //               context, allPage_roundBtnWidth),
+                  //           getFullScrennSizePercent(
+                  //               context, allPage_roundBtnHeight)),
+                  //       // 모양 및 테두리 설정
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius:
+                  //             BorderRadius.circular(allPage_roundBtnRadius),
+                  //         side: BorderSide(
+                  //             color: Color(themaColor_red),
+                  //             width: allPage_addBtnWidth),
+                  //       ),
+                  //
+                  //       // 배경 색상 설정
+                  //       backgroundColor: Color(themaColor_white),
+                  //       // 그림자 투명도
+                  //       elevation: 5),
+                  // ),
 
                   /// 위, 아래 공간
                   Container(

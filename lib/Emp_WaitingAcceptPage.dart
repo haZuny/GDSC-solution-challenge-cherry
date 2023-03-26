@@ -166,7 +166,7 @@ class _WaitingAcceptPage extends State<WaitingAcceptPage> {
                       children: [
                         // 텍스트
                         Text(
-                          "Cancle",
+                          "Cancel",
                           style: TextStyle(
                               color: Color(themaColor_yellow),
                               fontSize: allPage_roundBtnFontSize),
