@@ -74,7 +74,7 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
   <br>
 
 # Download App
-[Download Cherry.apk](https://github.com/haZuny/cherry/raw/master/release/cherry-1.1.apk)
+[Download Cherry.apk](https://github.com/haZuny/GDSC-solution-challenge-cherry/raw/master/release/cherry-1..2.apk)
 
 
 Download and install the **Cherry.apk** file from the link above.
