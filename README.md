@@ -54,6 +54,9 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 
 # Detail of fuction
 
+### 1. 회원가입
+![1-관리자-가입](https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif)![1-근로자-가입](https://user-images.githubusercontent.com/64102831/227927719-84257c6c-30f0-4428-a41b-0e673fb4f56e.gif)
+
 <br>
 
 # Components
