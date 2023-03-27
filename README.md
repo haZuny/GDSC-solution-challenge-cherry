@@ -9,9 +9,9 @@
 
 # Index
 [**1. Introduction**](#Introduction)<br>
-[&nbsp;&nbsp;1.1. Problem situation](#Problem-situation)<br>
-[&nbsp;&nbsp;1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
-[&nbsp;&nbsp;1.3. Our goal](#Our-goal)<br><br>
+[&nbsp;&nbsp;&nbsp;&nbsp;1.1. Problem situation](#Problem-situation)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;1.3. Our goal](#Our-goal)<br><br>
 [**2. Detail of fuction**](#Detail-of-fuction)<br><br>
 [**3. Components**](#Components)<br><br>
 [**4. Download App**](#Download-App)<br><br>
@@ -89,7 +89,7 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 |<img src="https://user-images.githubusercontent.com/64102831/227927748-8bbb857f-a95a-41e9-aad6-8cc6513a8d46.gif" width="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="400">|
 
 ### 7. Emergency button
-<img src="https://user-images.githubusercontent.com/64102831/227934775-455fed21-d471-4dc7-bca9-034bb34a0d66.gif" widthth="400">
+<img src="https://user-images.githubusercontent.com/64102831/227934775-455fed21-d471-4dc7-bca9-034bb34a0d66.gif" width="400">
 <br>
 
 # Components
