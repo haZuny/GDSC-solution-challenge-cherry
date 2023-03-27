@@ -62,13 +62,13 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 ### 2. Create a site and view the site check code.
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227927723-aafe4ffb-713c-4533-a5cb-9e7cc2d1c6fa.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227927723-aafe4ffb-713c-4533-a5cb-9e7cc2d1c6fa.gif" width="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
 |<img src="https://user-images.githubusercontent.com/64102831/227927729-59936807-2db6-4c9c-9b74-b0017dcf8397.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
 
 ### 3. Join in the site
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227927731-47eb9e27-f7e5-4985-9235-22b50746a5a9.gif" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="400">|<img src="https://user-images.githubusercontent.com/64102831/227927731-47eb9e27-f7e5-4985-9235-22b50746a5a9.gif" widthth="400">|
 |<img src="https://user-images.githubusercontent.com/64102831/227927733-f323113e-5eeb-4aaf-8037-6fc217ba85dd.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">
 
 ### 4. Check helmet and submit
