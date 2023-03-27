@@ -58,24 +58,40 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 |Admin|User|
 |:---:|:---:|
 |<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227927719-84257c6c-30f0-4428-a41b-0e673fb4f56e.gif" widthth="400">|
-|Sign up - Admin|Sign up - User|
 
-
-
-
-### 2. Admin - Create site and view site check code.
+### 2. Create a site and view the site check code.
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
-|Sign up - Admin||
+|<img src="https://user-images.githubusercontent.com/64102831/227927723-aafe4ffb-713c-4533-a5cb-9e7cc2d1c6fa.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227927729-59936807-2db6-4c9c-9b74-b0017dcf8397.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
 
-### 3. User - Sign up to site
+### 3. Join in the site
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
-|Sign up - Admin|Sign up - User|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227927731-47eb9e27-f7e5-4985-9235-22b50746a5a9.gif" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227927733-f323113e-5eeb-4aaf-8037-6fc217ba85dd.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">
+
+### 4. Check helmet and submit
+|Admin|User|
+|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227927735-fd41d345-3651-451b-b655-ff600ca47e51.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+
+### 5. Check daily checklist
+|Admin|User|
+|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/64102831/227927742-ba693cf0-c7d9-4341-a046-3b1e5ce5881a.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227927739-ac8a0dc3-f329-4dcb-ab2f-201600c00525.gif" widthth="400">|
+
+### 6. Reset checklist
+|Admin|User|
+|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/64102831/227927748-8bbb857f-a95a-41e9-aad6-8cc6513a8d46.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
 
 
+|Admin|User|
+|:---:|:---:|
+|<img src="" widthth="400">|<img src="" widthth="400">|
 <br>
 
 # Components
