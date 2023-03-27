@@ -88,10 +88,8 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 |:---:|:---:|
 |<img src="https://user-images.githubusercontent.com/64102831/227927748-8bbb857f-a95a-41e9-aad6-8cc6513a8d46.gif" width="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="400">|
 
-
-|Admin|User|
-|:---:|:---:|
-|<img src="" widthth="400">|<img src="" widthth="400">|
+### 7. Emergency button
+<img src="https://user-images.githubusercontent.com/64102831/227934775-455fed21-d471-4dc7-bca9-034bb34a0d66.gif" widthth="400">
 <br>
 
 # Components
