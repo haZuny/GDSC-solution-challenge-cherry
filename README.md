@@ -66,8 +66,8 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 ### 2. Admin - Create site and view site check code.
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227927719-84257c6c-30f0-4428-a41b-0e673fb4f56e.gif" widthth="400">|
-|Sign up - Admin|Sign up - User|
+|<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" widthth="400">|
+|Sign up - Admin||
 
 ### 3. User - Sign up to site
 |Admin|User|
