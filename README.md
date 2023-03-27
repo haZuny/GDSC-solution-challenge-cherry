@@ -55,15 +55,17 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 # Detail of fuction
 
 ### 1. Sign Up
-![1-관리자-가입](https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif) Admin
-![1-근로자-가입](https://user-images.githubusercontent.com/64102831/227927719-84257c6c-30f0-4428-a41b-0e673fb4f56e.gif) User
+<img src="https://user-images.githubusercontent.com/64102831/227927715-555f4f42-caa6-4a24-94eb-aff78370eb7c.gif" widthth="400">
+<img src="https://user-images.githubusercontent.com/64102831/227927719-84257c6c-30f0-4428-a41b-0e673fb4f56e.gif" widthth="400">
 
 ### 2. Admin - Create site and view site check code.
-![2-관리자-현장-생성](https://user-images.githubusercontent.com/64102831/227927723-aafe4ffb-713c-4533-a5cb-9e7cc2d1c6fa.gif)
-![2-관리자-현장-코드 확인](https://user-images.githubusercontent.com/64102831/227927729-59936807-2db6-4c9c-9b74-b0017dcf8397.gif)
+<img src="https://user-images.githubusercontent.com/64102831/227927723-aafe4ffb-713c-4533-a5cb-9e7cc2d1c6fa.gif" widthth="400">
+<img src="https://user-images.githubusercontent.com/64102831/227927729-59936807-2db6-4c9c-9b74-b0017dcf8397.gif" widthth="400">
 
 ### 3. User - Sign up to site
-![3-근로자-현장-가입](https://user-images.githubusercontent.com/64102831/227927731-47eb9e27-f7e5-4985-9235-22b50746a5a9.gif)
+<img src="https://user-images.githubusercontent.com/64102831/227927731-47eb9e27-f7e5-4985-9235-22b50746a5a9.gif" widthth="400"">
+
+
 <br>
 
 # Components
