@@ -23,6 +23,7 @@
 [**3. Components**](#Components)<br>
 [**4. Download App**](#Download-App)<br>
 [**5. Contributor**](#Contributor)<br>
+[**6. Repository**](#Repository)<br>
 
 <br>
 
@@ -142,6 +143,12 @@ Download and install the **Cherry.apk** file from the link above.
 |:---:|:---:|:---:|:---:|
 |Front End|Back End|Back End|Machine Learning|
 |[HaJun Kwon](https://github.com/haZuny)|[JiYoung Song](https://github.com/Zy0ung)|[GeonHui Lee](https://github.com/GeonHui2)|[JaeHyeon Park](https://github.com/Park-jaehyeon02)|
+
+<br>
+
+# Repository
+[Go to repo](https://github.com/Google-DSC-SCH/2023-Solution-Challenge_Cherry)
+
 
 
 
