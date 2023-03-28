@@ -89,7 +89,7 @@ Workers can inspect whether helmets are worn and submit the results to the manag
 
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|<img src="https://user-images.githubusercontent.com/64102831/228223252-becc6d0a-c191-4647-88fc-e3c773d01e43.gif" width="300">|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|<img src="https://user-images.githubusercontent.com/64102831/228224108-94505f67-e5f9-426e-af05-4832f2dd6df4.gif" width="300">|
 |<img src="https://user-images.githubusercontent.com/64102831/227927735-fd41d345-3651-451b-b655-ff600ca47e51.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
 
 ### 5. Check daily checklist
