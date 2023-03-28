@@ -13,7 +13,7 @@
 [&nbsp;&nbsp;&nbsp;&nbsp;1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;1.3. Our goal](#Our-goal)<br>
 [**2. Detail of fuction**](#Detail-of-fuction)<br>
-[&nbsp;&nbsp;&nbsp;&nbsp;2.1. Sign up](#1-Sign up)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.1. Sign up](#1-Sign-up)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;2.2. Create a site and view the site check code](#2-Create-a-site-and-view-the-site-check-code)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;2.3. Join in the site](#3-Join-in-the-site)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;2.1. Check helmet and submit](#4-Check-helmet-and-submit)<br>
