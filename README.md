@@ -97,7 +97,7 @@ The manager checks the inspection items for the day. In addition to the basic qu
 
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227927742-ba693cf0-c7d9-4341-a046-3b1e5ce5881a.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
+|<img src="https://user-images.githubusercontent.com/64102831/227927742-ba693cf0-c7d9-4341-a046-3b1e5ce5881a.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/228223252-becc6d0a-c191-4647-88fc-e3c773d01e43.gif" width="300">|
 |<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227927739-ac8a0dc3-f329-4dcb-ab2f-201600c00525.gif" width="300">|
 
 ### 6. Reset checklist
