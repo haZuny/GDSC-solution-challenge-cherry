@@ -108,7 +108,7 @@ When today's work is finished, check items for the day are initialized, and chec
 |<img src="https://user-images.githubusercontent.com/64102831/227927748-8bbb857f-a95a-41e9-aad6-8cc6513a8d46.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
 
 ### 7. Emergency button
-In the emergency, you can check the hospitals around the site and view the first aid method through the emergency button.
+In the emergency, you can check the hospitals around the site and view the first aid method through the emergency button.<br>
 <img src="https://user-images.githubusercontent.com/64102831/227934775-455fed21-d471-4dc7-bca9-034bb34a0d66.gif" width="300">
 <br>
 
