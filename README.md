@@ -16,10 +16,10 @@
 [&nbsp;&nbsp;&nbsp;&nbsp;2.1. Sign up](#1-Sign-up)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;2.2. Create a site and view the site check code](#2-Create-a-site-and-view-the-site-check-code)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;2.3. Join in the site](#3-Join-in-the-site)<br>
-[&nbsp;&nbsp;&nbsp;&nbsp;2.1. Check helmet and submit](#4-Check-helmet-and-submit)<br>
-[&nbsp;&nbsp;&nbsp;&nbsp;2.2. Check daily checklist](#5-Check-daily-checklist)<br>
-[&nbsp;&nbsp;&nbsp;&nbsp;2.3. Reset checklist](#6-Reset-checklist)<br>
-[&nbsp;&nbsp;&nbsp;&nbsp;2.1. Emergency button](#7-Emergency-button)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.4. Check helmet and submit](#4-Check-helmet-and-submit)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.5. Check daily checklist](#5-Check-daily-checklist)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.6. Reset checklist](#6-Reset-checklist)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.7. Emergency button](#7-Emergency-button)<br>
 [**3. Components**](#Components)<br>
 [**4. Download App**](#Download-App)<br>
 [**5. Contributor**](#Contributor)<br>
