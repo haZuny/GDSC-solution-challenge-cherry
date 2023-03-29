@@ -119,7 +119,7 @@ In the emergency, you can check the hospitals around the site and view the first
   <br>
 
 # Download App
-[Download Cherry.apk](https://github.com/haZuny/GDSC-solution-challenge-cherry/raw/master/release/cherry-1..2.apk)
+[Download Cherry.apk](https://github.com/haZuny/GDSC-solution-challenge-cherry/raw/master/release/Cherry-1.3.apk)
 
 
 Download and install the **Cherry.apk** file from the link above.
