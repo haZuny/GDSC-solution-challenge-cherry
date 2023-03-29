@@ -13,12 +13,23 @@
 [&nbsp;&nbsp;&nbsp;&nbsp;1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;1.3. Our goal](#Our-goal)<br>
 [**2. Detail of fuction**](#Detail-of-fuction)<br>
+<<<<<<< HEAD
 [&nbsp;&nbsp;&nbsp;&nbsp;.1. Problem situation](#Problem-situation)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;1.2. What is Sustainable Development Goals?](#What-is-Sustainable-Development-Goals)<br>
 [&nbsp;&nbsp;&nbsp;&nbsp;1.3. Our goal](#Our-goal)<br>
+=======
+[&nbsp;&nbsp;&nbsp;&nbsp;2.1. Sign up](#1-Sign-up)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.2. Create a site and view the site check code](#2-Create-a-site-and-view-the-site-check-code)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.3. Join in the site](#3-Join-in-the-site)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.4. Check helmet and submit](#4-Check-helmet-and-submit)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.5. Check daily checklist](#5-Check-daily-checklist)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.6. Reset checklist](#6-Reset-checklist)<br>
+[&nbsp;&nbsp;&nbsp;&nbsp;2.7. Emergency button](#7-Emergency-button)<br>
+>>>>>>> 365837d895df24da63014d108c1c78e5e36b1122
 [**3. Components**](#Components)<br>
 [**4. Download App**](#Download-App)<br>
 [**5. Contributor**](#Contributor)<br>
+[**6. Repository**](#Repository)<br>
 
 <br>
 
@@ -77,7 +88,7 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 ### 4. Check helmet and submit
 |Admin|User|
 |:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
+|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|<img src="https://user-images.githubusercontent.com/64102831/228224108-94505f67-e5f9-426e-af05-4832f2dd6df4.gif" width="300">|
 |<img src="https://user-images.githubusercontent.com/64102831/227927735-fd41d345-3651-451b-b655-ff600ca47e51.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
 
 ### 5. Check daily checklist
@@ -92,6 +103,10 @@ Our Cherry **provides a checklist** that must be checked by managers at each sit
 |<img src="https://user-images.githubusercontent.com/64102831/227927748-8bbb857f-a95a-41e9-aad6-8cc6513a8d46.gif" width="300">|<img src="https://user-images.githubusercontent.com/64102831/227930318-e2bea932-5a7d-40f4-b54b-6b550678f0ce.png" width="300">|
 
 ### 7. Emergency button
+<<<<<<< HEAD
+=======
+In the emergency, you can check the hospitals around the site and view the first aid method through the emergency button.<br>
+>>>>>>> 365837d895df24da63014d108c1c78e5e36b1122
 <img src="https://user-images.githubusercontent.com/64102831/227934775-455fed21-d471-4dc7-bca9-034bb34a0d66.gif" width="300">
 <br>
 
@@ -125,6 +140,12 @@ Download and install the **Cherry.apk** file from the link above.
 |:---:|:---:|:---:|:---:|
 |Front End|Back End|Back End|Machine Learning|
 |[HaJun Kwon](https://github.com/haZuny)|[JiYoung Song](https://github.com/Zy0ung)|[GeonHui Lee](https://github.com/GeonHui2)|[JaeHyeon Park](https://github.com/Park-jaehyeon02)|
+
+<br>
+
+# Repository
+[Go to repo](https://github.com/Google-DSC-SCH/2023-Solution-Challenge_Cherry)
+
 
 
 
