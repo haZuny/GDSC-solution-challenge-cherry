@@ -289,7 +289,7 @@ void clearSiteGlobalVar() {
 /// API
 /// ########################
 Dio dio = Dio();
-String api_hostURI = "http://3.37.201.188:8080/";
+String api_hostURI = "http://3.37.75.80:8080/";
 String authorization = '';
 String refreshToken = '';
 
